@@ -41,23 +41,21 @@ namespace PuntoVenta
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.BtnAtras = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.txtrol = new System.Windows.Forms.ComboBox();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.btnGuardar = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnGuardarCambios = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtcorreo = new System.Windows.Forms.TextBox();
+            this.txtpassword = new System.Windows.Forms.TextBox();
+            this.txtlogin = new System.Windows.Forms.TextBox();
+            this.txtnombre = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -67,7 +65,6 @@ namespace PuntoVenta
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.menuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -78,7 +75,7 @@ namespace PuntoVenta
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(885, 55);
+            this.panel1.Size = new System.Drawing.Size(1052, 55);
             this.panel1.TabIndex = 0;
             // 
             // button1
@@ -87,7 +84,7 @@ namespace PuntoVenta
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(810, 0);
+            this.button1.Location = new System.Drawing.Point(977, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 55);
             this.button1.TabIndex = 1;
@@ -114,7 +111,7 @@ namespace PuntoVenta
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 55);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(885, 44);
+            this.panel2.Size = new System.Drawing.Size(1052, 44);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -150,9 +147,9 @@ namespace PuntoVenta
             // 
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(754, 99);
+            this.panel3.Location = new System.Drawing.Point(921, 99);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(131, 504);
+            this.panel3.Size = new System.Drawing.Size(131, 507);
             this.panel3.TabIndex = 2;
             // 
             // pictureBox1
@@ -176,18 +173,131 @@ namespace PuntoVenta
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(754, 504);
+            this.dataGridView1.Size = new System.Drawing.Size(921, 507);
             this.dataGridView1.TabIndex = 3;
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.button2);
+            this.panel4.Controls.Add(this.BtnAtras);
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.panel4.Location = new System.Drawing.Point(14, 114);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(721, 433);
             this.panel4.TabIndex = 2;
+            // 
+            // BtnAtras
+            // 
+            this.BtnAtras.FlatAppearance.BorderSize = 0;
+            this.BtnAtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAtras.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnAtras.Location = new System.Drawing.Point(420, 280);
+            this.BtnAtras.Name = "BtnAtras";
+            this.BtnAtras.Size = new System.Drawing.Size(93, 50);
+            this.BtnAtras.TabIndex = 6;
+            this.BtnAtras.Text = "Atrás";
+            this.BtnAtras.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.txtrol);
+            this.panel5.Controls.Add(this.menuStrip2);
+            this.panel5.Controls.Add(this.txtcorreo);
+            this.panel5.Controls.Add(this.txtpassword);
+            this.panel5.Controls.Add(this.txtlogin);
+            this.panel5.Controls.Add(this.txtnombre);
+            this.panel5.Controls.Add(this.label6);
+            this.panel5.Controls.Add(this.label2);
+            this.panel5.Controls.Add(this.label5);
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.label4);
+            this.panel5.Location = new System.Drawing.Point(46, 13);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(659, 361);
+            this.panel5.TabIndex = 4;
+            // 
+            // txtrol
+            // 
+            this.txtrol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtrol.FormattingEnabled = true;
+            this.txtrol.Items.AddRange(new object[] {
+            "Solo Ventas (no esta autorizado para manejar dinero)",
+            "Cajero (Si esta autorizado para manejar dinero)",
+            "Administrador (Control total)"});
+            this.txtrol.Location = new System.Drawing.Point(189, 199);
+            this.txtrol.Name = "txtrol";
+            this.txtrol.Size = new System.Drawing.Size(461, 28);
+            this.txtrol.TabIndex = 607;
+            this.txtrol.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.AutoSize = false;
+            this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(215)))), ((int)(((byte)(11)))));
+            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnGuardar,
+            this.BtnGuardarCambios});
+            this.menuStrip2.Location = new System.Drawing.Point(16, 267);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(261, 50);
+            this.menuStrip2.TabIndex = 5;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
+            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(83, 46);
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Click += new System.EventHandler(this.bntGuardar_Click);
+            // 
+            // BtnGuardarCambios
+            // 
+            this.BtnGuardarCambios.BackColor = System.Drawing.Color.Transparent;
+            this.BtnGuardarCambios.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnGuardarCambios.Name = "BtnGuardarCambios";
+            this.BtnGuardarCambios.Size = new System.Drawing.Size(153, 46);
+            this.BtnGuardarCambios.Text = "Guardar Cambios";
+            // 
+            // txtcorreo
+            // 
+            this.txtcorreo.Location = new System.Drawing.Point(193, 144);
+            this.txtcorreo.Name = "txtcorreo";
+            this.txtcorreo.Size = new System.Drawing.Size(230, 29);
+            this.txtcorreo.TabIndex = 5;
+            // 
+            // txtpassword
+            // 
+            this.txtpassword.Location = new System.Drawing.Point(194, 102);
+            this.txtpassword.Name = "txtpassword";
+            this.txtpassword.Size = new System.Drawing.Size(230, 29);
+            this.txtpassword.TabIndex = 5;
+            // 
+            // txtlogin
+            // 
+            this.txtlogin.Location = new System.Drawing.Point(193, 56);
+            this.txtlogin.Name = "txtlogin";
+            this.txtlogin.Size = new System.Drawing.Size(230, 29);
+            this.txtlogin.TabIndex = 5;
+            // 
+            // txtnombre
+            // 
+            this.txtnombre.Location = new System.Drawing.Point(193, 16);
+            this.txtnombre.Name = "txtnombre";
+            this.txtnombre.Size = new System.Drawing.Size(230, 29);
+            this.txtnombre.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(141, 184);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 21);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Rol:";
             // 
             // label2
             // 
@@ -199,6 +309,16 @@ namespace PuntoVenta
             this.label2.TabIndex = 0;
             this.label2.Text = "Nombres y Apellidos:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(33, 147);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(155, 21);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Correo electrónico:";
             // 
             // label3
             // 
@@ -220,155 +340,12 @@ namespace PuntoVenta
             this.label4.TabIndex = 2;
             this.label4.Text = "Contraseña:";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(33, 147);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(155, 21);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Correo electrónico:";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.label7);
-            this.panel5.Controls.Add(this.pictureBox2);
-            this.panel5.Controls.Add(this.comboBox1);
-            this.panel5.Controls.Add(this.menuStrip2);
-            this.panel5.Controls.Add(this.textBox5);
-            this.panel5.Controls.Add(this.textBox4);
-            this.panel5.Controls.Add(this.textBox3);
-            this.panel5.Controls.Add(this.textBox2);
-            this.panel5.Controls.Add(this.label6);
-            this.panel5.Controls.Add(this.label2);
-            this.panel5.Controls.Add(this.label5);
-            this.panel5.Controls.Add(this.label3);
-            this.panel5.Controls.Add(this.label4);
-            this.panel5.Location = new System.Drawing.Point(46, 13);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(659, 361);
-            this.panel5.TabIndex = 4;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(141, 184);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 21);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Rol:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(193, 16);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(230, 29);
-            this.textBox2.TabIndex = 5;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(193, 56);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(230, 29);
-            this.textBox3.TabIndex = 5;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(194, 102);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(230, 29);
-            this.textBox4.TabIndex = 5;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(193, 144);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(230, 29);
-            this.textBox5.TabIndex = 5;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            "Vendedor (No está autorizado para manejar dinero)",
-            "Cajero (Si está autorizado para manejar dinero) ",
-            "Administrador (Acceso a todas las funcionalidades del sistema)"});
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(194, 184);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(229, 29);
-            this.comboBox1.TabIndex = 6;
-            // 
-            // menuStrip2
-            // 
-            this.menuStrip2.AutoSize = false;
-            this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(215)))), ((int)(((byte)(11)))));
-            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem2});
-            this.menuStrip2.Location = new System.Drawing.Point(16, 267);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(261, 50);
-            this.menuStrip2.TabIndex = 5;
-            this.menuStrip2.Text = "menuStrip2";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(153, 46);
-            this.toolStripMenuItem2.Text = "Guardar Cambios";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripMenuItem3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(83, 46);
-            this.toolStripMenuItem3.Text = "Guardar";
-            // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(420, 280);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(93, 50);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Atrás";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.DimGray;
-            this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(484, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(156, 80);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Elige un ícono";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(496, 16);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(130, 98);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 8;
-            this.pictureBox2.TabStop = false;
-            // 
             // usuariosok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(885, 603);
+            this.ClientSize = new System.Drawing.Size(1052, 606);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel3);
@@ -391,7 +368,6 @@ namespace PuntoVenta
             this.panel5.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -415,17 +391,15 @@ namespace PuntoVenta
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtcorreo;
+        private System.Windows.Forms.TextBox txtpassword;
+        private System.Windows.Forms.TextBox txtlogin;
+        private System.Windows.Forms.TextBox txtnombre;
+        private System.Windows.Forms.ComboBox txtrol;
         private System.Windows.Forms.MenuStrip menuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolStripMenuItem btnGuardar;
+        private System.Windows.Forms.ToolStripMenuItem BtnGuardarCambios;
+        private System.Windows.Forms.Button BtnAtras;
     }
 }
 
