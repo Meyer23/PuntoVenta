@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PuntoVenta.Modulos.Compras;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,13 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             usuariosok frm_usuarios = new usuariosok();
 
             frm_usuarios.ShowDialog();
+        }
+
+        private void MenuProveedores_Click(object sender, EventArgs e)
+        {
+            Proveedores frm_proveedores = new Proveedores();
+
+            frm_proveedores.ShowDialog();
         }
     }
 }
