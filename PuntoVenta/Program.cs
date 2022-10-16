@@ -1,3 +1,4 @@
+using PuntoVenta.Modulos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace PuntoVenta
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new usuariosok());
+            Application.Run(new Login());
         }
     }
 }

@@ -35,26 +35,29 @@ namespace PuntoVenta.Modulos
             this.label2 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.datalistado = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUsuario
             // 
             this.txtUsuario.Location = new System.Drawing.Point(29, 27);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(227, 23);
+            this.txtUsuario.Size = new System.Drawing.Size(199, 23);
             this.txtUsuario.TabIndex = 0;
             // 
             // txtContrasena
             // 
             this.txtContrasena.Location = new System.Drawing.Point(29, 86);
             this.txtContrasena.Name = "txtContrasena";
-            this.txtContrasena.Size = new System.Drawing.Size(227, 23);
+            this.txtContrasena.Size = new System.Drawing.Size(199, 23);
             this.txtContrasena.TabIndex = 1;
             this.txtContrasena.UseSystemPasswordChar = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(29, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 15);
@@ -78,10 +81,11 @@ namespace PuntoVenta.Modulos
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(177, 128);
+            this.btnCancelar.Location = new System.Drawing.Point(149, 128);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(79, 23);
             this.btnCancelar.TabIndex = 5;
@@ -89,11 +93,25 @@ namespace PuntoVenta.Modulos
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // datalistado
+            // 
+            this.datalistado.AllowUserToAddRows = false;
+            this.datalistado.AllowUserToResizeRows = false;
+            this.datalistado.BackgroundColor = System.Drawing.Color.White;
+            this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datalistado.Location = new System.Drawing.Point(144, 56);
+            this.datalistado.Name = "datalistado";
+            this.datalistado.RowTemplate.Height = 25;
+            this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datalistado.Size = new System.Drawing.Size(49, 13);
+            this.datalistado.TabIndex = 6;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 176);
+            this.ClientSize = new System.Drawing.Size(269, 168);
+            this.Controls.Add(this.datalistado);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.label2);
@@ -102,6 +120,8 @@ namespace PuntoVenta.Modulos
             this.Controls.Add(this.txtUsuario);
             this.Name = "Login";
             this.Text = "SGFP";
+            this.Load += new System.EventHandler(this.Login_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.datalistado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,5 +135,6 @@ namespace PuntoVenta.Modulos
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.DataGridView datalistado;
     }
 }

@@ -8,6 +8,6 @@ namespace PuntoVenta.Conexion
 {
     public class ConexionMaestra
     {
-        public static string conexion = "Server=DESKTOP-GQ6E0EV; Database=PROYECTO; Trusted_Connection=True;";
+        public static string conexion = "Server=PC-VERONICA; Database=PROYECTO; Trusted_Connection=True;";
     }
 }
