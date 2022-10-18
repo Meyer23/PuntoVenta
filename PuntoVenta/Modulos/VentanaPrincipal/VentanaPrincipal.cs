@@ -18,7 +18,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
 
         private void MenuUsuarios_Click(object sender, EventArgs e)
         {
-            usuariosok frm_usuarios = new usuariosok();
+            UsuariosOk frm_usuarios = new UsuariosOk();
 
             frm_usuarios.ShowDialog();
         }
