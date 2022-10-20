@@ -31,15 +31,15 @@ namespace PuntoVenta.Modulos.Compras
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Proveedores));
             this.PanelEncabezado = new System.Windows.Forms.Panel();
-            this.TxtNuevo = new System.Windows.Forms.TextBox();
-            this.pictureNuevo = new System.Windows.Forms.PictureBox();
+            this.BtnNuevo = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.datalistado = new System.Windows.Forms.DataGridView();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelRegistro = new System.Windows.Forms.Panel();
+            this.PanelUsuarioImagen = new System.Windows.Forms.Panel();
             this.BtnCancelar = new System.Windows.Forms.Button();
-            this.BtnGuardarCambios = new System.Windows.Forms.Button();
             this.BtnGuardar = new System.Windows.Forms.Button();
             this.TxtCorreo = new System.Windows.Forms.TextBox();
             this.TxtCelular = new System.Windows.Forms.TextBox();
@@ -56,7 +56,6 @@ namespace PuntoVenta.Modulos.Compras
             this.LblRazonSocial = new System.Windows.Forms.Label();
             this.LblNombre = new System.Windows.Forms.Label();
             this.PanelEncabezado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureNuevo)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
             this.PanelRegistro.SuspendLayout();
@@ -65,44 +64,33 @@ namespace PuntoVenta.Modulos.Compras
             // PanelEncabezado
             // 
             this.PanelEncabezado.BackColor = System.Drawing.SystemColors.Control;
-            this.PanelEncabezado.Controls.Add(this.TxtNuevo);
-            this.PanelEncabezado.Controls.Add(this.pictureNuevo);
+            this.PanelEncabezado.Controls.Add(this.BtnNuevo);
             this.PanelEncabezado.Controls.Add(this.TxtBusqueda);
             this.PanelEncabezado.Controls.Add(this.menuStrip1);
             this.PanelEncabezado.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelEncabezado.Location = new System.Drawing.Point(0, 0);
             this.PanelEncabezado.Name = "PanelEncabezado";
-            this.PanelEncabezado.Size = new System.Drawing.Size(1021, 66);
+            this.PanelEncabezado.Size = new System.Drawing.Size(943, 49);
             this.PanelEncabezado.TabIndex = 0;
             // 
-            // TxtNuevo
+            // BtnNuevo
             // 
-            this.TxtNuevo.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtNuevo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtNuevo.Location = new System.Drawing.Point(412, 48);
-            this.TxtNuevo.Name = "TxtNuevo";
-            this.TxtNuevo.ReadOnly = true;
-            this.TxtNuevo.Size = new System.Drawing.Size(100, 16);
-            this.TxtNuevo.TabIndex = 7;
-            this.TxtNuevo.Text = "Nuevo";
-            this.TxtNuevo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // pictureNuevo
-            // 
-            this.pictureNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureNuevo.Image = ((System.Drawing.Image)(resources.GetObject("pictureNuevo.Image")));
-            this.pictureNuevo.Location = new System.Drawing.Point(412, 3);
-            this.pictureNuevo.Name = "pictureNuevo";
-            this.pictureNuevo.Size = new System.Drawing.Size(100, 43);
-            this.pictureNuevo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureNuevo.TabIndex = 6;
-            this.pictureNuevo.TabStop = false;
-            this.pictureNuevo.Click += new System.EventHandler(this.pictureNuevo_Click);
+            this.BtnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(140)))));
+            this.BtnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnNuevo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnNuevo.ForeColor = System.Drawing.Color.White;
+            this.BtnNuevo.Location = new System.Drawing.Point(420, 5);
+            this.BtnNuevo.Name = "BtnNuevo";
+            this.BtnNuevo.Size = new System.Drawing.Size(116, 37);
+            this.BtnNuevo.TabIndex = 8;
+            this.BtnNuevo.Text = "Nuevo";
+            this.BtnNuevo.UseVisualStyleBackColor = false;
+            this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
             // 
             // TxtBusqueda
             // 
             this.TxtBusqueda.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtBusqueda.Location = new System.Drawing.Point(36, 4);
+            this.TxtBusqueda.Location = new System.Drawing.Point(39, 12);
             this.TxtBusqueda.Name = "TxtBusqueda";
             this.TxtBusqueda.PlaceholderText = "Texto a buscar...";
             this.TxtBusqueda.Size = new System.Drawing.Size(307, 25);
@@ -116,11 +104,12 @@ namespace PuntoVenta.Modulos.Compras
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(335, 4);
+            this.menuStrip1.Location = new System.Drawing.Point(338, 12);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(43, 25);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.BuscarProveedor);
             // 
             // toolStripMenuItem1
             // 
@@ -135,19 +124,32 @@ namespace PuntoVenta.Modulos.Compras
             this.datalistado.AllowUserToResizeRows = false;
             this.datalistado.BackgroundColor = System.Drawing.Color.White;
             this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datalistado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Eliminar});
             this.datalistado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datalistado.Location = new System.Drawing.Point(0, 66);
+            this.datalistado.Location = new System.Drawing.Point(0, 49);
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
             this.datalistado.RowTemplate.Height = 25;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datalistado.Size = new System.Drawing.Size(1021, 384);
+            this.datalistado.Size = new System.Drawing.Size(943, 401);
             this.datalistado.TabIndex = 4;
+            this.datalistado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datalistado_CellClick);
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "";
+            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
+            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // PanelRegistro
             // 
+            this.PanelRegistro.Controls.Add(this.PanelUsuarioImagen);
             this.PanelRegistro.Controls.Add(this.BtnCancelar);
-            this.PanelRegistro.Controls.Add(this.BtnGuardarCambios);
             this.PanelRegistro.Controls.Add(this.BtnGuardar);
             this.PanelRegistro.Controls.Add(this.TxtCorreo);
             this.PanelRegistro.Controls.Add(this.TxtCelular);
@@ -163,156 +165,172 @@ namespace PuntoVenta.Modulos.Compras
             this.PanelRegistro.Controls.Add(this.LblRuc);
             this.PanelRegistro.Controls.Add(this.LblRazonSocial);
             this.PanelRegistro.Controls.Add(this.LblNombre);
-            this.PanelRegistro.Location = new System.Drawing.Point(0, 66);
+            this.PanelRegistro.Location = new System.Drawing.Point(0, 48);
             this.PanelRegistro.Name = "PanelRegistro";
-            this.PanelRegistro.Size = new System.Drawing.Size(1021, 384);
+            this.PanelRegistro.Size = new System.Drawing.Size(1021, 402);
             this.PanelRegistro.TabIndex = 5;
             this.PanelRegistro.Visible = false;
             // 
+            // PanelUsuarioImagen
+            // 
+            this.PanelUsuarioImagen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelUsuarioImagen.BackgroundImage")));
+            this.PanelUsuarioImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PanelUsuarioImagen.Location = new System.Drawing.Point(741, 40);
+            this.PanelUsuarioImagen.Name = "PanelUsuarioImagen";
+            this.PanelUsuarioImagen.Size = new System.Drawing.Size(143, 106);
+            this.PanelUsuarioImagen.TabIndex = 15;
+            // 
             // BtnCancelar
             // 
-            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnCancelar.Location = new System.Drawing.Point(683, 234);
+            this.BtnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(140)))));
+            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnCancelar.ForeColor = System.Drawing.Color.White;
+            this.BtnCancelar.Location = new System.Drawing.Point(550, 247);
             this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(105, 37);
+            this.BtnCancelar.Size = new System.Drawing.Size(116, 37);
             this.BtnCancelar.TabIndex = 14;
             this.BtnCancelar.Text = "Cancelar";
-            this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.UseVisualStyleBackColor = false;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
-            // 
-            // BtnGuardarCambios
-            // 
-            this.BtnGuardarCambios.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.BtnGuardarCambios.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnGuardarCambios.Location = new System.Drawing.Point(572, 234);
-            this.BtnGuardarCambios.Name = "BtnGuardarCambios";
-            this.BtnGuardarCambios.Size = new System.Drawing.Size(105, 37);
-            this.BtnGuardarCambios.TabIndex = 14;
-            this.BtnGuardarCambios.Text = "Guardar Cambios";
-            this.BtnGuardarCambios.UseVisualStyleBackColor = true;
             // 
             // BtnGuardar
             // 
-            this.BtnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnGuardar.Location = new System.Drawing.Point(572, 234);
+            this.BtnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(140)))));
+            this.BtnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnGuardar.ForeColor = System.Drawing.Color.White;
+            this.BtnGuardar.Location = new System.Drawing.Point(428, 247);
             this.BtnGuardar.Name = "BtnGuardar";
-            this.BtnGuardar.Size = new System.Drawing.Size(105, 37);
+            this.BtnGuardar.Size = new System.Drawing.Size(116, 37);
             this.BtnGuardar.TabIndex = 14;
             this.BtnGuardar.Text = "Guardar";
-            this.BtnGuardar.UseVisualStyleBackColor = true;
+            this.BtnGuardar.UseVisualStyleBackColor = false;
             this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
             // TxtCorreo
             // 
-            this.TxtCorreo.Location = new System.Drawing.Point(92, 190);
+            this.TxtCorreo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtCorreo.Location = new System.Drawing.Point(104, 190);
             this.TxtCorreo.Name = "TxtCorreo";
-            this.TxtCorreo.Size = new System.Drawing.Size(696, 23);
+            this.TxtCorreo.Size = new System.Drawing.Size(562, 25);
             this.TxtCorreo.TabIndex = 13;
             // 
             // TxtCelular
             // 
-            this.TxtCelular.Location = new System.Drawing.Point(92, 160);
+            this.TxtCelular.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtCelular.Location = new System.Drawing.Point(104, 160);
             this.TxtCelular.Name = "TxtCelular";
-            this.TxtCelular.Size = new System.Drawing.Size(696, 23);
+            this.TxtCelular.Size = new System.Drawing.Size(562, 25);
             this.TxtCelular.TabIndex = 12;
             // 
             // TxtTelefono
             // 
-            this.TxtTelefono.Location = new System.Drawing.Point(92, 130);
+            this.TxtTelefono.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtTelefono.Location = new System.Drawing.Point(104, 130);
             this.TxtTelefono.Name = "TxtTelefono";
-            this.TxtTelefono.Size = new System.Drawing.Size(696, 23);
+            this.TxtTelefono.Size = new System.Drawing.Size(562, 25);
             this.TxtTelefono.TabIndex = 11;
             // 
             // TxtDireccion
             // 
-            this.TxtDireccion.Location = new System.Drawing.Point(92, 100);
+            this.TxtDireccion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtDireccion.Location = new System.Drawing.Point(104, 100);
             this.TxtDireccion.Name = "TxtDireccion";
-            this.TxtDireccion.Size = new System.Drawing.Size(696, 23);
+            this.TxtDireccion.Size = new System.Drawing.Size(562, 25);
             this.TxtDireccion.TabIndex = 10;
             // 
             // TxtRuc
             // 
-            this.TxtRuc.Location = new System.Drawing.Point(92, 70);
+            this.TxtRuc.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtRuc.Location = new System.Drawing.Point(104, 70);
             this.TxtRuc.Name = "TxtRuc";
-            this.TxtRuc.Size = new System.Drawing.Size(696, 23);
+            this.TxtRuc.Size = new System.Drawing.Size(562, 25);
             this.TxtRuc.TabIndex = 9;
             // 
             // TxtRazonSocial
             // 
-            this.TxtRazonSocial.Location = new System.Drawing.Point(92, 40);
+            this.TxtRazonSocial.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtRazonSocial.Location = new System.Drawing.Point(104, 40);
             this.TxtRazonSocial.Name = "TxtRazonSocial";
-            this.TxtRazonSocial.Size = new System.Drawing.Size(696, 23);
+            this.TxtRazonSocial.Size = new System.Drawing.Size(562, 25);
             this.TxtRazonSocial.TabIndex = 8;
             // 
             // TxtNombre
             // 
-            this.TxtNombre.Location = new System.Drawing.Point(92, 10);
+            this.TxtNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtNombre.Location = new System.Drawing.Point(104, 10);
             this.TxtNombre.Name = "TxtNombre";
-            this.TxtNombre.Size = new System.Drawing.Size(696, 23);
+            this.TxtNombre.Size = new System.Drawing.Size(562, 25);
             this.TxtNombre.TabIndex = 7;
             // 
             // LblCorreo
             // 
             this.LblCorreo.AutoSize = true;
+            this.LblCorreo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblCorreo.Location = new System.Drawing.Point(11, 193);
             this.LblCorreo.Name = "LblCorreo";
-            this.LblCorreo.Size = new System.Drawing.Size(46, 15);
+            this.LblCorreo.Size = new System.Drawing.Size(54, 19);
             this.LblCorreo.TabIndex = 6;
             this.LblCorreo.Text = "Correo:";
             // 
             // LblCelular
             // 
             this.LblCelular.AutoSize = true;
+            this.LblCelular.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblCelular.Location = new System.Drawing.Point(12, 163);
             this.LblCelular.Name = "LblCelular";
-            this.LblCelular.Size = new System.Drawing.Size(47, 15);
+            this.LblCelular.Size = new System.Drawing.Size(54, 19);
             this.LblCelular.TabIndex = 5;
             this.LblCelular.Text = "Celular:";
             // 
             // LblTelefono
             // 
             this.LblTelefono.AutoSize = true;
+            this.LblTelefono.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblTelefono.Location = new System.Drawing.Point(11, 133);
             this.LblTelefono.Name = "LblTelefono";
-            this.LblTelefono.Size = new System.Drawing.Size(55, 15);
+            this.LblTelefono.Size = new System.Drawing.Size(63, 19);
             this.LblTelefono.TabIndex = 4;
             this.LblTelefono.Text = "Teléfono:";
             // 
             // LblDirección
             // 
             this.LblDirección.AutoSize = true;
+            this.LblDirección.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblDirección.Location = new System.Drawing.Point(11, 103);
             this.LblDirección.Name = "LblDirección";
-            this.LblDirección.Size = new System.Drawing.Size(60, 15);
+            this.LblDirección.Size = new System.Drawing.Size(68, 19);
             this.LblDirección.TabIndex = 3;
             this.LblDirección.Text = "Dirección:";
             // 
             // LblRuc
             // 
             this.LblRuc.AutoSize = true;
+            this.LblRuc.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblRuc.Location = new System.Drawing.Point(11, 73);
             this.LblRuc.Name = "LblRuc";
-            this.LblRuc.Size = new System.Drawing.Size(33, 15);
+            this.LblRuc.Size = new System.Drawing.Size(39, 19);
             this.LblRuc.TabIndex = 2;
             this.LblRuc.Text = "RUC:";
             // 
             // LblRazonSocial
             // 
             this.LblRazonSocial.AutoSize = true;
+            this.LblRazonSocial.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblRazonSocial.Location = new System.Drawing.Point(11, 43);
             this.LblRazonSocial.Name = "LblRazonSocial";
-            this.LblRazonSocial.Size = new System.Drawing.Size(76, 15);
+            this.LblRazonSocial.Size = new System.Drawing.Size(87, 19);
             this.LblRazonSocial.TabIndex = 1;
             this.LblRazonSocial.Text = "Razón Social:";
             // 
             // LblNombre
             // 
             this.LblNombre.AutoSize = true;
+            this.LblNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblNombre.Location = new System.Drawing.Point(12, 13);
             this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(54, 15);
+            this.LblNombre.Size = new System.Drawing.Size(62, 19);
             this.LblNombre.TabIndex = 0;
             this.LblNombre.Text = "Nombre:";
             // 
@@ -320,7 +338,7 @@ namespace PuntoVenta.Modulos.Compras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1021, 450);
+            this.ClientSize = new System.Drawing.Size(943, 450);
             this.Controls.Add(this.PanelRegistro);
             this.Controls.Add(this.datalistado);
             this.Controls.Add(this.PanelEncabezado);
@@ -329,7 +347,6 @@ namespace PuntoVenta.Modulos.Compras
             this.Load += new System.EventHandler(this.Proveedores_Load);
             this.PanelEncabezado.ResumeLayout(false);
             this.PanelEncabezado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureNuevo)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).EndInit();
@@ -362,9 +379,9 @@ namespace PuntoVenta.Modulos.Compras
         private System.Windows.Forms.TextBox TxtNombre;
         private System.Windows.Forms.TextBox TxtCorreo;
         private System.Windows.Forms.Button BtnCancelar;
-        private System.Windows.Forms.Button BtnGuardarCambios;
         private System.Windows.Forms.Button BtnGuardar;
-        private System.Windows.Forms.TextBox TxtNuevo;
-        private System.Windows.Forms.PictureBox pictureNuevo;
+        private System.Windows.Forms.Button BtnNuevo;
+        private System.Windows.Forms.Panel PanelUsuarioImagen;
+        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
     }
 }
