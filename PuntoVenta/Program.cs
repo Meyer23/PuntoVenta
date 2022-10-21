@@ -1,4 +1,5 @@
 using PuntoVenta.Modulos;
+using PuntoVenta.Modulos.Compras;
 using System;
 using System.Collections.Generic;
 using System.Linq;

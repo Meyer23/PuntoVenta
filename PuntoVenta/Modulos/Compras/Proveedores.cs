@@ -12,6 +12,8 @@ namespace PuntoVenta.Modulos.Compras
 {
     public partial class Proveedores : Form
     {
+        int idProveedor;
+        string estadoProveedor;
         public Proveedores()
         {
             InitializeComponent();
@@ -110,6 +112,7 @@ namespace PuntoVenta.Modulos.Compras
             menuStrip1.Visible = false;
             BtnNuevo.Visible = false;
             PanelRegistro.Visible = true;
+            BtnGuardarCambios.Visible = false;
             limpiar();
         }
 
@@ -140,7 +143,32 @@ namespace PuntoVenta.Modulos.Compras
         }
 
 
-        private void datalistado_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void BuscarProveedor(object sender, ToolStripItemClickedEventArgs e)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                SqlDataAdapter da;
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = Conexion.ConexionMaestra.conexion;
+                con.Open();
+
+                da = new SqlDataAdapter("sp_proveedor_buscar", con);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@texto", TxtBusqueda.Text);
+                da.Fill(dt);
+                datalistado.DataSource = dt;
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+        }
+
+        private void EliminarProveedor(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == this.datalistado.Columns["Eliminar"].Index)
             {
@@ -197,28 +225,112 @@ namespace PuntoVenta.Modulos.Compras
             }
         }
 
-        private void BuscarProveedor(object sender, ToolStripItemClickedEventArgs e)
+        private void EditarProveedor(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == this.datalistado.Columns["Editar"].Index)
+            {
+                BtnGuardar.Visible = false;
+                BtnGuardarCambios.Visible = true;
+                ObtenerDatosProveedor();
+            }
+        }
+
+        private void ObtenerDatosProveedor()
         {
             try
             {
-                DataTable dt = new DataTable();
-                SqlDataAdapter da;
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = Conexion.ConexionMaestra.conexion;
-                con.Open();
+                idProveedor = Convert.ToInt32(datalistado.SelectedCells[2].Value.ToString());
+                TxtNombre.Text = datalistado.SelectedCells[3].Value.ToString();
+                TxtRazonSocial.Text = datalistado.SelectedCells[4].Value.ToString();
+                TxtRuc.Text = datalistado.SelectedCells[5].Value.ToString();
+                TxtDireccion.Text = datalistado.SelectedCells[6].Value.ToString();
+                TxtTelefono.Text = datalistado.SelectedCells[7].Value.ToString();
+                TxtCelular.Text = datalistado.SelectedCells[8].Value.ToString();
+                TxtCorreo.Text = datalistado.SelectedCells[9].Value.ToString();
+                estadoProveedor = datalistado.SelectedCells[10].Value.ToString();
 
-                da = new SqlDataAdapter("sp_proveedor_buscar", con);
-                da.SelectCommand.CommandType = CommandType.StoredProcedure;
-                da.SelectCommand.Parameters.AddWithValue("@texto", TxtBusqueda.Text);
-                da.Fill(dt);
-                datalistado.DataSource = dt;
-                con.Close();
-
+                TxtBusqueda.Visible = false;
+                menuStrip1.Visible = false;
+                BtnNuevo.Visible = false;
+                PanelRegistro.Visible = true;
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
 
+        private void EditarProveedor2(object sender, DataGridViewCellEventArgs e)
+        {
+            BtnGuardar.Visible = false;
+            BtnGuardarCambios.Visible = true;
+            ObtenerDatosProveedor();
+        }
+
+        private void BtnGuardarCambios_Click(object sender, EventArgs e)
+        {
+            if (!ValidarCorreo(TxtCorreo.Text))
+            {
+                MessageBox.Show("Dirección de correo electrónico no válida, el correo debe tener el formato: nombre@dominio.com, " + " por favor, seleccione un correo válido", "Validación de correo electrónico", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TxtCorreo.Focus();
+                TxtCorreo.SelectAll();
+            }
+            else
+            {
+                if (TxtNombre.Text != "" && TxtRuc.Text != "")
+                {
+
+                    if (TxtDireccion.Text == "")
+                    {
+                        TxtDireccion.Text = "Paraguay";
+                    }
+                    if (TxtTelefono.Text == "")
+                    {
+                        TxtTelefono.Text = "0";
+                    }
+                    if (TxtCelular.Text == "")
+                    {
+                        TxtCelular.Text = "0";
+                    }
+                    if (TxtCorreo.Text == "")
+                    {
+                        TxtCorreo.Text = "0";
+                    }
+                    try
+                    {
+                        SqlConnection con = new SqlConnection();
+                        con.ConnectionString = Conexion.ConexionMaestra.conexion;
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand();
+                        cmd = new SqlCommand("sp_proveedor_editar", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@idProveedor", idProveedor);
+                        cmd.Parameters.AddWithValue("@Nombre", TxtNombre.Text);
+                        cmd.Parameters.AddWithValue("@RazonSocial", TxtRazonSocial.Text);
+                        cmd.Parameters.AddWithValue("@Ruc", TxtRuc.Text);
+                        cmd.Parameters.AddWithValue("@Direccion", TxtDireccion.Text);
+                        cmd.Parameters.AddWithValue("@Telefono", TxtTelefono.Text);
+                        cmd.Parameters.AddWithValue("@Celular", TxtCelular.Text);
+                        cmd.Parameters.AddWithValue("@Correo", TxtCorreo.Text);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        mostrarProveedores();
+                        PanelRegistro.Visible = false;
+                        TxtBusqueda.Visible = true;
+                        menuStrip1.Visible = true;
+                        BtnNuevo.Visible = true;
+                        limpiar();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Datos Incompletos", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
     }

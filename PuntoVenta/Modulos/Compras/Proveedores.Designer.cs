@@ -37,9 +37,11 @@ namespace PuntoVenta.Modulos.Compras
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.datalistado = new System.Windows.Forms.DataGridView();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelRegistro = new System.Windows.Forms.Panel();
             this.PanelUsuarioImagen = new System.Windows.Forms.Panel();
             this.BtnCancelar = new System.Windows.Forms.Button();
+            this.BtnGuardarCambios = new System.Windows.Forms.Button();
             this.BtnGuardar = new System.Windows.Forms.Button();
             this.TxtCorreo = new System.Windows.Forms.TextBox();
             this.TxtCelular = new System.Windows.Forms.TextBox();
@@ -125,7 +127,8 @@ namespace PuntoVenta.Modulos.Compras
             this.datalistado.BackgroundColor = System.Drawing.Color.White;
             this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datalistado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Eliminar});
+            this.Eliminar,
+            this.Editar});
             this.datalistado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.datalistado.Location = new System.Drawing.Point(0, 49);
             this.datalistado.Name = "datalistado";
@@ -134,7 +137,9 @@ namespace PuntoVenta.Modulos.Compras
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datalistado.Size = new System.Drawing.Size(943, 401);
             this.datalistado.TabIndex = 4;
-            this.datalistado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datalistado_CellClick);
+            this.datalistado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EliminarProveedor);
+            this.datalistado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarProveedor);
+            this.datalistado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarProveedor2);
             // 
             // Eliminar
             // 
@@ -146,10 +151,19 @@ namespace PuntoVenta.Modulos.Compras
             this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "";
+            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            // 
             // PanelRegistro
             // 
             this.PanelRegistro.Controls.Add(this.PanelUsuarioImagen);
             this.PanelRegistro.Controls.Add(this.BtnCancelar);
+            this.PanelRegistro.Controls.Add(this.BtnGuardarCambios);
             this.PanelRegistro.Controls.Add(this.BtnGuardar);
             this.PanelRegistro.Controls.Add(this.TxtCorreo);
             this.PanelRegistro.Controls.Add(this.TxtCelular);
@@ -165,9 +179,9 @@ namespace PuntoVenta.Modulos.Compras
             this.PanelRegistro.Controls.Add(this.LblRuc);
             this.PanelRegistro.Controls.Add(this.LblRazonSocial);
             this.PanelRegistro.Controls.Add(this.LblNombre);
-            this.PanelRegistro.Location = new System.Drawing.Point(0, 48);
+            this.PanelRegistro.Location = new System.Drawing.Point(0, 49);
             this.PanelRegistro.Name = "PanelRegistro";
-            this.PanelRegistro.Size = new System.Drawing.Size(1021, 402);
+            this.PanelRegistro.Size = new System.Drawing.Size(1021, 401);
             this.PanelRegistro.TabIndex = 5;
             this.PanelRegistro.Visible = false;
             // 
@@ -193,6 +207,20 @@ namespace PuntoVenta.Modulos.Compras
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = false;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
+            // BtnGuardarCambios
+            // 
+            this.BtnGuardarCambios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(140)))));
+            this.BtnGuardarCambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGuardarCambios.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnGuardarCambios.ForeColor = System.Drawing.Color.White;
+            this.BtnGuardarCambios.Location = new System.Drawing.Point(428, 247);
+            this.BtnGuardarCambios.Name = "BtnGuardarCambios";
+            this.BtnGuardarCambios.Size = new System.Drawing.Size(116, 37);
+            this.BtnGuardarCambios.TabIndex = 14;
+            this.BtnGuardarCambios.Text = "Guardar";
+            this.BtnGuardarCambios.UseVisualStyleBackColor = false;
+            this.BtnGuardarCambios.Click += new System.EventHandler(this.BtnGuardarCambios_Click);
             // 
             // BtnGuardar
             // 
@@ -383,5 +411,7 @@ namespace PuntoVenta.Modulos.Compras
         private System.Windows.Forms.Button BtnNuevo;
         private System.Windows.Forms.Panel PanelUsuarioImagen;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.Button BtnGuardarCambios;
     }
 }
