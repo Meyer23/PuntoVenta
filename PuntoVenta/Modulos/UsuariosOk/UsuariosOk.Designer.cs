@@ -35,7 +35,10 @@ namespace PuntoVenta.Modulos
             this.BtnBuscarUsuario = new System.Windows.Forms.Button();
             this.TxtBuscarUsuario = new System.Windows.Forms.TextBox();
             this.DataGridUsuarios = new System.Windows.Forms.DataGridView();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelAgregarUsuario = new System.Windows.Forms.Panel();
+            this.BtnGuardarEditado = new System.Windows.Forms.Button();
             this.PanelUsuarioImagen = new System.Windows.Forms.Panel();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnGuardar = new System.Windows.Forms.Button();
@@ -49,8 +52,7 @@ namespace PuntoVenta.Modulos
             this.LabelContraseña = new System.Windows.Forms.Label();
             this.LabelLogin = new System.Windows.Forms.Label();
             this.LabelNombres = new System.Windows.Forms.Label();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Label_idUsuario = new System.Windows.Forms.Label();
             this.PanelBusqueda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridUsuarios)).BeginInit();
             this.PanelAgregarUsuario.SuspendLayout();
@@ -115,10 +117,30 @@ namespace PuntoVenta.Modulos
             this.DataGridUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EliminarUsuario);
             this.DataGridUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarUsuario);
             // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "";
+            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
+            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "";
+            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // PanelAgregarUsuario
             // 
             this.PanelAgregarUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.PanelAgregarUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelAgregarUsuario.Controls.Add(this.Label_idUsuario);
+            this.PanelAgregarUsuario.Controls.Add(this.BtnGuardarEditado);
             this.PanelAgregarUsuario.Controls.Add(this.PanelUsuarioImagen);
             this.PanelAgregarUsuario.Controls.Add(this.BtnCancelar);
             this.PanelAgregarUsuario.Controls.Add(this.BtnGuardar);
@@ -137,6 +159,18 @@ namespace PuntoVenta.Modulos
             this.PanelAgregarUsuario.Size = new System.Drawing.Size(760, 323);
             this.PanelAgregarUsuario.TabIndex = 3;
             this.PanelAgregarUsuario.Visible = false;
+            // 
+            // BtnGuardarEditado
+            // 
+            this.BtnGuardarEditado.BackColor = System.Drawing.Color.Green;
+            this.BtnGuardarEditado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnGuardarEditado.Location = new System.Drawing.Point(389, 223);
+            this.BtnGuardarEditado.Name = "BtnGuardarEditado";
+            this.BtnGuardarEditado.Size = new System.Drawing.Size(110, 51);
+            this.BtnGuardarEditado.TabIndex = 608;
+            this.BtnGuardarEditado.Text = "Guardar";
+            this.BtnGuardarEditado.UseVisualStyleBackColor = false;
+            this.BtnGuardarEditado.Click += new System.EventHandler(this.BtnGuardar2);
             // 
             // PanelUsuarioImagen
             // 
@@ -173,11 +207,17 @@ namespace PuntoVenta.Modulos
             // 
             // TxtRol
             // 
+            this.TxtRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TxtRol.FormattingEnabled = true;
-            this.TxtRol.Location = new System.Drawing.Point(172, 166);
+            this.TxtRol.Items.AddRange(new object[] {
+            "Vendedor",
+            "Cajero",
+            "Administrador"});
+            this.TxtRol.Location = new System.Drawing.Point(172, 163);
             this.TxtRol.Name = "TxtRol";
-            this.TxtRol.Size = new System.Drawing.Size(274, 23);
-            this.TxtRol.TabIndex = 9;
+            this.TxtRol.Size = new System.Drawing.Size(461, 23);
+            this.TxtRol.TabIndex = 607;
+            this.TxtRol.SelectedIndexChanged += new System.EventHandler(this.ComboBoxRoles);
             // 
             // LabelRol
             // 
@@ -257,23 +297,14 @@ namespace PuntoVenta.Modulos
             this.LabelNombres.TabIndex = 0;
             this.LabelNombres.Text = "Nombres y Apellidos:";
             // 
-            // Eliminar
+            // Label_idUsuario
             // 
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "";
-            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Label_idUsuario.AutoSize = true;
+            this.Label_idUsuario.Location = new System.Drawing.Point(675, 23);
+            this.Label_idUsuario.Name = "Label_idUsuario";
+            this.Label_idUsuario.Size = new System.Drawing.Size(38, 15);
+            this.Label_idUsuario.TabIndex = 609;
+            this.Label_idUsuario.Text = "label1";
             // 
             // UsuariosOk
             // 
@@ -317,5 +348,7 @@ namespace PuntoVenta.Modulos
         private System.Windows.Forms.Panel PanelUsuarioImagen;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.Button BtnGuardarEditado;
+        private System.Windows.Forms.Label Label_idUsuario;
     }
 }
