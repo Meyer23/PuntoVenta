@@ -30,6 +30,7 @@ namespace PuntoVenta.Modulos.Compras
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Proveedores));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelEncabezado = new System.Windows.Forms.Panel();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
@@ -124,7 +125,7 @@ namespace PuntoVenta.Modulos.Compras
             // 
             this.datalistado.AllowUserToAddRows = false;
             this.datalistado.AllowUserToResizeRows = false;
-            this.datalistado.BackgroundColor = System.Drawing.Color.White;
+            this.datalistado.BackgroundColor = System.Drawing.SystemColors.Control;
             this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datalistado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Eliminar,
@@ -133,6 +134,9 @@ namespace PuntoVenta.Modulos.Compras
             this.datalistado.Location = new System.Drawing.Point(0, 49);
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.datalistado.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.datalistado.RowTemplate.Height = 25;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datalistado.Size = new System.Drawing.Size(943, 401);
@@ -179,9 +183,9 @@ namespace PuntoVenta.Modulos.Compras
             this.PanelRegistro.Controls.Add(this.LblRuc);
             this.PanelRegistro.Controls.Add(this.LblRazonSocial);
             this.PanelRegistro.Controls.Add(this.LblNombre);
-            this.PanelRegistro.Location = new System.Drawing.Point(0, 49);
+            this.PanelRegistro.Location = new System.Drawing.Point(0, 48);
             this.PanelRegistro.Name = "PanelRegistro";
-            this.PanelRegistro.Size = new System.Drawing.Size(1021, 401);
+            this.PanelRegistro.Size = new System.Drawing.Size(1021, 402);
             this.PanelRegistro.TabIndex = 5;
             this.PanelRegistro.Visible = false;
             // 
