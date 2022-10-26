@@ -19,6 +19,21 @@ namespace PuntoVenta.Modulos.Compras
             InitializeComponent();
         }
 
+        private void Proveedores_Load(object sender, EventArgs e)
+        {
+            mostrarProveedores();
+        }
+
+        private void BtnNuevo_Click(object sender, EventArgs e)
+        {
+            TxtBusqueda.Visible = false;
+            menuStrip1.Visible = false;
+            BtnNuevo.Visible = false;
+            PanelRegistro.Visible = true;
+            BtnGuardarCambios.Visible = false;
+            limpiar();
+        }
+
         private void limpiar()
         {
             TxtNombre.Clear();
@@ -32,15 +47,9 @@ namespace PuntoVenta.Modulos.Compras
             BtnGuardar.Visible = true;
         }
 
-        public bool ValidarCorreo(string sMail)
-        {
-            return Regex.IsMatch(sMail, @"^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$");
-
-        }
-
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            if(!ValidarCorreo(TxtCorreo.Text))
+            if (!ValidarCorreo(TxtCorreo.Text))
             {
                 MessageBox.Show("Dirección de correo electrónico no válida, el correo debe tener el formato: nombre@dominio.com, " + " por favor, seleccione un correo válido", "Validación de correo electrónico", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 TxtCorreo.Focus();
@@ -106,32 +115,10 @@ namespace PuntoVenta.Modulos.Compras
             }
         }
 
-        private void BtnNuevo_Click(object sender, EventArgs e)
+        public bool ValidarCorreo(string sMail)
         {
-            TxtBusqueda.Visible = false;
-            menuStrip1.Visible = false;
-            BtnNuevo.Visible = false;
-            PanelRegistro.Visible = true;
-            BtnGuardarCambios.Visible = false;
-            limpiar();
-        }
+            return Regex.IsMatch(sMail, @"^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$");
 
-        private void mostrarProveedores()
-        {
-            DataTable dt = new DataTable();
-            SqlDataAdapter da;
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = Conexion.ConexionMaestra.conexion;
-            con.Open();
-            da = new SqlDataAdapter("sp_proveedor_mostrar", con);
-            da.Fill(dt);
-            datalistado.DataSource = dt;
-            con.Close();
-        }
-
-        private void Proveedores_Load(object sender, EventArgs e)
-        {
-            mostrarProveedores();
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -142,7 +129,28 @@ namespace PuntoVenta.Modulos.Compras
             BtnNuevo.Visible = true;
         }
 
-
+        private void mostrarProveedores()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                SqlDataAdapter da;
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = Conexion.ConexionMaestra.conexion;
+                con.Open();
+                da = new SqlDataAdapter("sp_proveedor_mostrar", con);
+                da.Fill(dt);
+                datalistado.DataSource = dt;
+                con.Close();
+                ocultar_columnas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            cambiar_color_eliminados();
+        }      
+        
         private void BuscarProveedor(object sender, ToolStripItemClickedEventArgs e)
         {
             try
@@ -159,13 +167,30 @@ namespace PuntoVenta.Modulos.Compras
                 da.Fill(dt);
                 datalistado.DataSource = dt;
                 con.Close();
-
+                ocultar_columnas();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-
             }
+            cambiar_color_eliminados();
+        }
+
+        private void cambiar_color_eliminados()
+        {
+            foreach (DataGridViewRow row in datalistado.Rows)
+            {
+                if (row.Cells["Estado"].Value.ToString() == "ELIMINADO")
+                {
+                    row.DefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Strikeout);
+                    row.DefaultCellStyle.ForeColor = Color.Red;
+                }
+            }
+        }
+
+        private void ocultar_columnas()
+        {
+            datalistado.Columns[2].Visible = false;
         }
 
         private void EliminarProveedor(object sender, DataGridViewCellEventArgs e)
@@ -173,8 +198,7 @@ namespace PuntoVenta.Modulos.Compras
             if (e.ColumnIndex == this.datalistado.Columns["Eliminar"].Index)
             {
                 DialogResult result;
-                result = MessageBox
-                .Show("¿Está seguro de eliminar este proveedor del sistema?", "Eliminando registro...", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                result = MessageBox.Show("¿Está seguro de eliminar este proveedor del sistema?", "Eliminando registro...", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 if (result == DialogResult.OK)
                 {
@@ -235,36 +259,43 @@ namespace PuntoVenta.Modulos.Compras
             }
         }
 
-        private void ObtenerDatosProveedor()
-        {
-            try
-            {
-                idProveedor = Convert.ToInt32(datalistado.SelectedCells[2].Value.ToString());
-                TxtNombre.Text = datalistado.SelectedCells[3].Value.ToString();
-                TxtRazonSocial.Text = datalistado.SelectedCells[4].Value.ToString();
-                TxtRuc.Text = datalistado.SelectedCells[5].Value.ToString();
-                TxtDireccion.Text = datalistado.SelectedCells[6].Value.ToString();
-                TxtTelefono.Text = datalistado.SelectedCells[7].Value.ToString();
-                TxtCelular.Text = datalistado.SelectedCells[8].Value.ToString();
-                TxtCorreo.Text = datalistado.SelectedCells[9].Value.ToString();
-                estadoProveedor = datalistado.SelectedCells[10].Value.ToString();
-
-                TxtBusqueda.Visible = false;
-                menuStrip1.Visible = false;
-                BtnNuevo.Visible = false;
-                PanelRegistro.Visible = true;
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
         private void EditarProveedor2(object sender, DataGridViewCellEventArgs e)
         {
             BtnGuardar.Visible = false;
             BtnGuardarCambios.Visible = true;
             ObtenerDatosProveedor();
+        }
+
+        private void ObtenerDatosProveedor()
+        {
+            try
+            {
+                estadoProveedor = datalistado.SelectedCells[10].Value.ToString();
+                if (estadoProveedor == "ELIMINADO")
+                {
+                    restaurarProveedor();
+                }
+                else
+                {
+                    idProveedor = Convert.ToInt32(datalistado.SelectedCells[2].Value.ToString());
+                    TxtNombre.Text = datalistado.SelectedCells[3].Value.ToString();
+                    TxtRazonSocial.Text = datalistado.SelectedCells[4].Value.ToString();
+                    TxtRuc.Text = datalistado.SelectedCells[5].Value.ToString();
+                    TxtDireccion.Text = datalistado.SelectedCells[6].Value.ToString();
+                    TxtTelefono.Text = datalistado.SelectedCells[7].Value.ToString();
+                    TxtCelular.Text = datalistado.SelectedCells[8].Value.ToString();
+                    TxtCorreo.Text = datalistado.SelectedCells[9].Value.ToString();
+               
+                    TxtBusqueda.Visible = false;
+                    menuStrip1.Visible = false;
+                    BtnNuevo.Visible = false;
+                    PanelRegistro.Visible = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnGuardarCambios_Click(object sender, EventArgs e)
@@ -330,6 +361,36 @@ namespace PuntoVenta.Modulos.Compras
                 else
                 {
                     MessageBox.Show("Datos Incompletos", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void restaurarProveedor()
+        {
+            DialogResult result;
+            result = MessageBox.Show("Este proveedor se encuentra eliminado, ¿Desea volver a Habilitarlo?", "Restauración de Registros", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                foreach (DataGridViewRow row in datalistado.SelectedRows)
+                {
+                    int idProveedor = Convert.ToInt32(row.Cells["idProveedor"].Value);
+                    try
+                    {
+                        SqlCommand cmd;
+                        SqlConnection con = new SqlConnection();
+                        con.ConnectionString = Conexion.ConexionMaestra.conexion;
+                        con.Open();
+                        cmd = new SqlCommand("sp_proveedor_restaurar", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@idProveedor", idProveedor);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    mostrarProveedores();
                 }
             }
         }
