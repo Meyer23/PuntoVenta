@@ -38,6 +38,7 @@ namespace PuntoVenta.Modulos
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelAgregarUsuario = new System.Windows.Forms.Panel();
+            this.Label_idUsuario = new System.Windows.Forms.Label();
             this.BtnGuardarEditado = new System.Windows.Forms.Button();
             this.PanelUsuarioImagen = new System.Windows.Forms.Panel();
             this.BtnCancelar = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@ namespace PuntoVenta.Modulos
             this.LabelContraseña = new System.Windows.Forms.Label();
             this.LabelLogin = new System.Windows.Forms.Label();
             this.LabelNombres = new System.Windows.Forms.Label();
-            this.Label_idUsuario = new System.Windows.Forms.Label();
             this.PanelBusqueda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridUsuarios)).BeginInit();
             this.PanelAgregarUsuario.SuspendLayout();
@@ -159,6 +159,16 @@ namespace PuntoVenta.Modulos
             this.PanelAgregarUsuario.Size = new System.Drawing.Size(760, 323);
             this.PanelAgregarUsuario.TabIndex = 3;
             this.PanelAgregarUsuario.Visible = false;
+            // 
+            // Label_idUsuario
+            // 
+            this.Label_idUsuario.AutoSize = true;
+            this.Label_idUsuario.Location = new System.Drawing.Point(675, 23);
+            this.Label_idUsuario.Name = "Label_idUsuario";
+            this.Label_idUsuario.Size = new System.Drawing.Size(38, 15);
+            this.Label_idUsuario.TabIndex = 609;
+            this.Label_idUsuario.Text = "label1";
+            this.Label_idUsuario.Visible = false;
             // 
             // BtnGuardarEditado
             // 
@@ -296,15 +306,6 @@ namespace PuntoVenta.Modulos
             this.LabelNombres.Size = new System.Drawing.Size(151, 20);
             this.LabelNombres.TabIndex = 0;
             this.LabelNombres.Text = "Nombres y Apellidos:";
-            // 
-            // Label_idUsuario
-            // 
-            this.Label_idUsuario.AutoSize = true;
-            this.Label_idUsuario.Location = new System.Drawing.Point(675, 23);
-            this.Label_idUsuario.Name = "Label_idUsuario";
-            this.Label_idUsuario.Size = new System.Drawing.Size(38, 15);
-            this.Label_idUsuario.TabIndex = 609;
-            this.Label_idUsuario.Text = "label1";
             // 
             // UsuariosOk
             // 

@@ -1,5 +1,7 @@
 using PuntoVenta.Modulos;
+using PuntoVenta.Modulos.ClientesOk;
 using PuntoVenta.Modulos.Compras;
+using PuntoVenta.Modulos.VentanaPrincipal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +21,7 @@ namespace PuntoVenta
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Proveedores());
+            Application.Run(new ClientesOk());
         }
     }
 }
