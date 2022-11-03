@@ -35,7 +35,11 @@ namespace PuntoVenta.Modulos.ClientesOk
             this.BtnBuscarCliente = new System.Windows.Forms.Button();
             this.TxtBuscarCliente = new System.Windows.Forms.TextBox();
             this.DataGridViewClientes = new System.Windows.Forms.DataGridView();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelNuevoCliente = new System.Windows.Forms.Panel();
+            this.idUsuario_Label = new System.Windows.Forms.Label();
+            this.BtnGuardarEditado = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnGuardarCliente = new System.Windows.Forms.Button();
             this.PanelClientesImagen = new System.Windows.Forms.Panel();
@@ -85,6 +89,7 @@ namespace PuntoVenta.Modulos.ClientesOk
             this.BtnBuscarCliente.TabIndex = 1;
             this.BtnBuscarCliente.Text = "Buscar";
             this.BtnBuscarCliente.UseVisualStyleBackColor = true;
+            this.BtnBuscarCliente.Click += new System.EventHandler(this.Buscar_Cliente);
             // 
             // TxtBuscarCliente
             // 
@@ -98,15 +103,41 @@ namespace PuntoVenta.Modulos.ClientesOk
             // 
             this.DataGridViewClientes.BackgroundColor = System.Drawing.Color.White;
             this.DataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridViewClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Editar,
+            this.Eliminar});
             this.DataGridViewClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataGridViewClientes.Location = new System.Drawing.Point(0, 57);
             this.DataGridViewClientes.Name = "DataGridViewClientes";
             this.DataGridViewClientes.RowTemplate.Height = 25;
+            this.DataGridViewClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridViewClientes.Size = new System.Drawing.Size(914, 465);
             this.DataGridViewClientes.TabIndex = 1;
+            this.DataGridViewClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EliminarCliente);
+            this.DataGridViewClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarCliente);
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "";
+            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "";
+            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
+            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // PanelNuevoCliente
             // 
+            this.PanelNuevoCliente.Controls.Add(this.idUsuario_Label);
+            this.PanelNuevoCliente.Controls.Add(this.BtnGuardarEditado);
             this.PanelNuevoCliente.Controls.Add(this.BtnCancelar);
             this.PanelNuevoCliente.Controls.Add(this.BtnGuardarCliente);
             this.PanelNuevoCliente.Controls.Add(this.PanelClientesImagen);
@@ -128,6 +159,29 @@ namespace PuntoVenta.Modulos.ClientesOk
             this.PanelNuevoCliente.Size = new System.Drawing.Size(914, 465);
             this.PanelNuevoCliente.TabIndex = 2;
             this.PanelNuevoCliente.Visible = false;
+            // 
+            // idUsuario_Label
+            // 
+            this.idUsuario_Label.AutoSize = true;
+            this.idUsuario_Label.Location = new System.Drawing.Point(429, 23);
+            this.idUsuario_Label.Name = "idUsuario_Label";
+            this.idUsuario_Label.Size = new System.Drawing.Size(38, 15);
+            this.idUsuario_Label.TabIndex = 17;
+            this.idUsuario_Label.Text = "label1";
+            this.idUsuario_Label.Visible = false;
+            // 
+            // BtnGuardarEditado
+            // 
+            this.BtnGuardarEditado.BackColor = System.Drawing.Color.Green;
+            this.BtnGuardarEditado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnGuardarEditado.Location = new System.Drawing.Point(420, 255);
+            this.BtnGuardarEditado.Name = "BtnGuardarEditado";
+            this.BtnGuardarEditado.Size = new System.Drawing.Size(107, 44);
+            this.BtnGuardarEditado.TabIndex = 16;
+            this.BtnGuardarEditado.Text = "Guardar";
+            this.BtnGuardarEditado.UseVisualStyleBackColor = false;
+            this.BtnGuardarEditado.Visible = false;
+            this.BtnGuardarEditado.Click += new System.EventHandler(this.BtnGuardar_Editado);
             // 
             // BtnCancelar
             // 
@@ -306,5 +360,9 @@ namespace PuntoVenta.Modulos.ClientesOk
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.Button BtnGuardarCliente;
         private System.Windows.Forms.Panel PanelClientesImagen;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
+        private System.Windows.Forms.Button BtnGuardarEditado;
+        private System.Windows.Forms.Label idUsuario_Label;
     }
 }
