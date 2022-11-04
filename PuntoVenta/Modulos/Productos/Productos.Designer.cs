@@ -32,6 +32,7 @@ namespace PuntoVenta.Modulos.Productos
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Productos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelEncabezado = new System.Windows.Forms.Panel();
+            this.datalistado = new System.Windows.Forms.DataGridView();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -40,6 +41,12 @@ namespace PuntoVenta.Modulos.Productos
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelRegistro = new System.Windows.Forms.Panel();
+            this.TxtCodigoProd = new System.Windows.Forms.TextBox();
+            this.TxtCodigo = new System.Windows.Forms.TextBox();
+            this.TxtCategoria = new System.Windows.Forms.ComboBox();
+            this.TxtUMedida = new System.Windows.Forms.ComboBox();
+            this.LblUMedida = new System.Windows.Forms.Label();
+            this.LblCategoria = new System.Windows.Forms.Label();
             this.PanelUsuarioImagen = new System.Windows.Forms.Panel();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnGuardarCambios = new System.Windows.Forms.Button();
@@ -56,11 +63,10 @@ namespace PuntoVenta.Modulos.Productos
             this.LblPrecio = new System.Windows.Forms.Label();
             this.LblCosto = new System.Windows.Forms.Label();
             this.LblDescripción = new System.Windows.Forms.Label();
-            this.LblCategoria = new System.Windows.Forms.Label();
-            this.LblUMedida = new System.Windows.Forms.Label();
-            this.TxtUMedida = new System.Windows.Forms.ComboBox();
-            this.TxtCategoria = new System.Windows.Forms.ComboBox();
+            this.LblImpuesto = new System.Windows.Forms.Label();
+            this.TxtImpuesto = new System.Windows.Forms.ComboBox();
             this.PanelEncabezado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistadoProductos)).BeginInit();
             this.PanelRegistro.SuspendLayout();
@@ -69,6 +75,7 @@ namespace PuntoVenta.Modulos.Productos
             // PanelEncabezado
             // 
             this.PanelEncabezado.BackColor = System.Drawing.SystemColors.Control;
+            this.PanelEncabezado.Controls.Add(this.datalistado);
             this.PanelEncabezado.Controls.Add(this.BtnNuevo);
             this.PanelEncabezado.Controls.Add(this.TxtBusqueda);
             this.PanelEncabezado.Controls.Add(this.menuStrip1);
@@ -78,9 +85,23 @@ namespace PuntoVenta.Modulos.Productos
             this.PanelEncabezado.Size = new System.Drawing.Size(1041, 49);
             this.PanelEncabezado.TabIndex = 1;
             // 
+            // datalistado
+            // 
+            this.datalistado.AllowUserToAddRows = false;
+            this.datalistado.AllowUserToResizeRows = false;
+            this.datalistado.BackgroundColor = System.Drawing.Color.White;
+            this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datalistado.Location = new System.Drawing.Point(586, 24);
+            this.datalistado.Name = "datalistado";
+            this.datalistado.RowTemplate.Height = 25;
+            this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datalistado.Size = new System.Drawing.Size(49, 13);
+            this.datalistado.TabIndex = 9;
+            // 
             // BtnNuevo
             // 
             this.BtnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(140)))));
+            this.BtnNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnNuevo.ForeColor = System.Drawing.Color.White;
@@ -90,6 +111,7 @@ namespace PuntoVenta.Modulos.Productos
             this.BtnNuevo.TabIndex = 8;
             this.BtnNuevo.Text = "Nuevo";
             this.BtnNuevo.UseVisualStyleBackColor = false;
+            this.BtnNuevo.Click += new System.EventHandler(this.CrearProducto);
             // 
             // TxtBusqueda
             // 
@@ -113,6 +135,7 @@ namespace PuntoVenta.Modulos.Productos
             this.menuStrip1.Size = new System.Drawing.Size(43, 25);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Click += new System.EventHandler(this.BuscarProducto);
             // 
             // toolStripMenuItem1
             // 
@@ -162,6 +185,10 @@ namespace PuntoVenta.Modulos.Productos
             // 
             // PanelRegistro
             // 
+            this.PanelRegistro.Controls.Add(this.TxtImpuesto);
+            this.PanelRegistro.Controls.Add(this.LblImpuesto);
+            this.PanelRegistro.Controls.Add(this.TxtCodigoProd);
+            this.PanelRegistro.Controls.Add(this.TxtCodigo);
             this.PanelRegistro.Controls.Add(this.TxtCategoria);
             this.PanelRegistro.Controls.Add(this.TxtUMedida);
             this.PanelRegistro.Controls.Add(this.LblUMedida);
@@ -182,18 +209,71 @@ namespace PuntoVenta.Modulos.Productos
             this.PanelRegistro.Controls.Add(this.LblPrecio);
             this.PanelRegistro.Controls.Add(this.LblCosto);
             this.PanelRegistro.Controls.Add(this.LblDescripción);
-            this.PanelRegistro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelRegistro.Location = new System.Drawing.Point(0, 49);
             this.PanelRegistro.Name = "PanelRegistro";
             this.PanelRegistro.Size = new System.Drawing.Size(1041, 401);
             this.PanelRegistro.TabIndex = 6;
             this.PanelRegistro.Visible = false;
             // 
+            // TxtCodigoProd
+            // 
+            this.TxtCodigoProd.Location = new System.Drawing.Point(132, 6);
+            this.TxtCodigoProd.Name = "TxtCodigoProd";
+            this.TxtCodigoProd.Size = new System.Drawing.Size(562, 23);
+            this.TxtCodigoProd.TabIndex = 612;
+            // 
+            // TxtCodigo
+            // 
+            this.TxtCodigo.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtCodigo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtCodigo.Location = new System.Drawing.Point(19, 7);
+            this.TxtCodigo.Name = "TxtCodigo";
+            this.TxtCodigo.Size = new System.Drawing.Size(100, 18);
+            this.TxtCodigo.TabIndex = 611;
+            this.TxtCodigo.Text = "Código:";
+            // 
+            // TxtCategoria
+            // 
+            this.TxtCategoria.FormattingEnabled = true;
+            this.TxtCategoria.Location = new System.Drawing.Point(132, 250);
+            this.TxtCategoria.Name = "TxtCategoria";
+            this.TxtCategoria.Size = new System.Drawing.Size(562, 23);
+            this.TxtCategoria.TabIndex = 610;
+            // 
+            // TxtUMedida
+            // 
+            this.TxtUMedida.FormattingEnabled = true;
+            this.TxtUMedida.Location = new System.Drawing.Point(132, 279);
+            this.TxtUMedida.Name = "TxtUMedida";
+            this.TxtUMedida.Size = new System.Drawing.Size(562, 23);
+            this.TxtUMedida.TabIndex = 609;
+            // 
+            // LblUMedida
+            // 
+            this.LblUMedida.AutoSize = true;
+            this.LblUMedida.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblUMedida.Location = new System.Drawing.Point(14, 279);
+            this.LblUMedida.Name = "LblUMedida";
+            this.LblUMedida.Size = new System.Drawing.Size(106, 19);
+            this.LblUMedida.TabIndex = 17;
+            this.LblUMedida.Text = "Unidad Medida:";
+            // 
+            // LblCategoria
+            // 
+            this.LblCategoria.AutoSize = true;
+            this.LblCategoria.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblCategoria.Location = new System.Drawing.Point(14, 251);
+            this.LblCategoria.Name = "LblCategoria";
+            this.LblCategoria.Size = new System.Drawing.Size(71, 19);
+            this.LblCategoria.TabIndex = 16;
+            this.LblCategoria.Text = "Categoria:";
+            // 
             // PanelUsuarioImagen
             // 
             this.PanelUsuarioImagen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelUsuarioImagen.BackgroundImage")));
             this.PanelUsuarioImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PanelUsuarioImagen.Location = new System.Drawing.Point(741, 40);
+            this.PanelUsuarioImagen.Location = new System.Drawing.Point(741, 91);
             this.PanelUsuarioImagen.Name = "PanelUsuarioImagen";
             this.PanelUsuarioImagen.Size = new System.Drawing.Size(143, 106);
             this.PanelUsuarioImagen.TabIndex = 15;
@@ -201,23 +281,26 @@ namespace PuntoVenta.Modulos.Productos
             // BtnCancelar
             // 
             this.BtnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(140)))));
+            this.BtnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnCancelar.ForeColor = System.Drawing.Color.White;
-            this.BtnCancelar.Location = new System.Drawing.Point(542, 309);
+            this.BtnCancelar.Location = new System.Drawing.Point(542, 323);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(116, 37);
             this.BtnCancelar.TabIndex = 14;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = false;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // BtnGuardarCambios
             // 
             this.BtnGuardarCambios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(140)))));
+            this.BtnGuardarCambios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnGuardarCambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarCambios.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnGuardarCambios.ForeColor = System.Drawing.Color.White;
-            this.BtnGuardarCambios.Location = new System.Drawing.Point(420, 309);
+            this.BtnGuardarCambios.Location = new System.Drawing.Point(420, 323);
             this.BtnGuardarCambios.Name = "BtnGuardarCambios";
             this.BtnGuardarCambios.Size = new System.Drawing.Size(116, 37);
             this.BtnGuardarCambios.TabIndex = 14;
@@ -227,20 +310,22 @@ namespace PuntoVenta.Modulos.Productos
             // BtnGuardar
             // 
             this.BtnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(140)))));
+            this.BtnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnGuardar.ForeColor = System.Drawing.Color.White;
-            this.BtnGuardar.Location = new System.Drawing.Point(420, 309);
+            this.BtnGuardar.Location = new System.Drawing.Point(420, 323);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(116, 37);
             this.BtnGuardar.TabIndex = 14;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.UseVisualStyleBackColor = false;
+            this.BtnGuardar.Click += new System.EventHandler(this.GuardarProducto);
             // 
             // TxtExistencia
             // 
             this.TxtExistencia.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtExistencia.Location = new System.Drawing.Point(130, 160);
+            this.TxtExistencia.Location = new System.Drawing.Point(132, 219);
             this.TxtExistencia.Name = "TxtExistencia";
             this.TxtExistencia.Size = new System.Drawing.Size(562, 25);
             this.TxtExistencia.TabIndex = 12;
@@ -248,7 +333,7 @@ namespace PuntoVenta.Modulos.Productos
             // TxtPorcUtilidad
             // 
             this.TxtPorcUtilidad.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPorcUtilidad.Location = new System.Drawing.Point(130, 130);
+            this.TxtPorcUtilidad.Location = new System.Drawing.Point(132, 159);
             this.TxtPorcUtilidad.Name = "TxtPorcUtilidad";
             this.TxtPorcUtilidad.Size = new System.Drawing.Size(562, 25);
             this.TxtPorcUtilidad.TabIndex = 11;
@@ -256,7 +341,7 @@ namespace PuntoVenta.Modulos.Productos
             // TxtPrecioMayorista
             // 
             this.TxtPrecioMayorista.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPrecioMayorista.Location = new System.Drawing.Point(130, 100);
+            this.TxtPrecioMayorista.Location = new System.Drawing.Point(132, 128);
             this.TxtPrecioMayorista.Name = "TxtPrecioMayorista";
             this.TxtPrecioMayorista.Size = new System.Drawing.Size(562, 25);
             this.TxtPrecioMayorista.TabIndex = 10;
@@ -264,7 +349,7 @@ namespace PuntoVenta.Modulos.Productos
             // TxtPrecio
             // 
             this.TxtPrecio.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPrecio.Location = new System.Drawing.Point(130, 70);
+            this.TxtPrecio.Location = new System.Drawing.Point(132, 97);
             this.TxtPrecio.Name = "TxtPrecio";
             this.TxtPrecio.Size = new System.Drawing.Size(562, 25);
             this.TxtPrecio.TabIndex = 9;
@@ -272,7 +357,7 @@ namespace PuntoVenta.Modulos.Productos
             // TxtCosto
             // 
             this.TxtCosto.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtCosto.Location = new System.Drawing.Point(130, 40);
+            this.TxtCosto.Location = new System.Drawing.Point(132, 66);
             this.TxtCosto.Name = "TxtCosto";
             this.TxtCosto.Size = new System.Drawing.Size(562, 25);
             this.TxtCosto.TabIndex = 8;
@@ -280,7 +365,7 @@ namespace PuntoVenta.Modulos.Productos
             // TxtDescripcion
             // 
             this.TxtDescripcion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtDescripcion.Location = new System.Drawing.Point(130, 10);
+            this.TxtDescripcion.Location = new System.Drawing.Point(132, 35);
             this.TxtDescripcion.Name = "TxtDescripcion";
             this.TxtDescripcion.Size = new System.Drawing.Size(562, 25);
             this.TxtDescripcion.TabIndex = 7;
@@ -289,7 +374,7 @@ namespace PuntoVenta.Modulos.Productos
             // 
             this.LblExistencia.AutoSize = true;
             this.LblExistencia.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblExistencia.Location = new System.Drawing.Point(12, 163);
+            this.LblExistencia.Location = new System.Drawing.Point(14, 222);
             this.LblExistencia.Name = "LblExistencia";
             this.LblExistencia.Size = new System.Drawing.Size(70, 19);
             this.LblExistencia.TabIndex = 5;
@@ -299,7 +384,7 @@ namespace PuntoVenta.Modulos.Productos
             // 
             this.LblPorcUtilidad.AutoSize = true;
             this.LblPorcUtilidad.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblPorcUtilidad.Location = new System.Drawing.Point(11, 133);
+            this.LblPorcUtilidad.Location = new System.Drawing.Point(13, 162);
             this.LblPorcUtilidad.Name = "LblPorcUtilidad";
             this.LblPorcUtilidad.Size = new System.Drawing.Size(89, 19);
             this.LblPorcUtilidad.TabIndex = 4;
@@ -309,7 +394,7 @@ namespace PuntoVenta.Modulos.Productos
             // 
             this.LblPrecioMayorista.AutoSize = true;
             this.LblPrecioMayorista.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblPrecioMayorista.Location = new System.Drawing.Point(11, 103);
+            this.LblPrecioMayorista.Location = new System.Drawing.Point(13, 131);
             this.LblPrecioMayorista.Name = "LblPrecioMayorista";
             this.LblPrecioMayorista.Size = new System.Drawing.Size(114, 19);
             this.LblPrecioMayorista.TabIndex = 3;
@@ -319,7 +404,7 @@ namespace PuntoVenta.Modulos.Productos
             // 
             this.LblPrecio.AutoSize = true;
             this.LblPrecio.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblPrecio.Location = new System.Drawing.Point(11, 73);
+            this.LblPrecio.Location = new System.Drawing.Point(13, 100);
             this.LblPrecio.Name = "LblPrecio";
             this.LblPrecio.Size = new System.Drawing.Size(49, 19);
             this.LblPrecio.TabIndex = 2;
@@ -329,7 +414,7 @@ namespace PuntoVenta.Modulos.Productos
             // 
             this.LblCosto.AutoSize = true;
             this.LblCosto.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblCosto.Location = new System.Drawing.Point(11, 43);
+            this.LblCosto.Location = new System.Drawing.Point(13, 69);
             this.LblCosto.Name = "LblCosto";
             this.LblCosto.Size = new System.Drawing.Size(48, 19);
             this.LblCosto.TabIndex = 1;
@@ -339,47 +424,33 @@ namespace PuntoVenta.Modulos.Productos
             // 
             this.LblDescripción.AutoSize = true;
             this.LblDescripción.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblDescripción.Location = new System.Drawing.Point(12, 13);
+            this.LblDescripción.Location = new System.Drawing.Point(14, 38);
             this.LblDescripción.Name = "LblDescripción";
             this.LblDescripción.Size = new System.Drawing.Size(82, 19);
             this.LblDescripción.TabIndex = 0;
             this.LblDescripción.Text = "Descripción:";
             // 
-            // LblCategoria
+            // LblImpuesto
             // 
-            this.LblCategoria.AutoSize = true;
-            this.LblCategoria.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblCategoria.Location = new System.Drawing.Point(12, 192);
-            this.LblCategoria.Name = "LblCategoria";
-            this.LblCategoria.Size = new System.Drawing.Size(71, 19);
-            this.LblCategoria.TabIndex = 16;
-            this.LblCategoria.Text = "Categoria:";
+            this.LblImpuesto.AutoSize = true;
+            this.LblImpuesto.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblImpuesto.Location = new System.Drawing.Point(14, 192);
+            this.LblImpuesto.Name = "LblImpuesto";
+            this.LblImpuesto.Size = new System.Drawing.Size(70, 19);
+            this.LblImpuesto.TabIndex = 615;
+            this.LblImpuesto.Text = "Impuesto:";
             // 
-            // LblUMedida
+            // TxtImpuesto
             // 
-            this.LblUMedida.AutoSize = true;
-            this.LblUMedida.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblUMedida.Location = new System.Drawing.Point(11, 221);
-            this.LblUMedida.Name = "LblUMedida";
-            this.LblUMedida.Size = new System.Drawing.Size(106, 19);
-            this.LblUMedida.TabIndex = 17;
-            this.LblUMedida.Text = "Unidad Medida:";
-            // 
-            // TxtUMedida
-            // 
-            this.TxtUMedida.FormattingEnabled = true;
-            this.TxtUMedida.Location = new System.Drawing.Point(130, 220);
-            this.TxtUMedida.Name = "TxtUMedida";
-            this.TxtUMedida.Size = new System.Drawing.Size(562, 23);
-            this.TxtUMedida.TabIndex = 609;
-            // 
-            // TxtCategoria
-            // 
-            this.TxtCategoria.FormattingEnabled = true;
-            this.TxtCategoria.Location = new System.Drawing.Point(130, 191);
-            this.TxtCategoria.Name = "TxtCategoria";
-            this.TxtCategoria.Size = new System.Drawing.Size(562, 23);
-            this.TxtCategoria.TabIndex = 610;
+            this.TxtImpuesto.AutoCompleteCustomSource.AddRange(new string[] {
+            "0",
+            "5",
+            "10"});
+            this.TxtImpuesto.FormattingEnabled = true;
+            this.TxtImpuesto.Location = new System.Drawing.Point(132, 191);
+            this.TxtImpuesto.Name = "TxtImpuesto";
+            this.TxtImpuesto.Size = new System.Drawing.Size(562, 23);
+            this.TxtImpuesto.TabIndex = 616;
             // 
             // Productos
             // 
@@ -391,8 +462,10 @@ namespace PuntoVenta.Modulos.Productos
             this.Controls.Add(this.PanelEncabezado);
             this.Name = "Productos";
             this.Text = "Productos";
+            this.Load += new System.EventHandler(this.Productos_Load);
             this.PanelEncabezado.ResumeLayout(false);
             this.PanelEncabezado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.datalistado)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistadoProductos)).EndInit();
@@ -413,7 +486,6 @@ namespace PuntoVenta.Modulos.Productos
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.Panel PanelRegistro;
-        private System.Windows.Forms.Panel PanelUsuarioImagen;
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.Button BtnGuardarCambios;
         private System.Windows.Forms.Button BtnGuardar;
@@ -433,5 +505,11 @@ namespace PuntoVenta.Modulos.Productos
         private System.Windows.Forms.Label LblCategoria;
         private System.Windows.Forms.ComboBox TxtCategoria;
         private System.Windows.Forms.ComboBox TxtUMedida;
+        private System.Windows.Forms.Panel PanelUsuarioImagen;
+        private System.Windows.Forms.DataGridView datalistado;
+        private System.Windows.Forms.TextBox TxtCodigoProd;
+        private System.Windows.Forms.TextBox TxtCodigo;
+        private System.Windows.Forms.Label LblImpuesto;
+        private System.Windows.Forms.ComboBox TxtImpuesto;
     }
 }

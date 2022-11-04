@@ -1,7 +1,7 @@
 ﻿
 namespace PuntoVenta.Modulos.ClientesOk
 {
-    partial class ClientesOk
+    partial class Clientes
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace PuntoVenta.Modulos.ClientesOk
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientesOk));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Clientes));
             this.PanelCliente = new System.Windows.Forms.Panel();
             this.BtnAgregarCliente = new System.Windows.Forms.Button();
             this.BtnBuscarCliente = new System.Windows.Forms.Button();
@@ -264,7 +264,7 @@ namespace PuntoVenta.Modulos.ClientesOk
             this.LabelNombreCliente.TabIndex = 0;
             this.LabelNombreCliente.Text = "Nombres: ";
             // 
-            // ClientesOk
+            // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -272,7 +272,7 @@ namespace PuntoVenta.Modulos.ClientesOk
             this.Controls.Add(this.PanelNuevoCliente);
             this.Controls.Add(this.DataGridViewClientes);
             this.Controls.Add(this.PanelCliente);
-            this.Name = "ClientesOk";
+            this.Name = "Clientes";
             this.Text = "Clientes";
             this.PanelCliente.ResumeLayout(false);
             this.PanelCliente.PerformLayout();

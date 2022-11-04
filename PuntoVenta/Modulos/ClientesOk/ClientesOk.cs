@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PuntoVenta.Modulos.ClientesOk
 {
-    public partial class ClientesOk : Form
+    public partial class Clientes : Form
     {
-        public ClientesOk()
+        public Clientes()
         {
             InitializeComponent();
             MostrarClientes();
