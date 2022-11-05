@@ -38,6 +38,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.MenuClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuProveedores = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,9 +109,16 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // MenuProveedores
             // 
             this.MenuProveedores.Name = "MenuProveedores";
-            this.MenuProveedores.Size = new System.Drawing.Size(139, 22);
+            this.MenuProveedores.Size = new System.Drawing.Size(180, 22);
             this.MenuProveedores.Text = "Proveedores";
             this.MenuProveedores.Click += new System.EventHandler(this.MenuProveedores_Click);
+            // 
+            // MenuClientes
+            // 
+            this.MenuClientes.Name = "MenuClientes";
+            this.MenuClientes.Size = new System.Drawing.Size(180, 22);
+            this.MenuClientes.Text = "Clientes";
+            this.MenuClientes.Click += new System.EventHandler(this.MenuClientes_Click);
             // 
             // VentanaPrincipal
             // 

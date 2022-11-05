@@ -30,7 +30,7 @@ namespace PuntoVenta.Modulos.Compras
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Proveedores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelEncabezado = new System.Windows.Forms.Panel();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
@@ -79,6 +79,7 @@ namespace PuntoVenta.Modulos.Compras
             // BtnNuevo
             // 
             this.BtnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(140)))));
+            this.BtnNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnNuevo.ForeColor = System.Drawing.Color.White;
@@ -134,9 +135,9 @@ namespace PuntoVenta.Modulos.Compras
             this.datalistado.Location = new System.Drawing.Point(0, 49);
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.datalistado.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.datalistado.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.datalistado.RowTemplate.Height = 25;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datalistado.Size = new System.Drawing.Size(943, 401);
@@ -202,6 +203,7 @@ namespace PuntoVenta.Modulos.Compras
             // BtnCancelar
             // 
             this.BtnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(140)))));
+            this.BtnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnCancelar.ForeColor = System.Drawing.Color.White;
@@ -216,6 +218,7 @@ namespace PuntoVenta.Modulos.Compras
             // BtnGuardarCambios
             // 
             this.BtnGuardarCambios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(140)))));
+            this.BtnGuardarCambios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnGuardarCambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarCambios.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnGuardarCambios.ForeColor = System.Drawing.Color.White;
@@ -230,6 +233,7 @@ namespace PuntoVenta.Modulos.Compras
             // BtnGuardar
             // 
             this.BtnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(140)))));
+            this.BtnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnGuardar.ForeColor = System.Drawing.Color.White;

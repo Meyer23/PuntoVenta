@@ -30,9 +30,9 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             frm_proveedores.ShowDialog();
         }
 
-        private void MenuClientes_Click(object sender, EventArgs e)
+        private void MenuClientes_Click(Object sender, EventArgs e)
         {
-            ClientesOk frm_clientes = new ClientesOk();
+            Clientes frm_clientes = new Clientes();
 
             frm_clientes.ShowDialog();
         }
