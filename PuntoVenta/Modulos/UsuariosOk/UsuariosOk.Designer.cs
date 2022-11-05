@@ -140,7 +140,6 @@ namespace PuntoVenta.Modulos
             this.PanelAgregarUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.PanelAgregarUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelAgregarUsuario.Controls.Add(this.Label_idUsuario);
-            this.PanelAgregarUsuario.Controls.Add(this.BtnGuardarEditado);
             this.PanelAgregarUsuario.Controls.Add(this.PanelUsuarioImagen);
             this.PanelAgregarUsuario.Controls.Add(this.BtnCancelar);
             this.PanelAgregarUsuario.Controls.Add(this.BtnGuardar);
@@ -154,6 +153,7 @@ namespace PuntoVenta.Modulos
             this.PanelAgregarUsuario.Controls.Add(this.LabelContraseña);
             this.PanelAgregarUsuario.Controls.Add(this.LabelLogin);
             this.PanelAgregarUsuario.Controls.Add(this.LabelNombres);
+            this.PanelAgregarUsuario.Controls.Add(this.BtnGuardarEditado);
             this.PanelAgregarUsuario.Location = new System.Drawing.Point(3, 63);
             this.PanelAgregarUsuario.Name = "PanelAgregarUsuario";
             this.PanelAgregarUsuario.Size = new System.Drawing.Size(760, 323);
@@ -174,7 +174,7 @@ namespace PuntoVenta.Modulos
             // 
             this.BtnGuardarEditado.BackColor = System.Drawing.Color.Green;
             this.BtnGuardarEditado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnGuardarEditado.Location = new System.Drawing.Point(389, 223);
+            this.BtnGuardarEditado.Location = new System.Drawing.Point(412, 223);
             this.BtnGuardarEditado.Name = "BtnGuardarEditado";
             this.BtnGuardarEditado.Size = new System.Drawing.Size(110, 51);
             this.BtnGuardarEditado.TabIndex = 608;
@@ -207,7 +207,7 @@ namespace PuntoVenta.Modulos
             // 
             this.BtnGuardar.BackColor = System.Drawing.Color.Green;
             this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnGuardar.Location = new System.Drawing.Point(389, 223);
+            this.BtnGuardar.Location = new System.Drawing.Point(412, 223);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(110, 51);
             this.BtnGuardar.TabIndex = 10;
@@ -252,6 +252,7 @@ namespace PuntoVenta.Modulos
             this.TxtContraseña.Name = "TxtContraseña";
             this.TxtContraseña.Size = new System.Drawing.Size(274, 23);
             this.TxtContraseña.TabIndex = 6;
+            this.TxtContraseña.UseSystemPasswordChar = true;
             // 
             // TxtLogin
             // 

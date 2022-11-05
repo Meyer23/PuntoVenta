@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace PuntoVenta.Modulos.ClientesOk
+namespace PuntoVenta.Modulos
 {
     public partial class ClientesOk : Form
     {

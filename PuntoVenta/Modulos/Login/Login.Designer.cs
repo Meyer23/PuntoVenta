@@ -132,6 +132,7 @@ namespace PuntoVenta.Modulos
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtContrasena);
             this.Controls.Add(this.txtUsuario);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.Text = "SGFP";
             this.Load += new System.EventHandler(this.Login_Load);

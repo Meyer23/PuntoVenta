@@ -191,7 +191,7 @@ namespace PuntoVenta.Modulos
                                     cmd = new SqlCommand("dbo.sp_usuario_eliminar", con);
                                     cmd.CommandType = CommandType.StoredProcedure;
 
-                                    cmd.Parameters.AddWithValue("@idusuario", onekey);
+                                    cmd.Parameters.AddWithValue("@idUsuario", onekey);
                                     cmd.Parameters.AddWithValue("@login", usuario);
                                     cmd.ExecuteNonQuery();
 
