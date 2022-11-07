@@ -1,4 +1,5 @@
 ﻿using PuntoVenta.Modulos.Compras;
+using PuntoVenta.Modulos.Productos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +36,27 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             Clientes frm_clientes = new Clientes();
 
             frm_clientes.ShowDialog();
+        }
+
+        private void MenuProductos_Click(object sender, EventArgs e)
+        {
+            Producto frm_productos = new Producto();
+
+            frm_productos.ShowDialog();
+        }
+
+        private void MenuCategorias_Click(object sender, EventArgs e)
+        {
+            Categorias frm_categorias = new Categorias();
+
+            frm_categorias.ShowDialog();
+        }
+
+        private void MenuUnidadesMedidas_Click(object sender, EventArgs e)
+        {
+            UnidadesMedidas frm_umedidas = new UnidadesMedidas();
+
+            frm_umedidas.ShowDialog();
         }
     }
 }
