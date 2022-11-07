@@ -38,7 +38,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.MenuClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuProveedores = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuFacturas = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +86,8 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // ventasToolStripMenuItem
             // 
             this.ventasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuClientes});
+            this.MenuClientes,
+            this.MenuFacturas});
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
             this.ventasToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ventasToolStripMenuItem.Text = "Ventas";
@@ -94,7 +95,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // MenuClientes
             // 
             this.MenuClientes.Name = "MenuClientes";
-            this.MenuClientes.Size = new System.Drawing.Size(116, 22);
+            this.MenuClientes.Size = new System.Drawing.Size(180, 22);
             this.MenuClientes.Text = "Clientes";
             this.MenuClientes.Click += new System.EventHandler(this.MenuClientes_Click);
             // 
@@ -109,16 +110,16 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // MenuProveedores
             // 
             this.MenuProveedores.Name = "MenuProveedores";
-            this.MenuProveedores.Size = new System.Drawing.Size(180, 22);
+            this.MenuProveedores.Size = new System.Drawing.Size(139, 22);
             this.MenuProveedores.Text = "Proveedores";
             this.MenuProveedores.Click += new System.EventHandler(this.MenuProveedores_Click);
             // 
-            // MenuClientes
+            // MenuFacturas
             // 
-            this.MenuClientes.Name = "MenuClientes";
-            this.MenuClientes.Size = new System.Drawing.Size(180, 22);
-            this.MenuClientes.Text = "Clientes";
-            this.MenuClientes.Click += new System.EventHandler(this.MenuClientes_Click);
+            this.MenuFacturas.Name = "MenuFacturas";
+            this.MenuFacturas.Size = new System.Drawing.Size(180, 22);
+            this.MenuFacturas.Text = "Facturas";
+            this.MenuFacturas.Click += new System.EventHandler(this.MenuFacturas_Click);
             // 
             // VentanaPrincipal
             // 
@@ -147,5 +148,6 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         private System.Windows.Forms.ToolStripMenuItem comprasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MenuProveedores;
         private System.Windows.Forms.ToolStripMenuItem MenuClientes;
+        private System.Windows.Forms.ToolStripMenuItem MenuFacturas;
     }
 }
