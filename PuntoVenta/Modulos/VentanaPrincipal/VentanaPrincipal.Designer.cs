@@ -33,12 +33,14 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.administraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuProductos = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuCategorias = new System.Windows.Forms.ToolStripMenuItem();
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuProveedores = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuFacturas = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuUnidadesMedidas = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,9 +75,27 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // 
             // configuraciónToolStripMenuItem
             // 
+            this.configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuProductos,
+            this.MenuCategorias,
+            this.MenuUnidadesMedidas});
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
+            // 
+            // MenuProductos
+            // 
+            this.MenuProductos.Name = "MenuProductos";
+            this.MenuProductos.Size = new System.Drawing.Size(187, 22);
+            this.MenuProductos.Text = "Productos";
+            this.MenuProductos.Click += new System.EventHandler(this.MenuProductos_Click);
+            // 
+            // MenuCategorias
+            // 
+            this.MenuCategorias.Name = "MenuCategorias";
+            this.MenuCategorias.Size = new System.Drawing.Size(187, 22);
+            this.MenuCategorias.Text = "Categorías";
+            this.MenuCategorias.Click += new System.EventHandler(this.MenuCategorias_Click);
             // 
             // stockToolStripMenuItem
             // 
@@ -114,12 +134,12 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.MenuProveedores.Text = "Proveedores";
             this.MenuProveedores.Click += new System.EventHandler(this.MenuProveedores_Click);
             // 
-            // MenuFacturas
+            // MenuClientes
             // 
-            this.MenuFacturas.Name = "MenuFacturas";
-            this.MenuFacturas.Size = new System.Drawing.Size(180, 22);
-            this.MenuFacturas.Text = "Facturas";
-            this.MenuFacturas.Click += new System.EventHandler(this.MenuFacturas_Click);
+            this.MenuClientes.Name = "MenuClientes";
+            this.MenuClientes.Size = new System.Drawing.Size(180, 22);
+            this.MenuClientes.Text = "Clientes";
+            this.MenuClientes.Click += new System.EventHandler(this.MenuClientes_Click);
             // 
             // VentanaPrincipal
             // 
@@ -148,6 +168,5 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         private System.Windows.Forms.ToolStripMenuItem comprasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MenuProveedores;
         private System.Windows.Forms.ToolStripMenuItem MenuClientes;
-        private System.Windows.Forms.ToolStripMenuItem MenuFacturas;
     }
 }
