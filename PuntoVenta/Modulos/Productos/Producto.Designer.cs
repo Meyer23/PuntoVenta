@@ -30,9 +30,8 @@ namespace PuntoVenta.Modulos.Productos
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Producto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelEncabezado = new System.Windows.Forms.Panel();
-            this.datalistado = new System.Windows.Forms.DataGridView();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -41,8 +40,10 @@ namespace PuntoVenta.Modulos.Productos
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelRegistro = new System.Windows.Forms.Panel();
+            this.TxtImpuesto = new System.Windows.Forms.ComboBox();
+            this.LblImpuesto = new System.Windows.Forms.Label();
             this.TxtCodigoProd = new System.Windows.Forms.TextBox();
-            this.TxtCodigo = new System.Windows.Forms.TextBox();
+            this.LblCodigo = new System.Windows.Forms.TextBox();
             this.TxtCategoria = new System.Windows.Forms.ComboBox();
             this.TxtUMedida = new System.Windows.Forms.ComboBox();
             this.LblUMedida = new System.Windows.Forms.Label();
@@ -63,10 +64,7 @@ namespace PuntoVenta.Modulos.Productos
             this.LblPrecio = new System.Windows.Forms.Label();
             this.LblCosto = new System.Windows.Forms.Label();
             this.LblDescripción = new System.Windows.Forms.Label();
-            this.LblImpuesto = new System.Windows.Forms.Label();
-            this.TxtImpuesto = new System.Windows.Forms.ComboBox();
             this.PanelEncabezado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistadoProductos)).BeginInit();
             this.PanelRegistro.SuspendLayout();
@@ -75,7 +73,6 @@ namespace PuntoVenta.Modulos.Productos
             // PanelEncabezado
             // 
             this.PanelEncabezado.BackColor = System.Drawing.SystemColors.Control;
-            this.PanelEncabezado.Controls.Add(this.datalistado);
             this.PanelEncabezado.Controls.Add(this.BtnNuevo);
             this.PanelEncabezado.Controls.Add(this.TxtBusqueda);
             this.PanelEncabezado.Controls.Add(this.menuStrip1);
@@ -84,19 +81,6 @@ namespace PuntoVenta.Modulos.Productos
             this.PanelEncabezado.Name = "PanelEncabezado";
             this.PanelEncabezado.Size = new System.Drawing.Size(1041, 49);
             this.PanelEncabezado.TabIndex = 1;
-            // 
-            // datalistado
-            // 
-            this.datalistado.AllowUserToAddRows = false;
-            this.datalistado.AllowUserToResizeRows = false;
-            this.datalistado.BackgroundColor = System.Drawing.Color.White;
-            this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datalistado.Location = new System.Drawing.Point(586, 24);
-            this.datalistado.Name = "datalistado";
-            this.datalistado.RowTemplate.Height = 25;
-            this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datalistado.Size = new System.Drawing.Size(49, 13);
-            this.datalistado.TabIndex = 9;
             // 
             // BtnNuevo
             // 
@@ -157,13 +141,16 @@ namespace PuntoVenta.Modulos.Productos
             this.datalistadoProductos.Location = new System.Drawing.Point(0, 49);
             this.datalistadoProductos.Name = "datalistadoProductos";
             this.datalistadoProductos.ReadOnly = true;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.datalistadoProductos.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.datalistadoProductos.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.datalistadoProductos.RowTemplate.Height = 25;
             this.datalistadoProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datalistadoProductos.Size = new System.Drawing.Size(1041, 401);
             this.datalistadoProductos.TabIndex = 5;
+            this.datalistadoProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EliminarProducto);
+            this.datalistadoProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarProducto);
+            this.datalistadoProductos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarProducto2);
             // 
             // Eliminar
             // 
@@ -188,7 +175,7 @@ namespace PuntoVenta.Modulos.Productos
             this.PanelRegistro.Controls.Add(this.TxtImpuesto);
             this.PanelRegistro.Controls.Add(this.LblImpuesto);
             this.PanelRegistro.Controls.Add(this.TxtCodigoProd);
-            this.PanelRegistro.Controls.Add(this.TxtCodigo);
+            this.PanelRegistro.Controls.Add(this.LblCodigo);
             this.PanelRegistro.Controls.Add(this.TxtCategoria);
             this.PanelRegistro.Controls.Add(this.TxtUMedida);
             this.PanelRegistro.Controls.Add(this.LblUMedida);
@@ -215,6 +202,32 @@ namespace PuntoVenta.Modulos.Productos
             this.PanelRegistro.TabIndex = 6;
             this.PanelRegistro.Visible = false;
             // 
+            // TxtImpuesto
+            // 
+            this.TxtImpuesto.AutoCompleteCustomSource.AddRange(new string[] {
+            "0",
+            "5",
+            "10"});
+            this.TxtImpuesto.FormattingEnabled = true;
+            this.TxtImpuesto.Items.AddRange(new object[] {
+            "0",
+            "5",
+            "10"});
+            this.TxtImpuesto.Location = new System.Drawing.Point(132, 191);
+            this.TxtImpuesto.Name = "TxtImpuesto";
+            this.TxtImpuesto.Size = new System.Drawing.Size(562, 23);
+            this.TxtImpuesto.TabIndex = 616;
+            // 
+            // LblImpuesto
+            // 
+            this.LblImpuesto.AutoSize = true;
+            this.LblImpuesto.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblImpuesto.Location = new System.Drawing.Point(14, 192);
+            this.LblImpuesto.Name = "LblImpuesto";
+            this.LblImpuesto.Size = new System.Drawing.Size(70, 19);
+            this.LblImpuesto.TabIndex = 615;
+            this.LblImpuesto.Text = "Impuesto:";
+            // 
             // TxtCodigoProd
             // 
             this.TxtCodigoProd.Location = new System.Drawing.Point(132, 6);
@@ -222,16 +235,16 @@ namespace PuntoVenta.Modulos.Productos
             this.TxtCodigoProd.Size = new System.Drawing.Size(562, 23);
             this.TxtCodigoProd.TabIndex = 612;
             // 
-            // TxtCodigo
+            // LblCodigo
             // 
-            this.TxtCodigo.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtCodigo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtCodigo.Location = new System.Drawing.Point(19, 7);
-            this.TxtCodigo.Name = "TxtCodigo";
-            this.TxtCodigo.Size = new System.Drawing.Size(100, 18);
-            this.TxtCodigo.TabIndex = 611;
-            this.TxtCodigo.Text = "Código:";
+            this.LblCodigo.BackColor = System.Drawing.SystemColors.Control;
+            this.LblCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LblCodigo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblCodigo.Location = new System.Drawing.Point(19, 7);
+            this.LblCodigo.Name = "LblCodigo";
+            this.LblCodigo.Size = new System.Drawing.Size(100, 18);
+            this.LblCodigo.TabIndex = 611;
+            this.LblCodigo.Text = "Código:";
             // 
             // TxtCategoria
             // 
@@ -244,6 +257,9 @@ namespace PuntoVenta.Modulos.Productos
             // TxtUMedida
             // 
             this.TxtUMedida.FormattingEnabled = true;
+            this.TxtUMedida.Items.AddRange(new object[] {
+            "1",
+            "2"});
             this.TxtUMedida.Location = new System.Drawing.Point(132, 279);
             this.TxtUMedida.Name = "TxtUMedida";
             this.TxtUMedida.Size = new System.Drawing.Size(562, 23);
@@ -306,6 +322,7 @@ namespace PuntoVenta.Modulos.Productos
             this.BtnGuardarCambios.TabIndex = 14;
             this.BtnGuardarCambios.Text = "Guardar";
             this.BtnGuardarCambios.UseVisualStyleBackColor = false;
+            this.BtnGuardarCambios.Click += new System.EventHandler(this.BtnGuardarCambios_Click);
             // 
             // BtnGuardar
             // 
@@ -327,6 +344,7 @@ namespace PuntoVenta.Modulos.Productos
             this.TxtExistencia.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TxtExistencia.Location = new System.Drawing.Point(132, 219);
             this.TxtExistencia.Name = "TxtExistencia";
+            this.TxtExistencia.ReadOnly = true;
             this.TxtExistencia.Size = new System.Drawing.Size(562, 25);
             this.TxtExistencia.TabIndex = 12;
             // 
@@ -430,29 +448,7 @@ namespace PuntoVenta.Modulos.Productos
             this.LblDescripción.TabIndex = 0;
             this.LblDescripción.Text = "Descripción:";
             // 
-            // LblImpuesto
-            // 
-            this.LblImpuesto.AutoSize = true;
-            this.LblImpuesto.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblImpuesto.Location = new System.Drawing.Point(14, 192);
-            this.LblImpuesto.Name = "LblImpuesto";
-            this.LblImpuesto.Size = new System.Drawing.Size(70, 19);
-            this.LblImpuesto.TabIndex = 615;
-            this.LblImpuesto.Text = "Impuesto:";
-            // 
-            // TxtImpuesto
-            // 
-            this.TxtImpuesto.AutoCompleteCustomSource.AddRange(new string[] {
-            "0",
-            "5",
-            "10"});
-            this.TxtImpuesto.FormattingEnabled = true;
-            this.TxtImpuesto.Location = new System.Drawing.Point(132, 191);
-            this.TxtImpuesto.Name = "TxtImpuesto";
-            this.TxtImpuesto.Size = new System.Drawing.Size(562, 23);
-            this.TxtImpuesto.TabIndex = 616;
-            // 
-            // Productos
+            // Producto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -460,12 +456,11 @@ namespace PuntoVenta.Modulos.Productos
             this.Controls.Add(this.PanelRegistro);
             this.Controls.Add(this.datalistadoProductos);
             this.Controls.Add(this.PanelEncabezado);
-            this.Name = "Productos";
+            this.Name = "Producto";
             this.Text = "Productos";
             this.Load += new System.EventHandler(this.Productos_Load);
             this.PanelEncabezado.ResumeLayout(false);
             this.PanelEncabezado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datalistado)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistadoProductos)).EndInit();
@@ -506,9 +501,8 @@ namespace PuntoVenta.Modulos.Productos
         private System.Windows.Forms.ComboBox TxtCategoria;
         private System.Windows.Forms.ComboBox TxtUMedida;
         private System.Windows.Forms.Panel PanelUsuarioImagen;
-        private System.Windows.Forms.DataGridView datalistado;
         private System.Windows.Forms.TextBox TxtCodigoProd;
-        private System.Windows.Forms.TextBox TxtCodigo;
+        private System.Windows.Forms.TextBox LblCodigo;
         private System.Windows.Forms.Label LblImpuesto;
         private System.Windows.Forms.ComboBox TxtImpuesto;
     }

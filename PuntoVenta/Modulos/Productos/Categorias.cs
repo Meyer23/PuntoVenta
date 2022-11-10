@@ -2,27 +2,27 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace PuntoVenta.Modulos.Productos
 {
-    public partial class UnidadesMedidas : Form
+    public partial class Categorias : Form
     {
-        int idUMedida;
-        public UnidadesMedidas()
+        int idCategoria;
+        public Categorias()
         {
             InitializeComponent();
         }
 
-        public DataTable cargarComboUnidadesMedidas()
+        public DataTable cargarComboCategorias()
         {
             SqlConnection con = new SqlConnection();
             con.ConnectionString = Conexion.ConexionMaestra.conexion;
             con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("sp_umedida_cargar", con);
+            SqlDataAdapter da = new SqlDataAdapter("sp_categoria_cargar",con);
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -31,12 +31,12 @@ namespace PuntoVenta.Modulos.Productos
             return dt;
         }
 
-        private void UnidadesMedidas_Load(object sender, EventArgs e)
+        private void Categorias_Load(object sender, EventArgs e)
         {
-            mostrarUnidadesMedidas();
+            mostrarCategorias();
         }
 
-        private void mostrarUnidadesMedidas()
+        private void mostrarCategorias()
         {
             try
             {
@@ -45,9 +45,9 @@ namespace PuntoVenta.Modulos.Productos
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = Conexion.ConexionMaestra.conexion;
                 con.Open();
-                da = new SqlDataAdapter("sp_umedida_mostrar", con);
+                da = new SqlDataAdapter("sp_categoria_mostrar", con);
                 da.Fill(dt);
-                datalistadoMedidas.DataSource = dt;
+                datalistadoCategorias.DataSource = dt;
                 con.Close();
                 ocultar_columnas();
             }
@@ -59,10 +59,10 @@ namespace PuntoVenta.Modulos.Productos
 
         private void ocultar_columnas()
         {
-            datalistadoMedidas.Columns[2].Visible = false;
+            datalistadoCategorias.Columns[2].Visible = false;
         }
 
-        private void BuscarUnidadMedida(object sender, EventArgs e)
+        private void BuscarCategoria(object sender, EventArgs e)
         {
             try
             {
@@ -72,11 +72,11 @@ namespace PuntoVenta.Modulos.Productos
                 con.ConnectionString = Conexion.ConexionMaestra.conexion;
                 con.Open();
 
-                da = new SqlDataAdapter("sp_umedida_buscar", con);
+                da = new SqlDataAdapter("sp_categoria_buscar", con);
                 da.SelectCommand.CommandType = CommandType.StoredProcedure;
                 da.SelectCommand.Parameters.AddWithValue("@texto", TxtBusqueda.Text);
                 da.Fill(dt);
-                datalistadoMedidas.DataSource = dt;
+                datalistadoCategorias.DataSource = dt;
                 con.Close();
                 ocultar_columnas();
             }
@@ -86,21 +86,21 @@ namespace PuntoVenta.Modulos.Productos
             }
         }
 
-        private void EliminarUnidadMedida(object sender, DataGridViewCellEventArgs e)
+        private void EliminarCategoria(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == this.datalistadoMedidas.Columns["Eliminar"].Index)
+            if (e.ColumnIndex == this.datalistadoCategorias.Columns["Eliminar"].Index)
             {
                 DialogResult result;
-                result = MessageBox.Show("¿Está seguro de eliminar esta unidad de medida del sistema?", "Eliminando registro...", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                result = MessageBox.Show("¿Está seguro de eliminar esta categoría del sistema?", "Eliminando registro...", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 if (result == DialogResult.OK)
                 {
                     SqlCommand cmd;
                     try
                     {
-                        foreach (DataGridViewRow row in datalistadoMedidas.SelectedRows)
+                        foreach (DataGridViewRow row in datalistadoCategorias.SelectedRows)
                         {
-                            int onekey = Convert.ToInt32(row.Cells["idUMedida"].Value);
+                            int onekey = Convert.ToInt32(row.Cells["idCategoria"].Value);
 
                             try
                             {
@@ -109,10 +109,10 @@ namespace PuntoVenta.Modulos.Productos
                                     SqlConnection con = new SqlConnection();
                                     con.ConnectionString = Conexion.ConexionMaestra.conexion;
                                     con.Open();
-                                    cmd = new SqlCommand("sp_umedida_eliminar", con);
+                                    cmd = new SqlCommand("sp_categoria_eliminar", con);
                                     cmd.CommandType = CommandType.StoredProcedure;
 
-                                    cmd.Parameters.AddWithValue("@idUMedida", onekey);
+                                    cmd.Parameters.AddWithValue("@idCategoria", onekey);
                                     cmd.ExecuteNonQuery();
 
                                     con.Close();
@@ -129,7 +129,7 @@ namespace PuntoVenta.Modulos.Productos
                                 MessageBox.Show(ex.Message);
                             }
                         }
-                        mostrarUnidadesMedidas();
+                        mostrarCategorias();
                     }
                     catch (Exception ex)
                     {
@@ -139,30 +139,30 @@ namespace PuntoVenta.Modulos.Productos
             }
         }
 
-        private void EditarUnidadMedida(object sender, DataGridViewCellEventArgs e)
+        private void EditarCategoria(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == this.datalistadoMedidas.Columns["Editar"].Index)
+            if (e.ColumnIndex == this.datalistadoCategorias.Columns["Editar"].Index)
             {
                 BtnGuardar.Visible = false;
                 BtnGuardarCambios.Visible = true;
-                ObtenerDatosUnidadesMedidas();
+                ObtenerDatosCategorias();
             }
         }
 
-        private void EditarUnidadMedida2(object sender, DataGridViewCellEventArgs e)
+        private void EditarCategoria2(object sender, DataGridViewCellEventArgs e)
         {
             BtnGuardar.Visible = false;
             BtnGuardarCambios.Visible = true;
-            ObtenerDatosUnidadesMedidas();
+            ObtenerDatosCategorias();
         }
 
-        private void ObtenerDatosUnidadesMedidas()
+        private void ObtenerDatosCategorias()
         {
             try
             {
-                idUMedida = Convert.ToInt32(datalistadoMedidas.SelectedCells[2].Value.ToString());
-                TxtAbrev.Text = datalistadoMedidas.SelectedCells[3].Value.ToString();
-                TxtDescripcion.Text = datalistadoMedidas.SelectedCells[4].Value.ToString();
+                idCategoria = Convert.ToInt32(datalistadoCategorias.SelectedCells[2].Value.ToString());
+                TxtNombre.Text = datalistadoCategorias.SelectedCells[3].Value.ToString();
+                TxtDescripcion.Text = datalistadoCategorias.SelectedCells[4].Value.ToString();
 
                 TxtBusqueda.Visible = false;
                 menuStrip1.Visible = false;
@@ -175,7 +175,7 @@ namespace PuntoVenta.Modulos.Productos
             }
         }
 
-        private void CrearUnidadMedida(object sender, EventArgs e)
+        private void CrearCategoria(object sender, EventArgs e)
         {
             TxtBusqueda.Visible = false;
             menuStrip1.Visible = false;
@@ -187,7 +187,7 @@ namespace PuntoVenta.Modulos.Productos
 
         private void limpiar()
         {
-            TxtAbrev.Clear();
+            TxtNombre.Clear();
             TxtDescripcion.Clear();
             BtnGuardar.Visible = true;
         }
@@ -200,16 +200,16 @@ namespace PuntoVenta.Modulos.Productos
             BtnNuevo.Visible = true;
         }
 
-        private void GuardarUnidadMedida(object sender, EventArgs e)
+        private void GuardarCategoria(object sender, EventArgs e)
         {
             try
             {
-                if (TxtAbrev.Text != "")
+                if (TxtNombre.Text != "")
                 {
 
                     if (TxtDescripcion.Text == "")
                     {
-                        TxtDescripcion.Text = "Unidad de Medida " + TxtAbrev.Text;
+                        TxtDescripcion.Text = "Categoria "+TxtNombre.Text;
                     }
                     try
                     {
@@ -217,13 +217,13 @@ namespace PuntoVenta.Modulos.Productos
                         con.ConnectionString = Conexion.ConexionMaestra.conexion;
                         con.Open();
                         SqlCommand cmd = new SqlCommand();
-                        cmd = new SqlCommand("sp_umedida_insertar", con);
+                        cmd = new SqlCommand("sp_categoria_insertar", con);
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Abreviacion", TxtAbrev.Text);
+                        cmd.Parameters.AddWithValue("@Nombre", TxtNombre.Text);
                         cmd.Parameters.AddWithValue("@Descripcion", TxtDescripcion.Text);
                         cmd.ExecuteNonQuery();
                         con.Close();
-                        mostrarUnidadesMedidas();
+                        mostrarCategorias();
                         PanelRegistro.Visible = false;
                         TxtBusqueda.Visible = true;
                         menuStrip1.Visible = true;
@@ -246,12 +246,11 @@ namespace PuntoVenta.Modulos.Productos
         {
             try
             {
-                if (TxtAbrev.Text != "")
+                if (TxtNombre.Text != "")
                 {
-
                     if (TxtDescripcion.Text == "")
                     {
-                        TxtDescripcion.Text = "Unidad de Medida " + TxtAbrev.Text;
+                        TxtDescripcion.Text = "Categoria " + TxtNombre.Text;
                     }
                     try
                     {
@@ -259,14 +258,14 @@ namespace PuntoVenta.Modulos.Productos
                         con.ConnectionString = Conexion.ConexionMaestra.conexion;
                         con.Open();
                         SqlCommand cmd = new SqlCommand();
-                        cmd = new SqlCommand("sp_umedida_editar", con);
+                        cmd = new SqlCommand("sp_categoria_editar", con);
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@idUMedida", idUMedida);
-                        cmd.Parameters.AddWithValue("@Abreviacion", TxtAbrev.Text);
+                        cmd.Parameters.AddWithValue("@idCategoria", idCategoria);
+                        cmd.Parameters.AddWithValue("@Nombre", TxtNombre.Text);
                         cmd.Parameters.AddWithValue("@Descripcion", TxtDescripcion.Text);
                         cmd.ExecuteNonQuery();
                         con.Close();
-                        mostrarUnidadesMedidas();
+                        mostrarCategorias();
                         PanelRegistro.Visible = false;
                         TxtBusqueda.Visible = true;
                         menuStrip1.Visible = true;
