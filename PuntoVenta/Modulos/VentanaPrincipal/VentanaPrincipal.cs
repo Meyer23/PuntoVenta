@@ -63,5 +63,12 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         {
 
         }
+
+        private void MenuFacuras_Click(object sender, EventArgs e)
+        {
+            Facturas frm_facturas = new Facturas();
+
+            frm_facturas.ShowDialog();
+        }
     }
 }

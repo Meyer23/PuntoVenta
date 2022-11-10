@@ -35,12 +35,13 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuUnidadesMedidas = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuProductos = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuCategorias = new System.Windows.Forms.ToolStripMenuItem();
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuProveedores = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuCategorias = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuFacturas = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,6 +98,13 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.MenuProductos.Text = "Productos";
             this.MenuProductos.Click += new System.EventHandler(this.MenuProductos_Click);
             // 
+            // MenuCategorias
+            // 
+            this.MenuCategorias.Name = "MenuCategorias";
+            this.MenuCategorias.Size = new System.Drawing.Size(182, 22);
+            this.MenuCategorias.Text = "Categorías";
+            this.MenuCategorias.Click += new System.EventHandler(this.MenuCategorias_Click);
+            // 
             // stockToolStripMenuItem
             // 
             this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
@@ -106,7 +114,8 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // ventasToolStripMenuItem
             // 
             this.ventasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuClientes});
+            this.MenuClientes,
+            this.MenuFacturas});
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
             this.ventasToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ventasToolStripMenuItem.Text = "Ventas";
@@ -114,7 +123,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // MenuClientes
             // 
             this.MenuClientes.Name = "MenuClientes";
-            this.MenuClientes.Size = new System.Drawing.Size(116, 22);
+            this.MenuClientes.Size = new System.Drawing.Size(180, 22);
             this.MenuClientes.Text = "Clientes";
             this.MenuClientes.Click += new System.EventHandler(this.MenuClientes_Click);
             // 
@@ -133,12 +142,12 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.MenuProveedores.Text = "Proveedores";
             this.MenuProveedores.Click += new System.EventHandler(this.MenuProveedores_Click);
             // 
-            // MenuCategorias
+            // MenuFacturas
             // 
-            this.MenuCategorias.Name = "MenuCategorias";
-            this.MenuCategorias.Size = new System.Drawing.Size(182, 22);
-            this.MenuCategorias.Text = "Categorías";
-            this.MenuCategorias.Click += new System.EventHandler(this.MenuCategorias_Click);
+            this.MenuFacturas.Name = "MenuFacturas";
+            this.MenuFacturas.Size = new System.Drawing.Size(180, 22);
+            this.MenuFacturas.Text = "Facturas";
+            this.MenuFacturas.Click += new System.EventHandler(this.MenuFacuras_Click);
             // 
             // VentanaPrincipal
             // 
@@ -171,5 +180,6 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         private System.Windows.Forms.ToolStripMenuItem MenuUnidadesMedidas;
         private System.Windows.Forms.ToolStripMenuItem MenuProductos;
         private System.Windows.Forms.ToolStripMenuItem MenuCategorias;
+        private System.Windows.Forms.ToolStripMenuItem MenuFacturas;
     }
 }
