@@ -10,9 +10,9 @@ using PuntoVenta.Modulos.Productos;
 
 namespace PuntoVenta.Modulos.Productos
 {
-    public partial class Productos : Form
+    public partial class Producto : Form
     {
-        public Productos()
+        public Producto()
         {
             InitializeComponent();
         }

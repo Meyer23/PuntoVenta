@@ -33,12 +33,14 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.administraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuUnidadesMedidas = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuProductos = new System.Windows.Forms.ToolStripMenuItem();
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuProveedores = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuCategorias = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,9 +75,27 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // 
             // configuraciónToolStripMenuItem
             // 
+            this.configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuUnidadesMedidas,
+            this.MenuProductos,
+            this.MenuCategorias});
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
+            // 
+            // MenuUnidadesMedidas
+            // 
+            this.MenuUnidadesMedidas.Name = "MenuUnidadesMedidas";
+            this.MenuUnidadesMedidas.Size = new System.Drawing.Size(182, 22);
+            this.MenuUnidadesMedidas.Text = "Unidades de medida";
+            this.MenuUnidadesMedidas.Click += new System.EventHandler(this.MenuUnidadesMedidas_Click);
+            // 
+            // MenuProductos
+            // 
+            this.MenuProductos.Name = "MenuProductos";
+            this.MenuProductos.Size = new System.Drawing.Size(182, 22);
+            this.MenuProductos.Text = "Productos";
+            this.MenuProductos.Click += new System.EventHandler(this.MenuProductos_Click);
             // 
             // stockToolStripMenuItem
             // 
@@ -109,16 +129,16 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // MenuProveedores
             // 
             this.MenuProveedores.Name = "MenuProveedores";
-            this.MenuProveedores.Size = new System.Drawing.Size(180, 22);
+            this.MenuProveedores.Size = new System.Drawing.Size(139, 22);
             this.MenuProveedores.Text = "Proveedores";
             this.MenuProveedores.Click += new System.EventHandler(this.MenuProveedores_Click);
             // 
-            // MenuClientes
+            // MenuCategorias
             // 
-            this.MenuClientes.Name = "MenuClientes";
-            this.MenuClientes.Size = new System.Drawing.Size(180, 22);
-            this.MenuClientes.Text = "Clientes";
-            this.MenuClientes.Click += new System.EventHandler(this.MenuClientes_Click);
+            this.MenuCategorias.Name = "MenuCategorias";
+            this.MenuCategorias.Size = new System.Drawing.Size(182, 22);
+            this.MenuCategorias.Text = "Categorías";
+            this.MenuCategorias.Click += new System.EventHandler(this.MenuCategorias_Click);
             // 
             // VentanaPrincipal
             // 
@@ -129,6 +149,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "VentanaPrincipal";
             this.Text = "Sistema de Gestión Ferretería Portillo";
+            this.Load += new System.EventHandler(this.VentanaPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -147,5 +168,8 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         private System.Windows.Forms.ToolStripMenuItem comprasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MenuProveedores;
         private System.Windows.Forms.ToolStripMenuItem MenuClientes;
+        private System.Windows.Forms.ToolStripMenuItem MenuUnidadesMedidas;
+        private System.Windows.Forms.ToolStripMenuItem MenuProductos;
+        private System.Windows.Forms.ToolStripMenuItem MenuCategorias;
     }
 }

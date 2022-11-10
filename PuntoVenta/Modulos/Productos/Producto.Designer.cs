@@ -1,7 +1,7 @@
 ﻿
 namespace PuntoVenta.Modulos.Productos
 {
-    partial class Productos
+    partial class Producto
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace PuntoVenta.Modulos.Productos
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Productos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Producto));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelEncabezado = new System.Windows.Forms.Panel();
             this.datalistado = new System.Windows.Forms.DataGridView();

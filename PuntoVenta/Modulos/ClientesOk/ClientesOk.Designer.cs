@@ -168,6 +168,7 @@ namespace PuntoVenta.Modulos
             this.idUsuario_Label.Size = new System.Drawing.Size(38, 15);
             this.idUsuario_Label.TabIndex = 17;
             this.idUsuario_Label.Text = "label1";
+            this.idUsuario_Label.Visible = false;
             // 
             // BtnGuardarEditado
             // 
