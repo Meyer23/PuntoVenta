@@ -7,26 +7,18 @@ namespace PuntoVenta.Modulos
 {
     public partial class Facturas : Form
     {
+        private DataTable dt; 
         public Facturas()
         {
             InitializeComponent();
-            MostrarDataGridViewFactura();
-        }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void MostrarDataGridViewFactura()
-        {
             try
             {
-                DataTable dt = new DataTable();
+                dt = new DataTable();
                 dt.Columns.Add("Código", typeof(Int32));
-                dt.Columns.Add("Descripción", typeof(String));
+                dt.Columns.Add("Producto", typeof(String));
                 dt.Columns.Add("Precio", typeof(Decimal));
-                dt.Columns.Add("Cantidad", typeof(Int16));
+                dt.Columns.Add("Cantidad", typeof(Decimal));
                 dt.Columns.Add("Total", typeof(Decimal));
 
                 ItemsDataGridView.DataSource = dt;
@@ -35,9 +27,14 @@ namespace PuntoVenta.Modulos
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
 
         private void LeerTextBoxRUC(object sender, EventArgs e)
         {
@@ -70,6 +67,57 @@ namespace PuntoVenta.Modulos
                 LabelRuc.Show();
                 TxtRUC.Show();
             }
+        }
+
+        private void BtnAgregarProducto_Click(object sender, EventArgs e)
+        {
+            var result = ConsultarProducto(TxtCodigoProducto.Text);
+            DataRow row = dt.NewRow();
+            row["Total"] = Int32.Parse(TxtCantidad.Text) * decimal.Parse(result.Item2);
+            row["Producto"] = result.Item1;
+            row["Código"] = TxtCodigoProducto.Text;
+            row["Cantidad"] = TxtCantidad.Text;
+            row["Precio"] = decimal.Parse(result.Item2); 
+            dt.Rows.Add(row);
+        }
+
+        public Tuple<string, string> ConsultarProducto(string codigo)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = Conexion.ConexionMaestra.conexion;
+            con.Open();
+            string query = "select Descripcion, Precio from dbo.Productos where Codigo = '" + codigo + "'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader reg = cmd.ExecuteReader();
+            if (reg.Read())
+            {
+                return Tuple.Create(reg["Descripcion"].ToString(), (reg["Precio"].ToString()));
+            }
+            else
+            {
+                return Tuple.Create("Null", "");
+            }
+            con.Close();
+
+            
+        }
+
+        private void LeerTxtCodigoProducto(object sender, EventArgs e)
+        {
+            TxtCodigoProducto.Clear();
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = Conexion.ConexionMaestra.conexion;
+            SqlCommand cmd = new SqlCommand("SELECT Codigo FROM DBO.PRODUCTOS", con);
+            con.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            AutoCompleteStringCollection myCollection = new AutoCompleteStringCollection();
+
+            while (dr.Read())
+            {
+                myCollection.Add(dr.GetString(0));
+            }
+            TxtCodigoProducto.AutoCompleteCustomSource = myCollection;
+            con.Close();
         }
     }
 }
