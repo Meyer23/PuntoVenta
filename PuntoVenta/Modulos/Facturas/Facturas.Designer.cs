@@ -311,7 +311,7 @@ namespace PuntoVenta.Modulos
             // 
             // BtnFacturar
             // 
-            this.BtnFacturar.Location = new System.Drawing.Point(610, 444);
+            this.BtnFacturar.Location = new System.Drawing.Point(581, 457);
             this.BtnFacturar.Name = "BtnFacturar";
             this.BtnFacturar.Size = new System.Drawing.Size(131, 48);
             this.BtnFacturar.TabIndex = 7;
@@ -322,7 +322,7 @@ namespace PuntoVenta.Modulos
             // 
             this.Label_Total.AutoSize = true;
             this.Label_Total.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Label_Total.Location = new System.Drawing.Point(610, 366);
+            this.Label_Total.Location = new System.Drawing.Point(581, 367);
             this.Label_Total.Name = "Label_Total";
             this.Label_Total.Size = new System.Drawing.Size(52, 21);
             this.Label_Total.TabIndex = 10;
@@ -332,7 +332,7 @@ namespace PuntoVenta.Modulos
             // 
             this.ValorTotal.AutoSize = true;
             this.ValorTotal.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ValorTotal.Location = new System.Drawing.Point(610, 387);
+            this.ValorTotal.Location = new System.Drawing.Point(581, 388);
             this.ValorTotal.Name = "ValorTotal";
             this.ValorTotal.Size = new System.Drawing.Size(76, 54);
             this.ValorTotal.TabIndex = 11;
@@ -341,7 +341,7 @@ namespace PuntoVenta.Modulos
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(610, 262);
+            this.pictureBox1.Location = new System.Drawing.Point(581, 262);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(131, 92);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -352,7 +352,7 @@ namespace PuntoVenta.Modulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 580);
+            this.ClientSize = new System.Drawing.Size(957, 580);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ValorTotal);
             this.Controls.Add(this.Label_Total);

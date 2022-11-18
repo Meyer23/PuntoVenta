@@ -7,7 +7,9 @@ namespace PuntoVenta.Modulos
 {
     public partial class Facturas : Form
     {
-        private DataTable dt; 
+        private DataTable dt;
+        private decimal total = 0;
+
         public Facturas()
         {
             InitializeComponent();
@@ -35,6 +37,23 @@ namespace PuntoVenta.Modulos
 
         }
 
+        public Tuple<string> ObtenerCliente(string ruc)
+        {
+            string resultado = "";
+            ruc = TxtRUC.Text;
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = Conexion.ConexionMaestra.conexion;
+            con.Open();
+            string query = "select Nombre from dbo.Clientes where RUC_CI = '" + ruc + "'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader reg = cmd.ExecuteReader();
+            if (reg.Read())
+            {
+                resultado =  reg["Nombre"].ToString();
+            }
+            con.Close();
+            return Tuple.Create(resultado);
+        }
 
         private void LeerTextBoxRUC(object sender, EventArgs e)
         {
@@ -51,11 +70,14 @@ namespace PuntoVenta.Modulos
                 myCollection.Add(dr.GetString(0));
             }
             TxtRUC.AutoCompleteCustomSource = myCollection;
+            var completarNombre = ObtenerCliente(TxtRUC.Text);
+            TxtRazonSocial.Text = completarNombre.Item1;
             con.Close();
         }
 
         private void ComboBoxChange(object sender, EventArgs e)
         {
+            TxtRazonSocial.Clear();
             if(TxtCliente.Text.Contains("CLIENTES CASUALES"))
             {
                 LabelRuc.Hide();
@@ -79,10 +101,14 @@ namespace PuntoVenta.Modulos
             row["Cantidad"] = TxtCantidad.Text;
             row["Precio"] = decimal.Parse(result.Item2); 
             dt.Rows.Add(row);
+
+            total += Int32.Parse(TxtCantidad.Text) * decimal.Parse(result.Item2);
+            ValorTotal.Text = total.ToString() + " Gs.";
         }
 
         public Tuple<string, string> ConsultarProducto(string codigo)
         {
+
             SqlConnection con = new SqlConnection();
             con.ConnectionString = Conexion.ConexionMaestra.conexion;
             con.Open();
@@ -95,16 +121,14 @@ namespace PuntoVenta.Modulos
             }
             else
             {
-                return Tuple.Create("Null", "");
+                return Tuple.Create("", "");
             }
-            con.Close();
 
             
         }
 
         private void LeerTxtCodigoProducto(object sender, EventArgs e)
         {
-            TxtCodigoProducto.Clear();
             SqlConnection con = new SqlConnection();
             con.ConnectionString = Conexion.ConexionMaestra.conexion;
             SqlCommand cmd = new SqlCommand("SELECT Codigo FROM DBO.PRODUCTOS", con);
@@ -117,6 +141,9 @@ namespace PuntoVenta.Modulos
                 myCollection.Add(dr.GetString(0));
             }
             TxtCodigoProducto.AutoCompleteCustomSource = myCollection;
+            var NombreProducto = ConsultarProducto(TxtCodigoProducto.Text);
+            TxtNombreProducto.Text = NombreProducto.Item1;
+
             con.Close();
         }
     }
