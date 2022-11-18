@@ -131,7 +131,7 @@ namespace PuntoVenta.Modulos
         {
             SqlConnection con = new SqlConnection();
             con.ConnectionString = Conexion.ConexionMaestra.conexion;
-            SqlCommand cmd = new SqlCommand("SELECT Codigo FROM DBO.PRODUCTOS", con);
+            SqlCommand cmd = new SqlCommand("SELECT Codigo FROM DBO.PRODUCTOS where Existencia > 0 and Estado = 'ACTIVO'", con);
             con.Open();
             SqlDataReader dr = cmd.ExecuteReader();
             AutoCompleteStringCollection myCollection = new AutoCompleteStringCollection();
