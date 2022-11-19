@@ -95,5 +95,21 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
                 frm_caja.ShowDialog();
             }
         }
+
+        private void AdministrarCaja_Click(object sender, EventArgs e)
+        {
+            Facturas frm_facturas = new Facturas();
+
+            var estadoCaja = frm_facturas.ConsultarCaja().Item1;
+            if (estadoCaja == "ACTIVO")
+            {
+                AdministrarCaja form_administrarCaja = new AdministrarCaja();
+                form_administrarCaja.ShowDialog(); 
+            }
+            else
+            {
+                MessageBox.Show("No existe una caja activa ahora mismo.");
+            }
+        }
     }
 }

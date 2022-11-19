@@ -40,9 +40,10 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuFacturas = new System.Windows.Forms.ToolStripMenuItem();
+            this.MeuCaja = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuProveedores = new System.Windows.Forms.ToolStripMenuItem();
-            this.MeuCaja = new System.Windows.Forms.ToolStripMenuItem();
+            this.AdministrarCaja = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,6 +137,15 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.MenuFacturas.Text = "Facturas";
             this.MenuFacturas.Click += new System.EventHandler(this.MenuFacuras_Click);
             // 
+            // MeuCaja
+            // 
+            this.MeuCaja.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AdministrarCaja});
+            this.MeuCaja.Name = "MeuCaja";
+            this.MeuCaja.Size = new System.Drawing.Size(180, 22);
+            this.MeuCaja.Text = "Caja";
+            this.MeuCaja.Click += new System.EventHandler(this.MeuCaja_Click);
+            // 
             // comprasToolStripMenuItem
             // 
             this.comprasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -151,12 +161,12 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.MenuProveedores.Text = "Proveedores";
             this.MenuProveedores.Click += new System.EventHandler(this.MenuProveedores_Click);
             // 
-            // MeuCaja
+            // AdministrarCaja
             // 
-            this.MeuCaja.Name = "MeuCaja";
-            this.MeuCaja.Size = new System.Drawing.Size(180, 22);
-            this.MeuCaja.Text = "Caja";
-            this.MeuCaja.Click += new System.EventHandler(this.MeuCaja_Click);
+            this.AdministrarCaja.Name = "AdministrarCaja";
+            this.AdministrarCaja.Size = new System.Drawing.Size(180, 22);
+            this.AdministrarCaja.Text = "Administrar";
+            this.AdministrarCaja.Click += new System.EventHandler(this.AdministrarCaja_Click);
             // 
             // VentanaPrincipal
             // 
@@ -191,5 +201,6 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         private System.Windows.Forms.ToolStripMenuItem MenuCategorias;
         private System.Windows.Forms.ToolStripMenuItem MenuFacturas;
         private System.Windows.Forms.ToolStripMenuItem MeuCaja;
+        private System.Windows.Forms.ToolStripMenuItem AdministrarCaja;
     }
 }
