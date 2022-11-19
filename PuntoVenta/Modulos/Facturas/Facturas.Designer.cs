@@ -58,6 +58,10 @@ namespace PuntoVenta.Modulos
             this.Label_Total = new System.Windows.Forms.Label();
             this.ValorTotal = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Label_Caja = new System.Windows.Forms.Label();
+            this.TxtCajaEstado = new System.Windows.Forms.TextBox();
+            this.Label_idCaja = new System.Windows.Forms.Label();
+            this.TxtIdCaja = new System.Windows.Forms.TextBox();
             this.PanelFactura.SuspendLayout();
             this.panel1.SuspendLayout();
             this.PanelTituloFactura.SuspendLayout();
@@ -188,6 +192,7 @@ namespace PuntoVenta.Modulos
             // 
             // TxtFecha
             // 
+            this.TxtFecha.Enabled = false;
             this.TxtFecha.Location = new System.Drawing.Point(307, 71);
             this.TxtFecha.Name = "TxtFecha";
             this.TxtFecha.Size = new System.Drawing.Size(165, 23);
@@ -348,11 +353,51 @@ namespace PuntoVenta.Modulos
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
+            // Label_Caja
+            // 
+            this.Label_Caja.AutoSize = true;
+            this.Label_Caja.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label_Caja.Location = new System.Drawing.Point(718, 262);
+            this.Label_Caja.Name = "Label_Caja";
+            this.Label_Caja.Size = new System.Drawing.Size(47, 21);
+            this.Label_Caja.TabIndex = 13;
+            this.Label_Caja.Text = "Caja: ";
+            // 
+            // TxtCajaEstado
+            // 
+            this.TxtCajaEstado.Enabled = false;
+            this.TxtCajaEstado.Location = new System.Drawing.Point(780, 260);
+            this.TxtCajaEstado.Name = "TxtCajaEstado";
+            this.TxtCajaEstado.Size = new System.Drawing.Size(100, 23);
+            this.TxtCajaEstado.TabIndex = 14;
+            // 
+            // Label_idCaja
+            // 
+            this.Label_idCaja.AutoSize = true;
+            this.Label_idCaja.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label_idCaja.Location = new System.Drawing.Point(718, 302);
+            this.Label_idCaja.Name = "Label_idCaja";
+            this.Label_idCaja.Size = new System.Drawing.Size(60, 21);
+            this.Label_idCaja.TabIndex = 15;
+            this.Label_idCaja.Text = "Id Caja:";
+            // 
+            // TxtIdCaja
+            // 
+            this.TxtIdCaja.Enabled = false;
+            this.TxtIdCaja.Location = new System.Drawing.Point(780, 300);
+            this.TxtIdCaja.Name = "TxtIdCaja";
+            this.TxtIdCaja.Size = new System.Drawing.Size(100, 23);
+            this.TxtIdCaja.TabIndex = 16;
+            // 
             // Facturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(957, 580);
+            this.Controls.Add(this.TxtIdCaja);
+            this.Controls.Add(this.Label_idCaja);
+            this.Controls.Add(this.TxtCajaEstado);
+            this.Controls.Add(this.Label_Caja);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ValorTotal);
             this.Controls.Add(this.Label_Total);
@@ -406,5 +451,9 @@ namespace PuntoVenta.Modulos
         private System.Windows.Forms.Label ValorTotal;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox TxtCantidad;
+        private System.Windows.Forms.Label Label_Caja;
+        private System.Windows.Forms.TextBox TxtCajaEstado;
+        private System.Windows.Forms.Label Label_idCaja;
+        private System.Windows.Forms.TextBox TxtIdCaja;
     }
 }

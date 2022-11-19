@@ -39,9 +39,10 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuFacturas = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuProveedores = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuFacturas = new System.Windows.Forms.ToolStripMenuItem();
+            this.MeuCaja = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,7 +116,8 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // 
             this.ventasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuClientes,
-            this.MenuFacturas});
+            this.MenuFacturas,
+            this.MeuCaja});
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
             this.ventasToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ventasToolStripMenuItem.Text = "Ventas";
@@ -126,6 +128,13 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.MenuClientes.Size = new System.Drawing.Size(180, 22);
             this.MenuClientes.Text = "Clientes";
             this.MenuClientes.Click += new System.EventHandler(this.MenuClientes_Click);
+            // 
+            // MenuFacturas
+            // 
+            this.MenuFacturas.Name = "MenuFacturas";
+            this.MenuFacturas.Size = new System.Drawing.Size(180, 22);
+            this.MenuFacturas.Text = "Facturas";
+            this.MenuFacturas.Click += new System.EventHandler(this.MenuFacuras_Click);
             // 
             // comprasToolStripMenuItem
             // 
@@ -142,12 +151,12 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.MenuProveedores.Text = "Proveedores";
             this.MenuProveedores.Click += new System.EventHandler(this.MenuProveedores_Click);
             // 
-            // MenuFacturas
+            // MeuCaja
             // 
-            this.MenuFacturas.Name = "MenuFacturas";
-            this.MenuFacturas.Size = new System.Drawing.Size(180, 22);
-            this.MenuFacturas.Text = "Facturas";
-            this.MenuFacturas.Click += new System.EventHandler(this.MenuFacuras_Click);
+            this.MeuCaja.Name = "MeuCaja";
+            this.MeuCaja.Size = new System.Drawing.Size(180, 22);
+            this.MeuCaja.Text = "Caja";
+            this.MeuCaja.Click += new System.EventHandler(this.MeuCaja_Click);
             // 
             // VentanaPrincipal
             // 
@@ -181,5 +190,6 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         private System.Windows.Forms.ToolStripMenuItem MenuProductos;
         private System.Windows.Forms.ToolStripMenuItem MenuCategorias;
         private System.Windows.Forms.ToolStripMenuItem MenuFacturas;
+        private System.Windows.Forms.ToolStripMenuItem MeuCaja;
     }
 }

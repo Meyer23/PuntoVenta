@@ -68,7 +68,32 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         {
             Facturas frm_facturas = new Facturas();
 
-            frm_facturas.ShowDialog();
+            var estadoCaja = frm_facturas.ConsultarCaja().Item1;
+            if(estadoCaja == "ACTIVO")
+            {
+                frm_facturas.Show();
+                frm_facturas.MostrarEstadoCaja();
+            }
+            else
+            {
+                MessageBox.Show("Debe iniciar la caja para efectuar ventas.");
+            }
+        }
+
+        private void MeuCaja_Click(object sender, EventArgs e)
+        {
+            Facturas frm_facturas = new Facturas();
+
+            var estadoCaja = frm_facturas.ConsultarCaja().Item1;
+            if (estadoCaja == "ACTIVO")
+            {
+                MessageBox.Show("Ya existe una caja activa actualmente, debe cerrarla para abrir otra."); 
+            }
+            else
+            {
+                Caja frm_caja = new Caja();
+                frm_caja.ShowDialog();
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 namespace PuntoVenta
 {
     static class Program
@@ -21,6 +22,7 @@ namespace PuntoVenta
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new VentanaPrincipal());
+            //Application.Run(new Caja());
         }
     }
 }

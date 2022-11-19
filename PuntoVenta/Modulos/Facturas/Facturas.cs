@@ -123,8 +123,6 @@ namespace PuntoVenta.Modulos
             {
                 return Tuple.Create("", "");
             }
-
-            
         }
 
         private void LeerTxtCodigoProducto(object sender, EventArgs e)
@@ -145,6 +143,33 @@ namespace PuntoVenta.Modulos
             TxtNombreProducto.Text = NombreProducto.Item1;
 
             con.Close();
+        }
+
+        public Tuple<string, string, string> ConsultarCaja()
+        {
+
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = Conexion.ConexionMaestra.conexion;
+            con.Open();
+            string query = "SELECT Estado, idCaja, montocierre from dbo.Caja where Estado = 'ACTIVO'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader reg = cmd.ExecuteReader();
+            if (reg.Read())
+            {
+                return Tuple.Create(reg["Estado"].ToString(), reg["idCaja"].ToString(), reg["montoCierre"].ToString());
+
+            }
+            else
+            {
+                return Tuple.Create("","", "");
+            }
+        }
+        public void MostrarEstadoCaja()
+        {
+            var EstadoCaja = ConsultarCaja().Item1;
+            var idCaja = ConsultarCaja().Item2;
+            TxtCajaEstado.Text = EstadoCaja;
+            TxtIdCaja.Text = idCaja; 
         }
     }
 }
