@@ -31,12 +31,12 @@ namespace PuntoVenta.Modulos
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Caja));
             this.PanelCaja = new System.Windows.Forms.Panel();
-            this.LabelMontoInicial = new System.Windows.Forms.Label();
-            this.LabelHoraApertura = new System.Windows.Forms.Label();
-            this.TxtMontoInicial = new System.Windows.Forms.TextBox();
-            this.LabelGuaranies = new System.Windows.Forms.Label();
-            this.TxtFechaHora = new System.Windows.Forms.DateTimePicker();
             this.BtnIniciarCaja = new System.Windows.Forms.Button();
+            this.TxtFechaHora = new System.Windows.Forms.DateTimePicker();
+            this.LabelGuaranies = new System.Windows.Forms.Label();
+            this.TxtMontoInicial = new System.Windows.Forms.TextBox();
+            this.LabelHoraApertura = new System.Windows.Forms.Label();
+            this.LabelMontoInicial = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PanelCaja.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -55,30 +55,23 @@ namespace PuntoVenta.Modulos
             this.PanelCaja.Size = new System.Drawing.Size(348, 188);
             this.PanelCaja.TabIndex = 0;
             // 
-            // LabelMontoInicial
+            // BtnIniciarCaja
             // 
-            this.LabelMontoInicial.AutoSize = true;
-            this.LabelMontoInicial.Location = new System.Drawing.Point(30, 28);
-            this.LabelMontoInicial.Name = "LabelMontoInicial";
-            this.LabelMontoInicial.Size = new System.Drawing.Size(80, 15);
-            this.LabelMontoInicial.TabIndex = 0;
-            this.LabelMontoInicial.Text = "Monto Inicial:";
+            this.BtnIniciarCaja.Location = new System.Drawing.Point(116, 130);
+            this.BtnIniciarCaja.Name = "BtnIniciarCaja";
+            this.BtnIniciarCaja.Size = new System.Drawing.Size(135, 23);
+            this.BtnIniciarCaja.TabIndex = 8;
+            this.BtnIniciarCaja.Text = "Iniciar Caja";
+            this.BtnIniciarCaja.UseVisualStyleBackColor = true;
+            this.BtnIniciarCaja.Click += new System.EventHandler(this.BtnIniciarCaja_Click);
             // 
-            // LabelHoraApertura
+            // TxtFechaHora
             // 
-            this.LabelHoraApertura.AutoSize = true;
-            this.LabelHoraApertura.Location = new System.Drawing.Point(74, 82);
-            this.LabelHoraApertura.Name = "LabelHoraApertura";
-            this.LabelHoraApertura.Size = new System.Drawing.Size(36, 15);
-            this.LabelHoraApertura.TabIndex = 4;
-            this.LabelHoraApertura.Text = "Hora:";
-            // 
-            // TxtMontoInicial
-            // 
-            this.TxtMontoInicial.Location = new System.Drawing.Point(116, 20);
-            this.TxtMontoInicial.Name = "TxtMontoInicial";
-            this.TxtMontoInicial.Size = new System.Drawing.Size(135, 23);
-            this.TxtMontoInicial.TabIndex = 5;
+            this.TxtFechaHora.Enabled = false;
+            this.TxtFechaHora.Location = new System.Drawing.Point(116, 76);
+            this.TxtFechaHora.Name = "TxtFechaHora";
+            this.TxtFechaHora.Size = new System.Drawing.Size(135, 23);
+            this.TxtFechaHora.TabIndex = 7;
             // 
             // LabelGuaranies
             // 
@@ -89,22 +82,30 @@ namespace PuntoVenta.Modulos
             this.LabelGuaranies.TabIndex = 6;
             this.LabelGuaranies.Text = "Gs.";
             // 
-            // TxtFechaHora
+            // TxtMontoInicial
             // 
-            this.TxtFechaHora.Location = new System.Drawing.Point(116, 76);
-            this.TxtFechaHora.Name = "TxtFechaHora";
-            this.TxtFechaHora.Size = new System.Drawing.Size(135, 23);
-            this.TxtFechaHora.TabIndex = 7;
+            this.TxtMontoInicial.Location = new System.Drawing.Point(116, 20);
+            this.TxtMontoInicial.Name = "TxtMontoInicial";
+            this.TxtMontoInicial.Size = new System.Drawing.Size(135, 23);
+            this.TxtMontoInicial.TabIndex = 5;
             // 
-            // BtnIniciarCaja
+            // LabelHoraApertura
             // 
-            this.BtnIniciarCaja.Location = new System.Drawing.Point(116, 130);
-            this.BtnIniciarCaja.Name = "BtnIniciarCaja";
-            this.BtnIniciarCaja.Size = new System.Drawing.Size(135, 23);
-            this.BtnIniciarCaja.TabIndex = 8;
-            this.BtnIniciarCaja.Text = "Iniciar Caja";
-            this.BtnIniciarCaja.UseVisualStyleBackColor = true;
-            this.BtnIniciarCaja.Click += new System.EventHandler(this.BtnIniciarCaja_Click);
+            this.LabelHoraApertura.AutoSize = true;
+            this.LabelHoraApertura.Location = new System.Drawing.Point(74, 82);
+            this.LabelHoraApertura.Name = "LabelHoraApertura";
+            this.LabelHoraApertura.Size = new System.Drawing.Size(36, 15);
+            this.LabelHoraApertura.TabIndex = 4;
+            this.LabelHoraApertura.Text = "Hora:";
+            // 
+            // LabelMontoInicial
+            // 
+            this.LabelMontoInicial.AutoSize = true;
+            this.LabelMontoInicial.Location = new System.Drawing.Point(30, 28);
+            this.LabelMontoInicial.Name = "LabelMontoInicial";
+            this.LabelMontoInicial.Size = new System.Drawing.Size(80, 15);
+            this.LabelMontoInicial.TabIndex = 0;
+            this.LabelMontoInicial.Text = "Monto Inicial:";
             // 
             // pictureBox1
             // 
