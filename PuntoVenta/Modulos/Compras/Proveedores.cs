@@ -36,14 +36,14 @@ namespace PuntoVenta.Modulos.Compras
 
         private void limpiar()
         {
-            TxtNombre.Clear();
+            TxtContacto.Clear();
             TxtRazonSocial.Clear();
             TxtRuc.Clear();
             TxtDireccion.Clear();
             TxtTelefono.Clear();
             TxtCelular.Clear();
             TxtCorreo.Clear();
-            TxtNombre.Focus();
+            TxtContacto.Focus();
             BtnGuardar.Visible = true;
         }
 
@@ -57,7 +57,7 @@ namespace PuntoVenta.Modulos.Compras
             }
             else
             {
-                if (TxtNombre.Text != "" && TxtRuc.Text != "")
+                if (TxtContacto.Text != "" && TxtRuc.Text != "")
                 {
 
                     if (TxtDireccion.Text == "")
@@ -84,7 +84,7 @@ namespace PuntoVenta.Modulos.Compras
                         SqlCommand cmd = new SqlCommand();
                         cmd = new SqlCommand("sp_proveedor_insertar", con);
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Nombre", TxtNombre.Text);
+                        cmd.Parameters.AddWithValue("@Nombre", TxtContacto.Text);
                         cmd.Parameters.AddWithValue("@RazonSocial", TxtRazonSocial.Text);
                         cmd.Parameters.AddWithValue("@Ruc", TxtRuc.Text);
                         cmd.Parameters.AddWithValue("@Direccion", TxtDireccion.Text);
@@ -278,7 +278,7 @@ namespace PuntoVenta.Modulos.Compras
                 else
                 {
                     idProveedor = Convert.ToInt32(datalistado.SelectedCells[2].Value.ToString());
-                    TxtNombre.Text = datalistado.SelectedCells[3].Value.ToString();
+                    TxtContacto.Text = datalistado.SelectedCells[3].Value.ToString();
                     TxtRazonSocial.Text = datalistado.SelectedCells[4].Value.ToString();
                     TxtRuc.Text = datalistado.SelectedCells[5].Value.ToString();
                     TxtDireccion.Text = datalistado.SelectedCells[6].Value.ToString();
@@ -308,7 +308,7 @@ namespace PuntoVenta.Modulos.Compras
             }
             else
             {
-                if (TxtNombre.Text != "" && TxtRuc.Text != "")
+                if (TxtContacto.Text != "" && TxtRuc.Text != "")
                 {
 
                     if (TxtDireccion.Text == "")
@@ -336,7 +336,7 @@ namespace PuntoVenta.Modulos.Compras
                         cmd = new SqlCommand("sp_proveedor_editar", con);
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@idProveedor", idProveedor);
-                        cmd.Parameters.AddWithValue("@Nombre", TxtNombre.Text);
+                        cmd.Parameters.AddWithValue("@Nombre", TxtContacto.Text);
                         cmd.Parameters.AddWithValue("@RazonSocial", TxtRazonSocial.Text);
                         cmd.Parameters.AddWithValue("@Ruc", TxtRuc.Text);
                         cmd.Parameters.AddWithValue("@Direccion", TxtDireccion.Text);

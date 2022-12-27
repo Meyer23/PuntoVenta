@@ -29,17 +29,14 @@ namespace PuntoVenta.Modulos.Productos
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Categoria));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelEncabezado = new System.Windows.Forms.Panel();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.datalistadoCategorias = new System.Windows.Forms.DataGridView();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelRegistro = new System.Windows.Forms.Panel();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.LblNombre = new System.Windows.Forms.TextBox();
@@ -48,6 +45,8 @@ namespace PuntoVenta.Modulos.Productos
             this.BtnGuardar = new System.Windows.Forms.Button();
             this.TxtDescripcion = new System.Windows.Forms.TextBox();
             this.LblDescripcion = new System.Windows.Forms.Label();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelEncabezado.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistadoCategorias)).BeginInit();
@@ -108,9 +107,8 @@ namespace PuntoVenta.Modulos.Productos
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(28, 21);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 21);
             // 
             // datalistadoCategorias
             // 
@@ -125,9 +123,9 @@ namespace PuntoVenta.Modulos.Productos
             this.datalistadoCategorias.Location = new System.Drawing.Point(0, 49);
             this.datalistadoCategorias.Name = "datalistadoCategorias";
             this.datalistadoCategorias.ReadOnly = true;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.datalistadoCategorias.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.datalistadoCategorias.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.datalistadoCategorias.RowTemplate.Height = 25;
             this.datalistadoCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datalistadoCategorias.Size = new System.Drawing.Size(736, 160);
@@ -135,24 +133,6 @@ namespace PuntoVenta.Modulos.Productos
             this.datalistadoCategorias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EliminarCategoria);
             this.datalistadoCategorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarCategoria);
             this.datalistadoCategorias.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarCategoria2);
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "";
-            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
             // 
             // PanelRegistro
             // 
@@ -250,16 +230,33 @@ namespace PuntoVenta.Modulos.Productos
             this.LblDescripcion.TabIndex = 0;
             this.LblDescripcion.Text = "Descripción:";
             // 
-            // Categorias
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "";
+            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
+            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "";
+            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            // 
+            // Categoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
             this.ClientSize = new System.Drawing.Size(736, 209);
             this.Controls.Add(this.PanelRegistro);
             this.Controls.Add(this.datalistadoCategorias);
             this.Controls.Add(this.PanelEncabezado);
-            this.Name = "Categorias";
+            this.Name = "Categoria";
             this.Text = "Categorias";
             this.Load += new System.EventHandler(this.Categorias_Load);
             this.PanelEncabezado.ResumeLayout(false);
@@ -281,8 +278,6 @@ namespace PuntoVenta.Modulos.Productos
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.DataGridView datalistadoCategorias;
-        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
-        private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.Panel PanelRegistro;
         private System.Windows.Forms.TextBox TxtNombre;
         private System.Windows.Forms.TextBox LblNombre;
@@ -291,5 +286,7 @@ namespace PuntoVenta.Modulos.Productos
         private System.Windows.Forms.Button BtnGuardar;
         private System.Windows.Forms.TextBox TxtDescripcion;
         private System.Windows.Forms.Label LblDescripcion;
+        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
     }
 }

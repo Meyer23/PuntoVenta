@@ -30,7 +30,7 @@ namespace PuntoVenta.Modulos.Compras
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Proveedores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelEncabezado = new System.Windows.Forms.Panel();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
@@ -50,14 +50,14 @@ namespace PuntoVenta.Modulos.Compras
             this.TxtDireccion = new System.Windows.Forms.TextBox();
             this.TxtRuc = new System.Windows.Forms.TextBox();
             this.TxtRazonSocial = new System.Windows.Forms.TextBox();
-            this.TxtNombre = new System.Windows.Forms.TextBox();
+            this.TxtContacto = new System.Windows.Forms.TextBox();
             this.LblCorreo = new System.Windows.Forms.Label();
             this.LblCelular = new System.Windows.Forms.Label();
             this.LblTelefono = new System.Windows.Forms.Label();
             this.LblDirección = new System.Windows.Forms.Label();
             this.LblRuc = new System.Windows.Forms.Label();
             this.LblRazonSocial = new System.Windows.Forms.Label();
-            this.LblNombre = new System.Windows.Forms.Label();
+            this.LblContacto = new System.Windows.Forms.Label();
             this.PanelEncabezado.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -135,9 +135,9 @@ namespace PuntoVenta.Modulos.Compras
             this.datalistado.Location = new System.Drawing.Point(0, 49);
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.datalistado.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.datalistado.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.datalistado.RowTemplate.Height = 25;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datalistado.Size = new System.Drawing.Size(943, 401);
@@ -176,14 +176,14 @@ namespace PuntoVenta.Modulos.Compras
             this.PanelRegistro.Controls.Add(this.TxtDireccion);
             this.PanelRegistro.Controls.Add(this.TxtRuc);
             this.PanelRegistro.Controls.Add(this.TxtRazonSocial);
-            this.PanelRegistro.Controls.Add(this.TxtNombre);
+            this.PanelRegistro.Controls.Add(this.TxtContacto);
             this.PanelRegistro.Controls.Add(this.LblCorreo);
             this.PanelRegistro.Controls.Add(this.LblCelular);
             this.PanelRegistro.Controls.Add(this.LblTelefono);
             this.PanelRegistro.Controls.Add(this.LblDirección);
             this.PanelRegistro.Controls.Add(this.LblRuc);
             this.PanelRegistro.Controls.Add(this.LblRazonSocial);
-            this.PanelRegistro.Controls.Add(this.LblNombre);
+            this.PanelRegistro.Controls.Add(this.LblContacto);
             this.PanelRegistro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelRegistro.Location = new System.Drawing.Point(0, 49);
             this.PanelRegistro.Name = "PanelRegistro";
@@ -280,7 +280,7 @@ namespace PuntoVenta.Modulos.Compras
             // TxtRuc
             // 
             this.TxtRuc.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtRuc.Location = new System.Drawing.Point(104, 70);
+            this.TxtRuc.Location = new System.Drawing.Point(104, 39);
             this.TxtRuc.Name = "TxtRuc";
             this.TxtRuc.Size = new System.Drawing.Size(562, 25);
             this.TxtRuc.TabIndex = 9;
@@ -288,18 +288,18 @@ namespace PuntoVenta.Modulos.Compras
             // TxtRazonSocial
             // 
             this.TxtRazonSocial.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtRazonSocial.Location = new System.Drawing.Point(104, 40);
+            this.TxtRazonSocial.Location = new System.Drawing.Point(104, 9);
             this.TxtRazonSocial.Name = "TxtRazonSocial";
             this.TxtRazonSocial.Size = new System.Drawing.Size(562, 25);
             this.TxtRazonSocial.TabIndex = 8;
             // 
-            // TxtNombre
+            // TxtContacto
             // 
-            this.TxtNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtNombre.Location = new System.Drawing.Point(104, 10);
-            this.TxtNombre.Name = "TxtNombre";
-            this.TxtNombre.Size = new System.Drawing.Size(562, 25);
-            this.TxtNombre.TabIndex = 7;
+            this.TxtContacto.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtContacto.Location = new System.Drawing.Point(104, 69);
+            this.TxtContacto.Name = "TxtContacto";
+            this.TxtContacto.Size = new System.Drawing.Size(562, 25);
+            this.TxtContacto.TabIndex = 7;
             // 
             // LblCorreo
             // 
@@ -345,7 +345,7 @@ namespace PuntoVenta.Modulos.Compras
             // 
             this.LblRuc.AutoSize = true;
             this.LblRuc.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblRuc.Location = new System.Drawing.Point(11, 73);
+            this.LblRuc.Location = new System.Drawing.Point(11, 42);
             this.LblRuc.Name = "LblRuc";
             this.LblRuc.Size = new System.Drawing.Size(39, 19);
             this.LblRuc.TabIndex = 2;
@@ -355,21 +355,21 @@ namespace PuntoVenta.Modulos.Compras
             // 
             this.LblRazonSocial.AutoSize = true;
             this.LblRazonSocial.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblRazonSocial.Location = new System.Drawing.Point(11, 43);
+            this.LblRazonSocial.Location = new System.Drawing.Point(11, 12);
             this.LblRazonSocial.Name = "LblRazonSocial";
             this.LblRazonSocial.Size = new System.Drawing.Size(87, 19);
             this.LblRazonSocial.TabIndex = 1;
             this.LblRazonSocial.Text = "Razón Social:";
             // 
-            // LblNombre
+            // LblContacto
             // 
-            this.LblNombre.AutoSize = true;
-            this.LblNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblNombre.Location = new System.Drawing.Point(12, 13);
-            this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(62, 19);
-            this.LblNombre.TabIndex = 0;
-            this.LblNombre.Text = "Nombre:";
+            this.LblContacto.AutoSize = true;
+            this.LblContacto.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblContacto.Location = new System.Drawing.Point(11, 72);
+            this.LblContacto.Name = "LblContacto";
+            this.LblContacto.Size = new System.Drawing.Size(68, 19);
+            this.LblContacto.TabIndex = 0;
+            this.LblContacto.Text = "Contacto:";
             // 
             // Proveedores
             // 
@@ -407,13 +407,13 @@ namespace PuntoVenta.Modulos.Compras
         private System.Windows.Forms.Label LblDirección;
         private System.Windows.Forms.Label LblRuc;
         private System.Windows.Forms.Label LblRazonSocial;
-        private System.Windows.Forms.Label LblNombre;
+        private System.Windows.Forms.Label LblContacto;
         private System.Windows.Forms.TextBox TxtCelular;
         private System.Windows.Forms.TextBox TxtTelefono;
         private System.Windows.Forms.TextBox TxtDireccion;
         private System.Windows.Forms.TextBox TxtRuc;
         private System.Windows.Forms.TextBox TxtRazonSocial;
-        private System.Windows.Forms.TextBox TxtNombre;
+        private System.Windows.Forms.TextBox TxtContacto;
         private System.Windows.Forms.TextBox TxtCorreo;
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.Button BtnGuardar;
