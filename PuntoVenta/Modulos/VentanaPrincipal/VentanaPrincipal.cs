@@ -31,7 +31,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             frm_proveedores.ShowDialog();
         }
 
-        private void MenuClientes_Click(Object sender, EventArgs e)
+        private void MenuClientes_Click(object sender, EventArgs e)
         {
             Clientes frm_clientes = new Clientes();
 
@@ -47,7 +47,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
 
         private void MenuCategorias_Click(object sender, EventArgs e)
         {
-            Categorias frm_categorias = new Categorias();
+            Categoria frm_categorias = new Categoria();
 
             frm_categorias.ShowDialog();
         }
@@ -57,6 +57,59 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             UnidadesMedidas frm_umedidas = new UnidadesMedidas();
 
             frm_umedidas.ShowDialog();
+        }
+
+        private void VentanaPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuFacuras_Click(object sender, EventArgs e)
+        {
+            Facturas frm_facturas = new Facturas();
+
+            var estadoCaja = frm_facturas.ConsultarCaja().Item1;
+            if(estadoCaja == "ACTIVO")
+            {
+                frm_facturas.Show();
+                frm_facturas.MostrarEstadoCaja();
+            }
+            else
+            {
+                MessageBox.Show("Debe iniciar la caja para efectuar ventas.");
+            }
+        }
+
+        private void MeuCaja_Click(object sender, EventArgs e)
+        {
+            Facturas frm_facturas = new Facturas();
+
+            var estadoCaja = frm_facturas.ConsultarCaja().Item1;
+            if (estadoCaja == "ACTIVO")
+            {
+                MessageBox.Show("Ya existe una caja activa actualmente, debe cerrarla para abrir otra."); 
+            }
+            else
+            {
+                Caja frm_caja = new Caja();
+                frm_caja.ShowDialog();
+            }
+        }
+
+        private void AdministrarCaja_Click(object sender, EventArgs e)
+        {
+            Facturas frm_facturas = new Facturas();
+
+            var estadoCaja = frm_facturas.ConsultarCaja().Item1;
+            if (estadoCaja == "ACTIVO")
+            {
+                AdministrarCaja form_administrarCaja = new AdministrarCaja();
+                form_administrarCaja.ShowDialog(); 
+            }
+            else
+            {
+                MessageBox.Show("No existe una caja activa ahora mismo.");
+            }
         }
     }
 }

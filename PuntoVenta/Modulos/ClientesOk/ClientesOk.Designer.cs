@@ -55,6 +55,8 @@ namespace PuntoVenta.Modulos
             this.LabelDireccion = new System.Windows.Forms.Label();
             this.LabelRuc = new System.Windows.Forms.Label();
             this.LabelNombreCliente = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.TipoPersona_LBL = new System.Windows.Forms.Label();
             this.PanelCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewClientes)).BeginInit();
             this.PanelNuevoCliente.SuspendLayout();
@@ -136,8 +138,9 @@ namespace PuntoVenta.Modulos
             // 
             // PanelNuevoCliente
             // 
+            this.PanelNuevoCliente.Controls.Add(this.TipoPersona_LBL);
+            this.PanelNuevoCliente.Controls.Add(this.comboBox1);
             this.PanelNuevoCliente.Controls.Add(this.idUsuario_Label);
-            this.PanelNuevoCliente.Controls.Add(this.BtnGuardarEditado);
             this.PanelNuevoCliente.Controls.Add(this.BtnCancelar);
             this.PanelNuevoCliente.Controls.Add(this.BtnGuardarCliente);
             this.PanelNuevoCliente.Controls.Add(this.PanelClientesImagen);
@@ -153,6 +156,7 @@ namespace PuntoVenta.Modulos
             this.PanelNuevoCliente.Controls.Add(this.LabelDireccion);
             this.PanelNuevoCliente.Controls.Add(this.LabelRuc);
             this.PanelNuevoCliente.Controls.Add(this.LabelNombreCliente);
+            this.PanelNuevoCliente.Controls.Add(this.BtnGuardarEditado);
             this.PanelNuevoCliente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelNuevoCliente.Location = new System.Drawing.Point(0, 57);
             this.PanelNuevoCliente.Name = "PanelNuevoCliente";
@@ -163,17 +167,18 @@ namespace PuntoVenta.Modulos
             // idUsuario_Label
             // 
             this.idUsuario_Label.AutoSize = true;
-            this.idUsuario_Label.Location = new System.Drawing.Point(429, 23);
+            this.idUsuario_Label.Location = new System.Drawing.Point(11, 3);
             this.idUsuario_Label.Name = "idUsuario_Label";
             this.idUsuario_Label.Size = new System.Drawing.Size(38, 15);
             this.idUsuario_Label.TabIndex = 17;
             this.idUsuario_Label.Text = "label1";
+            this.idUsuario_Label.Visible = false;
             // 
             // BtnGuardarEditado
             // 
             this.BtnGuardarEditado.BackColor = System.Drawing.Color.Green;
             this.BtnGuardarEditado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnGuardarEditado.Location = new System.Drawing.Point(420, 255);
+            this.BtnGuardarEditado.Location = new System.Drawing.Point(169, 255);
             this.BtnGuardarEditado.Name = "BtnGuardarEditado";
             this.BtnGuardarEditado.Size = new System.Drawing.Size(107, 44);
             this.BtnGuardarEditado.TabIndex = 16;
@@ -186,7 +191,7 @@ namespace PuntoVenta.Modulos
             // 
             this.BtnCancelar.BackColor = System.Drawing.Color.Red;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnCancelar.Location = new System.Drawing.Point(543, 255);
+            this.BtnCancelar.Location = new System.Drawing.Point(304, 255);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(107, 44);
             this.BtnCancelar.TabIndex = 15;
@@ -198,7 +203,7 @@ namespace PuntoVenta.Modulos
             // 
             this.BtnGuardarCliente.BackColor = System.Drawing.Color.Green;
             this.BtnGuardarCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnGuardarCliente.Location = new System.Drawing.Point(420, 255);
+            this.BtnGuardarCliente.Location = new System.Drawing.Point(169, 255);
             this.BtnGuardarCliente.Name = "BtnGuardarCliente";
             this.BtnGuardarCliente.Size = new System.Drawing.Size(107, 44);
             this.BtnGuardarCliente.TabIndex = 14;
@@ -210,7 +215,7 @@ namespace PuntoVenta.Modulos
             // 
             this.PanelClientesImagen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelClientesImagen.BackgroundImage")));
             this.PanelClientesImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PanelClientesImagen.Location = new System.Drawing.Point(524, 23);
+            this.PanelClientesImagen.Location = new System.Drawing.Point(691, 20);
             this.PanelClientesImagen.Name = "PanelClientesImagen";
             this.PanelClientesImagen.Size = new System.Drawing.Size(143, 106);
             this.PanelClientesImagen.TabIndex = 13;
@@ -317,6 +322,27 @@ namespace PuntoVenta.Modulos
             this.LabelNombreCliente.TabIndex = 0;
             this.LabelNombreCliente.Text = "Nombres: ";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(520, 20);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(139, 23);
+            this.comboBox1.TabIndex = 18;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Física",
+            "Jurídica"});
+            // 
+            // TipoPersona_LBL
+            // 
+            this.TipoPersona_LBL.AutoSize = true;
+            this.TipoPersona_LBL.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TipoPersona_LBL.Location = new System.Drawing.Point(417, 23);
+            this.TipoPersona_LBL.Name = "TipoPersona_LBL";
+            this.TipoPersona_LBL.Size = new System.Drawing.Size(97, 20);
+            this.TipoPersona_LBL.TabIndex = 19;
+            this.TipoPersona_LBL.Text = "Tipo Persona:";
+            // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -363,5 +389,7 @@ namespace PuntoVenta.Modulos
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
         private System.Windows.Forms.Button BtnGuardarEditado;
         private System.Windows.Forms.Label idUsuario_Label;
+        private System.Windows.Forms.Label TipoPersona_LBL;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

@@ -48,6 +48,7 @@ namespace PuntoVenta.Modulos
                         SqlCommand cmd = new SqlCommand();
                         cmd = new SqlCommand("dbo.sp_clientes_insertar", con);
                         cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@TipoPersona", comboBox1.Text);
                         cmd.Parameters.AddWithValue("@Nombre", TxtNombresCliente.Text);
                         cmd.Parameters.AddWithValue("@RUC_CI", TxtRuc.Text);
                         cmd.Parameters.AddWithValue("@Direccion", TxtDireccion.Text);
@@ -275,6 +276,7 @@ namespace PuntoVenta.Modulos
                         SqlCommand cmd = new SqlCommand();
                         cmd = new SqlCommand("dbo.sp_clientes_editar", con);
                         cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@TipoPersona", comboBox1.Text); 
                         cmd.Parameters.AddWithValue("@idCliente", idUsuario_Label.Text);
                         cmd.Parameters.AddWithValue("@Nombre", TxtNombresCliente.Text);
                         cmd.Parameters.AddWithValue("@RUC_CI", TxtRuc.Text);
