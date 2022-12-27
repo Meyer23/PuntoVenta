@@ -20,12 +20,16 @@ namespace PuntoVenta.Modulos.Productos
         }
 
         Categorias cat = new Categorias();
+        UnidadesMedidas uni = new UnidadesMedidas();
 
         private void Productos_Load(object sender, EventArgs e)
         {
             TxtCategoria.DataSource = cat.cargarComboCategorias();
+            TxtUMedida.DataSource = uni.cargarComboUnidadesMedidas();
             TxtCategoria.DisplayMember = "Nombre";
-            TxtCategoria.ValueMember = "idCategoria";           
+            TxtCategoria.ValueMember = "idCategoria";
+            TxtUMedida.DisplayMember = "Abreviacion";
+            TxtUMedida.ValueMember = "idUMedida";
             mostrarProductos();
         }
 
@@ -47,10 +51,10 @@ namespace PuntoVenta.Modulos.Productos
             TxtPrecio.Clear();
             TxtPrecioMayorista.Clear();
             TxtPorcUtilidad.Clear();
-            TxtImpuesto.Items.Clear();
-            TxtExistencia.Clear();
-            TxtCategoria.Items.Clear();
-            TxtUMedida.Items.Clear();
+            //TxtImpuesto.Items.Clear();
+            //TxtExistencia.Clear();
+            //TxtCategoria.Items.Clear();
+            //TxtUMedida.Items.Clear();
             BtnGuardar.Visible = true;
         }
 
@@ -105,7 +109,7 @@ namespace PuntoVenta.Modulos.Productos
                         cmd.Parameters.AddWithValue("@PorcUtilidad", Convert.ToInt32(TxtPorcUtilidad.Text));
                         cmd.Parameters.AddWithValue("@Impuesto", TxtImpuesto.Text);
                         cmd.Parameters.AddWithValue("@idCategoria", Convert.ToInt32(TxtCategoria.SelectedValue.ToString()));
-                        cmd.Parameters.AddWithValue("@idUMedida", Convert.ToInt32(TxtUMedida.Text));
+                        cmd.Parameters.AddWithValue("@idUMedida", Convert.ToInt32(TxtUMedida.SelectedValue.ToString()));
                         cmd.Parameters.AddWithValue("@Estado", "ACTIVO");
                         cmd.Parameters.AddWithValue("@Existencia", 0);
                         cmd.ExecuteNonQuery();

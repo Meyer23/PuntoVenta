@@ -30,7 +30,7 @@ namespace PuntoVenta.Modulos.Productos
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Producto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelEncabezado = new System.Windows.Forms.Panel();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
@@ -141,9 +141,9 @@ namespace PuntoVenta.Modulos.Productos
             this.datalistadoProductos.Location = new System.Drawing.Point(0, 49);
             this.datalistadoProductos.Name = "datalistadoProductos";
             this.datalistadoProductos.ReadOnly = true;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.datalistadoProductos.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.datalistadoProductos.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.datalistadoProductos.RowTemplate.Height = 25;
             this.datalistadoProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datalistadoProductos.Size = new System.Drawing.Size(1041, 401);
@@ -204,10 +204,6 @@ namespace PuntoVenta.Modulos.Productos
             // 
             // TxtImpuesto
             // 
-            this.TxtImpuesto.AutoCompleteCustomSource.AddRange(new string[] {
-            "0",
-            "5",
-            "10"});
             this.TxtImpuesto.FormattingEnabled = true;
             this.TxtImpuesto.Items.AddRange(new object[] {
             "0",
@@ -257,9 +253,6 @@ namespace PuntoVenta.Modulos.Productos
             // TxtUMedida
             // 
             this.TxtUMedida.FormattingEnabled = true;
-            this.TxtUMedida.Items.AddRange(new object[] {
-            "1",
-            "2"});
             this.TxtUMedida.Location = new System.Drawing.Point(132, 279);
             this.TxtUMedida.Name = "TxtUMedida";
             this.TxtUMedida.Size = new System.Drawing.Size(562, 23);
