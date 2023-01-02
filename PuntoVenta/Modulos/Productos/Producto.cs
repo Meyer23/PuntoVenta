@@ -19,13 +19,17 @@ namespace PuntoVenta.Modulos.Productos
             InitializeComponent();
         }
 
-        Categorias cat = new Categorias();
+        Categoria cat = new Categoria();
+        UnidadesMedidas uni = new UnidadesMedidas();
 
         private void Productos_Load(object sender, EventArgs e)
         {
             TxtCategoria.DataSource = cat.cargarComboCategorias();
+            TxtUMedida.DataSource = uni.cargarComboUnidadesMedidas();
             TxtCategoria.DisplayMember = "Nombre";
-            TxtCategoria.ValueMember = "idCategoria";           
+            TxtCategoria.ValueMember = "idCategoria";
+            TxtUMedida.DisplayMember = "Abreviacion";
+            TxtUMedida.ValueMember = "idUMedida";
             mostrarProductos();
         }
 
@@ -41,16 +45,16 @@ namespace PuntoVenta.Modulos.Productos
 
         private void limpiar()
         {
-            TxtCodigoProd.Clear();
+            TxtCodigoBarras.Clear();
             TxtDescripcion.Clear();
             TxtCosto.Clear();
             TxtPrecio.Clear();
             TxtPrecioMayorista.Clear();
             TxtPorcUtilidad.Clear();
-            TxtImpuesto.Items.Clear();
-            TxtExistencia.Clear();
-            TxtCategoria.Items.Clear();
-            TxtUMedida.Items.Clear();
+            //TxtImpuesto.Items.Clear();
+            //TxtExistencia.Clear();
+            //TxtCategoria.Items.Clear();
+            //TxtUMedida.Items.Clear();
             BtnGuardar.Visible = true;
         }
 
@@ -69,9 +73,9 @@ namespace PuntoVenta.Modulos.Productos
                 if (TxtDescripcion.Text != "")
                 {
 
-                    if (TxtCodigoProd.Text == "")
+                    if (TxtCodigoBarras.Text == "")
                     {
-                        TxtCodigoProd.Text = "0";
+                        TxtCodigoBarras.Text = "0";
                     }
                     if (TxtCosto.Text == "")
                     {
@@ -97,7 +101,7 @@ namespace PuntoVenta.Modulos.Productos
                         SqlCommand cmd = new SqlCommand();
                         cmd = new SqlCommand("sp_producto_insertar", con);
                         cmd.CommandType = CommandType.StoredProcedure;                       
-                        cmd.Parameters.AddWithValue("@Codigo", TxtCodigoProd.Text);
+                        cmd.Parameters.AddWithValue("@Codigo", TxtCodigoBarras.Text);
                         cmd.Parameters.AddWithValue("@Descripcion", TxtDescripcion.Text);
                         cmd.Parameters.AddWithValue("@Costo", Convert.ToInt32(TxtCosto.Text));
                         cmd.Parameters.AddWithValue("@Precio", Convert.ToInt32(TxtPrecio.Text));
@@ -105,7 +109,7 @@ namespace PuntoVenta.Modulos.Productos
                         cmd.Parameters.AddWithValue("@PorcUtilidad", Convert.ToInt32(TxtPorcUtilidad.Text));
                         cmd.Parameters.AddWithValue("@Impuesto", TxtImpuesto.Text);
                         cmd.Parameters.AddWithValue("@idCategoria", Convert.ToInt32(TxtCategoria.SelectedValue.ToString()));
-                        cmd.Parameters.AddWithValue("@idUMedida", Convert.ToInt32(TxtUMedida.Text));
+                        cmd.Parameters.AddWithValue("@idUMedida", Convert.ToInt32(TxtUMedida.SelectedValue.ToString()));
                         cmd.Parameters.AddWithValue("@Estado", "ACTIVO");
                         cmd.Parameters.AddWithValue("@Existencia", 0);
                         cmd.ExecuteNonQuery();
@@ -276,7 +280,7 @@ namespace PuntoVenta.Modulos.Productos
                 else
                 {
                     idProducto = Convert.ToInt32(datalistadoProductos.SelectedCells[2].Value.ToString());
-                    TxtCodigoProd.Text = datalistadoProductos.SelectedCells[3].Value.ToString();
+                    TxtCodigoBarras.Text = datalistadoProductos.SelectedCells[3].Value.ToString();
                     TxtDescripcion.Text = datalistadoProductos.SelectedCells[4].Value.ToString();
                     TxtCosto.Text = datalistadoProductos.SelectedCells[5].Value.ToString();
                     TxtPrecio.Text = datalistadoProductos.SelectedCells[6].Value.ToString();
@@ -336,9 +340,9 @@ namespace PuntoVenta.Modulos.Productos
                 if (TxtDescripcion.Text != "")
                 {
 
-                    if (TxtCodigoProd.Text == "")
+                    if (TxtCodigoBarras.Text == "")
                     {
-                        TxtCodigoProd.Text = "0";
+                        TxtCodigoBarras.Text = "0";
                     }
                     if (TxtCosto.Text == "")
                     {
@@ -365,7 +369,7 @@ namespace PuntoVenta.Modulos.Productos
                         cmd = new SqlCommand("sp_producto_editar", con);
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@idProducto", idProducto);
-                        cmd.Parameters.AddWithValue("@Codigo", TxtCodigoProd.Text);
+                        cmd.Parameters.AddWithValue("@Codigo", TxtCodigoBarras.Text);
                         cmd.Parameters.AddWithValue("@Descripcion", TxtDescripcion.Text);
                         cmd.Parameters.AddWithValue("@Costo", TxtCosto.Text);
                         cmd.Parameters.AddWithValue("@Precio", TxtPrecio.Text);
@@ -396,6 +400,18 @@ namespace PuntoVenta.Modulos.Productos
             }
         }
 
-       
+        private void CrearCategoria(object sender, EventArgs e)
+        {
+            Categoria frm_categorias = new Categoria();
+
+            frm_categorias.ShowDialog();
+        }
+
+        private void CrearUMedida(object sender, EventArgs e)
+        {
+            UnidadesMedidas frm_umedidas = new UnidadesMedidas();
+
+            frm_umedidas.ShowDialog();
+        }
     }
 }

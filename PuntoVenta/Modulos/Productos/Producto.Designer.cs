@@ -42,13 +42,13 @@ namespace PuntoVenta.Modulos.Productos
             this.PanelRegistro = new System.Windows.Forms.Panel();
             this.TxtImpuesto = new System.Windows.Forms.ComboBox();
             this.LblImpuesto = new System.Windows.Forms.Label();
-            this.TxtCodigoProd = new System.Windows.Forms.TextBox();
-            this.LblCodigo = new System.Windows.Forms.TextBox();
+            this.TxtCodigoBarras = new System.Windows.Forms.TextBox();
+            this.LblCodigoBarras = new System.Windows.Forms.TextBox();
             this.TxtCategoria = new System.Windows.Forms.ComboBox();
             this.TxtUMedida = new System.Windows.Forms.ComboBox();
             this.LblUMedida = new System.Windows.Forms.Label();
             this.LblCategoria = new System.Windows.Forms.Label();
-            this.PanelUsuarioImagen = new System.Windows.Forms.Panel();
+            this.PanelProductoImagen = new System.Windows.Forms.Panel();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnGuardarCambios = new System.Windows.Forms.Button();
             this.BtnGuardar = new System.Windows.Forms.Button();
@@ -64,6 +64,8 @@ namespace PuntoVenta.Modulos.Productos
             this.LblPrecio = new System.Windows.Forms.Label();
             this.LblCosto = new System.Windows.Forms.Label();
             this.LblDescripción = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.PanelEncabezado.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistadoProductos)).BeginInit();
@@ -172,15 +174,17 @@ namespace PuntoVenta.Modulos.Productos
             // 
             // PanelRegistro
             // 
+            this.PanelRegistro.Controls.Add(this.panel2);
+            this.PanelRegistro.Controls.Add(this.panel1);
             this.PanelRegistro.Controls.Add(this.TxtImpuesto);
             this.PanelRegistro.Controls.Add(this.LblImpuesto);
-            this.PanelRegistro.Controls.Add(this.TxtCodigoProd);
-            this.PanelRegistro.Controls.Add(this.LblCodigo);
+            this.PanelRegistro.Controls.Add(this.TxtCodigoBarras);
+            this.PanelRegistro.Controls.Add(this.LblCodigoBarras);
             this.PanelRegistro.Controls.Add(this.TxtCategoria);
             this.PanelRegistro.Controls.Add(this.TxtUMedida);
             this.PanelRegistro.Controls.Add(this.LblUMedida);
             this.PanelRegistro.Controls.Add(this.LblCategoria);
-            this.PanelRegistro.Controls.Add(this.PanelUsuarioImagen);
+            this.PanelRegistro.Controls.Add(this.PanelProductoImagen);
             this.PanelRegistro.Controls.Add(this.BtnCancelar);
             this.PanelRegistro.Controls.Add(this.BtnGuardarCambios);
             this.PanelRegistro.Controls.Add(this.BtnGuardar);
@@ -204,16 +208,12 @@ namespace PuntoVenta.Modulos.Productos
             // 
             // TxtImpuesto
             // 
-            this.TxtImpuesto.AutoCompleteCustomSource.AddRange(new string[] {
-            "0",
-            "5",
-            "10"});
             this.TxtImpuesto.FormattingEnabled = true;
             this.TxtImpuesto.Items.AddRange(new object[] {
             "0",
             "5",
             "10"});
-            this.TxtImpuesto.Location = new System.Drawing.Point(132, 191);
+            this.TxtImpuesto.Location = new System.Drawing.Point(156, 191);
             this.TxtImpuesto.Name = "TxtImpuesto";
             this.TxtImpuesto.Size = new System.Drawing.Size(562, 23);
             this.TxtImpuesto.TabIndex = 616;
@@ -228,28 +228,28 @@ namespace PuntoVenta.Modulos.Productos
             this.LblImpuesto.TabIndex = 615;
             this.LblImpuesto.Text = "Impuesto:";
             // 
-            // TxtCodigoProd
+            // TxtCodigoBarras
             // 
-            this.TxtCodigoProd.Location = new System.Drawing.Point(132, 6);
-            this.TxtCodigoProd.Name = "TxtCodigoProd";
-            this.TxtCodigoProd.Size = new System.Drawing.Size(562, 23);
-            this.TxtCodigoProd.TabIndex = 612;
+            this.TxtCodigoBarras.Location = new System.Drawing.Point(156, 6);
+            this.TxtCodigoBarras.Name = "TxtCodigoBarras";
+            this.TxtCodigoBarras.Size = new System.Drawing.Size(562, 23);
+            this.TxtCodigoBarras.TabIndex = 612;
             // 
-            // LblCodigo
+            // LblCodigoBarras
             // 
-            this.LblCodigo.BackColor = System.Drawing.SystemColors.Control;
-            this.LblCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LblCodigo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblCodigo.Location = new System.Drawing.Point(19, 7);
-            this.LblCodigo.Name = "LblCodigo";
-            this.LblCodigo.Size = new System.Drawing.Size(100, 18);
-            this.LblCodigo.TabIndex = 611;
-            this.LblCodigo.Text = "Código:";
+            this.LblCodigoBarras.BackColor = System.Drawing.SystemColors.Control;
+            this.LblCodigoBarras.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LblCodigoBarras.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblCodigoBarras.Location = new System.Drawing.Point(19, 7);
+            this.LblCodigoBarras.Name = "LblCodigoBarras";
+            this.LblCodigoBarras.Size = new System.Drawing.Size(112, 18);
+            this.LblCodigoBarras.TabIndex = 611;
+            this.LblCodigoBarras.Text = "Código de Barras:";
             // 
             // TxtCategoria
             // 
             this.TxtCategoria.FormattingEnabled = true;
-            this.TxtCategoria.Location = new System.Drawing.Point(132, 250);
+            this.TxtCategoria.Location = new System.Drawing.Point(156, 250);
             this.TxtCategoria.Name = "TxtCategoria";
             this.TxtCategoria.Size = new System.Drawing.Size(562, 23);
             this.TxtCategoria.TabIndex = 610;
@@ -257,10 +257,7 @@ namespace PuntoVenta.Modulos.Productos
             // TxtUMedida
             // 
             this.TxtUMedida.FormattingEnabled = true;
-            this.TxtUMedida.Items.AddRange(new object[] {
-            "1",
-            "2"});
-            this.TxtUMedida.Location = new System.Drawing.Point(132, 279);
+            this.TxtUMedida.Location = new System.Drawing.Point(156, 279);
             this.TxtUMedida.Name = "TxtUMedida";
             this.TxtUMedida.Size = new System.Drawing.Size(562, 23);
             this.TxtUMedida.TabIndex = 609;
@@ -285,14 +282,14 @@ namespace PuntoVenta.Modulos.Productos
             this.LblCategoria.TabIndex = 16;
             this.LblCategoria.Text = "Categoria:";
             // 
-            // PanelUsuarioImagen
+            // PanelProductoImagen
             // 
-            this.PanelUsuarioImagen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelUsuarioImagen.BackgroundImage")));
-            this.PanelUsuarioImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PanelUsuarioImagen.Location = new System.Drawing.Point(741, 91);
-            this.PanelUsuarioImagen.Name = "PanelUsuarioImagen";
-            this.PanelUsuarioImagen.Size = new System.Drawing.Size(143, 106);
-            this.PanelUsuarioImagen.TabIndex = 15;
+            this.PanelProductoImagen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelProductoImagen.BackgroundImage")));
+            this.PanelProductoImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PanelProductoImagen.Location = new System.Drawing.Point(741, 91);
+            this.PanelProductoImagen.Name = "PanelProductoImagen";
+            this.PanelProductoImagen.Size = new System.Drawing.Size(143, 106);
+            this.PanelProductoImagen.TabIndex = 15;
             // 
             // BtnCancelar
             // 
@@ -342,7 +339,7 @@ namespace PuntoVenta.Modulos.Productos
             // TxtExistencia
             // 
             this.TxtExistencia.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtExistencia.Location = new System.Drawing.Point(132, 219);
+            this.TxtExistencia.Location = new System.Drawing.Point(156, 219);
             this.TxtExistencia.Name = "TxtExistencia";
             this.TxtExistencia.ReadOnly = true;
             this.TxtExistencia.Size = new System.Drawing.Size(562, 25);
@@ -351,7 +348,7 @@ namespace PuntoVenta.Modulos.Productos
             // TxtPorcUtilidad
             // 
             this.TxtPorcUtilidad.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPorcUtilidad.Location = new System.Drawing.Point(132, 159);
+            this.TxtPorcUtilidad.Location = new System.Drawing.Point(156, 97);
             this.TxtPorcUtilidad.Name = "TxtPorcUtilidad";
             this.TxtPorcUtilidad.Size = new System.Drawing.Size(562, 25);
             this.TxtPorcUtilidad.TabIndex = 11;
@@ -359,7 +356,7 @@ namespace PuntoVenta.Modulos.Productos
             // TxtPrecioMayorista
             // 
             this.TxtPrecioMayorista.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPrecioMayorista.Location = new System.Drawing.Point(132, 128);
+            this.TxtPrecioMayorista.Location = new System.Drawing.Point(156, 159);
             this.TxtPrecioMayorista.Name = "TxtPrecioMayorista";
             this.TxtPrecioMayorista.Size = new System.Drawing.Size(562, 25);
             this.TxtPrecioMayorista.TabIndex = 10;
@@ -367,7 +364,7 @@ namespace PuntoVenta.Modulos.Productos
             // TxtPrecio
             // 
             this.TxtPrecio.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPrecio.Location = new System.Drawing.Point(132, 97);
+            this.TxtPrecio.Location = new System.Drawing.Point(156, 128);
             this.TxtPrecio.Name = "TxtPrecio";
             this.TxtPrecio.Size = new System.Drawing.Size(562, 25);
             this.TxtPrecio.TabIndex = 9;
@@ -375,7 +372,7 @@ namespace PuntoVenta.Modulos.Productos
             // TxtCosto
             // 
             this.TxtCosto.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtCosto.Location = new System.Drawing.Point(132, 66);
+            this.TxtCosto.Location = new System.Drawing.Point(156, 66);
             this.TxtCosto.Name = "TxtCosto";
             this.TxtCosto.Size = new System.Drawing.Size(562, 25);
             this.TxtCosto.TabIndex = 8;
@@ -383,7 +380,7 @@ namespace PuntoVenta.Modulos.Productos
             // TxtDescripcion
             // 
             this.TxtDescripcion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtDescripcion.Location = new System.Drawing.Point(132, 35);
+            this.TxtDescripcion.Location = new System.Drawing.Point(156, 35);
             this.TxtDescripcion.Name = "TxtDescripcion";
             this.TxtDescripcion.Size = new System.Drawing.Size(562, 25);
             this.TxtDescripcion.TabIndex = 7;
@@ -402,7 +399,7 @@ namespace PuntoVenta.Modulos.Productos
             // 
             this.LblPorcUtilidad.AutoSize = true;
             this.LblPorcUtilidad.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblPorcUtilidad.Location = new System.Drawing.Point(13, 162);
+            this.LblPorcUtilidad.Location = new System.Drawing.Point(13, 100);
             this.LblPorcUtilidad.Name = "LblPorcUtilidad";
             this.LblPorcUtilidad.Size = new System.Drawing.Size(89, 19);
             this.LblPorcUtilidad.TabIndex = 4;
@@ -412,7 +409,7 @@ namespace PuntoVenta.Modulos.Productos
             // 
             this.LblPrecioMayorista.AutoSize = true;
             this.LblPrecioMayorista.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblPrecioMayorista.Location = new System.Drawing.Point(13, 131);
+            this.LblPrecioMayorista.Location = new System.Drawing.Point(13, 162);
             this.LblPrecioMayorista.Name = "LblPrecioMayorista";
             this.LblPrecioMayorista.Size = new System.Drawing.Size(114, 19);
             this.LblPrecioMayorista.TabIndex = 3;
@@ -422,7 +419,7 @@ namespace PuntoVenta.Modulos.Productos
             // 
             this.LblPrecio.AutoSize = true;
             this.LblPrecio.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblPrecio.Location = new System.Drawing.Point(13, 100);
+            this.LblPrecio.Location = new System.Drawing.Point(14, 131);
             this.LblPrecio.Name = "LblPrecio";
             this.LblPrecio.Size = new System.Drawing.Size(49, 19);
             this.LblPrecio.TabIndex = 2;
@@ -447,6 +444,26 @@ namespace PuntoVenta.Modulos.Productos
             this.LblDescripción.Size = new System.Drawing.Size(82, 19);
             this.LblDescripción.TabIndex = 0;
             this.LblDescripción.Text = "Descripción:";
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel1.Location = new System.Drawing.Point(720, 279);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(32, 23);
+            this.panel1.TabIndex = 618;
+            this.panel1.Click += new System.EventHandler(this.CrearUMedida);
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel2.Location = new System.Drawing.Point(720, 250);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(32, 23);
+            this.panel2.TabIndex = 619;
+            this.panel2.Click += new System.EventHandler(this.CrearCategoria);
             // 
             // Producto
             // 
@@ -500,10 +517,12 @@ namespace PuntoVenta.Modulos.Productos
         private System.Windows.Forms.Label LblCategoria;
         private System.Windows.Forms.ComboBox TxtCategoria;
         private System.Windows.Forms.ComboBox TxtUMedida;
-        private System.Windows.Forms.Panel PanelUsuarioImagen;
-        private System.Windows.Forms.TextBox TxtCodigoProd;
-        private System.Windows.Forms.TextBox LblCodigo;
+        private System.Windows.Forms.Panel PanelProductoImagen;
+        private System.Windows.Forms.TextBox TxtCodigoBarras;
+        private System.Windows.Forms.TextBox LblCodigoBarras;
         private System.Windows.Forms.Label LblImpuesto;
         private System.Windows.Forms.ComboBox TxtImpuesto;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
     }
 }
