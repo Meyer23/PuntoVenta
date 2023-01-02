@@ -93,17 +93,23 @@ namespace PuntoVenta.Modulos
 
         private void BtnAgregarProducto_Click(object sender, EventArgs e)
         {
-            var result = ConsultarProducto(TxtCodigoProducto.Text);
-            DataRow row = dt.NewRow();
-            row["Total"] = Int32.Parse(TxtCantidad.Text) * decimal.Parse(result.Item2);
-            row["Producto"] = result.Item1;
-            row["Código"] = TxtCodigoProducto.Text;
-            row["Cantidad"] = TxtCantidad.Text;
-            row["Precio"] = decimal.Parse(result.Item2); 
-            dt.Rows.Add(row);
+            try
+            {
+                var result = ConsultarProducto(TxtCodigoProducto.Text);
+                DataRow row = dt.NewRow();
+                row["Total"] = Int32.Parse(TxtCantidad.Text) * decimal.Parse(result.Item2);
+                row["Producto"] = result.Item1;
+                row["Código"] = TxtCodigoProducto.Text;
+                row["Cantidad"] = TxtCantidad.Text;
+                row["Precio"] = decimal.Parse(result.Item2);
+                dt.Rows.Add(row);
 
-            total += Int32.Parse(TxtCantidad.Text) * decimal.Parse(result.Item2);
-            ValorTotal.Text = total.ToString() + " Gs.";
+                total += Int32.Parse(TxtCantidad.Text) * decimal.Parse(result.Item2);
+                ValorTotal.Text = total.ToString() + " Gs.";
+            }catch(Exception)
+            {
+                MessageBox.Show("Debe agregar al menos 1 producto.");
+            }
         }
 
         public Tuple<string, string> ConsultarProducto(string codigo)
