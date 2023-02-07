@@ -93,6 +93,18 @@ namespace PuntoVenta.Modulos.Productos
                     {
                         TxtPorcUtilidad.Text = "0";
                     }
+                    if (TxtExistenciaMinima.Text == "")
+                    {
+                        TxtExistenciaMinima.Text = "0";
+                    }
+                    if (TxtCantMayorista.Text == "")
+                    {
+                        TxtCantMayorista.Text = "0";
+                    }
+                    if (CheckAdmInv.Text == "")
+                    {
+                        CheckAdmInv.Text = "0";
+                    }
                     try
                     {
                         SqlConnection con = new SqlConnection();
@@ -107,11 +119,15 @@ namespace PuntoVenta.Modulos.Productos
                         cmd.Parameters.AddWithValue("@Precio", Convert.ToInt32(TxtPrecio.Text));
                         cmd.Parameters.AddWithValue("@PrecioMayorista", Convert.ToInt32(TxtPrecioMayorista.Text));
                         cmd.Parameters.AddWithValue("@PorcUtilidad", Convert.ToInt32(TxtPorcUtilidad.Text));
+                        cmd.Parameters.AddWithValue("@AdministraInventario", Convert.ToInt32(CheckAdmInv.Text));
+                        cmd.Parameters.AddWithValue("@Existencia", 0);
+                        cmd.Parameters.AddWithValue("@ExistenciaMinima", Convert.ToInt32(TxtExistenciaMinima.Text));
                         cmd.Parameters.AddWithValue("@Impuesto", TxtImpuesto.Text);
                         cmd.Parameters.AddWithValue("@idCategoria", Convert.ToInt32(TxtCategoria.SelectedValue.ToString()));
                         cmd.Parameters.AddWithValue("@idUMedida", Convert.ToInt32(TxtUMedida.SelectedValue.ToString()));
                         cmd.Parameters.AddWithValue("@Estado", "ACTIVO");
-                        cmd.Parameters.AddWithValue("@Existencia", 0);
+                        cmd.Parameters.AddWithValue("@CantidadMayorista", Convert.ToInt32(TxtCantMayorista.Text));
+
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarProductos();
@@ -272,7 +288,7 @@ namespace PuntoVenta.Modulos.Productos
         {
             try
             {
-                estadoProducto = datalistadoProductos.SelectedCells[13].Value.ToString();
+                estadoProducto = datalistadoProductos.SelectedCells[16].Value.ToString();
                 if (estadoProducto == "ELIMINADO")
                 {
                     restaurarProducto();
@@ -286,10 +302,13 @@ namespace PuntoVenta.Modulos.Productos
                     TxtPrecio.Text = datalistadoProductos.SelectedCells[6].Value.ToString();
                     TxtPrecioMayorista.Text = datalistadoProductos.SelectedCells[7].Value.ToString();
                     TxtPorcUtilidad.Text = datalistadoProductos.SelectedCells[8].Value.ToString();
-                    TxtImpuesto.Text = datalistadoProductos.SelectedCells[9].Value.ToString();
+                    CheckAdmInv.Text = datalistadoProductos.SelectedCells[9].Value.ToString();
                     TxtExistencia.Text = datalistadoProductos.SelectedCells[10].Value.ToString();
-                    TxtCategoria.Text = datalistadoProductos.SelectedCells[11].Value.ToString();
-                    TxtUMedida.Text = datalistadoProductos.SelectedCells[12].Value.ToString();
+                    TxtExistenciaMinima.Text = datalistadoProductos.SelectedCells[11].Value.ToString();
+                    TxtImpuesto.Text = datalistadoProductos.SelectedCells[12].Value.ToString();                   
+                    TxtCategoria.Text = datalistadoProductos.SelectedCells[13].Value.ToString();
+                    TxtUMedida.Text = datalistadoProductos.SelectedCells[14].Value.ToString();
+                    TxtCantMayorista.Text = datalistadoProductos.SelectedCells[15].Value.ToString();
 
                     TxtBusqueda.Visible = false;
                     menuStrip1.Visible = false;
@@ -375,9 +394,12 @@ namespace PuntoVenta.Modulos.Productos
                         cmd.Parameters.AddWithValue("@Precio", TxtPrecio.Text);
                         cmd.Parameters.AddWithValue("@PrecioMayorista", TxtPrecioMayorista.Text);
                         cmd.Parameters.AddWithValue("@PorcUtilidad", TxtPorcUtilidad.Text);
+                        cmd.Parameters.AddWithValue("@AdministraInventario", TxtPorcUtilidad.Text);
+                        cmd.Parameters.AddWithValue("@ExistenciaMinima", TxtPorcUtilidad.Text);
                         cmd.Parameters.AddWithValue("@Impuesto", TxtImpuesto.Text);
                         cmd.Parameters.AddWithValue("@idCategoria", TxtCategoria.Text);
                         cmd.Parameters.AddWithValue("@idUMedida", TxtUMedida.Text);
+                        cmd.Parameters.AddWithValue("@CantidadMayorista", TxtUMedida.Text);
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarProductos();
