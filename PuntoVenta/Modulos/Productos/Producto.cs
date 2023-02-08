@@ -119,10 +119,10 @@ namespace PuntoVenta.Modulos.Productos
                         cmd.Parameters.AddWithValue("@Precio", Convert.ToInt32(TxtPrecio.Text));
                         cmd.Parameters.AddWithValue("@PrecioMayorista", Convert.ToInt32(TxtPrecioMayorista.Text));
                         cmd.Parameters.AddWithValue("@PorcUtilidad", Convert.ToInt32(TxtPorcUtilidad.Text));
-                        cmd.Parameters.AddWithValue("@AdministraInventario", Convert.ToInt32(CheckAdmInv.Text));
+                        cmd.Parameters.AddWithValue("@AdministraInventario", Convert.ToInt32(CheckAdmInv.CheckState));
                         cmd.Parameters.AddWithValue("@Existencia", 0);
                         cmd.Parameters.AddWithValue("@ExistenciaMinima", Convert.ToInt32(TxtExistenciaMinima.Text));
-                        cmd.Parameters.AddWithValue("@Impuesto", TxtImpuesto.Text);
+                        cmd.Parameters.AddWithValue("@Impuesto", Convert.ToInt32(TxtImpuesto.Text));
                         cmd.Parameters.AddWithValue("@idCategoria", Convert.ToInt32(TxtCategoria.SelectedValue.ToString()));
                         cmd.Parameters.AddWithValue("@idUMedida", Convert.ToInt32(TxtUMedida.SelectedValue.ToString()));
                         cmd.Parameters.AddWithValue("@Estado", "ACTIVO");
@@ -390,16 +390,16 @@ namespace PuntoVenta.Modulos.Productos
                         cmd.Parameters.AddWithValue("@idProducto", idProducto);
                         cmd.Parameters.AddWithValue("@Codigo", TxtCodigoBarras.Text);
                         cmd.Parameters.AddWithValue("@Descripcion", TxtDescripcion.Text);
-                        cmd.Parameters.AddWithValue("@Costo", TxtCosto.Text);
-                        cmd.Parameters.AddWithValue("@Precio", TxtPrecio.Text);
-                        cmd.Parameters.AddWithValue("@PrecioMayorista", TxtPrecioMayorista.Text);
-                        cmd.Parameters.AddWithValue("@PorcUtilidad", TxtPorcUtilidad.Text);
-                        cmd.Parameters.AddWithValue("@AdministraInventario", TxtPorcUtilidad.Text);
-                        cmd.Parameters.AddWithValue("@ExistenciaMinima", TxtPorcUtilidad.Text);
-                        cmd.Parameters.AddWithValue("@Impuesto", TxtImpuesto.Text);
-                        cmd.Parameters.AddWithValue("@idCategoria", TxtCategoria.Text);
-                        cmd.Parameters.AddWithValue("@idUMedida", TxtUMedida.Text);
-                        cmd.Parameters.AddWithValue("@CantidadMayorista", TxtUMedida.Text);
+                        cmd.Parameters.AddWithValue("@Costo", Convert.ToInt32(TxtCosto.Text));
+                        cmd.Parameters.AddWithValue("@Precio", Convert.ToDecimal(TxtPrecio.Text));
+                        cmd.Parameters.AddWithValue("@PrecioMayorista", Convert.ToDecimal(TxtPrecioMayorista.Text));
+                        cmd.Parameters.AddWithValue("@PorcUtilidad", Convert.ToInt32(TxtPorcUtilidad.Text));
+                        cmd.Parameters.AddWithValue("@AdministraInventario", Convert.ToInt32(CheckAdmInv.CheckState));
+                        cmd.Parameters.AddWithValue("@ExistenciaMinima", Convert.ToInt32(TxtExistenciaMinima.Text));
+                        cmd.Parameters.AddWithValue("@Impuesto", Convert.ToInt32(TxtImpuesto.Text));
+                        cmd.Parameters.AddWithValue("@idCategoria", Convert.ToInt32(TxtCategoria.Text));
+                        cmd.Parameters.AddWithValue("@idUMedida", Convert.ToInt32(TxtUMedida.Text));
+                        cmd.Parameters.AddWithValue("@CantidadMayorista", Convert.ToInt32(TxtCantMayorista.Text));
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarProductos();
@@ -434,6 +434,26 @@ namespace PuntoVenta.Modulos.Productos
             UnidadesMedidas frm_umedidas = new UnidadesMedidas();
 
             frm_umedidas.ShowDialog();
+        }
+
+        private void GenerarPrecios(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = Conexion.ConexionMaestra.conexion;
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd = new SqlCommand("sp_producto_generar_precios", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idProducto", idProducto);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
