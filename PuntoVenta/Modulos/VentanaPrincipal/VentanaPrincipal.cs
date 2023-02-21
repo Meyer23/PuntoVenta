@@ -17,11 +17,24 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             InitializeComponent();
         }
 
+        public void MostrarUsuarioPanel(string usuarioNombre)
+        {
+            LoginPanel.Visible = true;
+            TxtUsuario.Text = usuarioNombre;
+        }
+
         private void MenuUsuarios_Click(object sender, EventArgs e)
         {
             UsuariosOk frm_usuarios = new UsuariosOk();
 
-            frm_usuarios.ShowDialog();
+            if(TxtUsuario.Text != "rmeyer")
+            {
+                MessageBox.Show("Usted no tiene acceso a este nivel del sistema.");
+            }
+            else
+            {
+                frm_usuarios.ShowDialog();
+            }
         }
 
         private void MenuProveedores_Click(object sender, EventArgs e)

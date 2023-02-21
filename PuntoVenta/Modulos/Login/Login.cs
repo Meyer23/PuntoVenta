@@ -31,12 +31,15 @@ namespace PuntoVenta.Modulos
         {
             cargar_usuario();
             contar();
-
+            
+            
             if (contador > 0)
             {
                VentanaPrincipal.VentanaPrincipal frm_ventana_principal = new VentanaPrincipal.VentanaPrincipal();
 
-               this.Hide();
+                frm_ventana_principal.MostrarUsuarioPanel(txtUsuario.Text);
+
+                this.Hide();
                 frm_ventana_principal.ShowDialog();
             }
             else
@@ -66,6 +69,7 @@ namespace PuntoVenta.Modulos
                 da.SelectCommand.CommandType = CommandType.StoredProcedure;
                 da.SelectCommand.Parameters.AddWithValue("@contraseña", txtContrasena.Text);
                 da.SelectCommand.Parameters.AddWithValue("@login", txtUsuario.Text);
+
 
                 da.Fill(dt);
                 datalistado.DataSource = dt;
