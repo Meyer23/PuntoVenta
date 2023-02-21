@@ -23,11 +23,16 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             TxtUsuario.Text = usuarioNombre;
         }
 
+        public void MostrarRol(string rolUsuario)
+        {
+            LabelRol.Text = rolUsuario;
+        }
+
         private void MenuUsuarios_Click(object sender, EventArgs e)
         {
             UsuariosOk frm_usuarios = new UsuariosOk();
 
-            if(TxtUsuario.Text != "rmeyer")
+            if(LabelRol.Text != "ADMIN")
             {
                 MessageBox.Show("Usted no tiene acceso a este nivel del sistema.");
             }

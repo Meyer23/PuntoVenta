@@ -37,7 +37,19 @@ namespace PuntoVenta.Modulos
             {
                VentanaPrincipal.VentanaPrincipal frm_ventana_principal = new VentanaPrincipal.VentanaPrincipal();
 
+
+
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = Conexion.ConexionMaestra.conexion;
+                con.Open();
+                var obtenerRol = @"SELECT c.ROL from dbo.Usuarios c where c.Login = @Login";
+                SqlCommand command = new SqlCommand(obtenerRol, con);
+                command.Parameters.AddWithValue("@Login", txtUsuario.Text.Trim());
+                string result = (string)command.ExecuteScalar();
+                con.Close();
+
                 frm_ventana_principal.MostrarUsuarioPanel(txtUsuario.Text);
+                frm_ventana_principal.MostrarRol(result.ToString().Trim());
 
                 this.Hide();
                 frm_ventana_principal.ShowDialog();
