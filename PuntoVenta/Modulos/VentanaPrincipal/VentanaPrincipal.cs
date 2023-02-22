@@ -1,5 +1,6 @@
 ﻿using PuntoVenta.Modulos.Compras;
 using PuntoVenta.Modulos.Productos;
+using PuntoVenta.Modulos.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,7 +33,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         {
             UsuariosOk frm_usuarios = new UsuariosOk();
 
-            if(LabelRol.Text != "ADMIN")
+            if(LabelRol.Text != Roles.Administrador.ToString())
             {
                 MessageBox.Show("Usted no tiene acceso a este nivel del sistema.");
             }

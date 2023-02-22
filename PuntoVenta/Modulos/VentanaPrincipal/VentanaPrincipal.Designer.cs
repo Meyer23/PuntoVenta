@@ -48,7 +48,6 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.LoginPanel = new System.Windows.Forms.Panel();
             this.LabelRol = new System.Windows.Forms.Label();
             this.ImagenPanel = new System.Windows.Forms.Panel();
-            this.DatoSesion = new System.Windows.Forms.Label();
             this.TxtUsuario = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.LoginPanel.SuspendLayout();
@@ -181,11 +180,10 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // 
             this.LoginPanel.Controls.Add(this.LabelRol);
             this.LoginPanel.Controls.Add(this.ImagenPanel);
-            this.LoginPanel.Controls.Add(this.DatoSesion);
             this.LoginPanel.Controls.Add(this.TxtUsuario);
-            this.LoginPanel.Location = new System.Drawing.Point(798, 621);
+            this.LoginPanel.Location = new System.Drawing.Point(834, 621);
             this.LoginPanel.Name = "LoginPanel";
-            this.LoginPanel.Size = new System.Drawing.Size(345, 128);
+            this.LoginPanel.Size = new System.Drawing.Size(309, 117);
             this.LoginPanel.TabIndex = 1;
             this.LoginPanel.Visible = false;
             // 
@@ -193,7 +191,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // 
             this.LabelRol.AutoSize = true;
             this.LabelRol.Font = new System.Drawing.Font("Consolas", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LabelRol.Location = new System.Drawing.Point(3, 88);
+            this.LabelRol.Location = new System.Drawing.Point(3, 58);
             this.LabelRol.Name = "LabelRol";
             this.LabelRol.Size = new System.Drawing.Size(48, 26);
             this.LabelRol.TabIndex = 2;
@@ -203,26 +201,16 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // 
             this.ImagenPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ImagenPanel.BackgroundImage")));
             this.ImagenPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ImagenPanel.Location = new System.Drawing.Point(220, 12);
+            this.ImagenPanel.Location = new System.Drawing.Point(202, 12);
             this.ImagenPanel.Name = "ImagenPanel";
-            this.ImagenPanel.Size = new System.Drawing.Size(113, 99);
+            this.ImagenPanel.Size = new System.Drawing.Size(95, 99);
             this.ImagenPanel.TabIndex = 2;
-            // 
-            // DatoSesion
-            // 
-            this.DatoSesion.AutoSize = true;
-            this.DatoSesion.Font = new System.Drawing.Font("Consolas", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.DatoSesion.Location = new System.Drawing.Point(3, 12);
-            this.DatoSesion.Name = "DatoSesion";
-            this.DatoSesion.Size = new System.Drawing.Size(204, 26);
-            this.DatoSesion.TabIndex = 1;
-            this.DatoSesion.Text = "Sesión Abierta: ";
             // 
             // TxtUsuario
             // 
             this.TxtUsuario.AutoSize = true;
             this.TxtUsuario.Font = new System.Drawing.Font("Consolas", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.TxtUsuario.Location = new System.Drawing.Point(3, 50);
+            this.TxtUsuario.Location = new System.Drawing.Point(3, 12);
             this.TxtUsuario.Name = "TxtUsuario";
             this.TxtUsuario.Size = new System.Drawing.Size(96, 26);
             this.TxtUsuario.TabIndex = 0;
@@ -268,7 +256,6 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         private System.Windows.Forms.ToolStripMenuItem AdministrarCaja;
         private System.Windows.Forms.Panel LoginPanel;
         private System.Windows.Forms.Label TxtUsuario;
-        private System.Windows.Forms.Label DatoSesion;
         private System.Windows.Forms.Panel ImagenPanel;
         private System.Windows.Forms.Label LabelRol;
     }
