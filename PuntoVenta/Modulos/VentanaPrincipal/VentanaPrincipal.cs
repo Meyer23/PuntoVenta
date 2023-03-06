@@ -1,5 +1,6 @@
 ﻿using PuntoVenta.Modulos.Compras;
 using PuntoVenta.Modulos.Productos;
+using PuntoVenta.Modulos.Empleados;
 using PuntoVenta.Modulos.Utils;
 using System;
 using System.Collections.Generic;
@@ -129,6 +130,13 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             {
                 MessageBox.Show("No existe una caja activa ahora mismo.");
             }
+        }
+
+        private void MenuEmpleados_Click(object sender, EventArgs e)
+        {
+            EmpleadosOk frm_empleados = new EmpleadosOk();
+
+            frm_empleados.ShowDialog();
         }
     }
 }
