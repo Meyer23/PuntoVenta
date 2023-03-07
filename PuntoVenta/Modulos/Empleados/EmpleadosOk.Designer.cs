@@ -30,7 +30,7 @@ namespace PuntoVenta.Modulos.Empleados
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmpleadosOk));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelEncabezado = new System.Windows.Forms.Panel();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
@@ -40,9 +40,6 @@ namespace PuntoVenta.Modulos.Empleados
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelRegistro = new System.Windows.Forms.Panel();
-            this.dateTimeSalida = new System.Windows.Forms.DateTimePicker();
-            this.LblSalida = new System.Windows.Forms.Label();
-            this.dateTimeIngreso = new System.Windows.Forms.DateTimePicker();
             this.TxtDireccion = new System.Windows.Forms.TextBox();
             this.LblDireccion = new System.Windows.Forms.Label();
             this.groupBoxContacto = new System.Windows.Forms.GroupBox();
@@ -59,7 +56,6 @@ namespace PuntoVenta.Modulos.Empleados
             this.TxtApellidos = new System.Windows.Forms.TextBox();
             this.TxtNombres = new System.Windows.Forms.TextBox();
             this.TxtDocumento = new System.Windows.Forms.TextBox();
-            this.LblIngreso = new System.Windows.Forms.Label();
             this.LblApellidos = new System.Windows.Forms.Label();
             this.LblNombres = new System.Windows.Forms.Label();
             this.LblDocumento = new System.Windows.Forms.Label();
@@ -141,9 +137,9 @@ namespace PuntoVenta.Modulos.Empleados
             this.datalistado.Location = new System.Drawing.Point(0, 49);
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.datalistado.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.datalistado.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.datalistado.RowTemplate.Height = 25;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datalistado.Size = new System.Drawing.Size(913, 401);
@@ -172,9 +168,6 @@ namespace PuntoVenta.Modulos.Empleados
             // 
             // PanelRegistro
             // 
-            this.PanelRegistro.Controls.Add(this.dateTimeSalida);
-            this.PanelRegistro.Controls.Add(this.LblSalida);
-            this.PanelRegistro.Controls.Add(this.dateTimeIngreso);
             this.PanelRegistro.Controls.Add(this.TxtDireccion);
             this.PanelRegistro.Controls.Add(this.LblDireccion);
             this.PanelRegistro.Controls.Add(this.groupBoxContacto);
@@ -185,7 +178,6 @@ namespace PuntoVenta.Modulos.Empleados
             this.PanelRegistro.Controls.Add(this.TxtApellidos);
             this.PanelRegistro.Controls.Add(this.TxtNombres);
             this.PanelRegistro.Controls.Add(this.TxtDocumento);
-            this.PanelRegistro.Controls.Add(this.LblIngreso);
             this.PanelRegistro.Controls.Add(this.LblApellidos);
             this.PanelRegistro.Controls.Add(this.LblNombres);
             this.PanelRegistro.Controls.Add(this.LblDocumento);
@@ -195,30 +187,6 @@ namespace PuntoVenta.Modulos.Empleados
             this.PanelRegistro.Size = new System.Drawing.Size(913, 401);
             this.PanelRegistro.TabIndex = 6;
             this.PanelRegistro.Visible = false;
-            // 
-            // dateTimeSalida
-            // 
-            this.dateTimeSalida.Location = new System.Drawing.Point(466, 135);
-            this.dateTimeSalida.Name = "dateTimeSalida";
-            this.dateTimeSalida.Size = new System.Drawing.Size(200, 23);
-            this.dateTimeSalida.TabIndex = 21;
-            // 
-            // LblSalida
-            // 
-            this.LblSalida.AutoSize = true;
-            this.LblSalida.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblSalida.Location = new System.Drawing.Point(355, 139);
-            this.LblSalida.Name = "LblSalida";
-            this.LblSalida.Size = new System.Drawing.Size(105, 19);
-            this.LblSalida.TabIndex = 20;
-            this.LblSalida.Text = "Fecha de Salida:";
-            // 
-            // dateTimeIngreso
-            // 
-            this.dateTimeIngreso.Location = new System.Drawing.Point(134, 135);
-            this.dateTimeIngreso.Name = "dateTimeIngreso";
-            this.dateTimeIngreso.Size = new System.Drawing.Size(200, 23);
-            this.dateTimeIngreso.TabIndex = 19;
             // 
             // TxtDireccion
             // 
@@ -246,9 +214,9 @@ namespace PuntoVenta.Modulos.Empleados
             this.groupBoxContacto.Controls.Add(this.TxtCelular);
             this.groupBoxContacto.Controls.Add(this.LblCorreo);
             this.groupBoxContacto.Controls.Add(this.TxtCorreo);
-            this.groupBoxContacto.Location = new System.Drawing.Point(12, 174);
+            this.groupBoxContacto.Location = new System.Drawing.Point(12, 153);
             this.groupBoxContacto.Name = "groupBoxContacto";
-            this.groupBoxContacto.Size = new System.Drawing.Size(531, 138);
+            this.groupBoxContacto.Size = new System.Drawing.Size(672, 138);
             this.groupBoxContacto.TabIndex = 16;
             this.groupBoxContacto.TabStop = false;
             this.groupBoxContacto.Text = "Contacto";
@@ -258,7 +226,7 @@ namespace PuntoVenta.Modulos.Empleados
             this.TxtTelefono.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TxtTelefono.Location = new System.Drawing.Point(102, 22);
             this.TxtTelefono.Name = "TxtTelefono";
-            this.TxtTelefono.Size = new System.Drawing.Size(422, 25);
+            this.TxtTelefono.Size = new System.Drawing.Size(552, 25);
             this.TxtTelefono.TabIndex = 11;
             // 
             // LblTelefono
@@ -286,7 +254,7 @@ namespace PuntoVenta.Modulos.Empleados
             this.TxtCelular.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TxtCelular.Location = new System.Drawing.Point(102, 53);
             this.TxtCelular.Name = "TxtCelular";
-            this.TxtCelular.Size = new System.Drawing.Size(422, 25);
+            this.TxtCelular.Size = new System.Drawing.Size(552, 25);
             this.TxtCelular.TabIndex = 12;
             // 
             // LblCorreo
@@ -304,7 +272,7 @@ namespace PuntoVenta.Modulos.Empleados
             this.TxtCorreo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TxtCorreo.Location = new System.Drawing.Point(102, 84);
             this.TxtCorreo.Name = "TxtCorreo";
-            this.TxtCorreo.Size = new System.Drawing.Size(422, 25);
+            this.TxtCorreo.Size = new System.Drawing.Size(552, 25);
             this.TxtCorreo.TabIndex = 13;
             // 
             // PanelUsuarioImagen
@@ -385,16 +353,6 @@ namespace PuntoVenta.Modulos.Empleados
             this.TxtDocumento.Size = new System.Drawing.Size(562, 25);
             this.TxtDocumento.TabIndex = 7;
             // 
-            // LblIngreso
-            // 
-            this.LblIngreso.AutoSize = true;
-            this.LblIngreso.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblIngreso.Location = new System.Drawing.Point(12, 139);
-            this.LblIngreso.Name = "LblIngreso";
-            this.LblIngreso.Size = new System.Drawing.Size(116, 19);
-            this.LblIngreso.TabIndex = 3;
-            this.LblIngreso.Text = "Fecha de Ingreso:";
-            // 
             // LblApellidos
             // 
             this.LblApellidos.AutoSize = true;
@@ -473,15 +431,11 @@ namespace PuntoVenta.Modulos.Empleados
         private System.Windows.Forms.Label LblCorreo;
         private System.Windows.Forms.Label LblCelular;
         private System.Windows.Forms.Label LblTelefono;
-        private System.Windows.Forms.Label LblIngreso;
         private System.Windows.Forms.Label LblApellidos;
         private System.Windows.Forms.Label LblNombres;
         private System.Windows.Forms.Label LblDocumento;
         private System.Windows.Forms.TextBox TxtDireccion;
         private System.Windows.Forms.Label LblDireccion;
         private System.Windows.Forms.GroupBox groupBoxContacto;
-        private System.Windows.Forms.DateTimePicker dateTimeSalida;
-        private System.Windows.Forms.Label LblSalida;
-        private System.Windows.Forms.DateTimePicker dateTimeIngreso;
     }
 }

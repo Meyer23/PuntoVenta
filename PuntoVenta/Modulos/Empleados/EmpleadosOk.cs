@@ -12,7 +12,7 @@ namespace PuntoVenta.Modulos.Empleados
 {
     public partial class EmpleadosOk : Form
     {
-        string fechaSalida;
+        string estadoEmpleado;
         int idEmpleado;
         public EmpleadosOk()
         {
@@ -129,8 +129,7 @@ namespace PuntoVenta.Modulos.Empleados
                         cmd.Parameters.AddWithValue("@Telefono", TxtTelefono.Text);
                         cmd.Parameters.AddWithValue("@Celular", TxtCelular.Text);
                         cmd.Parameters.AddWithValue("@Correo", TxtCorreo.Text);
-                        cmd.Parameters.AddWithValue("@FechaIngreso", dateTimeIngreso.Text);
-                        cmd.Parameters.AddWithValue("@FechaSalida", dateTimeSalida.Text);
+                        cmd.Parameters.AddWithValue("@Estado", "ACTIVO");
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarEmpleados();
@@ -262,8 +261,8 @@ namespace PuntoVenta.Modulos.Empleados
         {
             try
             {
-                fechaSalida = datalistado.SelectedCells[11].Value.ToString();
-                if (fechaSalida != null)
+                estadoEmpleado = datalistado.SelectedCells[10].Value.ToString();
+                if (estadoEmpleado == "ELIMINADO")
                 {
                     restaurarEmpleado();
                 }
@@ -277,8 +276,6 @@ namespace PuntoVenta.Modulos.Empleados
                     TxtTelefono.Text = datalistado.SelectedCells[7].Value.ToString();
                     TxtCelular.Text = datalistado.SelectedCells[8].Value.ToString();
                     TxtCorreo.Text = datalistado.SelectedCells[9].Value.ToString();
-                    dateTimeIngreso.Text = datalistado.SelectedCells[10].Value.ToString();
-                    dateTimeSalida.Text = datalistado.SelectedCells[11].Value.ToString();
 
                     TxtBusqueda.Visible = false;
                     menuStrip1.Visible = false;
@@ -375,8 +372,6 @@ namespace PuntoVenta.Modulos.Empleados
                         cmd.Parameters.AddWithValue("@Telefono", TxtTelefono.Text);
                         cmd.Parameters.AddWithValue("@Celular", TxtCelular.Text);
                         cmd.Parameters.AddWithValue("@Correo", TxtCorreo.Text);
-                        cmd.Parameters.AddWithValue("@FechaIngreso", dateTimeIngreso.Text);
-                        cmd.Parameters.AddWithValue("@FechaSalida", dateTimeSalida.Text);
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarEmpleados();
