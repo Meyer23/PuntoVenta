@@ -34,14 +34,16 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         {
             UsuariosOk frm_usuarios = new UsuariosOk();
 
-            if(LabelRol.Text != Roles.Administrador.ToString())
-            {
-                MessageBox.Show("Usted no tiene acceso a este nivel del sistema.");
-            }
-            else
-            {
-                frm_usuarios.ShowDialog();
-            }
+            //if(LabelRol.Text != Roles.Administrador.ToString())
+            //{
+            //    MessageBox.Show("Usted no tiene acceso a este nivel del sistema.");
+            //}
+            //else
+            //{
+            //    frm_usuarios.ShowDialog();
+            //}
+
+            frm_usuarios.ShowDialog();
         }
 
         private void MenuProveedores_Click(object sender, EventArgs e)

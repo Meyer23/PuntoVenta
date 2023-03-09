@@ -16,6 +16,7 @@ namespace PuntoVenta.Modulos
         {
             InitializeComponent();
             MostrarUsuarios();
+            LeerTextRol();
         }
 
         private void ComboBoxRoles(object sender, EventArgs e)
@@ -60,6 +61,10 @@ namespace PuntoVenta.Modulos
 
         private void BtnAgregarUsuario_Click(object sender, EventArgs e)
         {
+            TxtNombres.Clear();
+            TxtLogin.Clear();
+            TxtContraseña.Clear();
+            TxtCorreo.Clear();
             PanelBusqueda.Hide();
             DataGridUsuarios.Hide();
             PanelAgregarUsuario.Show();
@@ -68,6 +73,24 @@ namespace PuntoVenta.Modulos
         public bool ValidarCorreo(string sMail)
         {
             return Regex.IsMatch(sMail, @"^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$");
+
+        }
+
+        private void LeerTextRol()
+        {
+
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = Conexion.ConexionMaestra.conexion;
+            SqlCommand cmd = new SqlCommand("SELECT nombre FROM DBO.ROL", con);
+            con.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                string sRol = dr.GetString("nombre");
+                TxtRol.Items.Add(sRol);
+            }
+            con.Close();
 
         }
 
@@ -99,7 +122,7 @@ namespace PuntoVenta.Modulos
                         cmd.Parameters.AddWithValue("@Contraseña", TxtContraseña.Text);
 
                         cmd.Parameters.AddWithValue("@Correo", TxtCorreo.Text);
-                        cmd.Parameters.AddWithValue("@Rol", TxtRol.Text);
+                        cmd.Parameters.AddWithValue("@Rol", TxtRol.Text.ToString());
                         System.IO.MemoryStream ms = new System.IO.MemoryStream();
 
                         cmd.Parameters.AddWithValue("@Estado", "ACTIVO");
