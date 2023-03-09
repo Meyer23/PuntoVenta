@@ -321,5 +321,43 @@ namespace PuntoVenta.Modulos
                 }
             }
         }
+
+        public Tuple<string> ObtenerEmpleado(string documento)
+        {
+            string resultado = "";
+            documento = TxtCedula.Text;
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = Conexion.ConexionMaestra.conexion;
+            con.Open();
+            string query = "select Nombres, Apellidos from dbo.Empleados where Documento  = '" + documento + "' and Estado = 'ACTIVO'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader reg = cmd.ExecuteReader();
+            if (reg.Read())
+            {
+                resultado = reg["Nombres"].ToString() + ' ' + reg["Apellidos"].ToString();
+            }
+            con.Close();
+            return Tuple.Create(resultado);
+        }
+
+        private void LeerTextCedula(object sender, EventArgs e)
+        {
+            TxtNombres.Clear();
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = Conexion.ConexionMaestra.conexion;
+            SqlCommand cmd = new SqlCommand("SELECT Documento FROM DBO.Empleados", con);
+            con.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            AutoCompleteStringCollection myCollection = new AutoCompleteStringCollection();
+
+            while (dr.Read())
+            {
+                myCollection.Add(dr.GetString(0));
+            }
+            TxtCedula.AutoCompleteCustomSource = myCollection;
+            var completarNombres = ObtenerEmpleado(TxtCedula.Text);
+            TxtNombres.Text = completarNombres.Item1;
+            con.Close();
+        }
     }
 }

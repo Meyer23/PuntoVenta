@@ -38,7 +38,8 @@ namespace PuntoVenta.Modulos
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelAgregarUsuario = new System.Windows.Forms.Panel();
-            this.txtidRol = new System.Windows.Forms.Label();
+            this.TxtCedula = new System.Windows.Forms.TextBox();
+            this.LabelCedula = new System.Windows.Forms.Label();
             this.Label_idUsuario = new System.Windows.Forms.Label();
             this.PanelUsuarioImagen = new System.Windows.Forms.Panel();
             this.BtnCancelar = new System.Windows.Forms.Button();
@@ -69,7 +70,7 @@ namespace PuntoVenta.Modulos
             this.PanelBusqueda.Location = new System.Drawing.Point(0, 0);
             this.PanelBusqueda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PanelBusqueda.Name = "PanelBusqueda";
-            this.PanelBusqueda.Size = new System.Drawing.Size(1490, 105);
+            this.PanelBusqueda.Size = new System.Drawing.Size(1060, 105);
             this.PanelBusqueda.TabIndex = 1;
             // 
             // BtnAgregarUsuario
@@ -119,7 +120,7 @@ namespace PuntoVenta.Modulos
             this.DataGridUsuarios.RowHeadersWidth = 62;
             this.DataGridUsuarios.RowTemplate.Height = 25;
             this.DataGridUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridUsuarios.Size = new System.Drawing.Size(1490, 663);
+            this.DataGridUsuarios.Size = new System.Drawing.Size(1060, 663);
             this.DataGridUsuarios.TabIndex = 2;
             this.DataGridUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EliminarUsuario);
             this.DataGridUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarUsuario);
@@ -150,7 +151,8 @@ namespace PuntoVenta.Modulos
             // 
             this.PanelAgregarUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.PanelAgregarUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PanelAgregarUsuario.Controls.Add(this.txtidRol);
+            this.PanelAgregarUsuario.Controls.Add(this.TxtCedula);
+            this.PanelAgregarUsuario.Controls.Add(this.LabelCedula);
             this.PanelAgregarUsuario.Controls.Add(this.Label_idUsuario);
             this.PanelAgregarUsuario.Controls.Add(this.PanelUsuarioImagen);
             this.PanelAgregarUsuario.Controls.Add(this.BtnCancelar);
@@ -166,22 +168,35 @@ namespace PuntoVenta.Modulos
             this.PanelAgregarUsuario.Controls.Add(this.LabelLogin);
             this.PanelAgregarUsuario.Controls.Add(this.LabelNombres);
             this.PanelAgregarUsuario.Controls.Add(this.BtnGuardarEditado);
-            this.PanelAgregarUsuario.Location = new System.Drawing.Point(4, 105);
+            this.PanelAgregarUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelAgregarUsuario.Location = new System.Drawing.Point(0, 105);
             this.PanelAgregarUsuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PanelAgregarUsuario.Name = "PanelAgregarUsuario";
-            this.PanelAgregarUsuario.Size = new System.Drawing.Size(1085, 537);
+            this.PanelAgregarUsuario.Size = new System.Drawing.Size(1060, 663);
             this.PanelAgregarUsuario.TabIndex = 3;
             this.PanelAgregarUsuario.Visible = false;
             // 
-            // txtidRol
+            // TxtCedula
             // 
-            this.txtidRol.AutoSize = true;
-            this.txtidRol.Location = new System.Drawing.Point(246, 332);
-            this.txtidRol.Name = "txtidRol";
-            this.txtidRol.Size = new System.Drawing.Size(59, 25);
-            this.txtidRol.TabIndex = 610;
-            this.txtidRol.Text = "label1";
-            this.txtidRol.Visible = false;
+            this.TxtCedula.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.TxtCedula.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.TxtCedula.Location = new System.Drawing.Point(250, 71);
+            this.TxtCedula.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TxtCedula.Name = "TxtCedula";
+            this.TxtCedula.Size = new System.Drawing.Size(390, 31);
+            this.TxtCedula.TabIndex = 611;
+            this.TxtCedula.Click += new System.EventHandler(this.LeerTextCedula);
+            // 
+            // LabelCedula
+            // 
+            this.LabelCedula.AutoSize = true;
+            this.LabelCedula.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LabelCedula.Location = new System.Drawing.Point(109, 70);
+            this.LabelCedula.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LabelCedula.Name = "LabelCedula";
+            this.LabelCedula.Size = new System.Drawing.Size(133, 30);
+            this.LabelCedula.TabIndex = 610;
+            this.LabelCedula.Text = "Nro. Cedula:";
             // 
             // Label_idUsuario
             // 
@@ -208,7 +223,7 @@ namespace PuntoVenta.Modulos
             // 
             this.BtnCancelar.BackColor = System.Drawing.Color.Red;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnCancelar.Location = new System.Drawing.Point(750, 372);
+            this.BtnCancelar.Location = new System.Drawing.Point(770, 563);
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(157, 85);
@@ -221,7 +236,7 @@ namespace PuntoVenta.Modulos
             // 
             this.BtnGuardar.BackColor = System.Drawing.Color.Green;
             this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnGuardar.Location = new System.Drawing.Point(589, 372);
+            this.BtnGuardar.Location = new System.Drawing.Point(593, 563);
             this.BtnGuardar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(157, 85);
@@ -234,10 +249,10 @@ namespace PuntoVenta.Modulos
             // 
             this.TxtRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TxtRol.FormattingEnabled = true;
-            this.TxtRol.Location = new System.Drawing.Point(246, 272);
+            this.TxtRol.Location = new System.Drawing.Point(250, 429);
             this.TxtRol.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtRol.Name = "TxtRol";
-            this.TxtRol.Size = new System.Drawing.Size(657, 33);
+            this.TxtRol.Size = new System.Drawing.Size(390, 33);
             this.TxtRol.TabIndex = 607;
             this.TxtRol.SelectedIndexChanged += new System.EventHandler(this.ComboBoxRoles);
             // 
@@ -245,7 +260,7 @@ namespace PuntoVenta.Modulos
             // 
             this.LabelRol.AutoSize = true;
             this.LabelRol.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelRol.Location = new System.Drawing.Point(183, 277);
+            this.LabelRol.Location = new System.Drawing.Point(181, 429);
             this.LabelRol.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelRol.Name = "LabelRol";
             this.LabelRol.Size = new System.Drawing.Size(48, 30);
@@ -254,7 +269,7 @@ namespace PuntoVenta.Modulos
             // 
             // TxtCorreo
             // 
-            this.TxtCorreo.Location = new System.Drawing.Point(246, 212);
+            this.TxtCorreo.Location = new System.Drawing.Point(250, 357);
             this.TxtCorreo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtCorreo.Name = "TxtCorreo";
             this.TxtCorreo.Size = new System.Drawing.Size(390, 31);
@@ -262,7 +277,7 @@ namespace PuntoVenta.Modulos
             // 
             // TxtContraseña
             // 
-            this.TxtContraseña.Location = new System.Drawing.Point(246, 153);
+            this.TxtContraseña.Location = new System.Drawing.Point(250, 288);
             this.TxtContraseña.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtContraseña.Name = "TxtContraseña";
             this.TxtContraseña.Size = new System.Drawing.Size(390, 31);
@@ -271,7 +286,7 @@ namespace PuntoVenta.Modulos
             // 
             // TxtLogin
             // 
-            this.TxtLogin.Location = new System.Drawing.Point(246, 88);
+            this.TxtLogin.Location = new System.Drawing.Point(250, 217);
             this.TxtLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtLogin.Name = "TxtLogin";
             this.TxtLogin.Size = new System.Drawing.Size(390, 31);
@@ -279,7 +294,7 @@ namespace PuntoVenta.Modulos
             // 
             // TxtNombres
             // 
-            this.TxtNombres.Location = new System.Drawing.Point(246, 35);
+            this.TxtNombres.Location = new System.Drawing.Point(250, 148);
             this.TxtNombres.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtNombres.Name = "TxtNombres";
             this.TxtNombres.Size = new System.Drawing.Size(390, 31);
@@ -289,7 +304,7 @@ namespace PuntoVenta.Modulos
             // 
             this.LabelCorreo.AutoSize = true;
             this.LabelCorreo.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelCorreo.Location = new System.Drawing.Point(44, 210);
+            this.LabelCorreo.Location = new System.Drawing.Point(30, 356);
             this.LabelCorreo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelCorreo.Name = "LabelCorreo";
             this.LabelCorreo.Size = new System.Drawing.Size(199, 30);
@@ -300,7 +315,7 @@ namespace PuntoVenta.Modulos
             // 
             this.LabelContraseña.AutoSize = true;
             this.LabelContraseña.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelContraseña.Location = new System.Drawing.Point(114, 152);
+            this.LabelContraseña.Location = new System.Drawing.Point(102, 288);
             this.LabelContraseña.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelContraseña.Name = "LabelContraseña";
             this.LabelContraseña.Size = new System.Drawing.Size(127, 30);
@@ -311,7 +326,7 @@ namespace PuntoVenta.Modulos
             // 
             this.LabelLogin.AutoSize = true;
             this.LabelLogin.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelLogin.Location = new System.Drawing.Point(169, 87);
+            this.LabelLogin.Location = new System.Drawing.Point(158, 218);
             this.LabelLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelLogin.Name = "LabelLogin";
             this.LabelLogin.Size = new System.Drawing.Size(71, 30);
@@ -322,7 +337,7 @@ namespace PuntoVenta.Modulos
             // 
             this.LabelNombres.AutoSize = true;
             this.LabelNombres.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelNombres.Location = new System.Drawing.Point(21, 32);
+            this.LabelNombres.Location = new System.Drawing.Point(22, 147);
             this.LabelNombres.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelNombres.Name = "LabelNombres";
             this.LabelNombres.Size = new System.Drawing.Size(220, 30);
@@ -333,7 +348,7 @@ namespace PuntoVenta.Modulos
             // 
             this.BtnGuardarEditado.BackColor = System.Drawing.Color.Green;
             this.BtnGuardarEditado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnGuardarEditado.Location = new System.Drawing.Point(589, 372);
+            this.BtnGuardarEditado.Location = new System.Drawing.Point(593, 563);
             this.BtnGuardarEditado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnGuardarEditado.Name = "BtnGuardarEditado";
             this.BtnGuardarEditado.Size = new System.Drawing.Size(157, 85);
@@ -347,7 +362,7 @@ namespace PuntoVenta.Modulos
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(1490, 768);
+            this.ClientSize = new System.Drawing.Size(1060, 768);
             this.Controls.Add(this.PanelAgregarUsuario);
             this.Controls.Add(this.DataGridUsuarios);
             this.Controls.Add(this.PanelBusqueda);
@@ -387,6 +402,7 @@ namespace PuntoVenta.Modulos
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.Button BtnGuardarEditado;
         private System.Windows.Forms.Label Label_idUsuario;
-        private System.Windows.Forms.Label txtidRol;
+        private System.Windows.Forms.Label LabelCedula;
+        private System.Windows.Forms.TextBox TxtCedula;
     }
 }
