@@ -46,11 +46,9 @@ namespace PuntoVenta.Modulos
             this.BtnGuardar = new System.Windows.Forms.Button();
             this.TxtRol = new System.Windows.Forms.ComboBox();
             this.LabelRol = new System.Windows.Forms.Label();
-            this.TxtCorreo = new System.Windows.Forms.TextBox();
             this.TxtContraseña = new System.Windows.Forms.TextBox();
             this.TxtLogin = new System.Windows.Forms.TextBox();
             this.TxtNombres = new System.Windows.Forms.TextBox();
-            this.LabelCorreo = new System.Windows.Forms.Label();
             this.LabelContraseña = new System.Windows.Forms.Label();
             this.LabelLogin = new System.Windows.Forms.Label();
             this.LabelNombres = new System.Windows.Forms.Label();
@@ -159,11 +157,9 @@ namespace PuntoVenta.Modulos
             this.PanelAgregarUsuario.Controls.Add(this.BtnGuardar);
             this.PanelAgregarUsuario.Controls.Add(this.TxtRol);
             this.PanelAgregarUsuario.Controls.Add(this.LabelRol);
-            this.PanelAgregarUsuario.Controls.Add(this.TxtCorreo);
             this.PanelAgregarUsuario.Controls.Add(this.TxtContraseña);
             this.PanelAgregarUsuario.Controls.Add(this.TxtLogin);
             this.PanelAgregarUsuario.Controls.Add(this.TxtNombres);
-            this.PanelAgregarUsuario.Controls.Add(this.LabelCorreo);
             this.PanelAgregarUsuario.Controls.Add(this.LabelContraseña);
             this.PanelAgregarUsuario.Controls.Add(this.LabelLogin);
             this.PanelAgregarUsuario.Controls.Add(this.LabelNombres);
@@ -249,7 +245,7 @@ namespace PuntoVenta.Modulos
             // 
             this.TxtRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TxtRol.FormattingEnabled = true;
-            this.TxtRol.Location = new System.Drawing.Point(250, 429);
+            this.TxtRol.Location = new System.Drawing.Point(250, 362);
             this.TxtRol.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtRol.Name = "TxtRol";
             this.TxtRol.Size = new System.Drawing.Size(390, 33);
@@ -260,20 +256,12 @@ namespace PuntoVenta.Modulos
             // 
             this.LabelRol.AutoSize = true;
             this.LabelRol.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelRol.Location = new System.Drawing.Point(181, 429);
+            this.LabelRol.Location = new System.Drawing.Point(181, 365);
             this.LabelRol.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelRol.Name = "LabelRol";
             this.LabelRol.Size = new System.Drawing.Size(48, 30);
             this.LabelRol.TabIndex = 8;
             this.LabelRol.Text = "Rol:";
-            // 
-            // TxtCorreo
-            // 
-            this.TxtCorreo.Location = new System.Drawing.Point(250, 357);
-            this.TxtCorreo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.TxtCorreo.Name = "TxtCorreo";
-            this.TxtCorreo.Size = new System.Drawing.Size(390, 31);
-            this.TxtCorreo.TabIndex = 7;
             // 
             // TxtContraseña
             // 
@@ -299,17 +287,6 @@ namespace PuntoVenta.Modulos
             this.TxtNombres.Name = "TxtNombres";
             this.TxtNombres.Size = new System.Drawing.Size(390, 31);
             this.TxtNombres.TabIndex = 4;
-            // 
-            // LabelCorreo
-            // 
-            this.LabelCorreo.AutoSize = true;
-            this.LabelCorreo.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelCorreo.Location = new System.Drawing.Point(30, 356);
-            this.LabelCorreo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LabelCorreo.Name = "LabelCorreo";
-            this.LabelCorreo.Size = new System.Drawing.Size(199, 30);
-            this.LabelCorreo.TabIndex = 3;
-            this.LabelCorreo.Text = "Correo electrónico:";
             // 
             // LabelContraseña
             // 
@@ -387,11 +364,9 @@ namespace PuntoVenta.Modulos
         private System.Windows.Forms.Panel PanelAgregarUsuario;
         private System.Windows.Forms.Label LabelLogin;
         private System.Windows.Forms.Label LabelNombres;
-        private System.Windows.Forms.Label LabelCorreo;
         private System.Windows.Forms.Label LabelContraseña;
         private System.Windows.Forms.ComboBox TxtRol;
         private System.Windows.Forms.Label LabelRol;
-        private System.Windows.Forms.TextBox TxtCorreo;
         private System.Windows.Forms.TextBox TxtContraseña;
         private System.Windows.Forms.TextBox TxtLogin;
         private System.Windows.Forms.TextBox TxtNombres;

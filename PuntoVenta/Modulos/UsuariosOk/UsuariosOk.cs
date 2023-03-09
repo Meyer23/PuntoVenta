@@ -28,7 +28,7 @@ namespace PuntoVenta.Modulos
         {
             TxtNombres.Clear();
             TxtLogin.Clear();
-            TxtCorreo.Clear();
+            TxtCedula.Clear();
             BtnGuardar.Visible = true;
         }
 
@@ -64,17 +64,12 @@ namespace PuntoVenta.Modulos
             TxtNombres.Clear();
             TxtLogin.Clear();
             TxtContraseña.Clear();
-            TxtCorreo.Clear();
+            TxtCedula.Clear();
             PanelBusqueda.Hide();
             DataGridUsuarios.Hide();
             PanelAgregarUsuario.Show();
         }
 
-        public bool ValidarCorreo(string sMail)
-        {
-            return Regex.IsMatch(sMail, @"^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$");
-
-        }
 
         private void LeerTextRol()
         {
@@ -96,16 +91,6 @@ namespace PuntoVenta.Modulos
 
         private void BtnGuardarUsuario_Click(object sender, EventArgs e)
         {
-            if(!ValidarCorreo(TxtCorreo.Text))
-            {
-                MessageBox.Show("Dirección de correo electrónico no válida, el correo debe tener el formato: nombre@dominio.com, " + " por favor, seleccione un correo válido", "Validación de correo electrónico", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                TxtCorreo.Focus();
-                TxtCorreo.SelectAll();
-            }
-            else
-            {
-
-
 
                 if (TxtNombres.Text != "")
                 {
@@ -121,7 +106,7 @@ namespace PuntoVenta.Modulos
                         cmd.Parameters.AddWithValue("@Login", TxtLogin.Text);
                         cmd.Parameters.AddWithValue("@Contraseña", TxtContraseña.Text);
 
-                        cmd.Parameters.AddWithValue("@Correo", TxtCorreo.Text);
+                        cmd.Parameters.AddWithValue("@Cedula", TxtCedula.Text);
                         cmd.Parameters.AddWithValue("@Rol", TxtRol.Text.ToString());
                         System.IO.MemoryStream ms = new System.IO.MemoryStream();
 
@@ -141,7 +126,6 @@ namespace PuntoVenta.Modulos
                     }
 
                 }
-            }
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -263,8 +247,8 @@ namespace PuntoVenta.Modulos
                 Label_idUsuario.Text = DataGridUsuarios.SelectedCells[2].Value.ToString();
                 TxtNombres.Text = DataGridUsuarios.SelectedCells[3].Value.ToString();
                 TxtLogin.Text = DataGridUsuarios.SelectedCells[4].Value.ToString();
-                TxtCorreo.Text = DataGridUsuarios.SelectedCells[5].Value.ToString();
-                TxtRol.Text = DataGridUsuarios.SelectedCells[6].Value.ToString();
+                TxtCedula.Text = DataGridUsuarios.SelectedCells[5].Value.ToString();
+                
 
                 PanelBusqueda.Hide();
                 DataGridUsuarios.Hide();
@@ -278,14 +262,6 @@ namespace PuntoVenta.Modulos
 
         private void BtnGuardar2(object sender, EventArgs e)
         {
-            if (!ValidarCorreo(TxtCorreo.Text))
-            {
-                MessageBox.Show("Dirección de correo electrónico no válida, el correo debe tener el formato: nombre@dominio.com, " + " por favor, seleccione un correo válido", "Validación de correo electrónico", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                TxtCorreo.Focus();
-                TxtCorreo.SelectAll();
-            }
-            else
-            {
                 if (TxtNombres.Text != "")
                 {
                     try
@@ -301,7 +277,7 @@ namespace PuntoVenta.Modulos
                         cmd.Parameters.AddWithValue("@Login", TxtLogin.Text);
                         cmd.Parameters.AddWithValue("@Contraseña", TxtContraseña.Text);
 
-                        cmd.Parameters.AddWithValue("@Correo", TxtCorreo.Text);
+                        cmd.Parameters.AddWithValue("@Cedula", TxtCedula.Text);
                         cmd.Parameters.AddWithValue("@Rol", TxtRol.Text);
                         System.IO.MemoryStream ms = new System.IO.MemoryStream();
 
@@ -319,7 +295,6 @@ namespace PuntoVenta.Modulos
                     }
 
                 }
-            }
         }
 
         public Tuple<string> ObtenerEmpleado(string documento)
