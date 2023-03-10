@@ -15,11 +15,26 @@ namespace PuntoVenta.Modulos.Roles
         public Rol()
         {
             InitializeComponent();
+            mostrarRoles();
         }
 
-        private void Categorias_Load(object sender, EventArgs e)
+        private void Roles_Load(object sender, EventArgs e)
         {
             mostrarRoles();
+        }
+
+        public DataTable cargarComboRoles()
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = Conexion.ConexionMaestra.conexion;
+            con.Open();
+            SqlDataAdapter da = new SqlDataAdapter("sp_roles_cargar", con);
+            da.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
+
+            return dt;
         }
 
         private void mostrarRoles()
@@ -35,7 +50,6 @@ namespace PuntoVenta.Modulos.Roles
                 da.Fill(dt);
                 datalistadoRoles.DataSource = dt;
                 con.Close();
-                ocultar_columnas();
             }
             catch (Exception ex)
             {
@@ -43,14 +57,27 @@ namespace PuntoVenta.Modulos.Roles
             }
         }
 
-        private void ocultar_columnas()
-        {
-            datalistadoRoles.Columns[2].Visible = false;
-        }
-
         private void BuscarRol(object sender, EventArgs e)
         {
+            try
+            {
+                DataTable dt = new DataTable();
+                SqlDataAdapter da;
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = Conexion.ConexionMaestra.conexion;
+                con.Open();
 
+                da = new SqlDataAdapter("sp_roles_buscar", con);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@texto", TxtBusqueda.Text);
+                da.Fill(dt);
+                datalistadoRoles.DataSource = dt;
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void EliminarRol(object sender, DataGridViewCellEventArgs e)
@@ -67,7 +94,7 @@ namespace PuntoVenta.Modulos.Roles
                     {
                         foreach (DataGridViewRow row in datalistadoRoles.SelectedRows)
                         {
-                            int onekey = Convert.ToInt32(row.Cells["idRol"].Value);
+                            int onekey = Convert.ToInt32(row.Cells["id"].Value);
 
                             try
                             {
@@ -79,7 +106,7 @@ namespace PuntoVenta.Modulos.Roles
                                     cmd = new SqlCommand("sp_roles_eliminar", con);
                                     cmd.CommandType = CommandType.StoredProcedure;
 
-                                    cmd.Parameters.AddWithValue("@idRol", onekey);
+                                    cmd.Parameters.AddWithValue("@id", onekey);
                                     cmd.ExecuteNonQuery();
 
                                     con.Close();
@@ -168,6 +195,38 @@ namespace PuntoVenta.Modulos.Roles
 
         private void GuardarRol(object sender, EventArgs e)
         {
+            try
+            {
+                if (TxtNombre.Text != "")
+                {
+                    try
+                    {
+                        SqlConnection con = new SqlConnection();
+                        con.ConnectionString = Conexion.ConexionMaestra.conexion;
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand();
+                        cmd = new SqlCommand("sp_roles_insertar", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@Nombre", TxtNombre.Text);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        mostrarRoles();
+                        PanelRegistro.Visible = false;
+                        TxtBusqueda.Visible = true;
+                        menuStrip1.Visible = true;
+                        BtnNuevo.Visible = true;
+                        limpiar();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
@@ -185,7 +244,7 @@ namespace PuntoVenta.Modulos.Roles
                         SqlCommand cmd = new SqlCommand();
                         cmd = new SqlCommand("sp_roles_editar", con);
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@idRol", idRol);
+                        cmd.Parameters.AddWithValue("@id", idRol);
                         cmd.Parameters.AddWithValue("@Nombre", TxtNombre.Text);
                         cmd.ExecuteNonQuery();
                         con.Close();
