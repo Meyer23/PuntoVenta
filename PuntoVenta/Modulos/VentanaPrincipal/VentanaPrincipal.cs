@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using PuntoVenta.Modulos.Roles;
 
 namespace PuntoVenta.Modulos.VentanaPrincipal
 {
@@ -139,6 +140,13 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             EmpleadosOk frm_empleados = new EmpleadosOk();
 
             frm_empleados.ShowDialog();
+        }
+
+        private void MenuRoles_Click(object sender, EventArgs e)
+        {
+            Rol frm_roles = new Rol();
+
+            frm_roles.ShowDialog();
         }
     }
 }
