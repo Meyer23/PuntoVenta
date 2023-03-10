@@ -334,5 +334,12 @@ namespace PuntoVenta.Modulos
             TxtNombres.Text = completarNombres.Item1;
             con.Close();
         }
+
+        private void EditarUsuario2(object sender, DataGridViewCellEventArgs e)
+        {
+            BtnGuardar.Visible = false;
+            BtnGuardarEditado.Visible = true;
+            ObtenerDatosUsuario();
+        }
     }
 }
