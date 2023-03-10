@@ -22,7 +22,7 @@ namespace PuntoVenta
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new VentanaPrincipal());
+            Application.Run(new Login());
         }
     }
 }

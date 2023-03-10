@@ -42,7 +42,11 @@ namespace PuntoVenta.Modulos
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = Conexion.ConexionMaestra.conexion;
                 con.Open();
-                var obtenerRol = @"SELECT c.ROL from dbo.Usuarios c where c.Login = @Login";
+                var obtenerRol = @"SELECT r.Nombre from dbo.Usuarios c inner join dbo.Rol r 
+								    on c.idRol = r.id
+									where c.Login = @Login
+                                    and r.id = c.idRol
+									and c.Estado = 'ACTIVO'";
                 SqlCommand command = new SqlCommand(obtenerRol, con);
                 command.Parameters.AddWithValue("@Login", txtUsuario.Text.Trim());
                 string result = (string)command.ExecuteScalar();
