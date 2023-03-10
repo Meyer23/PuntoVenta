@@ -59,9 +59,8 @@ namespace PuntoVenta.Modulos.Roles
             this.PanelEncabezado.Controls.Add(this.menuStrip1);
             this.PanelEncabezado.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelEncabezado.Location = new System.Drawing.Point(0, 0);
-            this.PanelEncabezado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PanelEncabezado.Name = "PanelEncabezado";
-            this.PanelEncabezado.Size = new System.Drawing.Size(1407, 82);
+            this.PanelEncabezado.Size = new System.Drawing.Size(586, 49);
             this.PanelEncabezado.TabIndex = 3;
             // 
             // BtnNuevo
@@ -71,10 +70,9 @@ namespace PuntoVenta.Modulos.Roles
             this.BtnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNuevo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnNuevo.ForeColor = System.Drawing.Color.White;
-            this.BtnNuevo.Location = new System.Drawing.Point(600, 8);
-            this.BtnNuevo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnNuevo.Location = new System.Drawing.Point(420, 5);
             this.BtnNuevo.Name = "BtnNuevo";
-            this.BtnNuevo.Size = new System.Drawing.Size(166, 62);
+            this.BtnNuevo.Size = new System.Drawing.Size(116, 37);
             this.BtnNuevo.TabIndex = 8;
             this.BtnNuevo.Text = "Nuevo";
             this.BtnNuevo.UseVisualStyleBackColor = false;
@@ -83,11 +81,10 @@ namespace PuntoVenta.Modulos.Roles
             // TxtBusqueda
             // 
             this.TxtBusqueda.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtBusqueda.Location = new System.Drawing.Point(56, 20);
-            this.TxtBusqueda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TxtBusqueda.Location = new System.Drawing.Point(39, 12);
             this.TxtBusqueda.Name = "TxtBusqueda";
             this.TxtBusqueda.PlaceholderText = "Texto a buscar...";
-            this.TxtBusqueda.Size = new System.Drawing.Size(437, 34);
+            this.TxtBusqueda.Size = new System.Drawing.Size(307, 25);
             this.TxtBusqueda.TabIndex = 2;
             // 
             // menuStrip1
@@ -99,10 +96,9 @@ namespace PuntoVenta.Modulos.Roles
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(497, 20);
+            this.menuStrip1.Location = new System.Drawing.Point(348, 12);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(61, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(43, 25);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.Click += new System.EventHandler(this.BuscarRol);
@@ -112,7 +108,7 @@ namespace PuntoVenta.Modulos.Roles
             this.toolStripMenuItem1.BackColor = System.Drawing.Color.Transparent;
             this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(40, 36);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(36, 21);
             // 
             // datalistadoRoles
             // 
@@ -124,8 +120,7 @@ namespace PuntoVenta.Modulos.Roles
             this.Eliminar,
             this.Editar});
             this.datalistadoRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datalistadoRoles.Location = new System.Drawing.Point(0, 82);
-            this.datalistadoRoles.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.datalistadoRoles.Location = new System.Drawing.Point(0, 49);
             this.datalistadoRoles.Name = "datalistadoRoles";
             this.datalistadoRoles.ReadOnly = true;
             this.datalistadoRoles.RowHeadersWidth = 62;
@@ -134,7 +129,7 @@ namespace PuntoVenta.Modulos.Roles
             this.datalistadoRoles.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.datalistadoRoles.RowTemplate.Height = 25;
             this.datalistadoRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datalistadoRoles.Size = new System.Drawing.Size(1407, 563);
+            this.datalistadoRoles.Size = new System.Drawing.Size(586, 163);
             this.datalistadoRoles.TabIndex = 7;
             this.datalistadoRoles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EliminarRol);
             this.datalistadoRoles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarRol);
@@ -169,19 +164,18 @@ namespace PuntoVenta.Modulos.Roles
             this.PanelRegistro.Controls.Add(this.BtnCancelar);
             this.PanelRegistro.Controls.Add(this.BtnGuardar);
             this.PanelRegistro.Controls.Add(this.BtnGuardarCambios);
-            this.PanelRegistro.Location = new System.Drawing.Point(6, 82);
-            this.PanelRegistro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PanelRegistro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelRegistro.Location = new System.Drawing.Point(0, 49);
             this.PanelRegistro.Name = "PanelRegistro";
-            this.PanelRegistro.Size = new System.Drawing.Size(1051, 269);
+            this.PanelRegistro.Size = new System.Drawing.Size(586, 163);
             this.PanelRegistro.TabIndex = 8;
             this.PanelRegistro.Visible = false;
             // 
             // TxtNombre
             // 
-            this.TxtNombre.Location = new System.Drawing.Point(189, 10);
-            this.TxtNombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TxtNombre.Location = new System.Drawing.Point(132, 6);
             this.TxtNombre.Name = "TxtNombre";
-            this.TxtNombre.Size = new System.Drawing.Size(577, 31);
+            this.TxtNombre.Size = new System.Drawing.Size(405, 23);
             this.TxtNombre.TabIndex = 612;
             // 
             // LblNombre
@@ -189,10 +183,9 @@ namespace PuntoVenta.Modulos.Roles
             this.LblNombre.BackColor = System.Drawing.SystemColors.Control;
             this.LblNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.LblNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblNombre.Location = new System.Drawing.Point(38, 14);
-            this.LblNombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.LblNombre.Location = new System.Drawing.Point(27, 8);
             this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(143, 27);
+            this.LblNombre.Size = new System.Drawing.Size(100, 18);
             this.LblNombre.TabIndex = 611;
             this.LblNombre.Text = "Nombre:";
             // 
@@ -203,10 +196,9 @@ namespace PuntoVenta.Modulos.Roles
             this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnCancelar.ForeColor = System.Drawing.Color.White;
-            this.BtnCancelar.Location = new System.Drawing.Point(774, 162);
-            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnCancelar.Location = new System.Drawing.Point(421, 97);
             this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(166, 62);
+            this.BtnCancelar.Size = new System.Drawing.Size(116, 37);
             this.BtnCancelar.TabIndex = 14;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = false;
@@ -219,10 +211,9 @@ namespace PuntoVenta.Modulos.Roles
             this.BtnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnGuardar.ForeColor = System.Drawing.Color.White;
-            this.BtnGuardar.Location = new System.Drawing.Point(594, 162);
-            this.BtnGuardar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnGuardar.Location = new System.Drawing.Point(295, 97);
             this.BtnGuardar.Name = "BtnGuardar";
-            this.BtnGuardar.Size = new System.Drawing.Size(166, 62);
+            this.BtnGuardar.Size = new System.Drawing.Size(116, 37);
             this.BtnGuardar.TabIndex = 14;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.UseVisualStyleBackColor = false;
@@ -235,10 +226,9 @@ namespace PuntoVenta.Modulos.Roles
             this.BtnGuardarCambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarCambios.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnGuardarCambios.ForeColor = System.Drawing.Color.White;
-            this.BtnGuardarCambios.Location = new System.Drawing.Point(594, 162);
-            this.BtnGuardarCambios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnGuardarCambios.Location = new System.Drawing.Point(295, 97);
             this.BtnGuardarCambios.Name = "BtnGuardarCambios";
-            this.BtnGuardarCambios.Size = new System.Drawing.Size(166, 62);
+            this.BtnGuardarCambios.Size = new System.Drawing.Size(116, 37);
             this.BtnGuardarCambios.TabIndex = 14;
             this.BtnGuardarCambios.Text = "Guardar";
             this.BtnGuardarCambios.UseVisualStyleBackColor = false;
@@ -246,12 +236,13 @@ namespace PuntoVenta.Modulos.Roles
             // 
             // Rol
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1407, 645);
+            this.ClientSize = new System.Drawing.Size(586, 212);
             this.Controls.Add(this.PanelRegistro);
             this.Controls.Add(this.datalistadoRoles);
             this.Controls.Add(this.PanelEncabezado);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Rol";
             this.Text = "Rol";
             this.PanelEncabezado.ResumeLayout(false);

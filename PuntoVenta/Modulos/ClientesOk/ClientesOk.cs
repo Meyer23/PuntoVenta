@@ -304,5 +304,12 @@ namespace PuntoVenta.Modulos
                 }
             }
         }
+
+        private void EditarCliente2(object sender, DataGridViewCellEventArgs e)
+        {
+            BtnGuardarCliente.Visible = false;
+            BtnGuardarEditado.Visible = true;
+            ObtenerDatosCliente();
+        }
     }
 }

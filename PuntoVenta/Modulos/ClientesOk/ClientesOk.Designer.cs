@@ -38,8 +38,9 @@ namespace PuntoVenta.Modulos
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelNuevoCliente = new System.Windows.Forms.Panel();
+            this.TipoPersona_LBL = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.idUsuario_Label = new System.Windows.Forms.Label();
-            this.BtnGuardarEditado = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnGuardarCliente = new System.Windows.Forms.Button();
             this.PanelClientesImagen = new System.Windows.Forms.Panel();
@@ -55,8 +56,7 @@ namespace PuntoVenta.Modulos
             this.LabelDireccion = new System.Windows.Forms.Label();
             this.LabelRuc = new System.Windows.Forms.Label();
             this.LabelNombreCliente = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.TipoPersona_LBL = new System.Windows.Forms.Label();
+            this.BtnGuardarEditado = new System.Windows.Forms.Button();
             this.PanelCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewClientes)).BeginInit();
             this.PanelNuevoCliente.SuspendLayout();
@@ -117,6 +117,7 @@ namespace PuntoVenta.Modulos
             this.DataGridViewClientes.TabIndex = 1;
             this.DataGridViewClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EliminarCliente);
             this.DataGridViewClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarCliente);
+            this.DataGridViewClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarCliente2);
             // 
             // Editar
             // 
@@ -164,6 +165,27 @@ namespace PuntoVenta.Modulos
             this.PanelNuevoCliente.TabIndex = 2;
             this.PanelNuevoCliente.Visible = false;
             // 
+            // TipoPersona_LBL
+            // 
+            this.TipoPersona_LBL.AutoSize = true;
+            this.TipoPersona_LBL.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TipoPersona_LBL.Location = new System.Drawing.Point(417, 23);
+            this.TipoPersona_LBL.Name = "TipoPersona_LBL";
+            this.TipoPersona_LBL.Size = new System.Drawing.Size(97, 20);
+            this.TipoPersona_LBL.TabIndex = 19;
+            this.TipoPersona_LBL.Text = "Tipo Persona:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Física",
+            "Jurídica"});
+            this.comboBox1.Location = new System.Drawing.Point(520, 20);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(139, 23);
+            this.comboBox1.TabIndex = 18;
+            // 
             // idUsuario_Label
             // 
             this.idUsuario_Label.AutoSize = true;
@@ -173,19 +195,6 @@ namespace PuntoVenta.Modulos
             this.idUsuario_Label.TabIndex = 17;
             this.idUsuario_Label.Text = "label1";
             this.idUsuario_Label.Visible = false;
-            // 
-            // BtnGuardarEditado
-            // 
-            this.BtnGuardarEditado.BackColor = System.Drawing.Color.Green;
-            this.BtnGuardarEditado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnGuardarEditado.Location = new System.Drawing.Point(169, 255);
-            this.BtnGuardarEditado.Name = "BtnGuardarEditado";
-            this.BtnGuardarEditado.Size = new System.Drawing.Size(107, 44);
-            this.BtnGuardarEditado.TabIndex = 16;
-            this.BtnGuardarEditado.Text = "Guardar";
-            this.BtnGuardarEditado.UseVisualStyleBackColor = false;
-            this.BtnGuardarEditado.Visible = false;
-            this.BtnGuardarEditado.Click += new System.EventHandler(this.BtnGuardar_Editado);
             // 
             // BtnCancelar
             // 
@@ -322,26 +331,18 @@ namespace PuntoVenta.Modulos
             this.LabelNombreCliente.TabIndex = 0;
             this.LabelNombreCliente.Text = "Nombres: ";
             // 
-            // comboBox1
+            // BtnGuardarEditado
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(520, 20);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(139, 23);
-            this.comboBox1.TabIndex = 18;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Física",
-            "Jurídica"});
-            // 
-            // TipoPersona_LBL
-            // 
-            this.TipoPersona_LBL.AutoSize = true;
-            this.TipoPersona_LBL.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TipoPersona_LBL.Location = new System.Drawing.Point(417, 23);
-            this.TipoPersona_LBL.Name = "TipoPersona_LBL";
-            this.TipoPersona_LBL.Size = new System.Drawing.Size(97, 20);
-            this.TipoPersona_LBL.TabIndex = 19;
-            this.TipoPersona_LBL.Text = "Tipo Persona:";
+            this.BtnGuardarEditado.BackColor = System.Drawing.Color.Green;
+            this.BtnGuardarEditado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnGuardarEditado.Location = new System.Drawing.Point(169, 255);
+            this.BtnGuardarEditado.Name = "BtnGuardarEditado";
+            this.BtnGuardarEditado.Size = new System.Drawing.Size(107, 44);
+            this.BtnGuardarEditado.TabIndex = 16;
+            this.BtnGuardarEditado.Text = "Guardar";
+            this.BtnGuardarEditado.UseVisualStyleBackColor = false;
+            this.BtnGuardarEditado.Visible = false;
+            this.BtnGuardarEditado.Click += new System.EventHandler(this.BtnGuardar_Editado);
             // 
             // Clientes
             // 

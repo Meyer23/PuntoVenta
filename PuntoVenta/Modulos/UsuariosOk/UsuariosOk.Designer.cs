@@ -66,18 +66,16 @@ namespace PuntoVenta.Modulos
             this.PanelBusqueda.Controls.Add(this.TxtBuscarUsuario);
             this.PanelBusqueda.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelBusqueda.Location = new System.Drawing.Point(0, 0);
-            this.PanelBusqueda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PanelBusqueda.Name = "PanelBusqueda";
-            this.PanelBusqueda.Size = new System.Drawing.Size(1060, 105);
+            this.PanelBusqueda.Size = new System.Drawing.Size(742, 63);
             this.PanelBusqueda.TabIndex = 1;
             // 
             // BtnAgregarUsuario
             // 
             this.BtnAgregarUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnAgregarUsuario.Location = new System.Drawing.Point(594, 35);
-            this.BtnAgregarUsuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnAgregarUsuario.Location = new System.Drawing.Point(416, 21);
             this.BtnAgregarUsuario.Name = "BtnAgregarUsuario";
-            this.BtnAgregarUsuario.Size = new System.Drawing.Size(107, 40);
+            this.BtnAgregarUsuario.Size = new System.Drawing.Size(75, 24);
             this.BtnAgregarUsuario.TabIndex = 2;
             this.BtnAgregarUsuario.Text = "Agregar";
             this.BtnAgregarUsuario.UseVisualStyleBackColor = true;
@@ -86,10 +84,9 @@ namespace PuntoVenta.Modulos
             // BtnBuscarUsuario
             // 
             this.BtnBuscarUsuario.BackColor = System.Drawing.Color.White;
-            this.BtnBuscarUsuario.Location = new System.Drawing.Point(479, 35);
-            this.BtnBuscarUsuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnBuscarUsuario.Location = new System.Drawing.Point(335, 21);
             this.BtnBuscarUsuario.Name = "BtnBuscarUsuario";
-            this.BtnBuscarUsuario.Size = new System.Drawing.Size(107, 40);
+            this.BtnBuscarUsuario.Size = new System.Drawing.Size(75, 24);
             this.BtnBuscarUsuario.TabIndex = 1;
             this.BtnBuscarUsuario.Text = "Buscar";
             this.BtnBuscarUsuario.UseVisualStyleBackColor = false;
@@ -97,10 +94,9 @@ namespace PuntoVenta.Modulos
             // 
             // TxtBuscarUsuario
             // 
-            this.TxtBuscarUsuario.Location = new System.Drawing.Point(17, 35);
-            this.TxtBuscarUsuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TxtBuscarUsuario.Location = new System.Drawing.Point(12, 21);
             this.TxtBuscarUsuario.Name = "TxtBuscarUsuario";
-            this.TxtBuscarUsuario.Size = new System.Drawing.Size(451, 31);
+            this.TxtBuscarUsuario.Size = new System.Drawing.Size(317, 23);
             this.TxtBuscarUsuario.TabIndex = 0;
             // 
             // DataGridUsuarios
@@ -112,16 +108,16 @@ namespace PuntoVenta.Modulos
             this.Eliminar,
             this.Editar});
             this.DataGridUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DataGridUsuarios.Location = new System.Drawing.Point(0, 105);
-            this.DataGridUsuarios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DataGridUsuarios.Location = new System.Drawing.Point(0, 63);
             this.DataGridUsuarios.Name = "DataGridUsuarios";
             this.DataGridUsuarios.RowHeadersWidth = 62;
             this.DataGridUsuarios.RowTemplate.Height = 25;
             this.DataGridUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridUsuarios.Size = new System.Drawing.Size(1060, 663);
+            this.DataGridUsuarios.Size = new System.Drawing.Size(742, 386);
             this.DataGridUsuarios.TabIndex = 2;
             this.DataGridUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EliminarUsuario);
             this.DataGridUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarUsuario);
+            this.DataGridUsuarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarUsuario2);
             // 
             // Eliminar
             // 
@@ -165,10 +161,9 @@ namespace PuntoVenta.Modulos
             this.PanelAgregarUsuario.Controls.Add(this.LabelNombres);
             this.PanelAgregarUsuario.Controls.Add(this.BtnGuardarEditado);
             this.PanelAgregarUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelAgregarUsuario.Location = new System.Drawing.Point(0, 105);
-            this.PanelAgregarUsuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PanelAgregarUsuario.Location = new System.Drawing.Point(0, 63);
             this.PanelAgregarUsuario.Name = "PanelAgregarUsuario";
-            this.PanelAgregarUsuario.Size = new System.Drawing.Size(1060, 663);
+            this.PanelAgregarUsuario.Size = new System.Drawing.Size(742, 386);
             this.PanelAgregarUsuario.TabIndex = 3;
             this.PanelAgregarUsuario.Visible = false;
             // 
@@ -176,10 +171,9 @@ namespace PuntoVenta.Modulos
             // 
             this.TxtCedula.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.TxtCedula.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.TxtCedula.Location = new System.Drawing.Point(250, 71);
-            this.TxtCedula.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TxtCedula.Location = new System.Drawing.Point(175, 43);
             this.TxtCedula.Name = "TxtCedula";
-            this.TxtCedula.Size = new System.Drawing.Size(390, 31);
+            this.TxtCedula.Size = new System.Drawing.Size(274, 23);
             this.TxtCedula.TabIndex = 611;
             this.TxtCedula.Click += new System.EventHandler(this.LeerTextCedula);
             // 
@@ -187,20 +181,18 @@ namespace PuntoVenta.Modulos
             // 
             this.LabelCedula.AutoSize = true;
             this.LabelCedula.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelCedula.Location = new System.Drawing.Point(109, 70);
-            this.LabelCedula.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LabelCedula.Location = new System.Drawing.Point(76, 42);
             this.LabelCedula.Name = "LabelCedula";
-            this.LabelCedula.Size = new System.Drawing.Size(133, 30);
+            this.LabelCedula.Size = new System.Drawing.Size(90, 20);
             this.LabelCedula.TabIndex = 610;
             this.LabelCedula.Text = "Nro. Cedula:";
             // 
             // Label_idUsuario
             // 
             this.Label_idUsuario.AutoSize = true;
-            this.Label_idUsuario.Location = new System.Drawing.Point(964, 38);
-            this.Label_idUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label_idUsuario.Location = new System.Drawing.Point(675, 23);
             this.Label_idUsuario.Name = "Label_idUsuario";
-            this.Label_idUsuario.Size = new System.Drawing.Size(59, 25);
+            this.Label_idUsuario.Size = new System.Drawing.Size(38, 15);
             this.Label_idUsuario.TabIndex = 609;
             this.Label_idUsuario.Text = "label1";
             this.Label_idUsuario.Visible = false;
@@ -209,20 +201,18 @@ namespace PuntoVenta.Modulos
             // 
             this.PanelUsuarioImagen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelUsuarioImagen.BackgroundImage")));
             this.PanelUsuarioImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PanelUsuarioImagen.Location = new System.Drawing.Point(703, 32);
-            this.PanelUsuarioImagen.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PanelUsuarioImagen.Location = new System.Drawing.Point(492, 19);
             this.PanelUsuarioImagen.Name = "PanelUsuarioImagen";
-            this.PanelUsuarioImagen.Size = new System.Drawing.Size(204, 177);
+            this.PanelUsuarioImagen.Size = new System.Drawing.Size(143, 106);
             this.PanelUsuarioImagen.TabIndex = 12;
             // 
             // BtnCancelar
             // 
             this.BtnCancelar.BackColor = System.Drawing.Color.Red;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnCancelar.Location = new System.Drawing.Point(770, 563);
-            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnCancelar.Location = new System.Drawing.Point(539, 338);
             this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(157, 85);
+            this.BtnCancelar.Size = new System.Drawing.Size(110, 51);
             this.BtnCancelar.TabIndex = 11;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = false;
@@ -232,10 +222,9 @@ namespace PuntoVenta.Modulos
             // 
             this.BtnGuardar.BackColor = System.Drawing.Color.Green;
             this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnGuardar.Location = new System.Drawing.Point(593, 563);
-            this.BtnGuardar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnGuardar.Location = new System.Drawing.Point(415, 338);
             this.BtnGuardar.Name = "BtnGuardar";
-            this.BtnGuardar.Size = new System.Drawing.Size(157, 85);
+            this.BtnGuardar.Size = new System.Drawing.Size(110, 51);
             this.BtnGuardar.TabIndex = 10;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.UseVisualStyleBackColor = false;
@@ -245,10 +234,9 @@ namespace PuntoVenta.Modulos
             // 
             this.TxtRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TxtRol.FormattingEnabled = true;
-            this.TxtRol.Location = new System.Drawing.Point(250, 362);
-            this.TxtRol.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TxtRol.Location = new System.Drawing.Point(175, 217);
             this.TxtRol.Name = "TxtRol";
-            this.TxtRol.Size = new System.Drawing.Size(390, 33);
+            this.TxtRol.Size = new System.Drawing.Size(274, 23);
             this.TxtRol.TabIndex = 607;
             this.TxtRol.SelectedIndexChanged += new System.EventHandler(this.ComboBoxRoles);
             // 
@@ -256,46 +244,41 @@ namespace PuntoVenta.Modulos
             // 
             this.LabelRol.AutoSize = true;
             this.LabelRol.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelRol.Location = new System.Drawing.Point(181, 365);
-            this.LabelRol.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LabelRol.Location = new System.Drawing.Point(127, 219);
             this.LabelRol.Name = "LabelRol";
-            this.LabelRol.Size = new System.Drawing.Size(48, 30);
+            this.LabelRol.Size = new System.Drawing.Size(34, 20);
             this.LabelRol.TabIndex = 8;
             this.LabelRol.Text = "Rol:";
             // 
             // TxtContraseña
             // 
-            this.TxtContraseña.Location = new System.Drawing.Point(250, 288);
-            this.TxtContraseña.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TxtContraseña.Location = new System.Drawing.Point(175, 173);
             this.TxtContraseña.Name = "TxtContraseña";
-            this.TxtContraseña.Size = new System.Drawing.Size(390, 31);
+            this.TxtContraseña.Size = new System.Drawing.Size(274, 23);
             this.TxtContraseña.TabIndex = 6;
             this.TxtContraseña.UseSystemPasswordChar = true;
             // 
             // TxtLogin
             // 
-            this.TxtLogin.Location = new System.Drawing.Point(250, 217);
-            this.TxtLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TxtLogin.Location = new System.Drawing.Point(175, 130);
             this.TxtLogin.Name = "TxtLogin";
-            this.TxtLogin.Size = new System.Drawing.Size(390, 31);
+            this.TxtLogin.Size = new System.Drawing.Size(274, 23);
             this.TxtLogin.TabIndex = 5;
             // 
             // TxtNombres
             // 
-            this.TxtNombres.Location = new System.Drawing.Point(250, 148);
-            this.TxtNombres.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TxtNombres.Location = new System.Drawing.Point(175, 89);
             this.TxtNombres.Name = "TxtNombres";
-            this.TxtNombres.Size = new System.Drawing.Size(390, 31);
+            this.TxtNombres.Size = new System.Drawing.Size(274, 23);
             this.TxtNombres.TabIndex = 4;
             // 
             // LabelContraseña
             // 
             this.LabelContraseña.AutoSize = true;
             this.LabelContraseña.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelContraseña.Location = new System.Drawing.Point(102, 288);
-            this.LabelContraseña.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LabelContraseña.Location = new System.Drawing.Point(71, 173);
             this.LabelContraseña.Name = "LabelContraseña";
-            this.LabelContraseña.Size = new System.Drawing.Size(127, 30);
+            this.LabelContraseña.Size = new System.Drawing.Size(86, 20);
             this.LabelContraseña.TabIndex = 2;
             this.LabelContraseña.Text = "Contraseña:";
             // 
@@ -303,10 +286,9 @@ namespace PuntoVenta.Modulos
             // 
             this.LabelLogin.AutoSize = true;
             this.LabelLogin.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelLogin.Location = new System.Drawing.Point(158, 218);
-            this.LabelLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LabelLogin.Location = new System.Drawing.Point(111, 131);
             this.LabelLogin.Name = "LabelLogin";
-            this.LabelLogin.Size = new System.Drawing.Size(71, 30);
+            this.LabelLogin.Size = new System.Drawing.Size(49, 20);
             this.LabelLogin.TabIndex = 1;
             this.LabelLogin.Text = "Login:";
             // 
@@ -314,10 +296,9 @@ namespace PuntoVenta.Modulos
             // 
             this.LabelNombres.AutoSize = true;
             this.LabelNombres.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelNombres.Location = new System.Drawing.Point(22, 147);
-            this.LabelNombres.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LabelNombres.Location = new System.Drawing.Point(15, 88);
             this.LabelNombres.Name = "LabelNombres";
-            this.LabelNombres.Size = new System.Drawing.Size(220, 30);
+            this.LabelNombres.Size = new System.Drawing.Size(151, 20);
             this.LabelNombres.TabIndex = 0;
             this.LabelNombres.Text = "Nombres y Apellidos:";
             // 
@@ -325,10 +306,9 @@ namespace PuntoVenta.Modulos
             // 
             this.BtnGuardarEditado.BackColor = System.Drawing.Color.Green;
             this.BtnGuardarEditado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnGuardarEditado.Location = new System.Drawing.Point(593, 563);
-            this.BtnGuardarEditado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnGuardarEditado.Location = new System.Drawing.Point(415, 338);
             this.BtnGuardarEditado.Name = "BtnGuardarEditado";
-            this.BtnGuardarEditado.Size = new System.Drawing.Size(157, 85);
+            this.BtnGuardarEditado.Size = new System.Drawing.Size(110, 51);
             this.BtnGuardarEditado.TabIndex = 608;
             this.BtnGuardarEditado.Text = "Guardar";
             this.BtnGuardarEditado.UseVisualStyleBackColor = false;
@@ -336,14 +316,13 @@ namespace PuntoVenta.Modulos
             // 
             // UsuariosOk
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(1060, 768);
+            this.ClientSize = new System.Drawing.Size(742, 449);
             this.Controls.Add(this.PanelAgregarUsuario);
             this.Controls.Add(this.DataGridUsuarios);
             this.Controls.Add(this.PanelBusqueda);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UsuariosOk";
             this.Text = "Usuarios del Sistema";
             this.PanelBusqueda.ResumeLayout(false);
