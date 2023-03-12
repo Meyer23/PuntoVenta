@@ -12,7 +12,7 @@ namespace PuntoVenta.Modulos.Empleados
 {
     public partial class EmpleadosOk : Form
     {
-        string estadoEmpleado;
+        bool estadoEmpleado;
         int idEmpleado;
         public EmpleadosOk()
         {
@@ -50,9 +50,10 @@ namespace PuntoVenta.Modulos.Empleados
         {
             foreach (DataGridViewRow row in datalistado.Rows)
             {
-                if (row.Cells["Estado"].Value.ToString() == "ELIMINADO")
+                estadoEmpleado = (bool)row.Cells["Activo"].Value;
+                if (estadoEmpleado == false)
                 {
-                    row.DefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Strikeout);
+                    row.DefaultCellStyle.Font = new Font("Segoe UI", 9);
                     row.DefaultCellStyle.ForeColor = Color.Red;
                 }
             }
@@ -60,7 +61,11 @@ namespace PuntoVenta.Modulos.Empleados
 
         private void ocultar_columnas()
         {
-            datalistado.Columns[2].Visible = false;
+            datalistado.Columns[1].Visible = false;
+            datalistado.Columns[6].Visible = false;
+            datalistado.Columns[7].Visible = false;
+            datalistado.Columns[8].Visible = false;
+            datalistado.Columns[9].Visible = false;
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
@@ -70,6 +75,9 @@ namespace PuntoVenta.Modulos.Empleados
             BtnNuevo.Visible = false;
             PanelRegistro.Visible = true;
             BtnGuardarCambios.Visible = false;
+            TxtNombres.ReadOnly = false;
+            TxtApellidos.ReadOnly = false;
+            TxtDocumento.ReadOnly = false;
             limpiar();
         }
 
@@ -79,8 +87,8 @@ namespace PuntoVenta.Modulos.Empleados
             TxtApellidos.Clear();
             TxtDocumento.Clear();
             TxtDireccion.Clear();
-            TxtTelefono.Clear();
-            TxtCelular.Clear();
+            TxtTelefono1.Clear();
+            TxtTelefono2.Clear();
             TxtCorreo.Clear();
             BtnGuardar.Visible = true;
         }
@@ -102,13 +110,13 @@ namespace PuntoVenta.Modulos.Empleados
                     {
                         TxtDireccion.Text = "Paraguay";
                     }
-                    if (TxtTelefono.Text == "")
+                    if (TxtTelefono1.Text == "")
                     {
-                        TxtTelefono.Text = "0";
+                        TxtTelefono1.Text = "0";
                     }
-                    if (TxtCelular.Text == "")
+                    if (TxtTelefono2.Text == "")
                     {
-                        TxtCelular.Text = "0";
+                        TxtTelefono2.Text = "0";
                     }
                     if (TxtCorreo.Text == "")
                     {
@@ -126,10 +134,19 @@ namespace PuntoVenta.Modulos.Empleados
                         cmd.Parameters.AddWithValue("@Apellidos", TxtApellidos.Text);
                         cmd.Parameters.AddWithValue("@Documento", TxtDocumento.Text);
                         cmd.Parameters.AddWithValue("@Direccion", TxtDireccion.Text);
-                        cmd.Parameters.AddWithValue("@Telefono", TxtTelefono.Text);
-                        cmd.Parameters.AddWithValue("@Celular", TxtCelular.Text);
+                        cmd.Parameters.AddWithValue("@FechaNac", dateTimeFechaNac.Value);
+                        cmd.Parameters.AddWithValue("@Telefono1", TxtTelefono1.Text);
+                        cmd.Parameters.AddWithValue("@Telefono2", TxtTelefono2.Text);
                         cmd.Parameters.AddWithValue("@Correo", TxtCorreo.Text);
-                        cmd.Parameters.AddWithValue("@Estado", "ACTIVO");
+                        if (checkBoxActivo.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 0);
+                        }
+                        
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarEmpleados();
@@ -191,61 +208,61 @@ namespace PuntoVenta.Modulos.Empleados
             cambiar_color_eliminados();
         }
 
-        private void EliminarEmpleado(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == this.datalistado.Columns["Eliminar"].Index)
-            {
-                DialogResult result;
-                result = MessageBox.Show("¿Está seguro de eliminar este empleado del sistema?", "Eliminando registro...", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        //private void EliminarEmpleado(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.ColumnIndex == this.datalistado.Columns["Eliminar"].Index)
+        //    {
+        //        DialogResult result;
+        //        result = MessageBox.Show("¿Está seguro de eliminar este empleado del sistema?", "Eliminando registro...", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-                if (result == DialogResult.OK)
-                {
-                    SqlCommand cmd;
-                    try
-                    {
-                        foreach (DataGridViewRow row in datalistado.SelectedRows)
-                        {
-                            int onekey = Convert.ToInt32(row.Cells["idEmpleado"].Value);
+        //        if (result == DialogResult.OK)
+        //        {
+        //            SqlCommand cmd;
+        //            try
+        //            {
+        //                foreach (DataGridViewRow row in datalistado.SelectedRows)
+        //                {
+        //                    int onekey = Convert.ToInt32(row.Cells["idEmpleado"].Value);
 
-                            try
-                            {
-                                try
-                                {
-                                    SqlConnection con = new SqlConnection();
-                                    con.ConnectionString = Conexion.ConexionMaestra.conexion;
-                                    con.Open();
-                                    cmd = new SqlCommand("sp_empleado_eliminar", con);
-                                    cmd.CommandType = CommandType.StoredProcedure;
+        //                    try
+        //                    {
+        //                        try
+        //                        {
+        //                            SqlConnection con = new SqlConnection();
+        //                            con.ConnectionString = Conexion.ConexionMaestra.conexion;
+        //                            con.Open();
+        //                            cmd = new SqlCommand("sp_empleado_eliminar", con);
+        //                            cmd.CommandType = CommandType.StoredProcedure;
 
-                                    cmd.Parameters.AddWithValue("@idEmpleado", onekey);
-                                    cmd.ExecuteNonQuery();
+        //                            cmd.Parameters.AddWithValue("@idEmpleado", onekey);
+        //                            cmd.ExecuteNonQuery();
 
-                                    con.Close();
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show(ex.Message);
-                                }
+        //                            con.Close();
+        //                        }
+        //                        catch (Exception ex)
+        //                        {
+        //                            MessageBox.Show(ex.Message);
+        //                        }
 
-                            }
-                            catch (Exception ex)
-                            {
+        //                    }
+        //                    catch (Exception ex)
+        //                    {
 
-                                MessageBox.Show(ex.Message);
-                            }
+        //                        MessageBox.Show(ex.Message);
+        //                    }
 
-                        }
-                        mostrarEmpleados();
-                    }
+        //                }
+        //                mostrarEmpleados();
+        //            }
 
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+        //            catch (Exception ex)
+        //            {
+        //                MessageBox.Show(ex.Message);
+        //            }
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         private void EditarEmpleado(object sender, DataGridViewCellEventArgs e)
         {
@@ -253,35 +270,50 @@ namespace PuntoVenta.Modulos.Empleados
             {
                 BtnGuardar.Visible = false;
                 BtnGuardarCambios.Visible = true;
+                TxtNombres.ReadOnly = true;
+                TxtApellidos.ReadOnly = true;
+                TxtDocumento.ReadOnly = true;
                 ObtenerDatosEmpleado();
             }
+        }
+
+        private void EditarEmpleado2(object sender, DataGridViewCellEventArgs e)
+        {
+            BtnGuardar.Visible = false;
+            BtnGuardarCambios.Visible = true;
+            TxtNombres.ReadOnly = true;
+            TxtApellidos.ReadOnly = true;
+            TxtDocumento.ReadOnly = true;
+            ObtenerDatosEmpleado();
         }
 
         private void ObtenerDatosEmpleado()
         {
             try
             {
-                estadoEmpleado = datalistado.SelectedCells[10].Value.ToString();
-                if (estadoEmpleado == "ELIMINADO")
+                idEmpleado = Convert.ToInt32(datalistado.SelectedCells[1].Value.ToString());
+                TxtNombres.Text = datalistado.SelectedCells[2].Value.ToString();
+                TxtApellidos.Text = datalistado.SelectedCells[3].Value.ToString();
+                TxtDocumento.Text = datalistado.SelectedCells[4].Value.ToString();
+                TxtDireccion.Text = datalistado.SelectedCells[5].Value.ToString();
+                dateTimeFechaNac.Value = (DateTime)datalistado.SelectedCells[6].Value;
+                TxtTelefono1.Text = datalistado.SelectedCells[7].Value.ToString();
+                TxtTelefono2.Text = datalistado.SelectedCells[8].Value.ToString();
+                TxtCorreo.Text = datalistado.SelectedCells[9].Value.ToString();
+                estadoEmpleado = (bool)datalistado.SelectedCells[10].Value;
+                if(estadoEmpleado == true)
                 {
-                    restaurarEmpleado();
+                    checkBoxActivo.Checked = true;
                 }
                 else
                 {
-                    idEmpleado = Convert.ToInt32(datalistado.SelectedCells[2].Value.ToString());
-                    TxtNombres.Text = datalistado.SelectedCells[3].Value.ToString();
-                    TxtApellidos.Text = datalistado.SelectedCells[4].Value.ToString();
-                    TxtDocumento.Text = datalistado.SelectedCells[5].Value.ToString();
-                    TxtDireccion.Text = datalistado.SelectedCells[6].Value.ToString();
-                    TxtTelefono.Text = datalistado.SelectedCells[7].Value.ToString();
-                    TxtCelular.Text = datalistado.SelectedCells[8].Value.ToString();
-                    TxtCorreo.Text = datalistado.SelectedCells[9].Value.ToString();
-
-                    TxtBusqueda.Visible = false;
-                    menuStrip1.Visible = false;
-                    BtnNuevo.Visible = false;
-                    PanelRegistro.Visible = true;
+                    checkBoxActivo.Checked = false;
                 }
+
+                TxtBusqueda.Visible = false;
+                menuStrip1.Visible = false;
+                BtnNuevo.Visible = false;
+                PanelRegistro.Visible = true;
             }
             catch (Exception ex)
             {
@@ -290,42 +322,35 @@ namespace PuntoVenta.Modulos.Empleados
         }
     
 
-    private void restaurarEmpleado()
-        {
-            DialogResult result;
-            result = MessageBox.Show("Este empleado se encuentra eliminado, ¿Desea volver a Habilitarlo?", "Restauración de Registros", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (result == DialogResult.OK)
-            {
-                foreach (DataGridViewRow row in datalistado.SelectedRows)
-                {
-                    int idProveedor = Convert.ToInt32(row.Cells["idEmpleado"].Value);
-                    try
-                    {
-                        SqlCommand cmd;
-                        SqlConnection con = new SqlConnection();
-                        con.ConnectionString = Conexion.ConexionMaestra.conexion;
-                        con.Open();
-                        cmd = new SqlCommand("sp_empleado_restaurar", con);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@idEmpleado", idProveedor);
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    mostrarEmpleados();
-                }
-            }
-        }
-
-        private void EditarEmpleado2(object sender, DataGridViewCellEventArgs e)
-        {
-            BtnGuardar.Visible = false;
-            BtnGuardarCambios.Visible = true;
-            ObtenerDatosEmpleado();
-        }
+    //private void restaurarEmpleado()
+    //    {
+    //        DialogResult result;
+    //        result = MessageBox.Show("Este empleado se encuentra eliminado, ¿Desea volver a Habilitarlo?", "Restauración de Registros", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+    //        if (result == DialogResult.OK)
+    //        {
+    //            foreach (DataGridViewRow row in datalistado.SelectedRows)
+    //            {
+    //                int idProveedor = Convert.ToInt32(row.Cells["idEmpleado"].Value);
+    //                try
+    //                {
+    //                    SqlCommand cmd;
+    //                    SqlConnection con = new SqlConnection();
+    //                    con.ConnectionString = Conexion.ConexionMaestra.conexion;
+    //                    con.Open();
+    //                    cmd = new SqlCommand("sp_empleado_restaurar", con);
+    //                    cmd.CommandType = CommandType.StoredProcedure;
+    //                    cmd.Parameters.AddWithValue("@idEmpleado", idProveedor);
+    //                    cmd.ExecuteNonQuery();
+    //                    con.Close();
+    //                }
+    //                catch (Exception ex)
+    //                {
+    //                    MessageBox.Show(ex.Message);
+    //                }
+    //                mostrarEmpleados();
+    //            }
+    //        }
+    //    }
 
         private void BtnGuardarCambios_Click(object sender, EventArgs e)
         {
@@ -344,13 +369,13 @@ namespace PuntoVenta.Modulos.Empleados
                     {
                         TxtDireccion.Text = "Paraguay";
                     }
-                    if (TxtTelefono.Text == "")
+                    if (TxtTelefono1.Text == "")
                     {
-                        TxtTelefono.Text = "0";
+                        TxtTelefono1.Text = "0";
                     }
-                    if (TxtCelular.Text == "")
+                    if (TxtTelefono2.Text == "")
                     {
-                        TxtCelular.Text = "0";
+                        TxtTelefono2.Text = "0";
                     }
                     if (TxtCorreo.Text == "")
                     {
@@ -369,9 +394,18 @@ namespace PuntoVenta.Modulos.Empleados
                         cmd.Parameters.AddWithValue("@Apellidos", TxtApellidos.Text);
                         cmd.Parameters.AddWithValue("@Documento", TxtDocumento.Text);
                         cmd.Parameters.AddWithValue("@Direccion", TxtDireccion.Text);
-                        cmd.Parameters.AddWithValue("@Telefono", TxtTelefono.Text);
-                        cmd.Parameters.AddWithValue("@Celular", TxtCelular.Text);
+                        cmd.Parameters.AddWithValue("@FechaNac", dateTimeFechaNac.Value);
+                        cmd.Parameters.AddWithValue("@Telefono1", TxtTelefono1.Text);
+                        cmd.Parameters.AddWithValue("@Telefono2", TxtTelefono2.Text);
                         cmd.Parameters.AddWithValue("@Correo", TxtCorreo.Text);
+                        if (checkBoxActivo.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 0);
+                        }
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarEmpleados();
