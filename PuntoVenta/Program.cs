@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PuntoVenta.Modulos.Empleados;
+using PuntoVenta.Modulos.Usuarios_Ok;
 
 namespace PuntoVenta
 {
@@ -22,7 +23,7 @@ namespace PuntoVenta
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EmpleadosOk());
+            Application.Run(new VentanaPrincipal());
         }
     }
 }

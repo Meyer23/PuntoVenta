@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using PuntoVenta.Modulos.Roles;
+using PuntoVenta.Modulos.Usuarios_Ok;
 
 namespace PuntoVenta.Modulos.VentanaPrincipal
 {
@@ -29,22 +30,6 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         public void MostrarRol(string rolUsuario)
         {
             LabelRol.Text = rolUsuario;
-        }
-
-        private void MenuUsuarios_Click(object sender, EventArgs e)
-        {
-            UsuariosOk frm_usuarios = new UsuariosOk();
-
-            //if(LabelRol.Text != Roles.Administrador.ToString())
-            //{
-            //    MessageBox.Show("Usted no tiene acceso a este nivel del sistema.");
-            //}
-            //else
-            //{
-            //    frm_usuarios.ShowDialog();
-            //}
-
-            frm_usuarios.ShowDialog();
         }
 
         private void MenuProveedores_Click(object sender, EventArgs e)
@@ -92,7 +77,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             Facturas frm_facturas = new Facturas();
 
             var estadoCaja = frm_facturas.ConsultarCaja().Item1;
-            if(estadoCaja == "ACTIVO")
+            if (estadoCaja == "ACTIVO")
             {
                 frm_facturas.Show();
                 frm_facturas.MostrarEstadoCaja();
@@ -110,7 +95,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             var estadoCaja = frm_facturas.ConsultarCaja().Item1;
             if (estadoCaja == "ACTIVO")
             {
-                MessageBox.Show("Ya existe una caja activa actualmente, debe cerrarla para abrir otra."); 
+                MessageBox.Show("Ya existe una caja activa actualmente, debe cerrarla para abrir otra.");
             }
             else
             {
@@ -127,7 +112,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             if (estadoCaja == "ACTIVO")
             {
                 AdministrarCaja form_administrarCaja = new AdministrarCaja();
-                form_administrarCaja.ShowDialog(); 
+                form_administrarCaja.ShowDialog();
             }
             else
             {
@@ -147,6 +132,13 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             Rol frm_roles = new Rol();
 
             frm_roles.ShowDialog();
+        }
+
+        private void MenuUsuarios_Click(object sender, EventArgs e)
+        {
+            Usuarios frm_usuarios = new Usuarios();
+
+            frm_usuarios.ShowDialog();
         }
     }
 }
