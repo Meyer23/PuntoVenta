@@ -28,13 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Usuarios));
             PanelBusquedaUsuario = new System.Windows.Forms.Panel();
             BtnAgregarUsuario = new System.Windows.Forms.Button();
             BtnBuscarUsuario = new System.Windows.Forms.Button();
             TextBoxBusquedaUsuario = new System.Windows.Forms.TextBox();
             LabelBusquedaUsuario = new System.Windows.Forms.Label();
             DataGridViewUsuarios = new System.Windows.Forms.DataGridView();
+            EditarU = new System.Windows.Forms.DataGridViewImageColumn();
             PanelBuscarEmpleado = new System.Windows.Forms.Panel();
+            TxtUsuarioEditando = new System.Windows.Forms.TextBox();
+            LabelEditarUsuario = new System.Windows.Forms.Label();
+            BtnGuardarEditado = new System.Windows.Forms.Button();
             CheckActivo = new System.Windows.Forms.CheckBox();
             BntCancelar = new System.Windows.Forms.Button();
             BtnAgregarNuevo = new System.Windows.Forms.Button();
@@ -108,16 +113,32 @@
             DataGridViewUsuarios.AllowUserToAddRows = false;
             DataGridViewUsuarios.AllowUserToDeleteRows = false;
             DataGridViewUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DataGridViewUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { EditarU });
             DataGridViewUsuarios.Location = new System.Drawing.Point(33, 61);
             DataGridViewUsuarios.Name = "DataGridViewUsuarios";
             DataGridViewUsuarios.ReadOnly = true;
             DataGridViewUsuarios.RowHeadersWidth = 62;
             DataGridViewUsuarios.RowTemplate.Height = 33;
+            DataGridViewUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             DataGridViewUsuarios.Size = new System.Drawing.Size(831, 239);
             DataGridViewUsuarios.TabIndex = 1;
+            DataGridViewUsuarios.CellContentDoubleClick += EditarUsuario;
+            // 
+            // EditarU
+            // 
+            EditarU.HeaderText = "Editar";
+            EditarU.Image = (System.Drawing.Image)resources.GetObject("EditarU.Image");
+            EditarU.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            EditarU.MinimumWidth = 8;
+            EditarU.Name = "EditarU";
+            EditarU.ReadOnly = true;
+            EditarU.Width = 150;
             // 
             // PanelBuscarEmpleado
             // 
+            PanelBuscarEmpleado.Controls.Add(TxtUsuarioEditando);
+            PanelBuscarEmpleado.Controls.Add(LabelEditarUsuario);
+            PanelBuscarEmpleado.Controls.Add(BtnGuardarEditado);
             PanelBuscarEmpleado.Controls.Add(CheckActivo);
             PanelBuscarEmpleado.Controls.Add(BntCancelar);
             PanelBuscarEmpleado.Controls.Add(BtnAgregarNuevo);
@@ -135,6 +156,34 @@
             PanelBuscarEmpleado.Name = "PanelBuscarEmpleado";
             PanelBuscarEmpleado.Size = new System.Drawing.Size(955, 562);
             PanelBuscarEmpleado.TabIndex = 2;
+            // 
+            // TxtUsuarioEditando
+            // 
+            TxtUsuarioEditando.Location = new System.Drawing.Point(174, 188);
+            TxtUsuarioEditando.Name = "TxtUsuarioEditando";
+            TxtUsuarioEditando.Size = new System.Drawing.Size(233, 31);
+            TxtUsuarioEditando.TabIndex = 18;
+            TxtUsuarioEditando.Visible = false;
+            // 
+            // LabelEditarUsuario
+            // 
+            LabelEditarUsuario.AutoSize = true;
+            LabelEditarUsuario.Location = new System.Drawing.Point(33, 191);
+            LabelEditarUsuario.Name = "LabelEditarUsuario";
+            LabelEditarUsuario.Size = new System.Drawing.Size(122, 25);
+            LabelEditarUsuario.TabIndex = 17;
+            LabelEditarUsuario.Text = "Editar Usuario";
+            LabelEditarUsuario.Visible = false;
+            // 
+            // BtnGuardarEditado
+            // 
+            BtnGuardarEditado.Location = new System.Drawing.Point(432, 479);
+            BtnGuardarEditado.Name = "BtnGuardarEditado";
+            BtnGuardarEditado.Size = new System.Drawing.Size(187, 31);
+            BtnGuardarEditado.TabIndex = 16;
+            BtnGuardarEditado.Text = "Guardar Cambios";
+            BtnGuardarEditado.UseVisualStyleBackColor = true;
+            BtnGuardarEditado.Click += BtnGuardarEditado_Click;
             // 
             // CheckActivo
             // 
@@ -305,5 +354,9 @@
         private System.Windows.Forms.Button BntCancelar;
         private System.Windows.Forms.Button BtnAgregarNuevo;
         private System.Windows.Forms.CheckBox CheckActivo;
+        private System.Windows.Forms.Button BtnGuardarEditado;
+        private System.Windows.Forms.Label LabelEditarUsuario;
+        private System.Windows.Forms.DataGridViewImageColumn EditarU;
+        private System.Windows.Forms.TextBox TxtUsuarioEditando;
     }
 }
