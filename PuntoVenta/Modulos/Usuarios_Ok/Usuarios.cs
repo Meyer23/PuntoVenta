@@ -74,7 +74,8 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
 
             SqlConnection con = new SqlConnection();
             con.ConnectionString = Conexion.ConexionMaestra.conexion;
-            SqlCommand cmd = new SqlCommand("SELECT nombre FROM DBO.ROL", con);
+            SqlCommand cmd = new SqlCommand("SELECT nombre FROM DBO.ROL r " +
+                "where r.Estado = 1", con);
             con.Open();
             SqlDataReader dr = cmd.ExecuteReader();
 
@@ -148,7 +149,7 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
                 string cedula = string.Empty;
                 string login = string.Empty;
 
-                if(DataGridViewEmpleados.Rows.Count == 0)
+                if (DataGridViewEmpleados.Rows.Count == 0)
                 {
                     MessageBox.Show("Busque al menos un empleado para continuar.");
                     return;
@@ -275,7 +276,7 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
                 return;
             }
 
-            else if(ComboBoxRol.SelectedIndex == -1)
+            else if (ComboBoxRol.SelectedIndex == -1)
             {
                 MessageBox.Show("Elija un Rol");
             }

@@ -11,11 +11,11 @@ namespace PuntoVenta.Modulos.Roles
 {
     public partial class Rol : Form
     {
-        int idRol;
         public Rol()
         {
             InitializeComponent();
             mostrarRoles();
+            OcultarColumnas();
         }
 
         private void Roles_Load(object sender, EventArgs e)
@@ -80,83 +80,34 @@ namespace PuntoVenta.Modulos.Roles
             }
         }
 
-        private void EliminarRol(object sender, DataGridViewCellEventArgs e)
+        private void OcultarColumnas()
         {
-            if (e.ColumnIndex == this.datalistadoRoles.Columns["Eliminar"].Index)
-            {
-                DialogResult result;
-                result = MessageBox.Show("¿Está seguro de eliminar esta categoría del sistema?", "Eliminando registro...", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-                if (result == DialogResult.OK)
-                {
-                    SqlCommand cmd;
-                    try
-                    {
-                        foreach (DataGridViewRow row in datalistadoRoles.SelectedRows)
-                        {
-                            int onekey = Convert.ToInt32(row.Cells["id"].Value);
-
-                            try
-                            {
-                                try
-                                {
-                                    SqlConnection con = new SqlConnection();
-                                    con.ConnectionString = Conexion.ConexionMaestra.conexion;
-                                    con.Open();
-                                    cmd = new SqlCommand("sp_roles_eliminar", con);
-                                    cmd.CommandType = CommandType.StoredProcedure;
-
-                                    cmd.Parameters.AddWithValue("@id", onekey);
-                                    cmd.ExecuteNonQuery();
-
-                                    con.Close();
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show(ex.Message);
-                                }
-
-                            }
-                            catch (Exception ex)
-                            {
-
-                                MessageBox.Show(ex.Message);
-                            }
-                        }
-                        mostrarRoles();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            }
+            datalistadoRoles.Columns[1].Visible = false;
         }
 
         private void EditarRol(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == this.datalistadoRoles.Columns["Editar"].Index)
             {
-                BtnGuardar.Visible = false;
-                BtnGuardarCambios.Visible = true;
-                ObtenerDatosRoles();
+                BtnGuardar.Hide();
+                BtnGuardarCambios.Show();
+                datalistadoRoles.Hide();
+                PanelEncabezado.Hide();
+                PanelRegistro.Show();
+                TxtNombre.Hide();
+                TxtNombre.Enabled = false;
+                TxtRolEditando.Text = datalistadoRoles.SelectedCells[2].Value.ToString();
+                LblNombre.Hide();
             }
-        }
-
-        private void EditarRoles2(object sender, DataGridViewCellEventArgs e)
-        {
-            BtnGuardar.Visible = false;
-            BtnGuardarCambios.Visible = true;
-            ObtenerDatosRoles();
         }
 
         private void ObtenerDatosRoles()
         {
             try
             {
-                idRol = Convert.ToInt32(datalistadoRoles.SelectedCells[2].Value.ToString());
+                int idRol = Convert.ToInt32(datalistadoRoles.SelectedCells[2].Value.ToString());
                 TxtNombre.Text = datalistadoRoles.SelectedCells[3].Value.ToString();
-                
+
 
                 TxtBusqueda.Visible = false;
                 menuStrip1.Visible = false;
@@ -171,11 +122,11 @@ namespace PuntoVenta.Modulos.Roles
 
         private void CrearRol(object sender, EventArgs e)
         {
-            TxtBusqueda.Visible = false;
-            menuStrip1.Visible = false;
-            BtnNuevo.Visible = false;
-            PanelRegistro.Visible = true;
-            BtnGuardarCambios.Visible = false;
+            TxtBusqueda.Hide();
+            menuStrip1.Hide();
+            BtnNuevo.Hide();
+            PanelRegistro.Show();
+            BtnGuardarCambios.Hide();
             limpiar();
         }
 
@@ -187,10 +138,12 @@ namespace PuntoVenta.Modulos.Roles
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
-            PanelRegistro.Visible = false;
-            TxtBusqueda.Visible = true;
-            menuStrip1.Visible = true;
-            BtnNuevo.Visible = true;
+            PanelRegistro.Hide();
+            PanelEncabezado.Show();
+            TxtBusqueda.Show();
+            menuStrip1.Show();
+            BtnNuevo.Show();
+            datalistadoRoles.Show();
         }
 
         private void GuardarRol(object sender, EventArgs e)
@@ -208,6 +161,12 @@ namespace PuntoVenta.Modulos.Roles
                         cmd = new SqlCommand("sp_roles_insertar", con);
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Nombre", TxtNombre.Text);
+                        if (CheckRol.Checked)
+                        {
+                            cmd.Parameters.AddWithValue("@Estado", 1);
+                        }
+                        else
+                            cmd.Parameters.AddWithValue("@Estado", 0);
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarRoles();
@@ -232,34 +191,32 @@ namespace PuntoVenta.Modulos.Roles
 
         private void BtnGuardarCambios_Click(object sender, EventArgs e)
         {
+            int idRol = Convert.ToInt32(datalistadoRoles.SelectedCells[1].Value);
             try
             {
-                if (TxtNombre.Text != "")
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = Conexion.ConexionMaestra.conexion;
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd = new SqlCommand("sp_roles_editar", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", idRol);
+                if (CheckRol.Checked)
                 {
-                    try
-                    {
-                        SqlConnection con = new SqlConnection();
-                        con.ConnectionString = Conexion.ConexionMaestra.conexion;
-                        con.Open();
-                        SqlCommand cmd = new SqlCommand();
-                        cmd = new SqlCommand("sp_roles_editar", con);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@id", idRol);
-                        cmd.Parameters.AddWithValue("@Nombre", TxtNombre.Text);
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-                        mostrarRoles();
-                        PanelRegistro.Visible = false;
-                        TxtBusqueda.Visible = true;
-                        menuStrip1.Visible = true;
-                        BtnNuevo.Visible = true;
-                        limpiar();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    cmd.Parameters.AddWithValue("@Estado", 1);
                 }
+                else
+                    cmd.Parameters.AddWithValue("@Estado", 0);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                mostrarRoles();
+                PanelRegistro.Hide();
+                TxtBusqueda.Show();
+                menuStrip1.Show();
+                BtnNuevo.Show();
+                datalistadoRoles.Show();
+
+                limpiar();
             }
             catch (Exception ex)
             {

@@ -120,7 +120,7 @@
             DataGridViewUsuarios.RowHeadersWidth = 62;
             DataGridViewUsuarios.RowTemplate.Height = 33;
             DataGridViewUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            DataGridViewUsuarios.Size = new System.Drawing.Size(831, 239);
+            DataGridViewUsuarios.Size = new System.Drawing.Size(915, 239);
             DataGridViewUsuarios.TabIndex = 1;
             DataGridViewUsuarios.CellContentDoubleClick += EditarUsuario;
             // 
