@@ -215,6 +215,7 @@ namespace PuntoVenta.Modulos.Roles
                 menuStrip1.Show();
                 BtnNuevo.Show();
                 datalistadoRoles.Show();
+                PanelEncabezado.Show();
 
                 limpiar();
             }
