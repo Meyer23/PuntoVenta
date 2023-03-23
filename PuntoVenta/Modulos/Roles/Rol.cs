@@ -89,15 +89,17 @@ namespace PuntoVenta.Modulos.Roles
         {
             if (e.ColumnIndex == this.datalistadoRoles.Columns["Editar"].Index)
             {
-                BtnGuardar.Hide();
-                BtnGuardarCambios.Show();
-                datalistadoRoles.Hide();
                 PanelEncabezado.Hide();
+                datalistadoRoles.Hide();
                 PanelRegistro.Show();
                 TxtNombre.Hide();
-                TxtNombre.Enabled = false;
-                TxtRolEditando.Text = datalistadoRoles.SelectedCells[2].Value.ToString();
                 LblNombre.Hide();
+                TxtRolEditando.Text = datalistadoRoles.SelectedCells[2].Value.ToString();
+                EditandoNombreRol.Show();
+                BtnGuardarCambios.Show();
+                BtnGuardar.Hide();
+                TxtRolEditando.Show();
+                
             }
         }
 
@@ -122,12 +124,11 @@ namespace PuntoVenta.Modulos.Roles
 
         private void CrearRol(object sender, EventArgs e)
         {
-            TxtBusqueda.Hide();
-            menuStrip1.Hide();
-            BtnNuevo.Hide();
+            PanelEncabezado.Hide();
+            datalistadoRoles.Hide();
             PanelRegistro.Show();
-            BtnGuardarCambios.Hide();
-            limpiar();
+            EditandoNombreRol.Hide();
+            TxtRolEditando.Hide();
         }
 
         private void limpiar()
@@ -170,10 +171,9 @@ namespace PuntoVenta.Modulos.Roles
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarRoles();
-                        PanelRegistro.Visible = false;
-                        TxtBusqueda.Visible = true;
-                        menuStrip1.Visible = true;
-                        BtnNuevo.Visible = true;
+                        PanelEncabezado.Show();
+                        datalistadoRoles.Show();
+                        PanelRegistro.Hide();
                         limpiar();
                     }
                     catch (Exception ex)

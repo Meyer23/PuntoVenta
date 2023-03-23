@@ -30,7 +30,7 @@ namespace PuntoVenta.Modulos.Roles
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Rol));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             PanelEncabezado = new System.Windows.Forms.Panel();
             BtnNuevo = new System.Windows.Forms.Button();
             TxtBusqueda = new System.Windows.Forms.TextBox();
@@ -127,9 +127,9 @@ namespace PuntoVenta.Modulos.Roles
             datalistadoRoles.Name = "datalistadoRoles";
             datalistadoRoles.ReadOnly = true;
             datalistadoRoles.RowHeadersWidth = 62;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            datalistadoRoles.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            datalistadoRoles.RowsDefaultCellStyle = dataGridViewCellStyle1;
             datalistadoRoles.RowTemplate.Height = 25;
             datalistadoRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             datalistadoRoles.Size = new System.Drawing.Size(958, 312);
@@ -266,9 +266,9 @@ namespace PuntoVenta.Modulos.Roles
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(962, 394);
+            Controls.Add(PanelRegistro);
             Controls.Add(PanelEncabezado);
             Controls.Add(datalistadoRoles);
-            Controls.Add(PanelRegistro);
             Name = "Rol";
             Text = "Rol";
             PanelEncabezado.ResumeLayout(false);
