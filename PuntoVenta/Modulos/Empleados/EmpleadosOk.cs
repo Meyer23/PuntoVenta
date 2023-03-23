@@ -78,6 +78,7 @@ namespace PuntoVenta.Modulos.Empleados
             TxtNombres.ReadOnly = false;
             TxtApellidos.ReadOnly = false;
             TxtDocumento.ReadOnly = false;
+            dateTimeFechaNac.Enabled = true;
             limpiar();
         }
 
@@ -273,6 +274,7 @@ namespace PuntoVenta.Modulos.Empleados
                 TxtNombres.ReadOnly = true;
                 TxtApellidos.ReadOnly = true;
                 TxtDocumento.ReadOnly = true;
+                dateTimeFechaNac.Enabled = false;
                 ObtenerDatosEmpleado();
             }
         }
@@ -284,6 +286,7 @@ namespace PuntoVenta.Modulos.Empleados
             TxtNombres.ReadOnly = true;
             TxtApellidos.ReadOnly = true;
             TxtDocumento.ReadOnly = true;
+            dateTimeFechaNac.Enabled = false;
             ObtenerDatosEmpleado();
         }
 
@@ -425,6 +428,103 @@ namespace PuntoVenta.Modulos.Empleados
                 {
                     MessageBox.Show("Datos Incompletos", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+        }
+
+        private void TxtNombres_Validating(object sender, CancelEventArgs e)
+        {
+            ErrorProvider errorProvider1 = new ErrorProvider();
+            if (string.IsNullOrEmpty(TxtNombres.Text))
+            {
+                e.Cancel = true;
+                TxtNombres.Focus();
+                errorProvider1.SetError(TxtNombres, "Este campo es obligatorio");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(TxtNombres, "");
+            }
+
+        }
+
+        private void TxtApellidos_Validating(object sender, CancelEventArgs e)
+        {
+            ErrorProvider errorProvider1 = new ErrorProvider();
+            if (string.IsNullOrEmpty(TxtApellidos.Text))
+            {
+                e.Cancel = true;
+                TxtApellidos.Focus();
+                errorProvider1.SetError(TxtApellidos, "Este campo es obligatorio");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(TxtApellidos, "");
+            }
+        }
+
+        private void TxtDocumento_Validating(object sender, CancelEventArgs e)
+        {
+            ErrorProvider errorProvider1 = new ErrorProvider();
+            if (string.IsNullOrEmpty(TxtDocumento.Text))
+            {
+                e.Cancel = true;
+                TxtDocumento.Focus();
+                errorProvider1.SetError(TxtDocumento, "Este campo es obligatorio");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(TxtDocumento, "");
+            }
+        }
+
+        private void dateTimeFechaNac_Validating(object sender, CancelEventArgs e)
+        {
+            ErrorProvider errorProvider1 = new ErrorProvider();
+            if (string.IsNullOrEmpty(dateTimeFechaNac.Text))
+            {
+                e.Cancel = true;
+                dateTimeFechaNac.Focus();
+                errorProvider1.SetError(dateTimeFechaNac, "Este campo es obligatorio");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(dateTimeFechaNac, "");
+            }
+        }
+
+        private void TxtCorreo_Validating(object sender, CancelEventArgs e)
+        {
+            ErrorProvider errorProvider1 = new ErrorProvider();
+            if (string.IsNullOrEmpty(TxtCorreo.Text))
+            {
+                e.Cancel = true;
+                TxtCorreo.Focus();
+                errorProvider1.SetError(TxtCorreo, "Este campo es obligatorio");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(TxtCorreo, "");
+            }
+        }
+
+        private void TxtTelefono1_Validating(object sender, CancelEventArgs e)
+        {
+            ErrorProvider errorProvider1 = new ErrorProvider();
+            if (string.IsNullOrEmpty(TxtTelefono1.Text))
+            {
+                e.Cancel = true;
+                TxtTelefono1.Focus();
+                errorProvider1.SetError(TxtTelefono1, "Este campo es obligatorio");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(TxtTelefono1, "");
             }
         }
     }

@@ -174,9 +174,9 @@ namespace PuntoVenta.Modulos.Empleados
             this.PanelRegistro.Controls.Add(this.LblApellidos);
             this.PanelRegistro.Controls.Add(this.LblNombres);
             this.PanelRegistro.Controls.Add(this.LblDocumento);
-            this.PanelRegistro.Location = new System.Drawing.Point(0, 48);
+            this.PanelRegistro.Location = new System.Drawing.Point(0, 49);
             this.PanelRegistro.Name = "PanelRegistro";
-            this.PanelRegistro.Size = new System.Drawing.Size(913, 402);
+            this.PanelRegistro.Size = new System.Drawing.Size(913, 401);
             this.PanelRegistro.TabIndex = 6;
             this.PanelRegistro.Visible = false;
             // 
@@ -201,6 +201,7 @@ namespace PuntoVenta.Modulos.Empleados
             this.dateTimeFechaNac.Size = new System.Drawing.Size(200, 23);
             this.dateTimeFechaNac.TabIndex = 20;
             this.dateTimeFechaNac.Value = new System.DateTime(2023, 3, 12, 14, 32, 37, 0);
+            this.dateTimeFechaNac.Validating += new System.ComponentModel.CancelEventHandler(this.dateTimeFechaNac_Validating);
             // 
             // LblFechaNac
             // 
@@ -252,6 +253,7 @@ namespace PuntoVenta.Modulos.Empleados
             this.TxtTelefono1.Name = "TxtTelefono1";
             this.TxtTelefono1.Size = new System.Drawing.Size(552, 25);
             this.TxtTelefono1.TabIndex = 11;
+            this.TxtTelefono1.Validating += new System.ComponentModel.CancelEventHandler(this.TxtTelefono1_Validating);
             // 
             // LblTelefono1
             // 
@@ -298,6 +300,7 @@ namespace PuntoVenta.Modulos.Empleados
             this.TxtCorreo.Name = "TxtCorreo";
             this.TxtCorreo.Size = new System.Drawing.Size(552, 25);
             this.TxtCorreo.TabIndex = 13;
+            this.TxtCorreo.Validating += new System.ComponentModel.CancelEventHandler(this.TxtCorreo_Validating);
             // 
             // PanelUsuarioImagen
             // 
@@ -360,6 +363,7 @@ namespace PuntoVenta.Modulos.Empleados
             this.TxtApellidos.Name = "TxtApellidos";
             this.TxtApellidos.Size = new System.Drawing.Size(562, 25);
             this.TxtApellidos.TabIndex = 9;
+            this.TxtApellidos.Validating += new System.ComponentModel.CancelEventHandler(this.TxtApellidos_Validating);
             // 
             // TxtNombres
             // 
@@ -368,6 +372,7 @@ namespace PuntoVenta.Modulos.Empleados
             this.TxtNombres.Name = "TxtNombres";
             this.TxtNombres.Size = new System.Drawing.Size(562, 25);
             this.TxtNombres.TabIndex = 8;
+            this.TxtNombres.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNombres_Validating);
             // 
             // TxtDocumento
             // 
@@ -376,6 +381,7 @@ namespace PuntoVenta.Modulos.Empleados
             this.TxtDocumento.Name = "TxtDocumento";
             this.TxtDocumento.Size = new System.Drawing.Size(562, 25);
             this.TxtDocumento.TabIndex = 7;
+            this.TxtDocumento.Validating += new System.ComponentModel.CancelEventHandler(this.TxtDocumento_Validating);
             // 
             // LblApellidos
             // 
