@@ -12,6 +12,7 @@ namespace PuntoVenta.Modulos.Productos
     public partial class UnidadesMedidas : Form
     {
         int idUMedida;
+        bool estadoUmedida;
         public UnidadesMedidas()
         {
             InitializeComponent();
@@ -55,11 +56,26 @@ namespace PuntoVenta.Modulos.Productos
             {
                 MessageBox.Show(ex.Message);
             }
+            cambiar_color_eliminados();
+        }
+
+        private void cambiar_color_eliminados()
+        {
+            foreach (DataGridViewRow row in datalistadoMedidas.Rows)
+            {
+                estadoUmedida = (bool)row.Cells["Activo"].Value;
+                if (estadoUmedida == false)
+                {
+                    row.DefaultCellStyle.Font = new Font("Segoe UI", 9);
+                    row.DefaultCellStyle.ForeColor = Color.Red;
+                }
+            }
         }
 
         private void ocultar_columnas()
         {
-            datalistadoMedidas.Columns[2].Visible = false;
+            datalistadoMedidas.Columns[1].Visible = false;
+            datalistadoMedidas.Columns[3].Visible = false;
         }
 
         private void BuscarUnidadMedida(object sender, EventArgs e)
@@ -86,65 +102,13 @@ namespace PuntoVenta.Modulos.Productos
             }
         }
 
-        private void EliminarUnidadMedida(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == this.datalistadoMedidas.Columns["Eliminar"].Index)
-            {
-                DialogResult result;
-                result = MessageBox.Show("¿Está seguro de eliminar esta unidad de medida del sistema?", "Eliminando registro...", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-                if (result == DialogResult.OK)
-                {
-                    SqlCommand cmd;
-                    try
-                    {
-                        foreach (DataGridViewRow row in datalistadoMedidas.SelectedRows)
-                        {
-                            int onekey = Convert.ToInt32(row.Cells["idUMedida"].Value);
-
-                            try
-                            {
-                                try
-                                {
-                                    SqlConnection con = new SqlConnection();
-                                    con.ConnectionString = Conexion.ConexionMaestra.conexion;
-                                    con.Open();
-                                    cmd = new SqlCommand("sp_umedida_eliminar", con);
-                                    cmd.CommandType = CommandType.StoredProcedure;
-
-                                    cmd.Parameters.AddWithValue("@idUMedida", onekey);
-                                    cmd.ExecuteNonQuery();
-
-                                    con.Close();
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show(ex.Message);
-                                }
-
-                            }
-                            catch (Exception ex)
-                            {
-
-                                MessageBox.Show(ex.Message);
-                            }
-                        }
-                        mostrarUnidadesMedidas();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            }
-        }
-
         private void EditarUnidadMedida(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == this.datalistadoMedidas.Columns["Editar"].Index)
             {
                 BtnGuardar.Visible = false;
                 BtnGuardarCambios.Visible = true;
+                TxtAbrev.ReadOnly = true;
                 ObtenerDatosUnidadesMedidas();
             }
         }
@@ -153,6 +117,7 @@ namespace PuntoVenta.Modulos.Productos
         {
             BtnGuardar.Visible = false;
             BtnGuardarCambios.Visible = true;
+            TxtAbrev.ReadOnly = true;
             ObtenerDatosUnidadesMedidas();
         }
 
@@ -160,9 +125,18 @@ namespace PuntoVenta.Modulos.Productos
         {
             try
             {
-                idUMedida = Convert.ToInt32(datalistadoMedidas.SelectedCells[2].Value.ToString());
-                TxtAbrev.Text = datalistadoMedidas.SelectedCells[3].Value.ToString();
-                TxtDescripcion.Text = datalistadoMedidas.SelectedCells[4].Value.ToString();
+                idUMedida = Convert.ToInt32(datalistadoMedidas.SelectedCells[1].Value.ToString());
+                TxtAbrev.Text = datalistadoMedidas.SelectedCells[2].Value.ToString();
+                TxtDescripcion.Text = datalistadoMedidas.SelectedCells[3].Value.ToString();
+                estadoUmedida = (bool)datalistadoMedidas.SelectedCells[4].Value;
+                if (estadoUmedida == true)
+                {
+                    checkBoxActivo.Checked = true;
+                }
+                else
+                {
+                    checkBoxActivo.Checked = false;
+                }
 
                 TxtBusqueda.Visible = false;
                 menuStrip1.Visible = false;
@@ -182,6 +156,9 @@ namespace PuntoVenta.Modulos.Productos
             BtnNuevo.Visible = false;
             PanelRegistro.Visible = true;
             BtnGuardarCambios.Visible = false;
+            TxtAbrev.Focus();
+            TxtAbrev.ReadOnly = false;
+            checkBoxActivo.Checked = true;
             limpiar();
         }
 
@@ -221,6 +198,14 @@ namespace PuntoVenta.Modulos.Productos
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Abreviacion", TxtAbrev.Text);
                         cmd.Parameters.AddWithValue("@Descripcion", TxtDescripcion.Text);
+                        if (checkBoxActivo.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 0);
+                        }
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarUnidadesMedidas();
@@ -264,6 +249,14 @@ namespace PuntoVenta.Modulos.Productos
                         cmd.Parameters.AddWithValue("@idUMedida", idUMedida);
                         cmd.Parameters.AddWithValue("@Abreviacion", TxtAbrev.Text);
                         cmd.Parameters.AddWithValue("@Descripcion", TxtDescripcion.Text);
+                        if (checkBoxActivo.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 0);
+                        }
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarUnidadesMedidas();
@@ -282,6 +275,22 @@ namespace PuntoVenta.Modulos.Productos
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void TxtAbrev_Validating(object sender, CancelEventArgs e)
+        {
+            ErrorProvider errorProvider1 = new ErrorProvider();
+            if (string.IsNullOrEmpty(TxtAbrev.Text))
+            {
+                e.Cancel = true;
+                TxtAbrev.Focus();
+                errorProvider1.SetError(TxtAbrev, "Este campo es obligatorio");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(TxtAbrev, "");
             }
         }
     }

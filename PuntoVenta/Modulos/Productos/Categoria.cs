@@ -10,6 +10,7 @@ namespace PuntoVenta.Modulos.Productos
     public partial class Categoria : Form
     {
         int idCategoria;
+        bool estadoCategoria;
         public Categoria()
         {
             InitializeComponent();
@@ -53,11 +54,13 @@ namespace PuntoVenta.Modulos.Productos
             {
                 MessageBox.Show(ex.Message);
             }
+            cambiar_color_eliminados();
         }
 
         private void ocultar_columnas()
         {
-            datalistadoCategorias.Columns[2].Visible = false;
+            datalistadoCategorias.Columns[1].Visible = false;
+            datalistadoCategorias.Columns[3].Visible = false;
         }
 
         private void BuscarCategoria(object sender, EventArgs e)
@@ -82,57 +85,18 @@ namespace PuntoVenta.Modulos.Productos
             {
                 MessageBox.Show(ex.Message);
             }
+            cambiar_color_eliminados();
         }
 
-        private void EliminarCategoria(object sender, DataGridViewCellEventArgs e)
+        private void cambiar_color_eliminados()
         {
-            if (e.ColumnIndex == this.datalistadoCategorias.Columns["Eliminar"].Index)
+            foreach (DataGridViewRow row in datalistadoCategorias.Rows)
             {
-                DialogResult result;
-                result = MessageBox.Show("¿Está seguro de eliminar esta categoría del sistema?", "Eliminando registro...", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-                if (result == DialogResult.OK)
+                estadoCategoria = (bool)row.Cells["Activo"].Value;
+                if (estadoCategoria == false)
                 {
-                    SqlCommand cmd;
-                    try
-                    {
-                        foreach (DataGridViewRow row in datalistadoCategorias.SelectedRows)
-                        {
-                            int onekey = Convert.ToInt32(row.Cells["idCategoria"].Value);
-
-                            try
-                            {
-                                try
-                                {
-                                    SqlConnection con = new SqlConnection();
-                                    con.ConnectionString = Conexion.ConexionMaestra.conexion;
-                                    con.Open();
-                                    cmd = new SqlCommand("sp_categoria_eliminar", con);
-                                    cmd.CommandType = CommandType.StoredProcedure;
-
-                                    cmd.Parameters.AddWithValue("@idCategoria", onekey);
-                                    cmd.ExecuteNonQuery();
-
-                                    con.Close();
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show(ex.Message);
-                                }
-
-                            }
-                            catch (Exception ex)
-                            {
-
-                                MessageBox.Show(ex.Message);
-                            }
-                        }
-                        mostrarCategorias();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    row.DefaultCellStyle.Font = new Font("Segoe UI", 9);
+                    row.DefaultCellStyle.ForeColor = Color.Red;
                 }
             }
         }
@@ -143,6 +107,7 @@ namespace PuntoVenta.Modulos.Productos
             {
                 BtnGuardar.Visible = false;
                 BtnGuardarCambios.Visible = true;
+                TxtNombre.ReadOnly = true;
                 ObtenerDatosCategorias();
             }
         }
@@ -151,6 +116,7 @@ namespace PuntoVenta.Modulos.Productos
         {
             BtnGuardar.Visible = false;
             BtnGuardarCambios.Visible = true;
+            TxtNombre.ReadOnly = true;
             ObtenerDatosCategorias();
         }
 
@@ -158,9 +124,18 @@ namespace PuntoVenta.Modulos.Productos
         {
             try
             {
-                idCategoria = Convert.ToInt32(datalistadoCategorias.SelectedCells[2].Value.ToString());
-                TxtNombre.Text = datalistadoCategorias.SelectedCells[3].Value.ToString();
-                TxtDescripcion.Text = datalistadoCategorias.SelectedCells[4].Value.ToString();
+                idCategoria = Convert.ToInt32(datalistadoCategorias.SelectedCells[1].Value.ToString());
+                TxtNombre.Text = datalistadoCategorias.SelectedCells[2].Value.ToString();
+                TxtDescripcion.Text = datalistadoCategorias.SelectedCells[3].Value.ToString();
+                estadoCategoria = (bool)datalistadoCategorias.SelectedCells[4].Value;
+                if (estadoCategoria == true)
+                {
+                    checkBoxActivo.Checked = true;
+                }
+                else
+                {
+                    checkBoxActivo.Checked = false;
+                }
 
                 TxtBusqueda.Visible = false;
                 menuStrip1.Visible = false;
@@ -180,6 +155,9 @@ namespace PuntoVenta.Modulos.Productos
             BtnNuevo.Visible = false;
             PanelRegistro.Visible = true;
             BtnGuardarCambios.Visible = false;
+            TxtNombre.Focus();
+            TxtNombre.ReadOnly = false;
+            checkBoxActivo.Checked = true;
             limpiar();
         }
 
@@ -219,6 +197,14 @@ namespace PuntoVenta.Modulos.Productos
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Nombre", TxtNombre.Text);
                         cmd.Parameters.AddWithValue("@Descripcion", TxtDescripcion.Text);
+                        if (checkBoxActivo.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 0);
+                        }
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarCategorias();
@@ -261,6 +247,14 @@ namespace PuntoVenta.Modulos.Productos
                         cmd.Parameters.AddWithValue("@idCategoria", idCategoria);
                         cmd.Parameters.AddWithValue("@Nombre", TxtNombre.Text);
                         cmd.Parameters.AddWithValue("@Descripcion", TxtDescripcion.Text);
+                        if (checkBoxActivo.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 0);
+                        }
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarCategorias();
@@ -279,6 +273,22 @@ namespace PuntoVenta.Modulos.Productos
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void TxtNombre_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ErrorProvider errorProvider1 = new ErrorProvider();
+            if (string.IsNullOrEmpty(TxtNombre.Text))
+            {
+                e.Cancel = true;
+                TxtNombre.Focus();
+                errorProvider1.SetError(TxtNombre, "Este campo es obligatorio");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(TxtNombre, "");
             }
         }
     }

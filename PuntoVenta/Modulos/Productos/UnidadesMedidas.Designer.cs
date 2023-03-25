@@ -30,16 +30,16 @@ namespace PuntoVenta.Modulos.Productos
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UnidadesMedidas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelEncabezado = new System.Windows.Forms.Panel();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.datalistadoMedidas = new System.Windows.Forms.DataGridView();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelRegistro = new System.Windows.Forms.Panel();
+            this.checkBoxActivo = new System.Windows.Forms.CheckBox();
             this.TxtAbrev = new System.Windows.Forms.TextBox();
             this.LblAbrev = new System.Windows.Forms.TextBox();
             this.BtnCancelar = new System.Windows.Forms.Button();
@@ -118,32 +118,20 @@ namespace PuntoVenta.Modulos.Productos
             this.datalistadoMedidas.BackgroundColor = System.Drawing.SystemColors.Control;
             this.datalistadoMedidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datalistadoMedidas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Eliminar,
             this.Editar});
             this.datalistadoMedidas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.datalistadoMedidas.Location = new System.Drawing.Point(0, 49);
             this.datalistadoMedidas.Name = "datalistadoMedidas";
             this.datalistadoMedidas.ReadOnly = true;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.datalistadoMedidas.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.datalistadoMedidas.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.datalistadoMedidas.RowTemplate.Height = 25;
             this.datalistadoMedidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datalistadoMedidas.Size = new System.Drawing.Size(737, 162);
             this.datalistadoMedidas.TabIndex = 7;
-            this.datalistadoMedidas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EliminarUnidadMedida);
             this.datalistadoMedidas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarUnidadMedida);
             this.datalistadoMedidas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarUnidadMedida2);
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Editar
             // 
@@ -155,6 +143,7 @@ namespace PuntoVenta.Modulos.Productos
             // 
             // PanelRegistro
             // 
+            this.PanelRegistro.Controls.Add(this.checkBoxActivo);
             this.PanelRegistro.Controls.Add(this.TxtAbrev);
             this.PanelRegistro.Controls.Add(this.LblAbrev);
             this.PanelRegistro.Controls.Add(this.BtnCancelar);
@@ -162,11 +151,25 @@ namespace PuntoVenta.Modulos.Productos
             this.PanelRegistro.Controls.Add(this.BtnGuardar);
             this.PanelRegistro.Controls.Add(this.TxtDescripcion);
             this.PanelRegistro.Controls.Add(this.LblDescripcion);
-            this.PanelRegistro.Location = new System.Drawing.Point(0, 49);
+            this.PanelRegistro.Location = new System.Drawing.Point(0, 43);
             this.PanelRegistro.Name = "PanelRegistro";
-            this.PanelRegistro.Size = new System.Drawing.Size(737, 162);
+            this.PanelRegistro.Size = new System.Drawing.Size(737, 168);
             this.PanelRegistro.TabIndex = 8;
             this.PanelRegistro.Visible = false;
+            // 
+            // checkBoxActivo
+            // 
+            this.checkBoxActivo.AutoSize = true;
+            this.checkBoxActivo.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.checkBoxActivo.Checked = true;
+            this.checkBoxActivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxActivo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxActivo.Location = new System.Drawing.Point(132, 66);
+            this.checkBoxActivo.Name = "checkBoxActivo";
+            this.checkBoxActivo.Size = new System.Drawing.Size(69, 19);
+            this.checkBoxActivo.TabIndex = 613;
+            this.checkBoxActivo.Text = "ACTIVO";
+            this.checkBoxActivo.UseVisualStyleBackColor = true;
             // 
             // TxtAbrev
             // 
@@ -174,6 +177,7 @@ namespace PuntoVenta.Modulos.Productos
             this.TxtAbrev.Name = "TxtAbrev";
             this.TxtAbrev.Size = new System.Drawing.Size(562, 23);
             this.TxtAbrev.TabIndex = 612;
+            this.TxtAbrev.Validating += new System.ComponentModel.CancelEventHandler(this.TxtAbrev_Validating);
             // 
             // LblAbrev
             // 
@@ -279,8 +283,6 @@ namespace PuntoVenta.Modulos.Productos
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.DataGridView datalistadoMedidas;
-        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
-        private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.Panel PanelRegistro;
         private System.Windows.Forms.TextBox TxtAbrev;
         private System.Windows.Forms.TextBox LblAbrev;
@@ -289,5 +291,7 @@ namespace PuntoVenta.Modulos.Productos
         private System.Windows.Forms.Button BtnGuardar;
         private System.Windows.Forms.TextBox TxtDescripcion;
         private System.Windows.Forms.Label LblDescripcion;
+        private System.Windows.Forms.CheckBox checkBoxActivo;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
     }
 }

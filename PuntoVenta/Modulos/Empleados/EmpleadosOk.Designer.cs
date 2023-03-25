@@ -381,7 +381,6 @@ namespace PuntoVenta.Modulos.Empleados
             this.TxtDocumento.Name = "TxtDocumento";
             this.TxtDocumento.Size = new System.Drawing.Size(562, 25);
             this.TxtDocumento.TabIndex = 7;
-            this.TxtDocumento.Validating += new System.ComponentModel.CancelEventHandler(this.TxtDocumento_Validating);
             // 
             // LblApellidos
             // 

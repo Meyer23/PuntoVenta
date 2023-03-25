@@ -37,7 +37,9 @@ namespace PuntoVenta.Modulos.Productos
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.datalistadoCategorias = new System.Windows.Forms.DataGridView();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelRegistro = new System.Windows.Forms.Panel();
+            this.checkBoxActivo = new System.Windows.Forms.CheckBox();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.LblNombre = new System.Windows.Forms.TextBox();
             this.BtnCancelar = new System.Windows.Forms.Button();
@@ -45,8 +47,6 @@ namespace PuntoVenta.Modulos.Productos
             this.BtnGuardar = new System.Windows.Forms.Button();
             this.TxtDescripcion = new System.Windows.Forms.TextBox();
             this.LblDescripcion = new System.Windows.Forms.Label();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelEncabezado.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistadoCategorias)).BeginInit();
@@ -117,7 +117,6 @@ namespace PuntoVenta.Modulos.Productos
             this.datalistadoCategorias.BackgroundColor = System.Drawing.SystemColors.Control;
             this.datalistadoCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datalistadoCategorias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Eliminar,
             this.Editar});
             this.datalistadoCategorias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.datalistadoCategorias.Location = new System.Drawing.Point(0, 49);
@@ -130,12 +129,20 @@ namespace PuntoVenta.Modulos.Productos
             this.datalistadoCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datalistadoCategorias.Size = new System.Drawing.Size(736, 160);
             this.datalistadoCategorias.TabIndex = 6;
-            this.datalistadoCategorias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EliminarCategoria);
             this.datalistadoCategorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarCategoria);
             this.datalistadoCategorias.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarCategoria2);
             // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "";
+            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            // 
             // PanelRegistro
             // 
+            this.PanelRegistro.Controls.Add(this.checkBoxActivo);
             this.PanelRegistro.Controls.Add(this.TxtNombre);
             this.PanelRegistro.Controls.Add(this.LblNombre);
             this.PanelRegistro.Controls.Add(this.BtnCancelar);
@@ -149,12 +156,27 @@ namespace PuntoVenta.Modulos.Productos
             this.PanelRegistro.TabIndex = 7;
             this.PanelRegistro.Visible = false;
             // 
+            // checkBoxActivo
+            // 
+            this.checkBoxActivo.AutoSize = true;
+            this.checkBoxActivo.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.checkBoxActivo.Checked = true;
+            this.checkBoxActivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxActivo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxActivo.Location = new System.Drawing.Point(132, 66);
+            this.checkBoxActivo.Name = "checkBoxActivo";
+            this.checkBoxActivo.Size = new System.Drawing.Size(69, 19);
+            this.checkBoxActivo.TabIndex = 23;
+            this.checkBoxActivo.Text = "ACTIVO";
+            this.checkBoxActivo.UseVisualStyleBackColor = true;
+            // 
             // TxtNombre
             // 
             this.TxtNombre.Location = new System.Drawing.Point(132, 6);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(562, 23);
             this.TxtNombre.TabIndex = 612;
+            this.TxtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNombre_Validating);
             // 
             // LblNombre
             // 
@@ -230,24 +252,6 @@ namespace PuntoVenta.Modulos.Productos
             this.LblDescripcion.TabIndex = 0;
             this.LblDescripcion.Text = "Descripción:";
             // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "";
-            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            // 
             // Categoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -286,7 +290,7 @@ namespace PuntoVenta.Modulos.Productos
         private System.Windows.Forms.Button BtnGuardar;
         private System.Windows.Forms.TextBox TxtDescripcion;
         private System.Windows.Forms.Label LblDescripcion;
-        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
+        private System.Windows.Forms.CheckBox checkBoxActivo;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
     }
 }
