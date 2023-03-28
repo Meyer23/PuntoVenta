@@ -30,7 +30,7 @@ namespace PuntoVenta.Modulos.Productos
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Producto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelEncabezado = new System.Windows.Forms.Panel();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
@@ -40,7 +40,6 @@ namespace PuntoVenta.Modulos.Productos
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelRegistro = new System.Windows.Forms.Panel();
-            this.BtnGenerarPrecios = new System.Windows.Forms.Button();
             this.TxtCantMayorista = new System.Windows.Forms.TextBox();
             this.LblCantMayorista = new System.Windows.Forms.Label();
             this.TxtExistenciaMinima = new System.Windows.Forms.TextBox();
@@ -61,18 +60,19 @@ namespace PuntoVenta.Modulos.Productos
             this.BtnGuardarCambios = new System.Windows.Forms.Button();
             this.BtnGuardar = new System.Windows.Forms.Button();
             this.TxtExistencia = new System.Windows.Forms.TextBox();
-            this.TxtPorcUtilidad = new System.Windows.Forms.TextBox();
             this.TxtPrecioMayorista = new System.Windows.Forms.TextBox();
             this.TxtPrecio = new System.Windows.Forms.TextBox();
             this.TxtCosto = new System.Windows.Forms.TextBox();
             this.TxtDescripcion = new System.Windows.Forms.TextBox();
             this.LblExistencia = new System.Windows.Forms.Label();
-            this.LblPorcUtilidad = new System.Windows.Forms.Label();
             this.LblPrecioMayorista = new System.Windows.Forms.Label();
             this.LblPrecio = new System.Windows.Forms.Label();
             this.LblCosto = new System.Windows.Forms.Label();
             this.LblDescripción = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.LblPorcUtilidad = new System.Windows.Forms.Label();
+            this.TxtPorcUtilidad = new System.Windows.Forms.TextBox();
+            this.BtnGenerarPrecios = new System.Windows.Forms.Button();
             this.PanelEncabezado.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistadoProductos)).BeginInit();
@@ -150,9 +150,9 @@ namespace PuntoVenta.Modulos.Productos
             this.datalistadoProductos.Location = new System.Drawing.Point(0, 49);
             this.datalistadoProductos.Name = "datalistadoProductos";
             this.datalistadoProductos.ReadOnly = true;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.datalistadoProductos.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.datalistadoProductos.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.datalistadoProductos.RowTemplate.Height = 25;
             this.datalistadoProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datalistadoProductos.Size = new System.Drawing.Size(1041, 541);
@@ -218,21 +218,6 @@ namespace PuntoVenta.Modulos.Productos
             this.PanelRegistro.Size = new System.Drawing.Size(1041, 541);
             this.PanelRegistro.TabIndex = 6;
             this.PanelRegistro.Visible = false;
-            // 
-            // BtnGenerarPrecios
-            // 
-            this.BtnGenerarPrecios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(140)))));
-            this.BtnGenerarPrecios.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnGenerarPrecios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnGenerarPrecios.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnGenerarPrecios.ForeColor = System.Drawing.Color.White;
-            this.BtnGenerarPrecios.Location = new System.Drawing.Point(375, 188);
-            this.BtnGenerarPrecios.Name = "BtnGenerarPrecios";
-            this.BtnGenerarPrecios.Size = new System.Drawing.Size(134, 37);
-            this.BtnGenerarPrecios.TabIndex = 15;
-            this.BtnGenerarPrecios.Text = "Generar Precios";
-            this.BtnGenerarPrecios.UseVisualStyleBackColor = false;
-            this.BtnGenerarPrecios.Click += new System.EventHandler(this.GenerarPrecios);
             // 
             // TxtCantMayorista
             // 
@@ -440,14 +425,6 @@ namespace PuntoVenta.Modulos.Productos
             this.TxtExistencia.Size = new System.Drawing.Size(562, 25);
             this.TxtExistencia.TabIndex = 12;
             // 
-            // TxtPorcUtilidad
-            // 
-            this.TxtPorcUtilidad.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPorcUtilidad.Location = new System.Drawing.Point(157, 195);
-            this.TxtPorcUtilidad.Name = "TxtPorcUtilidad";
-            this.TxtPorcUtilidad.Size = new System.Drawing.Size(189, 25);
-            this.TxtPorcUtilidad.TabIndex = 11;
-            // 
             // TxtPrecioMayorista
             // 
             this.TxtPrecioMayorista.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -490,16 +467,6 @@ namespace PuntoVenta.Modulos.Productos
             this.LblExistencia.TabIndex = 5;
             this.LblExistencia.Text = "Existencia:";
             // 
-            // LblPorcUtilidad
-            // 
-            this.LblPorcUtilidad.AutoSize = true;
-            this.LblPorcUtilidad.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblPorcUtilidad.Location = new System.Drawing.Point(14, 198);
-            this.LblPorcUtilidad.Name = "LblPorcUtilidad";
-            this.LblPorcUtilidad.Size = new System.Drawing.Size(89, 19);
-            this.LblPorcUtilidad.TabIndex = 4;
-            this.LblPorcUtilidad.Text = "Porc Utilidad:";
-            // 
             // LblPrecioMayorista
             // 
             this.LblPrecioMayorista.AutoSize = true;
@@ -540,6 +507,38 @@ namespace PuntoVenta.Modulos.Productos
             this.LblDescripción.TabIndex = 0;
             this.LblDescripción.Text = "Descripción:";
             // 
+            // LblPorcUtilidad
+            // 
+            this.LblPorcUtilidad.AutoSize = true;
+            this.LblPorcUtilidad.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblPorcUtilidad.Location = new System.Drawing.Point(14, 198);
+            this.LblPorcUtilidad.Name = "LblPorcUtilidad";
+            this.LblPorcUtilidad.Size = new System.Drawing.Size(89, 19);
+            this.LblPorcUtilidad.TabIndex = 4;
+            this.LblPorcUtilidad.Text = "Porc Utilidad:";
+            // 
+            // TxtPorcUtilidad
+            // 
+            this.TxtPorcUtilidad.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtPorcUtilidad.Location = new System.Drawing.Point(157, 195);
+            this.TxtPorcUtilidad.Name = "TxtPorcUtilidad";
+            this.TxtPorcUtilidad.Size = new System.Drawing.Size(189, 25);
+            this.TxtPorcUtilidad.TabIndex = 11;
+            // 
+            // BtnGenerarPrecios
+            // 
+            this.BtnGenerarPrecios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(140)))));
+            this.BtnGenerarPrecios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnGenerarPrecios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGenerarPrecios.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnGenerarPrecios.ForeColor = System.Drawing.Color.White;
+            this.BtnGenerarPrecios.Location = new System.Drawing.Point(375, 188);
+            this.BtnGenerarPrecios.Name = "BtnGenerarPrecios";
+            this.BtnGenerarPrecios.Size = new System.Drawing.Size(134, 37);
+            this.BtnGenerarPrecios.TabIndex = 15;
+            this.BtnGenerarPrecios.Text = "Generar Precios";
+            this.BtnGenerarPrecios.UseVisualStyleBackColor = false;
+            // 
             // Producto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -577,13 +576,11 @@ namespace PuntoVenta.Modulos.Productos
         private System.Windows.Forms.Button BtnGuardarCambios;
         private System.Windows.Forms.Button BtnGuardar;
         private System.Windows.Forms.TextBox TxtExistencia;
-        private System.Windows.Forms.TextBox TxtPorcUtilidad;
         private System.Windows.Forms.TextBox TxtPrecioMayorista;
         private System.Windows.Forms.TextBox TxtPrecio;
         private System.Windows.Forms.TextBox TxtCosto;
         private System.Windows.Forms.TextBox TxtDescripcion;
         private System.Windows.Forms.Label LblExistencia;
-        private System.Windows.Forms.Label LblPorcUtilidad;
         private System.Windows.Forms.Label LblPrecioMayorista;
         private System.Windows.Forms.Label LblPrecio;
         private System.Windows.Forms.Label LblCosto;
@@ -604,7 +601,9 @@ namespace PuntoVenta.Modulos.Productos
         private System.Windows.Forms.Label LblCantMayorista;
         private System.Windows.Forms.TextBox TxtExistenciaMinima;
         private System.Windows.Forms.Label LblExistenciaMinima;
-        private System.Windows.Forms.Button BtnGenerarPrecios;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button BtnGenerarPrecios;
+        private System.Windows.Forms.TextBox TxtPorcUtilidad;
+        private System.Windows.Forms.Label LblPorcUtilidad;
     }
 }

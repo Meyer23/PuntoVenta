@@ -1,27 +1,29 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Data;
-using System;
 
 namespace PuntoVenta.Modulos.Productos
 {
-    public partial class Categoria : Form
+    public partial class Impuestos : Form
     {
-        int idCategoria;
-        bool estadoCategoria;
-        public Categoria()
+        int idImpuesto;
+        bool estadoImpuesto;
+        public Impuestos()
         {
             InitializeComponent();
         }
 
-        public DataTable cargarComboCategorias()
+        public DataTable cargarComboImpuestos()
         {
             SqlConnection con = new SqlConnection();
             con.ConnectionString = Conexion.ConexionMaestra.conexion;
             con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("sp_categoria_cargar", con);
+            SqlDataAdapter da = new SqlDataAdapter("sp_impuesto_cargar", con);
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -30,12 +32,12 @@ namespace PuntoVenta.Modulos.Productos
             return dt;
         }
 
-        private void Categorias_Load(object sender, EventArgs e)
+        private void Impuestos_Load(object sender, EventArgs e)
         {
-            mostrarCategorias();
+            mostrarImpuestos();
         }
 
-        private void mostrarCategorias()
+        private void mostrarImpuestos()
         {
             try
             {
@@ -44,41 +46,9 @@ namespace PuntoVenta.Modulos.Productos
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = Conexion.ConexionMaestra.conexion;
                 con.Open();
-                da = new SqlDataAdapter("sp_categoria_mostrar", con);
+                da = new SqlDataAdapter("sp_impuesto_mostrar", con);
                 da.Fill(dt);
-                datalistadoCategorias.DataSource = dt;
-                con.Close();
-                ocultar_columnas();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            cambiar_color_eliminados();
-        }
-
-        private void ocultar_columnas()
-        {
-            datalistadoCategorias.Columns[1].Visible = false;
-            datalistadoCategorias.Columns[3].Visible = false;
-            datalistadoCategorias.Columns[4].Visible = false;
-        }
-
-        private void BuscarCategoria(object sender, EventArgs e)
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                SqlDataAdapter da;
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = Conexion.ConexionMaestra.conexion;
-                con.Open();
-
-                da = new SqlDataAdapter("sp_categoria_buscar", con);
-                da.SelectCommand.CommandType = CommandType.StoredProcedure;
-                da.SelectCommand.Parameters.AddWithValue("@texto", TxtBusqueda.Text);
-                da.Fill(dt);
-                datalistadoCategorias.DataSource = dt;
+                datalistado.DataSource = dt;
                 con.Close();
                 ocultar_columnas();
             }
@@ -91,10 +61,10 @@ namespace PuntoVenta.Modulos.Productos
 
         private void cambiar_color_eliminados()
         {
-            foreach (DataGridViewRow row in datalistadoCategorias.Rows)
+            foreach (DataGridViewRow row in datalistado.Rows)
             {
-                estadoCategoria = (bool)row.Cells["Activo"].Value;
-                if (estadoCategoria == false)
+                estadoImpuesto = (bool)row.Cells["Activo"].Value;
+                if (estadoImpuesto == false)
                 {
                     row.DefaultCellStyle.Font = new Font("Segoe UI", 9);
                     row.DefaultCellStyle.ForeColor = Color.Red;
@@ -102,35 +72,70 @@ namespace PuntoVenta.Modulos.Productos
             }
         }
 
-        private void EditarCategoria(object sender, DataGridViewCellEventArgs e)
+        private void ocultar_columnas()
         {
-            if (e.ColumnIndex == this.datalistadoCategorias.Columns["Editar"].Index)
-            {
-                BtnGuardar.Visible = false;
-                BtnGuardarCambios.Visible = true;
-                TxtNombre.ReadOnly = true;
-                ObtenerDatosCategorias();
-            }
+            datalistado.Columns[1].Visible = false;
+            datalistado.Columns[4].Visible = false;
+            datalistado.Columns[5].Visible = false;
+            datalistado.Columns[6].Visible = false;
         }
 
-        private void EditarCategoria2(object sender, DataGridViewCellEventArgs e)
-        {
-            BtnGuardar.Visible = false;
-            BtnGuardarCambios.Visible = true;
-            TxtNombre.ReadOnly = true;
-            ObtenerDatosCategorias();
-        }
-
-        private void ObtenerDatosCategorias()
+        private void BuscarImpuesto(object sender, ToolStripItemClickedEventArgs e)
         {
             try
             {
-                idCategoria = Convert.ToInt32(datalistadoCategorias.SelectedCells[1].Value.ToString());
-                TxtNombre.Text = datalistadoCategorias.SelectedCells[2].Value.ToString();
-                TxtDescripcion.Text = datalistadoCategorias.SelectedCells[3].Value.ToString();
-                TxtPorcUtilidad.Text = datalistadoCategorias.SelectedCells[4].Value.ToString();
-                estadoCategoria = (bool)datalistadoCategorias.SelectedCells[5].Value;
-                if (estadoCategoria == true)
+                DataTable dt = new DataTable();
+                SqlDataAdapter da;
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = Conexion.ConexionMaestra.conexion;
+                con.Open();
+
+                da = new SqlDataAdapter("sp_impuesto_buscar", con);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@texto", TxtBusqueda.Text);
+                da.Fill(dt);
+                datalistado.DataSource = dt;
+                con.Close();
+                ocultar_columnas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            cambiar_color_eliminados();
+        }
+
+        private void EditarImpuesto(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == this.datalistado.Columns["Editar"].Index)
+            {
+                BtnGuardar.Visible = false;
+                BtnGuardarCambios.Visible = true;
+                TxtImpuesto.ReadOnly = true;
+                ObtenerDatosImpuestos();
+            }
+        }
+
+        private void EditarImpuesto2(object sender, DataGridViewCellEventArgs e)
+        {
+            BtnGuardar.Visible = false;
+            BtnGuardarCambios.Visible = true;
+            TxtImpuesto.ReadOnly = true;
+            ObtenerDatosImpuestos();
+        }
+
+        private void ObtenerDatosImpuestos()
+        {
+            try
+            {
+                idImpuesto = Convert.ToInt32(datalistado.SelectedCells[1].Value.ToString());
+                TxtImpuesto.Text = datalistado.SelectedCells[2].Value.ToString();
+                TxtDescripcion.Text = datalistado.SelectedCells[3].Value.ToString();
+                TxtPorcIva.Text = datalistado.SelectedCells[4].Value.ToString();
+                TxtFactGrav.Text = datalistado.SelectedCells[5].Value.ToString();
+                TxtFactIva.Text = datalistado.SelectedCells[6].Value.ToString();
+                estadoImpuesto = (bool)datalistado.SelectedCells[7].Value;
+                if (estadoImpuesto == true)
                 {
                     checkBoxActivo.Checked = true;
                 }
@@ -150,24 +155,26 @@ namespace PuntoVenta.Modulos.Productos
             }
         }
 
-        private void CrearCategoria(object sender, EventArgs e)
+        private void BtnNuevo_Click(object sender, EventArgs e)
         {
             TxtBusqueda.Visible = false;
             menuStrip1.Visible = false;
             BtnNuevo.Visible = false;
             PanelRegistro.Visible = true;
             BtnGuardarCambios.Visible = false;
-            TxtNombre.Focus();
-            TxtNombre.ReadOnly = false;
+            TxtImpuesto.Focus();
+            TxtImpuesto.ReadOnly = false;
             checkBoxActivo.Checked = true;
             limpiar();
         }
 
         private void limpiar()
         {
-            TxtNombre.Clear();
+            TxtImpuesto.Clear();
             TxtDescripcion.Clear();
-            TxtPorcUtilidad.Clear();
+            TxtPorcIva.Clear();
+            TxtFactGrav.Clear();
+            TxtFactIva.Clear();
             BtnGuardar.Visible = true;
         }
 
@@ -179,16 +186,16 @@ namespace PuntoVenta.Modulos.Productos
             BtnNuevo.Visible = true;
         }
 
-        private void GuardarCategoria(object sender, EventArgs e)
+        private void BtnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (TxtNombre.Text != "")
+                if (TxtImpuesto.Text != "")
                 {
 
                     if (TxtDescripcion.Text == "")
                     {
-                        TxtDescripcion.Text = "Categoria " + TxtNombre.Text;
+                        TxtDescripcion.Text = "Impuesto " + TxtDescripcion.Text;
                     }
                     try
                     {
@@ -196,11 +203,13 @@ namespace PuntoVenta.Modulos.Productos
                         con.ConnectionString = Conexion.ConexionMaestra.conexion;
                         con.Open();
                         SqlCommand cmd = new SqlCommand();
-                        cmd = new SqlCommand("sp_categoria_insertar", con);
+                        cmd = new SqlCommand("sp_impuesto_insertar", con);
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Nombre", TxtNombre.Text);
+                        cmd.Parameters.AddWithValue("@TipoImpuesto", Convert.ToInt32(TxtImpuesto.Text));
                         cmd.Parameters.AddWithValue("@Descripcion", TxtDescripcion.Text);
-                        cmd.Parameters.AddWithValue("@PorcUtilidad", Convert.ToDecimal(TxtPorcUtilidad.Text));
+                        cmd.Parameters.AddWithValue("@PorcIva", Convert.ToDecimal(TxtPorcIva.Text));
+                        cmd.Parameters.AddWithValue("@FactorGravada", Convert.ToDecimal(TxtFactGrav.Text));
+                        cmd.Parameters.AddWithValue("@FactorIva", Convert.ToDecimal(TxtFactIva.Text));
                         if (checkBoxActivo.Checked == true)
                         {
                             cmd.Parameters.AddWithValue("@Activo", 1);
@@ -211,7 +220,7 @@ namespace PuntoVenta.Modulos.Productos
                         }
                         cmd.ExecuteNonQuery();
                         con.Close();
-                        mostrarCategorias();
+                        mostrarImpuestos();
                         PanelRegistro.Visible = false;
                         TxtBusqueda.Visible = true;
                         menuStrip1.Visible = true;
@@ -234,11 +243,12 @@ namespace PuntoVenta.Modulos.Productos
         {
             try
             {
-                if (TxtNombre.Text != "")
+                if (TxtImpuesto.Text != "")
                 {
+
                     if (TxtDescripcion.Text == "")
                     {
-                        TxtDescripcion.Text = "Categoria " + TxtNombre.Text;
+                        TxtDescripcion.Text = "Impuesto " + TxtDescripcion.Text;
                     }
                     try
                     {
@@ -246,12 +256,14 @@ namespace PuntoVenta.Modulos.Productos
                         con.ConnectionString = Conexion.ConexionMaestra.conexion;
                         con.Open();
                         SqlCommand cmd = new SqlCommand();
-                        cmd = new SqlCommand("sp_categoria_editar", con);
+                        cmd = new SqlCommand("sp_impuesto_editar", con);
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@idCategoria", idCategoria);
-                        cmd.Parameters.AddWithValue("@Nombre", TxtNombre.Text);
+                        cmd.Parameters.AddWithValue("@idImpuesto", idImpuesto);
+                        cmd.Parameters.AddWithValue("@TipoImpuesto", Convert.ToInt32(TxtImpuesto.Text));
                         cmd.Parameters.AddWithValue("@Descripcion", TxtDescripcion.Text);
-                        cmd.Parameters.AddWithValue("@PorcUtilidad", Convert.ToDecimal(TxtPorcUtilidad.Text));
+                        cmd.Parameters.AddWithValue("@PorcIva", Convert.ToDecimal(TxtPorcIva.Text));
+                        cmd.Parameters.AddWithValue("@FactorGravada", Convert.ToDecimal(TxtFactGrav.Text));
+                        cmd.Parameters.AddWithValue("@FactorIva", Convert.ToDecimal(TxtFactIva.Text));
                         if (checkBoxActivo.Checked == true)
                         {
                             cmd.Parameters.AddWithValue("@Activo", 1);
@@ -262,7 +274,7 @@ namespace PuntoVenta.Modulos.Productos
                         }
                         cmd.ExecuteNonQuery();
                         con.Close();
-                        mostrarCategorias();
+                        mostrarImpuestos();
                         PanelRegistro.Visible = false;
                         TxtBusqueda.Visible = true;
                         menuStrip1.Visible = true;
@@ -281,41 +293,22 @@ namespace PuntoVenta.Modulos.Productos
             }
         }
 
-        private void TxtNombre_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private void TxtImpuesto_Validating(object sender, CancelEventArgs e)
         {
             ErrorProvider errorProvider1 = new ErrorProvider();
-            if (string.IsNullOrEmpty(TxtNombre.Text))
+            if (string.IsNullOrEmpty(TxtImpuesto.Text))
             {
                 e.Cancel = true;
-                TxtNombre.Focus();
-                errorProvider1.SetError(TxtNombre, "Este campo es obligatorio");
+                TxtImpuesto.Focus();
+                errorProvider1.SetError(TxtImpuesto, "Este campo es obligatorio");
             }
             else
             {
                 e.Cancel = false;
-                errorProvider1.SetError(TxtNombre, "");
-            }
-        }
-
-        private void GenerarPrecios(object sender, EventArgs e)
-        {
-            try
-            {
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = Conexion.ConexionMaestra.conexion;
-                con.Open();
-                SqlCommand cmd = new SqlCommand();
-                cmd = new SqlCommand("sp_categoria_generar_precios", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@idCategoria", idCategoria);
-                cmd.Parameters.AddWithValue("@PorcUtilidad", Convert.ToDecimal(TxtPorcUtilidad.Text));
-                cmd.ExecuteNonQuery();
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                errorProvider1.SetError(TxtImpuesto, "");
             }
         }
     }
+
+    
 }

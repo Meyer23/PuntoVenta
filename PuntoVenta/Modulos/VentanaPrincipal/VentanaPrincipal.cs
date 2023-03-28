@@ -140,5 +140,12 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
 
             frm_usuarios.ShowDialog();
         }
+
+        private void MenuImpuestos_Click(object sender, EventArgs e)
+        {
+            Impuestos frm_impuestos = new Impuestos();
+
+            frm_impuestos.ShowDialog();
+        }
     }
 }

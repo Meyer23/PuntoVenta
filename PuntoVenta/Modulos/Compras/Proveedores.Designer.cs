@@ -30,34 +30,34 @@ namespace PuntoVenta.Modulos.Compras
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Proveedores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelEncabezado = new System.Windows.Forms.Panel();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.datalistado = new System.Windows.Forms.DataGridView();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelRegistro = new System.Windows.Forms.Panel();
+            this.checkBoxActivo = new System.Windows.Forms.CheckBox();
             this.PanelUsuarioImagen = new System.Windows.Forms.Panel();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnGuardarCambios = new System.Windows.Forms.Button();
             this.BtnGuardar = new System.Windows.Forms.Button();
             this.TxtCorreo = new System.Windows.Forms.TextBox();
-            this.TxtCelular = new System.Windows.Forms.TextBox();
-            this.TxtTelefono = new System.Windows.Forms.TextBox();
+            this.TxtTelefono2 = new System.Windows.Forms.TextBox();
+            this.TxtTelefono1 = new System.Windows.Forms.TextBox();
             this.TxtDireccion = new System.Windows.Forms.TextBox();
             this.TxtRuc = new System.Windows.Forms.TextBox();
             this.TxtRazonSocial = new System.Windows.Forms.TextBox();
             this.TxtContacto = new System.Windows.Forms.TextBox();
             this.LblCorreo = new System.Windows.Forms.Label();
-            this.LblCelular = new System.Windows.Forms.Label();
-            this.LblTelefono = new System.Windows.Forms.Label();
+            this.LblTelefono2 = new System.Windows.Forms.Label();
+            this.LblTelefono1 = new System.Windows.Forms.Label();
             this.LblDirección = new System.Windows.Forms.Label();
             this.LblRuc = new System.Windows.Forms.Label();
             this.LblRazonSocial = new System.Windows.Forms.Label();
             this.LblContacto = new System.Windows.Forms.Label();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelEncabezado.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -129,67 +129,61 @@ namespace PuntoVenta.Modulos.Compras
             this.datalistado.BackgroundColor = System.Drawing.SystemColors.Control;
             this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datalistado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Eliminar,
             this.Editar});
             this.datalistado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.datalistado.Location = new System.Drawing.Point(0, 49);
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.datalistado.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.datalistado.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.datalistado.RowTemplate.Height = 25;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datalistado.Size = new System.Drawing.Size(943, 401);
             this.datalistado.TabIndex = 4;
-            this.datalistado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EliminarProveedor);
             this.datalistado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarProveedor);
             this.datalistado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarProveedor2);
             // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "";
-            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            // 
             // PanelRegistro
             // 
+            this.PanelRegistro.Controls.Add(this.checkBoxActivo);
             this.PanelRegistro.Controls.Add(this.PanelUsuarioImagen);
             this.PanelRegistro.Controls.Add(this.BtnCancelar);
             this.PanelRegistro.Controls.Add(this.BtnGuardarCambios);
             this.PanelRegistro.Controls.Add(this.BtnGuardar);
             this.PanelRegistro.Controls.Add(this.TxtCorreo);
-            this.PanelRegistro.Controls.Add(this.TxtCelular);
-            this.PanelRegistro.Controls.Add(this.TxtTelefono);
+            this.PanelRegistro.Controls.Add(this.TxtTelefono2);
+            this.PanelRegistro.Controls.Add(this.TxtTelefono1);
             this.PanelRegistro.Controls.Add(this.TxtDireccion);
             this.PanelRegistro.Controls.Add(this.TxtRuc);
             this.PanelRegistro.Controls.Add(this.TxtRazonSocial);
             this.PanelRegistro.Controls.Add(this.TxtContacto);
             this.PanelRegistro.Controls.Add(this.LblCorreo);
-            this.PanelRegistro.Controls.Add(this.LblCelular);
-            this.PanelRegistro.Controls.Add(this.LblTelefono);
+            this.PanelRegistro.Controls.Add(this.LblTelefono2);
+            this.PanelRegistro.Controls.Add(this.LblTelefono1);
             this.PanelRegistro.Controls.Add(this.LblDirección);
             this.PanelRegistro.Controls.Add(this.LblRuc);
             this.PanelRegistro.Controls.Add(this.LblRazonSocial);
             this.PanelRegistro.Controls.Add(this.LblContacto);
-            this.PanelRegistro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelRegistro.Location = new System.Drawing.Point(0, 49);
             this.PanelRegistro.Name = "PanelRegistro";
             this.PanelRegistro.Size = new System.Drawing.Size(943, 401);
             this.PanelRegistro.TabIndex = 5;
             this.PanelRegistro.Visible = false;
+            // 
+            // checkBoxActivo
+            // 
+            this.checkBoxActivo.AutoSize = true;
+            this.checkBoxActivo.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.checkBoxActivo.Checked = true;
+            this.checkBoxActivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxActivo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxActivo.Location = new System.Drawing.Point(741, 166);
+            this.checkBoxActivo.Name = "checkBoxActivo";
+            this.checkBoxActivo.Size = new System.Drawing.Size(69, 19);
+            this.checkBoxActivo.TabIndex = 23;
+            this.checkBoxActivo.Text = "ACTIVO";
+            this.checkBoxActivo.UseVisualStyleBackColor = true;
             // 
             // PanelUsuarioImagen
             // 
@@ -253,21 +247,22 @@ namespace PuntoVenta.Modulos.Compras
             this.TxtCorreo.Size = new System.Drawing.Size(562, 25);
             this.TxtCorreo.TabIndex = 13;
             // 
-            // TxtCelular
+            // TxtTelefono2
             // 
-            this.TxtCelular.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtCelular.Location = new System.Drawing.Point(104, 160);
-            this.TxtCelular.Name = "TxtCelular";
-            this.TxtCelular.Size = new System.Drawing.Size(562, 25);
-            this.TxtCelular.TabIndex = 12;
+            this.TxtTelefono2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtTelefono2.Location = new System.Drawing.Point(104, 160);
+            this.TxtTelefono2.Name = "TxtTelefono2";
+            this.TxtTelefono2.Size = new System.Drawing.Size(562, 25);
+            this.TxtTelefono2.TabIndex = 12;
             // 
-            // TxtTelefono
+            // TxtTelefono1
             // 
-            this.TxtTelefono.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtTelefono.Location = new System.Drawing.Point(104, 130);
-            this.TxtTelefono.Name = "TxtTelefono";
-            this.TxtTelefono.Size = new System.Drawing.Size(562, 25);
-            this.TxtTelefono.TabIndex = 11;
+            this.TxtTelefono1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtTelefono1.Location = new System.Drawing.Point(104, 130);
+            this.TxtTelefono1.Name = "TxtTelefono1";
+            this.TxtTelefono1.Size = new System.Drawing.Size(562, 25);
+            this.TxtTelefono1.TabIndex = 11;
+            this.TxtTelefono1.Validating += new System.ComponentModel.CancelEventHandler(this.TxtTelefono1_Validating);
             // 
             // TxtDireccion
             // 
@@ -276,6 +271,7 @@ namespace PuntoVenta.Modulos.Compras
             this.TxtDireccion.Name = "TxtDireccion";
             this.TxtDireccion.Size = new System.Drawing.Size(562, 25);
             this.TxtDireccion.TabIndex = 10;
+            this.TxtDireccion.Validating += new System.ComponentModel.CancelEventHandler(this.TxtDireccion_Validating);
             // 
             // TxtRuc
             // 
@@ -284,6 +280,7 @@ namespace PuntoVenta.Modulos.Compras
             this.TxtRuc.Name = "TxtRuc";
             this.TxtRuc.Size = new System.Drawing.Size(562, 25);
             this.TxtRuc.TabIndex = 9;
+            this.TxtRuc.Validating += new System.ComponentModel.CancelEventHandler(this.TxtRuc_Validating);
             // 
             // TxtRazonSocial
             // 
@@ -292,6 +289,7 @@ namespace PuntoVenta.Modulos.Compras
             this.TxtRazonSocial.Name = "TxtRazonSocial";
             this.TxtRazonSocial.Size = new System.Drawing.Size(562, 25);
             this.TxtRazonSocial.TabIndex = 8;
+            this.TxtRazonSocial.Validating += new System.ComponentModel.CancelEventHandler(this.TxtRazonSocial_Validating);
             // 
             // TxtContacto
             // 
@@ -311,25 +309,25 @@ namespace PuntoVenta.Modulos.Compras
             this.LblCorreo.TabIndex = 6;
             this.LblCorreo.Text = "Correo:";
             // 
-            // LblCelular
+            // LblTelefono2
             // 
-            this.LblCelular.AutoSize = true;
-            this.LblCelular.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblCelular.Location = new System.Drawing.Point(12, 163);
-            this.LblCelular.Name = "LblCelular";
-            this.LblCelular.Size = new System.Drawing.Size(54, 19);
-            this.LblCelular.TabIndex = 5;
-            this.LblCelular.Text = "Celular:";
+            this.LblTelefono2.AutoSize = true;
+            this.LblTelefono2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblTelefono2.Location = new System.Drawing.Point(12, 163);
+            this.LblTelefono2.Name = "LblTelefono2";
+            this.LblTelefono2.Size = new System.Drawing.Size(75, 19);
+            this.LblTelefono2.TabIndex = 5;
+            this.LblTelefono2.Text = "Teléfono 2:";
             // 
-            // LblTelefono
+            // LblTelefono1
             // 
-            this.LblTelefono.AutoSize = true;
-            this.LblTelefono.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblTelefono.Location = new System.Drawing.Point(11, 133);
-            this.LblTelefono.Name = "LblTelefono";
-            this.LblTelefono.Size = new System.Drawing.Size(63, 19);
-            this.LblTelefono.TabIndex = 4;
-            this.LblTelefono.Text = "Teléfono:";
+            this.LblTelefono1.AutoSize = true;
+            this.LblTelefono1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblTelefono1.Location = new System.Drawing.Point(11, 133);
+            this.LblTelefono1.Name = "LblTelefono1";
+            this.LblTelefono1.Size = new System.Drawing.Size(75, 19);
+            this.LblTelefono1.TabIndex = 4;
+            this.LblTelefono1.Text = "Teléfono 1:";
             // 
             // LblDirección
             // 
@@ -347,9 +345,9 @@ namespace PuntoVenta.Modulos.Compras
             this.LblRuc.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblRuc.Location = new System.Drawing.Point(11, 42);
             this.LblRuc.Name = "LblRuc";
-            this.LblRuc.Size = new System.Drawing.Size(39, 19);
+            this.LblRuc.Size = new System.Drawing.Size(63, 19);
             this.LblRuc.TabIndex = 2;
-            this.LblRuc.Text = "RUC:";
+            this.LblRuc.Text = "RUC/C.I.:";
             // 
             // LblRazonSocial
             // 
@@ -370,6 +368,14 @@ namespace PuntoVenta.Modulos.Compras
             this.LblContacto.Size = new System.Drawing.Size(68, 19);
             this.LblContacto.TabIndex = 0;
             this.LblContacto.Text = "Contacto:";
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "";
+            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
             // 
             // Proveedores
             // 
@@ -402,14 +408,14 @@ namespace PuntoVenta.Modulos.Compras
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Label LblCorreo;
-        private System.Windows.Forms.Label LblCelular;
-        private System.Windows.Forms.Label LblTelefono;
+        private System.Windows.Forms.Label LblTelefono2;
+        private System.Windows.Forms.Label LblTelefono1;
         private System.Windows.Forms.Label LblDirección;
         private System.Windows.Forms.Label LblRuc;
         private System.Windows.Forms.Label LblRazonSocial;
         private System.Windows.Forms.Label LblContacto;
-        private System.Windows.Forms.TextBox TxtCelular;
-        private System.Windows.Forms.TextBox TxtTelefono;
+        private System.Windows.Forms.TextBox TxtTelefono2;
+        private System.Windows.Forms.TextBox TxtTelefono1;
         private System.Windows.Forms.TextBox TxtDireccion;
         private System.Windows.Forms.TextBox TxtRuc;
         private System.Windows.Forms.TextBox TxtRazonSocial;
@@ -419,8 +425,8 @@ namespace PuntoVenta.Modulos.Compras
         private System.Windows.Forms.Button BtnGuardar;
         private System.Windows.Forms.Button BtnNuevo;
         private System.Windows.Forms.Panel PanelUsuarioImagen;
-        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
-        private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.Button BtnGuardarCambios;
+        private System.Windows.Forms.CheckBox checkBoxActivo;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
     }
 }

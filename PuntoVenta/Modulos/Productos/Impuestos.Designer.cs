@@ -1,7 +1,7 @@
 ﻿
 namespace PuntoVenta.Modulos.Productos
 {
-    partial class Categoria
+    partial class Impuestos
     {
         /// <summary>
         /// Required designer variable.
@@ -29,30 +29,33 @@ namespace PuntoVenta.Modulos.Productos
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Categoria));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Impuestos));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelEncabezado = new System.Windows.Forms.Panel();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.datalistadoCategorias = new System.Windows.Forms.DataGridView();
+            this.datalistado = new System.Windows.Forms.DataGridView();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelRegistro = new System.Windows.Forms.Panel();
             this.checkBoxActivo = new System.Windows.Forms.CheckBox();
-            this.TxtNombre = new System.Windows.Forms.TextBox();
-            this.LblNombre = new System.Windows.Forms.TextBox();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnGuardarCambios = new System.Windows.Forms.Button();
             this.BtnGuardar = new System.Windows.Forms.Button();
             this.TxtDescripcion = new System.Windows.Forms.TextBox();
             this.LblDescripcion = new System.Windows.Forms.Label();
-            this.TxtPorcUtilidad = new System.Windows.Forms.TextBox();
-            this.LblPorcUtilidad = new System.Windows.Forms.Label();
-            this.BtnGenerarPrecios = new System.Windows.Forms.Button();
+            this.TxtPorcIva = new System.Windows.Forms.TextBox();
+            this.LblPorcIva = new System.Windows.Forms.Label();
+            this.TxtFactGrav = new System.Windows.Forms.TextBox();
+            this.LblFactGrav = new System.Windows.Forms.Label();
+            this.LblFactIva = new System.Windows.Forms.Label();
+            this.TxtFactIva = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TxtImpuesto = new System.Windows.Forms.TextBox();
             this.PanelEncabezado.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datalistadoCategorias)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
             this.PanelRegistro.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,8 +68,8 @@ namespace PuntoVenta.Modulos.Productos
             this.PanelEncabezado.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelEncabezado.Location = new System.Drawing.Point(0, 0);
             this.PanelEncabezado.Name = "PanelEncabezado";
-            this.PanelEncabezado.Size = new System.Drawing.Size(736, 49);
-            this.PanelEncabezado.TabIndex = 2;
+            this.PanelEncabezado.Size = new System.Drawing.Size(738, 49);
+            this.PanelEncabezado.TabIndex = 3;
             // 
             // BtnNuevo
             // 
@@ -81,7 +84,7 @@ namespace PuntoVenta.Modulos.Productos
             this.BtnNuevo.TabIndex = 8;
             this.BtnNuevo.Text = "Nuevo";
             this.BtnNuevo.UseVisualStyleBackColor = false;
-            this.BtnNuevo.Click += new System.EventHandler(this.CrearCategoria);
+            this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
             // 
             // TxtBusqueda
             // 
@@ -105,7 +108,7 @@ namespace PuntoVenta.Modulos.Productos
             this.menuStrip1.Size = new System.Drawing.Size(43, 25);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.Click += new System.EventHandler(this.BuscarCategoria);
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.BuscarImpuesto);
             // 
             // toolStripMenuItem1
             // 
@@ -114,27 +117,27 @@ namespace PuntoVenta.Modulos.Productos
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(28, 21);
             // 
-            // datalistadoCategorias
+            // datalistado
             // 
-            this.datalistadoCategorias.AllowUserToAddRows = false;
-            this.datalistadoCategorias.AllowUserToResizeRows = false;
-            this.datalistadoCategorias.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.datalistadoCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datalistadoCategorias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.datalistado.AllowUserToAddRows = false;
+            this.datalistado.AllowUserToResizeRows = false;
+            this.datalistado.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datalistado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Editar});
-            this.datalistadoCategorias.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datalistadoCategorias.Location = new System.Drawing.Point(0, 49);
-            this.datalistadoCategorias.Name = "datalistadoCategorias";
-            this.datalistadoCategorias.ReadOnly = true;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.datalistadoCategorias.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.datalistadoCategorias.RowTemplate.Height = 25;
-            this.datalistadoCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datalistadoCategorias.Size = new System.Drawing.Size(736, 194);
-            this.datalistadoCategorias.TabIndex = 6;
-            this.datalistadoCategorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarCategoria);
-            this.datalistadoCategorias.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarCategoria2);
+            this.datalistado.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datalistado.Location = new System.Drawing.Point(0, 49);
+            this.datalistado.Name = "datalistado";
+            this.datalistado.ReadOnly = true;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.datalistado.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.datalistado.RowTemplate.Height = 25;
+            this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datalistado.Size = new System.Drawing.Size(738, 180);
+            this.datalistado.TabIndex = 7;
+            this.datalistado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarImpuesto);
+            this.datalistado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarImpuesto2);
             // 
             // Editar
             // 
@@ -146,21 +149,24 @@ namespace PuntoVenta.Modulos.Productos
             // 
             // PanelRegistro
             // 
-            this.PanelRegistro.Controls.Add(this.BtnGenerarPrecios);
-            this.PanelRegistro.Controls.Add(this.TxtPorcUtilidad);
-            this.PanelRegistro.Controls.Add(this.LblPorcUtilidad);
+            this.PanelRegistro.Controls.Add(this.TxtImpuesto);
+            this.PanelRegistro.Controls.Add(this.label1);
+            this.PanelRegistro.Controls.Add(this.TxtFactIva);
+            this.PanelRegistro.Controls.Add(this.LblFactIva);
+            this.PanelRegistro.Controls.Add(this.LblFactGrav);
+            this.PanelRegistro.Controls.Add(this.TxtFactGrav);
+            this.PanelRegistro.Controls.Add(this.LblPorcIva);
+            this.PanelRegistro.Controls.Add(this.TxtPorcIva);
             this.PanelRegistro.Controls.Add(this.checkBoxActivo);
-            this.PanelRegistro.Controls.Add(this.TxtNombre);
-            this.PanelRegistro.Controls.Add(this.LblNombre);
             this.PanelRegistro.Controls.Add(this.BtnCancelar);
             this.PanelRegistro.Controls.Add(this.BtnGuardarCambios);
             this.PanelRegistro.Controls.Add(this.BtnGuardar);
             this.PanelRegistro.Controls.Add(this.TxtDescripcion);
             this.PanelRegistro.Controls.Add(this.LblDescripcion);
-            this.PanelRegistro.Location = new System.Drawing.Point(0, 49);
+            this.PanelRegistro.Location = new System.Drawing.Point(3, 49);
             this.PanelRegistro.Name = "PanelRegistro";
-            this.PanelRegistro.Size = new System.Drawing.Size(736, 194);
-            this.PanelRegistro.TabIndex = 7;
+            this.PanelRegistro.Size = new System.Drawing.Size(733, 180);
+            this.PanelRegistro.TabIndex = 8;
             this.PanelRegistro.Visible = false;
             // 
             // checkBoxActivo
@@ -170,31 +176,12 @@ namespace PuntoVenta.Modulos.Productos
             this.checkBoxActivo.Checked = true;
             this.checkBoxActivo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxActivo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxActivo.Location = new System.Drawing.Point(132, 131);
+            this.checkBoxActivo.Location = new System.Drawing.Point(487, 73);
             this.checkBoxActivo.Name = "checkBoxActivo";
             this.checkBoxActivo.Size = new System.Drawing.Size(69, 19);
             this.checkBoxActivo.TabIndex = 23;
             this.checkBoxActivo.Text = "ACTIVO";
             this.checkBoxActivo.UseVisualStyleBackColor = true;
-            // 
-            // TxtNombre
-            // 
-            this.TxtNombre.Location = new System.Drawing.Point(132, 6);
-            this.TxtNombre.Name = "TxtNombre";
-            this.TxtNombre.Size = new System.Drawing.Size(562, 23);
-            this.TxtNombre.TabIndex = 612;
-            this.TxtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNombre_Validating);
-            // 
-            // LblNombre
-            // 
-            this.LblNombre.BackColor = System.Drawing.SystemColors.Control;
-            this.LblNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LblNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblNombre.Location = new System.Drawing.Point(19, 7);
-            this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(100, 18);
-            this.LblNombre.TabIndex = 611;
-            this.LblNombre.Text = "Nombre:";
             // 
             // BtnCancelar
             // 
@@ -203,7 +190,7 @@ namespace PuntoVenta.Modulos.Productos
             this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnCancelar.ForeColor = System.Drawing.Color.White;
-            this.BtnCancelar.Location = new System.Drawing.Point(577, 145);
+            this.BtnCancelar.Location = new System.Drawing.Point(562, 131);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(116, 37);
             this.BtnCancelar.TabIndex = 14;
@@ -218,7 +205,7 @@ namespace PuntoVenta.Modulos.Productos
             this.BtnGuardarCambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardarCambios.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnGuardarCambios.ForeColor = System.Drawing.Color.White;
-            this.BtnGuardarCambios.Location = new System.Drawing.Point(455, 145);
+            this.BtnGuardarCambios.Location = new System.Drawing.Point(440, 131);
             this.BtnGuardarCambios.Name = "BtnGuardarCambios";
             this.BtnGuardarCambios.Size = new System.Drawing.Size(116, 37);
             this.BtnGuardarCambios.TabIndex = 14;
@@ -233,81 +220,121 @@ namespace PuntoVenta.Modulos.Productos
             this.BtnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnGuardar.ForeColor = System.Drawing.Color.White;
-            this.BtnGuardar.Location = new System.Drawing.Point(455, 145);
+            this.BtnGuardar.Location = new System.Drawing.Point(440, 131);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(116, 37);
             this.BtnGuardar.TabIndex = 14;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.UseVisualStyleBackColor = false;
-            this.BtnGuardar.Click += new System.EventHandler(this.GuardarCategoria);
+            this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
             // TxtDescripcion
             // 
             this.TxtDescripcion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtDescripcion.Location = new System.Drawing.Point(132, 35);
+            this.TxtDescripcion.Location = new System.Drawing.Point(140, 36);
             this.TxtDescripcion.Name = "TxtDescripcion";
-            this.TxtDescripcion.Size = new System.Drawing.Size(562, 25);
+            this.TxtDescripcion.Size = new System.Drawing.Size(227, 25);
             this.TxtDescripcion.TabIndex = 7;
             // 
             // LblDescripcion
             // 
             this.LblDescripcion.AutoSize = true;
             this.LblDescripcion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblDescripcion.Location = new System.Drawing.Point(14, 38);
+            this.LblDescripcion.Location = new System.Drawing.Point(44, 42);
             this.LblDescripcion.Name = "LblDescripcion";
             this.LblDescripcion.Size = new System.Drawing.Size(82, 19);
             this.LblDescripcion.TabIndex = 0;
             this.LblDescripcion.Text = "Descripción:";
             // 
-            // TxtPorcUtilidad
+            // TxtPorcIva
             // 
-            this.TxtPorcUtilidad.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPorcUtilidad.Location = new System.Drawing.Point(132, 77);
-            this.TxtPorcUtilidad.Name = "TxtPorcUtilidad";
-            this.TxtPorcUtilidad.Size = new System.Drawing.Size(189, 25);
-            this.TxtPorcUtilidad.TabIndex = 614;
+            this.TxtPorcIva.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtPorcIva.Location = new System.Drawing.Point(140, 70);
+            this.TxtPorcIva.Name = "TxtPorcIva";
+            this.TxtPorcIva.Size = new System.Drawing.Size(227, 25);
+            this.TxtPorcIva.TabIndex = 24;
             // 
-            // LblPorcUtilidad
+            // LblPorcIva
             // 
-            this.LblPorcUtilidad.AutoSize = true;
-            this.LblPorcUtilidad.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblPorcUtilidad.Location = new System.Drawing.Point(19, 83);
-            this.LblPorcUtilidad.Name = "LblPorcUtilidad";
-            this.LblPorcUtilidad.Size = new System.Drawing.Size(89, 19);
-            this.LblPorcUtilidad.TabIndex = 613;
-            this.LblPorcUtilidad.Text = "Porc Utilidad:";
+            this.LblPorcIva.AutoSize = true;
+            this.LblPorcIva.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblPorcIva.Location = new System.Drawing.Point(41, 73);
+            this.LblPorcIva.Name = "LblPorcIva";
+            this.LblPorcIva.Size = new System.Drawing.Size(89, 19);
+            this.LblPorcIva.TabIndex = 25;
+            this.LblPorcIva.Text = "Porc. (%) IVA:";
             // 
-            // BtnGenerarPrecios
+            // TxtFactGrav
             // 
-            this.BtnGenerarPrecios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(140)))));
-            this.BtnGenerarPrecios.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnGenerarPrecios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnGenerarPrecios.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnGenerarPrecios.ForeColor = System.Drawing.Color.White;
-            this.BtnGenerarPrecios.Location = new System.Drawing.Point(343, 65);
-            this.BtnGenerarPrecios.Name = "BtnGenerarPrecios";
-            this.BtnGenerarPrecios.Size = new System.Drawing.Size(134, 37);
-            this.BtnGenerarPrecios.TabIndex = 615;
-            this.BtnGenerarPrecios.Text = "Generar Precios";
-            this.BtnGenerarPrecios.UseVisualStyleBackColor = false;
-            this.BtnGenerarPrecios.Click += new System.EventHandler(this.GenerarPrecios);
+            this.TxtFactGrav.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtFactGrav.Location = new System.Drawing.Point(487, 5);
+            this.TxtFactGrav.Name = "TxtFactGrav";
+            this.TxtFactGrav.Size = new System.Drawing.Size(227, 25);
+            this.TxtFactGrav.TabIndex = 26;
             // 
-            // Categoria
+            // LblFactGrav
+            // 
+            this.LblFactGrav.AutoSize = true;
+            this.LblFactGrav.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblFactGrav.Location = new System.Drawing.Point(376, 8);
+            this.LblFactGrav.Name = "LblFactGrav";
+            this.LblFactGrav.Size = new System.Drawing.Size(105, 19);
+            this.LblFactGrav.TabIndex = 27;
+            this.LblFactGrav.Text = "Factor Gravada:";
+            // 
+            // LblFactIva
+            // 
+            this.LblFactIva.AutoSize = true;
+            this.LblFactIva.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblFactIva.Location = new System.Drawing.Point(406, 42);
+            this.LblFactIva.Name = "LblFactIva";
+            this.LblFactIva.Size = new System.Drawing.Size(75, 19);
+            this.LblFactIva.TabIndex = 28;
+            this.LblFactIva.Text = "Factor IVA:";
+            // 
+            // TxtFactIva
+            // 
+            this.TxtFactIva.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtFactIva.Location = new System.Drawing.Point(487, 36);
+            this.TxtFactIva.Name = "TxtFactIva";
+            this.TxtFactIva.Size = new System.Drawing.Size(227, 25);
+            this.TxtFactIva.TabIndex = 29;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(3, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(123, 19);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Tipo Impuesto (%):";
+            // 
+            // TxtImpuesto
+            // 
+            this.TxtImpuesto.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtImpuesto.Location = new System.Drawing.Point(140, 5);
+            this.TxtImpuesto.Name = "TxtImpuesto";
+            this.TxtImpuesto.Size = new System.Drawing.Size(227, 25);
+            this.TxtImpuesto.TabIndex = 31;
+            this.TxtImpuesto.Validating += new System.ComponentModel.CancelEventHandler(this.TxtImpuesto_Validating);
+            // 
+            // Impuestos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 243);
+            this.ClientSize = new System.Drawing.Size(738, 229);
             this.Controls.Add(this.PanelRegistro);
-            this.Controls.Add(this.datalistadoCategorias);
+            this.Controls.Add(this.datalistado);
             this.Controls.Add(this.PanelEncabezado);
-            this.Name = "Categoria";
-            this.Text = "Categorias";
-            this.Load += new System.EventHandler(this.Categorias_Load);
+            this.Name = "Impuestos";
+            this.Text = "Impuestos";
+            this.Load += new System.EventHandler(this.Impuestos_Load);
             this.PanelEncabezado.ResumeLayout(false);
             this.PanelEncabezado.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datalistadoCategorias)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datalistado)).EndInit();
             this.PanelRegistro.ResumeLayout(false);
             this.PanelRegistro.PerformLayout();
             this.ResumeLayout(false);
@@ -321,19 +348,22 @@ namespace PuntoVenta.Modulos.Productos
         private System.Windows.Forms.TextBox TxtBusqueda;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.DataGridView datalistadoCategorias;
+        private System.Windows.Forms.DataGridView datalistado;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.Panel PanelRegistro;
+        private System.Windows.Forms.CheckBox checkBoxActivo;
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.Button BtnGuardarCambios;
         private System.Windows.Forms.Button BtnGuardar;
         private System.Windows.Forms.TextBox TxtDescripcion;
         private System.Windows.Forms.Label LblDescripcion;
-        private System.Windows.Forms.CheckBox checkBoxActivo;
-        private System.Windows.Forms.DataGridViewImageColumn Editar;
-        private System.Windows.Forms.TextBox TxtNombre;
-        private System.Windows.Forms.TextBox LblNombre;
-        private System.Windows.Forms.TextBox TxtPorcUtilidad;
-        private System.Windows.Forms.Label LblPorcUtilidad;
-        private System.Windows.Forms.Button BtnGenerarPrecios;
+        private System.Windows.Forms.TextBox TxtFactIva;
+        private System.Windows.Forms.Label LblFactIva;
+        private System.Windows.Forms.Label LblFactGrav;
+        private System.Windows.Forms.TextBox TxtFactGrav;
+        private System.Windows.Forms.Label LblPorcIva;
+        private System.Windows.Forms.TextBox TxtPorcIva;
+        private System.Windows.Forms.TextBox TxtImpuesto;
+        private System.Windows.Forms.Label label1;
     }
 }
