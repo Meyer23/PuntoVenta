@@ -39,6 +39,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.MenuProductos = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCategorias = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuEmpleados = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposDeImpuestoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuClientes = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,7 +52,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.LabelRol = new System.Windows.Forms.Label();
             this.ImagenPanel = new System.Windows.Forms.Panel();
             this.TxtUsuario = new System.Windows.Forms.Label();
-            this.tiposDeImpuestoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposDeValoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.LoginPanel.SuspendLayout();
             this.SuspendLayout();
@@ -83,14 +84,14 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // MenuUsuarios
             // 
             this.MenuUsuarios.Name = "MenuUsuarios";
-            this.MenuUsuarios.Size = new System.Drawing.Size(180, 22);
+            this.MenuUsuarios.Size = new System.Drawing.Size(119, 22);
             this.MenuUsuarios.Text = "Usuarios";
             this.MenuUsuarios.Click += new System.EventHandler(this.MenuUsuarios_Click);
             // 
             // MenuRoles
             // 
             this.MenuRoles.Name = "MenuRoles";
-            this.MenuRoles.Size = new System.Drawing.Size(180, 22);
+            this.MenuRoles.Size = new System.Drawing.Size(119, 22);
             this.MenuRoles.Text = "Roles";
             this.MenuRoles.Click += new System.EventHandler(this.MenuRoles_Click);
             // 
@@ -101,7 +102,8 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.MenuProductos,
             this.MenuCategorias,
             this.MenuEmpleados,
-            this.tiposDeImpuestoToolStripMenuItem});
+            this.tiposDeImpuestoToolStripMenuItem,
+            this.tiposDeValoresToolStripMenuItem});
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
@@ -134,6 +136,13 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.MenuEmpleados.Text = "Empleados";
             this.MenuEmpleados.Click += new System.EventHandler(this.MenuEmpleados_Click);
             // 
+            // tiposDeImpuestoToolStripMenuItem
+            // 
+            this.tiposDeImpuestoToolStripMenuItem.Name = "tiposDeImpuestoToolStripMenuItem";
+            this.tiposDeImpuestoToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.tiposDeImpuestoToolStripMenuItem.Text = "Tipos de Impuesto";
+            this.tiposDeImpuestoToolStripMenuItem.Click += new System.EventHandler(this.MenuImpuestos_Click);
+            // 
             // stockToolStripMenuItem
             // 
             this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
@@ -153,14 +162,14 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // MenuClientes
             // 
             this.MenuClientes.Name = "MenuClientes";
-            this.MenuClientes.Size = new System.Drawing.Size(180, 22);
+            this.MenuClientes.Size = new System.Drawing.Size(118, 22);
             this.MenuClientes.Text = "Clientes";
             this.MenuClientes.Click += new System.EventHandler(this.MenuClientes_Click);
             // 
             // MenuFacturas
             // 
             this.MenuFacturas.Name = "MenuFacturas";
-            this.MenuFacturas.Size = new System.Drawing.Size(180, 22);
+            this.MenuFacturas.Size = new System.Drawing.Size(118, 22);
             this.MenuFacturas.Text = "Facturas";
             this.MenuFacturas.Click += new System.EventHandler(this.MenuFacuras_Click);
             // 
@@ -169,14 +178,14 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.MeuCaja.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AdministrarCaja});
             this.MeuCaja.Name = "MeuCaja";
-            this.MeuCaja.Size = new System.Drawing.Size(180, 22);
+            this.MeuCaja.Size = new System.Drawing.Size(118, 22);
             this.MeuCaja.Text = "Caja";
             this.MeuCaja.Click += new System.EventHandler(this.MeuCaja_Click);
             // 
             // AdministrarCaja
             // 
             this.AdministrarCaja.Name = "AdministrarCaja";
-            this.AdministrarCaja.Size = new System.Drawing.Size(180, 22);
+            this.AdministrarCaja.Size = new System.Drawing.Size(136, 22);
             this.AdministrarCaja.Text = "Administrar";
             this.AdministrarCaja.Click += new System.EventHandler(this.AdministrarCaja_Click);
             // 
@@ -191,7 +200,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // MenuProveedores
             // 
             this.MenuProveedores.Name = "MenuProveedores";
-            this.MenuProveedores.Size = new System.Drawing.Size(180, 22);
+            this.MenuProveedores.Size = new System.Drawing.Size(139, 22);
             this.MenuProveedores.Text = "Proveedores";
             this.MenuProveedores.Click += new System.EventHandler(this.MenuProveedores_Click);
             // 
@@ -201,7 +210,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.LoginPanel.Controls.Add(this.ImagenPanel);
             this.LoginPanel.Controls.Add(this.TxtUsuario);
             this.LoginPanel.Location = new System.Drawing.Point(584, 373);
-            this.LoginPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LoginPanel.Margin = new System.Windows.Forms.Padding(2);
             this.LoginPanel.Name = "LoginPanel";
             this.LoginPanel.Size = new System.Drawing.Size(216, 70);
             this.LoginPanel.TabIndex = 1;
@@ -223,7 +232,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.ImagenPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ImagenPanel.BackgroundImage")));
             this.ImagenPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ImagenPanel.Location = new System.Drawing.Point(141, 7);
-            this.ImagenPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ImagenPanel.Margin = new System.Windows.Forms.Padding(2);
             this.ImagenPanel.Name = "ImagenPanel";
             this.ImagenPanel.Size = new System.Drawing.Size(66, 59);
             this.ImagenPanel.TabIndex = 2;
@@ -239,12 +248,12 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.TxtUsuario.TabIndex = 0;
             this.TxtUsuario.Text = "Usuario";
             // 
-            // tiposDeImpuestoToolStripMenuItem
+            // tiposDeValoresToolStripMenuItem
             // 
-            this.tiposDeImpuestoToolStripMenuItem.Name = "tiposDeImpuestoToolStripMenuItem";
-            this.tiposDeImpuestoToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.tiposDeImpuestoToolStripMenuItem.Text = "Tipos de Impuesto";
-            this.tiposDeImpuestoToolStripMenuItem.Click += new System.EventHandler(this.MenuImpuestos_Click);
+            this.tiposDeValoresToolStripMenuItem.Name = "tiposDeValoresToolStripMenuItem";
+            this.tiposDeValoresToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.tiposDeValoresToolStripMenuItem.Text = "Tipos de Valores";
+            this.tiposDeValoresToolStripMenuItem.Click += new System.EventHandler(this.MenuValores);
             // 
             // VentanaPrincipal
             // 
@@ -289,5 +298,6 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         private System.Windows.Forms.ToolStripMenuItem MenuEmpleados;
         private System.Windows.Forms.ToolStripMenuItem MenuRoles;
         private System.Windows.Forms.ToolStripMenuItem tiposDeImpuestoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tiposDeValoresToolStripMenuItem;
     }
 }

@@ -147,5 +147,12 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
 
             frm_impuestos.ShowDialog();
         }
+
+        private void MenuValores(object sender, EventArgs e)
+        {
+            TiposValores frm_valores = new TiposValores();
+
+            frm_valores.ShowDialog();
+        }
     }
 }

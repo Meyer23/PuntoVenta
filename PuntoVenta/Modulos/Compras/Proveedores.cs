@@ -91,7 +91,7 @@ namespace PuntoVenta.Modulos.Compras
             TxtTelefono1.Clear();
             TxtTelefono2.Clear();
             TxtCorreo.Clear();
-            TxtContacto.Focus();
+            TxtContacto.Clear();
             BtnGuardar.Visible = true;
         }
 
@@ -173,7 +173,6 @@ namespace PuntoVenta.Modulos.Compras
         public bool ValidarCorreo(string sMail)
         {
             return Regex.IsMatch(sMail, @"^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$");
-
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -235,8 +234,7 @@ namespace PuntoVenta.Modulos.Compras
         private void ObtenerDatosProveedor()
         {
             try
-            {
-                
+            {              
                 idProveedor = Convert.ToInt32(datalistado.SelectedCells[1].Value.ToString());
                 TxtRazonSocial.Text = datalistado.SelectedCells[2].Value.ToString();
                 TxtRuc.Text = datalistado.SelectedCells[3].Value.ToString();
@@ -318,7 +316,6 @@ namespace PuntoVenta.Modulos.Compras
                         menuStrip1.Visible = true;
                         BtnNuevo.Visible = true;
                         limpiar();
-
                     }
                     catch (Exception ex)
                     {
