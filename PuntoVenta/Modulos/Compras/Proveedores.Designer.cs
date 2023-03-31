@@ -30,13 +30,14 @@ namespace PuntoVenta.Modulos.Compras
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Proveedores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelEncabezado = new System.Windows.Forms.Panel();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.datalistado = new System.Windows.Forms.DataGridView();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelRegistro = new System.Windows.Forms.Panel();
             this.checkBoxActivo = new System.Windows.Forms.CheckBox();
             this.PanelUsuarioImagen = new System.Windows.Forms.Panel();
@@ -57,7 +58,6 @@ namespace PuntoVenta.Modulos.Compras
             this.LblRuc = new System.Windows.Forms.Label();
             this.LblRazonSocial = new System.Windows.Forms.Label();
             this.LblContacto = new System.Windows.Forms.Label();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelEncabezado.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -134,15 +134,23 @@ namespace PuntoVenta.Modulos.Compras
             this.datalistado.Location = new System.Drawing.Point(0, 49);
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.datalistado.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.datalistado.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.datalistado.RowTemplate.Height = 25;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datalistado.Size = new System.Drawing.Size(943, 401);
             this.datalistado.TabIndex = 4;
             this.datalistado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarProveedor);
             this.datalistado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarProveedor2);
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "";
+            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
             // 
             // PanelRegistro
             // 
@@ -368,14 +376,6 @@ namespace PuntoVenta.Modulos.Compras
             this.LblContacto.Size = new System.Drawing.Size(68, 19);
             this.LblContacto.TabIndex = 0;
             this.LblContacto.Text = "Contacto:";
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "";
-            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
             // 
             // Proveedores
             // 

@@ -33,7 +33,7 @@ namespace PuntoVenta.Modulos
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = Conexion.ConexionMaestra.conexion;
                 con.Open();
-                da = new SqlDataAdapter("dbo.sp_clientes_mostrar", con);
+                da = new SqlDataAdapter("sp_clientes_mostrar", con);
                 da.Fill(dt);
                 DataGridViewClientes.DataSource = dt;
                 con.Close();
@@ -209,6 +209,8 @@ namespace PuntoVenta.Modulos
         {
             BtnGuardarCliente.Visible = false;
             BtnGuardarEditado.Visible = true;
+            TxtNombresCliente.ReadOnly = true;
+            TxtRuc.ReadOnly = true;
             ObtenerDatosCliente();
         }
 
@@ -222,7 +224,17 @@ namespace PuntoVenta.Modulos
                 TxtDireccion.Text = DataGridViewClientes.SelectedCells[4].Value.ToString();
                 TxtTelefono.Text = DataGridViewClientes.SelectedCells[5].Value.ToString();
                 TxtCelular.Text = DataGridViewClientes.SelectedCells[6].Value.ToString();
-                TxtCorreo.Text = DataGridViewClientes.SelectedCells[7].Value.ToString();
+                TxtCorreo.Text = DataGridViewClientes.SelectedCells[7].Value.ToString();                
+                estadoCliente = (bool)DataGridViewClientes.SelectedCells[8].Value;
+                if (estadoCliente == true)
+                {
+                    checkBoxActivo.Checked = true;
+                }
+                else
+                {
+                    checkBoxActivo.Checked = false;
+                }
+                comboBox1.Text = DataGridViewClientes.SelectedCells[10].Value.ToString();
 
                 PanelCliente.Hide();
                 DataGridViewClientes.Hide();
@@ -255,7 +267,7 @@ namespace PuntoVenta.Modulos
                         cmd = new SqlCommand("dbo.sp_clientes_editar", con);
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@TipoPersona", comboBox1.Text); 
-                        cmd.Parameters.AddWithValue("@idCliente", idUsuario_Label.Text);
+                        cmd.Parameters.AddWithValue("@idCliente", idCliente);
                         cmd.Parameters.AddWithValue("@Nombre", TxtNombresCliente.Text);
                         cmd.Parameters.AddWithValue("@RUC_CI", TxtRuc.Text);
                         cmd.Parameters.AddWithValue("@Direccion", TxtDireccion.Text);
@@ -270,8 +282,7 @@ namespace PuntoVenta.Modulos
                         {
                             cmd.Parameters.AddWithValue("@Activo", 0);
                         }
-                        System.IO.MemoryStream ms = new System.IO.MemoryStream();
-
+                        //System.IO.MemoryStream ms = new System.IO.MemoryStream();
                         cmd.ExecuteNonQuery();
                         con.Close();
                         PanelNuevoCliente.Hide();
@@ -283,9 +294,7 @@ namespace PuntoVenta.Modulos
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
-
                     }
-
                 }
                 else
                 {

@@ -13,7 +13,8 @@ namespace PuntoVenta.Modulos.Productos
     public partial class Producto : Form
     {
         int idProducto;
-        string estadoProducto;
+        bool estadoProducto;
+        bool admInv;
         public Producto()
         {
             InitializeComponent();
@@ -21,16 +22,73 @@ namespace PuntoVenta.Modulos.Productos
 
         Categoria cat = new Categoria();
         UnidadesMedidas uni = new UnidadesMedidas();
+        Impuestos imp = new Impuestos();
 
         private void Productos_Load(object sender, EventArgs e)
         {
             TxtCategoria.DataSource = cat.cargarComboCategorias();
             TxtUMedida.DataSource = uni.cargarComboUnidadesMedidas();
+            TxtImpuesto.DataSource = imp.cargarComboImpuestos();
             TxtCategoria.DisplayMember = "Nombre";
             TxtCategoria.ValueMember = "idCategoria";
             TxtUMedida.DisplayMember = "Abreviacion";
             TxtUMedida.ValueMember = "idUMedida";
+            TxtImpuesto.DisplayMember = "Descripcion";
+            TxtImpuesto.ValueMember = "idImpuesto";
             mostrarProductos();
+        }
+
+        private void mostrarProductos()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                SqlDataAdapter da;
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = Conexion.ConexionMaestra.conexion;
+                con.Open();
+                da = new SqlDataAdapter("sp_producto_mostrar", con);
+                da.Fill(dt);
+                datalistadoProductos.DataSource = dt;
+                con.Close();
+                ocultar_columnas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            cambiar_color_eliminados();
+        }
+
+        private void cambiar_color_eliminados()
+        {
+            foreach (DataGridViewRow row in datalistadoProductos.Rows)
+            {
+                estadoProducto = (bool)row.Cells["Activo"].Value;
+                if (estadoProducto == false)
+                {
+                    row.DefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Strikeout);
+                    row.DefaultCellStyle.ForeColor = Color.Red;
+                }
+            }
+        }
+
+        private void ocultar_columnas()
+        {
+            datalistadoProductos.Columns[1].Visible = false;
+            datalistadoProductos.Columns[2].Visible = false;
+            datalistadoProductos.Columns[4].Visible = false;
+            datalistadoProductos.Columns[5].Visible = false;
+            datalistadoProductos.Columns[6].Visible = false;
+            datalistadoProductos.Columns[7].Visible = false;
+            datalistadoProductos.Columns[9].Visible = false;
+            datalistadoProductos.Columns[10].Visible = false;
+            datalistadoProductos.Columns[11].Visible = false;
+            datalistadoProductos.Columns[12].Visible = false;
+            datalistadoProductos.Columns[13].Visible = false;
+            datalistadoProductos.Columns[15].Visible = false;
+            datalistadoProductos.Columns[16].Visible = false;
+            datalistadoProductos.Columns[17].Visible = false;
         }
 
         private void CrearProducto(object sender, EventArgs e)
@@ -40,6 +98,10 @@ namespace PuntoVenta.Modulos.Productos
             BtnNuevo.Visible = false;
             PanelRegistro.Visible = true;
             BtnGuardarCambios.Visible = false;
+            TxtCodigoBarras.Focus();
+            TxtCodigoBarras.ReadOnly = false;
+            TxtDescripcion.ReadOnly = false;
+            checkBoxActivo.Checked = true;
             limpiar();
         }
 
@@ -50,9 +112,12 @@ namespace PuntoVenta.Modulos.Productos
             TxtCosto.Clear();
             TxtPrecio.Clear();
             TxtPrecioMayorista.Clear();
-            TxtPorcUtilidad.Clear();
+            TxtCantMayorista.Clear();
+            TxtExistenciaMinima.Clear();
+            TxtEstante.Clear();
+            TxtFila.Clear();
+            TxtColumna.Clear();
             //TxtImpuesto.Items.Clear();
-            //TxtExistencia.Clear();
             //TxtCategoria.Items.Clear();
             //TxtUMedida.Items.Clear();
             BtnGuardar.Visible = true;
@@ -89,10 +154,6 @@ namespace PuntoVenta.Modulos.Productos
                     {
                         TxtPrecioMayorista.Text = "0";
                     }
-                    if (TxtPorcUtilidad.Text == "")
-                    {
-                        TxtPorcUtilidad.Text = "0";
-                    }
                     if (TxtExistenciaMinima.Text == "")
                     {
                         TxtExistenciaMinima.Text = "0";
@@ -115,18 +176,27 @@ namespace PuntoVenta.Modulos.Productos
                         cmd.CommandType = CommandType.StoredProcedure;                       
                         cmd.Parameters.AddWithValue("@Codigo", TxtCodigoBarras.Text);
                         cmd.Parameters.AddWithValue("@Descripcion", TxtDescripcion.Text);
-                        cmd.Parameters.AddWithValue("@Costo", Convert.ToInt32(TxtCosto.Text));
-                        cmd.Parameters.AddWithValue("@Precio", Convert.ToInt32(TxtPrecio.Text));
-                        cmd.Parameters.AddWithValue("@PrecioMayorista", Convert.ToInt32(TxtPrecioMayorista.Text));
-                        cmd.Parameters.AddWithValue("@PorcUtilidad", Convert.ToInt32(TxtPorcUtilidad.Text));
+                        cmd.Parameters.AddWithValue("@Costo", Convert.ToDecimal(TxtCosto.Text));
+                        cmd.Parameters.AddWithValue("@Precio", Convert.ToDecimal(TxtPrecio.Text));
+                        cmd.Parameters.AddWithValue("@PrecioMayorista", Convert.ToDecimal(TxtPrecioMayorista.Text));
                         cmd.Parameters.AddWithValue("@AdministraInventario", Convert.ToInt32(CheckAdmInv.CheckState));
                         cmd.Parameters.AddWithValue("@Existencia", 0);
-                        cmd.Parameters.AddWithValue("@ExistenciaMinima", Convert.ToInt32(TxtExistenciaMinima.Text));
-                        cmd.Parameters.AddWithValue("@Impuesto", Convert.ToInt32(TxtImpuesto.Text));
+                        cmd.Parameters.AddWithValue("@ExistenciaMinima", Convert.ToDecimal(TxtExistenciaMinima.Text));
+                        cmd.Parameters.AddWithValue("@Impuesto", Convert.ToInt32(TxtImpuesto.SelectedValue.ToString()));
                         cmd.Parameters.AddWithValue("@idCategoria", Convert.ToInt32(TxtCategoria.SelectedValue.ToString()));
                         cmd.Parameters.AddWithValue("@idUMedida", Convert.ToInt32(TxtUMedida.SelectedValue.ToString()));
-                        cmd.Parameters.AddWithValue("@Estado", "ACTIVO");
-                        cmd.Parameters.AddWithValue("@CantidadMayorista", Convert.ToInt32(TxtCantMayorista.Text));
+                        if (checkBoxActivo.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 0);
+                        }
+                        cmd.Parameters.AddWithValue("@CantidadMayorista", Convert.ToDecimal(TxtCantMayorista.Text));
+                        cmd.Parameters.AddWithValue("@Estante", Convert.ToInt32(TxtEstante.Text));
+                        cmd.Parameters.AddWithValue("@Fila", Convert.ToInt32(TxtFila.Text));
+                        cmd.Parameters.AddWithValue("@Columna", Convert.ToInt32(TxtColumna.Text));
 
                         cmd.ExecuteNonQuery();
                         con.Close();
@@ -136,57 +206,21 @@ namespace PuntoVenta.Modulos.Productos
                         menuStrip1.Visible = true;
                         BtnNuevo.Visible = true;
                         limpiar();
-
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void mostrarProductos()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                SqlDataAdapter da;
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = Conexion.ConexionMaestra.conexion;
-                con.Open();
-                da = new SqlDataAdapter("sp_producto_mostrar", con);
-                da.Fill(dt);
-                datalistadoProductos.DataSource = dt;
-                con.Close();
-                ocultar_columnas();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            cambiar_color_eliminados();
-        }
-
-        private void cambiar_color_eliminados()
-        {
-            foreach (DataGridViewRow row in datalistadoProductos.Rows)
-            {
-                if (row.Cells["Estado"].Value.ToString() == "ELIMINADO")
+                else
                 {
-                    row.DefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Strikeout);
-                    row.DefaultCellStyle.ForeColor = Color.Red;
+                    MessageBox.Show("Datos Incompletos", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-        }
-
-        private void ocultar_columnas()
-        {
-            datalistadoProductos.Columns[2].Visible = false;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BuscarProducto(object sender, EventArgs e)
@@ -214,65 +248,14 @@ namespace PuntoVenta.Modulos.Productos
             cambiar_color_eliminados();
         }
 
-        private void EliminarProducto(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == this.datalistadoProductos.Columns["Eliminar"].Index)
-            {
-                DialogResult result;
-                result = MessageBox.Show("¿Está seguro de eliminar este producto del sistema?", "Eliminando registro...", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-                if (result == DialogResult.OK)
-                {
-                    SqlCommand cmd;
-                    try
-                    {
-                        foreach (DataGridViewRow row in datalistadoProductos.SelectedRows)
-                        {
-                            int onekey = Convert.ToInt32(row.Cells["idProducto"].Value);
-
-                            try
-                            {
-                                try
-                                {
-                                    SqlConnection con = new SqlConnection();
-                                    con.ConnectionString = Conexion.ConexionMaestra.conexion;
-                                    con.Open();
-                                    cmd = new SqlCommand("sp_producto_eliminar", con);
-                                    cmd.CommandType = CommandType.StoredProcedure;
-
-                                    cmd.Parameters.AddWithValue("@idProducto", onekey);
-                                    cmd.ExecuteNonQuery();
-
-                                    con.Close();
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show(ex.Message);
-                                }
-
-                            }
-                            catch (Exception ex)
-                            {
-
-                                MessageBox.Show(ex.Message);
-                            }
-                        }
-                        mostrarProductos();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            }
-        }
-
         private void EditarProducto(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == this.datalistadoProductos.Columns["Editar"].Index)
             {
                 BtnGuardar.Visible = false;
                 BtnGuardarCambios.Visible = true;
+                TxtCodigoBarras.ReadOnly = true;
+                TxtDescripcion.ReadOnly = true;
                 ObtenerDatosProductos();
             }
         }
@@ -281,6 +264,8 @@ namespace PuntoVenta.Modulos.Productos
         {
             BtnGuardar.Visible = false;
             BtnGuardarCambios.Visible = true;
+            TxtCodigoBarras.ReadOnly = true;
+            TxtDescripcion.ReadOnly = true;
             ObtenerDatosProductos();
         }
 
@@ -288,69 +273,49 @@ namespace PuntoVenta.Modulos.Productos
         {
             try
             {
-                estadoProducto = datalistadoProductos.SelectedCells[16].Value.ToString();
-                if (estadoProducto == "ELIMINADO")
+                idProducto = Convert.ToInt32(datalistadoProductos.SelectedCells[1].Value.ToString());
+                TxtCodigoBarras.Text = datalistadoProductos.SelectedCells[2].Value.ToString();
+                TxtDescripcion.Text = datalistadoProductos.SelectedCells[3].Value.ToString();
+                TxtCosto.Text = datalistadoProductos.SelectedCells[4].Value.ToString();
+                TxtPrecio.Text = datalistadoProductos.SelectedCells[5].Value.ToString();
+                TxtPrecioMayorista.Text = datalistadoProductos.SelectedCells[6].Value.ToString();
+                admInv = (bool)datalistadoProductos.SelectedCells[7].Value;
+                if (admInv == true)
                 {
-                    restaurarProducto();
+                    CheckAdmInv.Checked = true;
                 }
                 else
                 {
-                    idProducto = Convert.ToInt32(datalistadoProductos.SelectedCells[2].Value.ToString());
-                    TxtCodigoBarras.Text = datalistadoProductos.SelectedCells[3].Value.ToString();
-                    TxtDescripcion.Text = datalistadoProductos.SelectedCells[4].Value.ToString();
-                    TxtCosto.Text = datalistadoProductos.SelectedCells[5].Value.ToString();
-                    TxtPrecio.Text = datalistadoProductos.SelectedCells[6].Value.ToString();
-                    TxtPrecioMayorista.Text = datalistadoProductos.SelectedCells[7].Value.ToString();
-                    TxtPorcUtilidad.Text = datalistadoProductos.SelectedCells[8].Value.ToString();
-                    CheckAdmInv.Text = datalistadoProductos.SelectedCells[9].Value.ToString();
-                    TxtExistencia.Text = datalistadoProductos.SelectedCells[10].Value.ToString();
-                    TxtExistenciaMinima.Text = datalistadoProductos.SelectedCells[11].Value.ToString();
-                    TxtImpuesto.Text = datalistadoProductos.SelectedCells[12].Value.ToString();                   
-                    TxtCategoria.Text = datalistadoProductos.SelectedCells[13].Value.ToString();
-                    TxtUMedida.Text = datalistadoProductos.SelectedCells[14].Value.ToString();
-                    TxtCantMayorista.Text = datalistadoProductos.SelectedCells[15].Value.ToString();
-
-                    TxtBusqueda.Visible = false;
-                    menuStrip1.Visible = false;
-                    BtnNuevo.Visible = false;
-                    PanelRegistro.Visible = true;
+                    CheckAdmInv.Checked = false;
                 }
+                TxtExistencia.Text = datalistadoProductos.SelectedCells[8].Value.ToString();
+                TxtExistenciaMinima.Text = datalistadoProductos.SelectedCells[9].Value.ToString();
+                TxtImpuesto.Text = datalistadoProductos.SelectedCells[10].Selected.ToString();                   
+                TxtCategoria.Text = datalistadoProductos.SelectedCells[11].Selected.ToString();
+                TxtUMedida.Text = datalistadoProductos.SelectedCells[12].Selected.ToString();
+                TxtCantMayorista.Text = datalistadoProductos.SelectedCells[13].Value.ToString();
+                estadoProducto = (bool)datalistadoProductos.SelectedCells[14].Value;
+                if (estadoProducto == true)
+                {
+                    checkBoxActivo.Checked = true;
+                }
+                else
+                {
+                    checkBoxActivo.Checked = false;
+                }
+                TxtEstante.Text = datalistadoProductos.SelectedCells[15].Value.ToString();
+                TxtFila.Text = datalistadoProductos.SelectedCells[16].Value.ToString();
+                TxtColumna.Text = datalistadoProductos.SelectedCells[17].Value.ToString();
+                TxtBusqueda.Visible = false;
+                menuStrip1.Visible = false;
+                BtnNuevo.Visible = false;
+                PanelRegistro.Visible = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void restaurarProducto()
-        {
-            DialogResult result;
-            result = MessageBox.Show("Este producto se encuentra eliminado, ¿Desea volver a Habilitarlo?", "Restauración de Registros", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (result == DialogResult.OK)
-            {
-                foreach (DataGridViewRow row in datalistadoProductos.SelectedRows)
-                {
-                    int idProveedor = Convert.ToInt32(row.Cells["idProducto"].Value);
-                    try
-                    {
-                        SqlCommand cmd;
-                        SqlConnection con = new SqlConnection();
-                        con.ConnectionString = Conexion.ConexionMaestra.conexion;
-                        con.Open();
-                        cmd = new SqlCommand("sp_producto_restaurar", con);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@idProducto", idProducto);
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    mostrarProductos();
-                }
-            }
-        }
+        }        
 
         private void BtnGuardarCambios_Click(object sender, EventArgs e)
         {
@@ -375,10 +340,6 @@ namespace PuntoVenta.Modulos.Productos
                     {
                         TxtPrecioMayorista.Text = "0";
                     }
-                    if (TxtPorcUtilidad.Text == "")
-                    {
-                        TxtPorcUtilidad.Text = "0";
-                    }
                     try
                     {
                         SqlConnection con = new SqlConnection();
@@ -390,16 +351,33 @@ namespace PuntoVenta.Modulos.Productos
                         cmd.Parameters.AddWithValue("@idProducto", idProducto);
                         cmd.Parameters.AddWithValue("@Codigo", TxtCodigoBarras.Text);
                         cmd.Parameters.AddWithValue("@Descripcion", TxtDescripcion.Text);
-                        cmd.Parameters.AddWithValue("@Costo", Convert.ToInt32(TxtCosto.Text));
+                        cmd.Parameters.AddWithValue("@Costo", Convert.ToDecimal(TxtCosto.Text));
                         cmd.Parameters.AddWithValue("@Precio", Convert.ToDecimal(TxtPrecio.Text));
                         cmd.Parameters.AddWithValue("@PrecioMayorista", Convert.ToDecimal(TxtPrecioMayorista.Text));
-                        cmd.Parameters.AddWithValue("@PorcUtilidad", Convert.ToInt32(TxtPorcUtilidad.Text));
-                        cmd.Parameters.AddWithValue("@AdministraInventario", Convert.ToInt32(CheckAdmInv.CheckState));
-                        cmd.Parameters.AddWithValue("@ExistenciaMinima", Convert.ToInt32(TxtExistenciaMinima.Text));
+                        if (CheckAdmInv.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@AdministraInventario", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@AdministraInventario", 0);
+                        }
+                        cmd.Parameters.AddWithValue("@ExistenciaMinima", Convert.ToDecimal(TxtExistenciaMinima.Text));
                         cmd.Parameters.AddWithValue("@Impuesto", Convert.ToInt32(TxtImpuesto.Text));
                         cmd.Parameters.AddWithValue("@idCategoria", Convert.ToInt32(TxtCategoria.Text));
                         cmd.Parameters.AddWithValue("@idUMedida", Convert.ToInt32(TxtUMedida.Text));
-                        cmd.Parameters.AddWithValue("@CantidadMayorista", Convert.ToInt32(TxtCantMayorista.Text));
+                        cmd.Parameters.AddWithValue("@CantidadMayorista", Convert.ToDecimal(TxtCantMayorista.Text));
+                        if (checkBoxActivo.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", 0);
+                        }
+                        cmd.Parameters.AddWithValue("@Estante", Convert.ToInt32(TxtEstante.Text));
+                        cmd.Parameters.AddWithValue("@Fila", Convert.ToInt32(TxtFila.Text));
+                        cmd.Parameters.AddWithValue("@Columna", Convert.ToInt32(TxtColumna.Text));
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarProductos();
@@ -436,9 +414,11 @@ namespace PuntoVenta.Modulos.Productos
             frm_umedidas.ShowDialog();
         }
 
-        private void GenerarPrecios(object sender, EventArgs e)
+        private void CrearImpuesto(object sender, EventArgs e)
         {
+            Impuestos frm_impuestos = new Impuestos();
 
+            frm_impuestos.ShowDialog();
         }
     }
 }
