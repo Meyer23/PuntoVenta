@@ -11,6 +11,7 @@ using System.Text;
 using System.Windows.Forms;
 using PuntoVenta.Modulos.Roles;
 using PuntoVenta.Modulos.Usuarios_Ok;
+using PuntoVenta.Modulos.Permisos;
 
 namespace PuntoVenta.Modulos.VentanaPrincipal
 {
@@ -141,6 +142,10 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             frm_usuarios.ShowDialog();
         }
 
+        private void MenuPermisos_Click(object sender, EventArgs e)
+        {
+            RolesPermisos frm_rolesPermisos = new RolesPermisos();
+            frm_rolesPermisos.ShowDialog();
         private void MenuImpuestos_Click(object sender, EventArgs e)
         {
             Impuestos frm_impuestos = new Impuestos();

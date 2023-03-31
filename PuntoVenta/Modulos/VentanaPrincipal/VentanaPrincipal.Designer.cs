@@ -59,6 +59,32 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // 
             // menuStrip1
             // 
+
+            menuStrip1 = new System.Windows.Forms.MenuStrip();
+            administraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            MenuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
+            MenuRoles = new System.Windows.Forms.ToolStripMenuItem();
+            permisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            MenuUnidadesMedidas = new System.Windows.Forms.ToolStripMenuItem();
+            MenuProductos = new System.Windows.Forms.ToolStripMenuItem();
+            MenuCategorias = new System.Windows.Forms.ToolStripMenuItem();
+            MenuEmpleados = new System.Windows.Forms.ToolStripMenuItem();
+            stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            MenuClientes = new System.Windows.Forms.ToolStripMenuItem();
+            MenuFacturas = new System.Windows.Forms.ToolStripMenuItem();
+            MeuCaja = new System.Windows.Forms.ToolStripMenuItem();
+            AdministrarCaja = new System.Windows.Forms.ToolStripMenuItem();
+            comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            MenuProveedores = new System.Windows.Forms.ToolStripMenuItem();
+            LoginPanel = new System.Windows.Forms.Panel();
+            LabelRol = new System.Windows.Forms.Label();
+            ImagenPanel = new System.Windows.Forms.Panel();
+            TxtUsuario = new System.Windows.Forms.Label();
+            menuStrip1.SuspendLayout();
+            LoginPanel.SuspendLayout();
+            SuspendLayout();
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.administraciónToolStripMenuItem,
@@ -73,7 +99,11 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.menuStrip1.Text = "menuStrip1";
             // 
             // administraciónToolStripMenuItem
-            // 
+            //
+            administraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { MenuUsuarios, MenuRoles, permisosToolStripMenuItem });
+            administraciónToolStripMenuItem.Name = "administraciónToolStripMenuItem";
+            administraciónToolStripMenuItem.Size = new System.Drawing.Size(147, 29);
+            administraciónToolStripMenuItem.Text = "Administración";
             this.administraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuUsuarios,
             this.MenuRoles});
@@ -94,6 +124,13 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             this.MenuRoles.Size = new System.Drawing.Size(119, 22);
             this.MenuRoles.Text = "Roles";
             this.MenuRoles.Click += new System.EventHandler(this.MenuRoles_Click);
+            // 
+            // permisosToolStripMenuItem
+            // 
+            permisosToolStripMenuItem.Name = "permisosToolStripMenuItem";
+            permisosToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            permisosToolStripMenuItem.Text = "Permisos";
+            permisosToolStripMenuItem.Click += MenuPermisos_Click;
             // 
             // configuraciónToolStripMenuItem
             // 
@@ -297,6 +334,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         private System.Windows.Forms.Label LabelRol;
         private System.Windows.Forms.ToolStripMenuItem MenuEmpleados;
         private System.Windows.Forms.ToolStripMenuItem MenuRoles;
+        private System.Windows.Forms.ToolStripMenuItem permisosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tiposDeImpuestoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tiposDeValoresToolStripMenuItem;
     }
