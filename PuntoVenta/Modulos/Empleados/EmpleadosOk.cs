@@ -75,10 +75,12 @@ namespace PuntoVenta.Modulos.Empleados
             BtnNuevo.Visible = false;
             PanelRegistro.Visible = true;
             BtnGuardarCambios.Visible = false;
+            TxtNombres.Focus();
             TxtNombres.ReadOnly = false;
             TxtApellidos.ReadOnly = false;
             TxtDocumento.ReadOnly = false;
             dateTimeFechaNac.Enabled = true;
+            checkBoxActivo.Checked = true;
             limpiar();
         }
 
@@ -208,62 +210,7 @@ namespace PuntoVenta.Modulos.Empleados
             }
             cambiar_color_eliminados();
         }
-
-        //private void EliminarEmpleado(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (e.ColumnIndex == this.datalistado.Columns["Eliminar"].Index)
-        //    {
-        //        DialogResult result;
-        //        result = MessageBox.Show("¿Está seguro de eliminar este empleado del sistema?", "Eliminando registro...", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-        //        if (result == DialogResult.OK)
-        //        {
-        //            SqlCommand cmd;
-        //            try
-        //            {
-        //                foreach (DataGridViewRow row in datalistado.SelectedRows)
-        //                {
-        //                    int onekey = Convert.ToInt32(row.Cells["idEmpleado"].Value);
-
-        //                    try
-        //                    {
-        //                        try
-        //                        {
-        //                            SqlConnection con = new SqlConnection();
-        //                            con.ConnectionString = Conexion.ConexionMaestra.conexion;
-        //                            con.Open();
-        //                            cmd = new SqlCommand("sp_empleado_eliminar", con);
-        //                            cmd.CommandType = CommandType.StoredProcedure;
-
-        //                            cmd.Parameters.AddWithValue("@idEmpleado", onekey);
-        //                            cmd.ExecuteNonQuery();
-
-        //                            con.Close();
-        //                        }
-        //                        catch (Exception ex)
-        //                        {
-        //                            MessageBox.Show(ex.Message);
-        //                        }
-
-        //                    }
-        //                    catch (Exception ex)
-        //                    {
-
-        //                        MessageBox.Show(ex.Message);
-        //                    }
-
-        //                }
-        //                mostrarEmpleados();
-        //            }
-
-        //            catch (Exception ex)
-        //            {
-        //                MessageBox.Show(ex.Message);
-        //            }
-
-        //        }
-        //    }
-        //}
+   
 
         private void EditarEmpleado(object sender, DataGridViewCellEventArgs e)
         {
@@ -323,37 +270,6 @@ namespace PuntoVenta.Modulos.Empleados
                 MessageBox.Show(ex.Message);
             }
         }
-    
-
-    //private void restaurarEmpleado()
-    //    {
-    //        DialogResult result;
-    //        result = MessageBox.Show("Este empleado se encuentra eliminado, ¿Desea volver a Habilitarlo?", "Restauración de Registros", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-    //        if (result == DialogResult.OK)
-    //        {
-    //            foreach (DataGridViewRow row in datalistado.SelectedRows)
-    //            {
-    //                int idProveedor = Convert.ToInt32(row.Cells["idEmpleado"].Value);
-    //                try
-    //                {
-    //                    SqlCommand cmd;
-    //                    SqlConnection con = new SqlConnection();
-    //                    con.ConnectionString = Conexion.ConexionMaestra.conexion;
-    //                    con.Open();
-    //                    cmd = new SqlCommand("sp_empleado_restaurar", con);
-    //                    cmd.CommandType = CommandType.StoredProcedure;
-    //                    cmd.Parameters.AddWithValue("@idEmpleado", idProveedor);
-    //                    cmd.ExecuteNonQuery();
-    //                    con.Close();
-    //                }
-    //                catch (Exception ex)
-    //                {
-    //                    MessageBox.Show(ex.Message);
-    //                }
-    //                mostrarEmpleados();
-    //            }
-    //        }
-    //    }
 
         private void BtnGuardarCambios_Click(object sender, EventArgs e)
         {

@@ -67,7 +67,7 @@
   <data name="toolStripMenuItem1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        0AAADdABEGw9BwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAERiSURBVHhe7d15
+        1QAADdUBPdZY8QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAERiSURBVHhe7d15
         YBXlvf9xtRbBWmvNWETbqrVau3m1dvW21i4K2lrt6tVf7Xa1dnEJISQkcWltq9YNxQ0VQVkENxBRVNyX
         qhTrigtuSF1vV0nOOXqSyPy+T0hsCB+ynpl5Zub9x8sL32uRnDPzfD7nzLZeGIZAKr3vj+0bmFFmR7Ob
         +bL5pvkfc6gZa441p5jzzAwzz9xs7jdLzQrzT9Nqyp2/drPHzWJzq5lvZpkLzOnmt2a8+aU5xHzb7GW+
@@ -362,13 +362,10 @@
         BhevGj56Wtlm/7L/33L7d5bYvzvfnG3/22r7M76o/vzkhOv9f5psJgvnr3f7AAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="Editar.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="Editar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACFFSURBVHhe7d0J
+        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACFFSURBVHhe7d0J
         kGRnYR/wXYS4DRjLxiE2wrIM2ulZcaxjtD0tZWzt9Ggldnd61kO5nIRA4sgGmwICaKZ7SWWqKMBHJTEY
         g2O7nALMYWFXcKnARQFZTfeiCCMM4YgTQziEbQ4ZsEGAzlW+p/3GrHrf7kz39PHe+36/qn+tVKA3s939
         3v/fMz3TuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

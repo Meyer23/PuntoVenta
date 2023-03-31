@@ -35,9 +35,8 @@ namespace PuntoVenta.Modulos
             this.BtnBuscarCliente = new System.Windows.Forms.Button();
             this.TxtBuscarCliente = new System.Windows.Forms.TextBox();
             this.DataGridViewClientes = new System.Windows.Forms.DataGridView();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelNuevoCliente = new System.Windows.Forms.Panel();
+            this.checkBoxActivo = new System.Windows.Forms.CheckBox();
             this.TipoPersona_LBL = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.idUsuario_Label = new System.Windows.Forms.Label();
@@ -57,6 +56,7 @@ namespace PuntoVenta.Modulos
             this.LabelRuc = new System.Windows.Forms.Label();
             this.LabelNombreCliente = new System.Windows.Forms.Label();
             this.BtnGuardarEditado = new System.Windows.Forms.Button();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewClientes)).BeginInit();
             this.PanelNuevoCliente.SuspendLayout();
@@ -106,8 +106,7 @@ namespace PuntoVenta.Modulos
             this.DataGridViewClientes.BackgroundColor = System.Drawing.Color.White;
             this.DataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Editar,
-            this.Eliminar});
+            this.Editar});
             this.DataGridViewClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataGridViewClientes.Location = new System.Drawing.Point(0, 57);
             this.DataGridViewClientes.Name = "DataGridViewClientes";
@@ -115,30 +114,12 @@ namespace PuntoVenta.Modulos
             this.DataGridViewClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridViewClientes.Size = new System.Drawing.Size(914, 465);
             this.DataGridViewClientes.TabIndex = 1;
-            this.DataGridViewClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EliminarCliente);
             this.DataGridViewClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarCliente);
             this.DataGridViewClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditarCliente2);
             // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "";
-            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // PanelNuevoCliente
             // 
+            this.PanelNuevoCliente.Controls.Add(this.checkBoxActivo);
             this.PanelNuevoCliente.Controls.Add(this.TipoPersona_LBL);
             this.PanelNuevoCliente.Controls.Add(this.comboBox1);
             this.PanelNuevoCliente.Controls.Add(this.idUsuario_Label);
@@ -158,12 +139,25 @@ namespace PuntoVenta.Modulos
             this.PanelNuevoCliente.Controls.Add(this.LabelRuc);
             this.PanelNuevoCliente.Controls.Add(this.LabelNombreCliente);
             this.PanelNuevoCliente.Controls.Add(this.BtnGuardarEditado);
-            this.PanelNuevoCliente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelNuevoCliente.Location = new System.Drawing.Point(0, 57);
             this.PanelNuevoCliente.Name = "PanelNuevoCliente";
             this.PanelNuevoCliente.Size = new System.Drawing.Size(914, 465);
             this.PanelNuevoCliente.TabIndex = 2;
             this.PanelNuevoCliente.Visible = false;
+            // 
+            // checkBoxActivo
+            // 
+            this.checkBoxActivo.AutoSize = true;
+            this.checkBoxActivo.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.checkBoxActivo.Checked = true;
+            this.checkBoxActivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxActivo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxActivo.Location = new System.Drawing.Point(520, 59);
+            this.checkBoxActivo.Name = "checkBoxActivo";
+            this.checkBoxActivo.Size = new System.Drawing.Size(69, 19);
+            this.checkBoxActivo.TabIndex = 24;
+            this.checkBoxActivo.Text = "ACTIVO";
+            this.checkBoxActivo.UseVisualStyleBackColor = true;
             // 
             // TipoPersona_LBL
             // 
@@ -249,6 +243,7 @@ namespace PuntoVenta.Modulos
             this.TxtTelefono.Name = "TxtTelefono";
             this.TxtTelefono.Size = new System.Drawing.Size(326, 23);
             this.TxtTelefono.TabIndex = 9;
+            this.TxtTelefono.Validating += new System.ComponentModel.CancelEventHandler(this.TxtTelefono_Validating);
             // 
             // TxtDireccion
             // 
@@ -256,6 +251,7 @@ namespace PuntoVenta.Modulos
             this.TxtDireccion.Name = "TxtDireccion";
             this.TxtDireccion.Size = new System.Drawing.Size(326, 23);
             this.TxtDireccion.TabIndex = 8;
+            this.TxtDireccion.Validating += new System.ComponentModel.CancelEventHandler(this.TxtDireccion_Validating);
             // 
             // TxtRuc
             // 
@@ -263,6 +259,7 @@ namespace PuntoVenta.Modulos
             this.TxtRuc.Name = "TxtRuc";
             this.TxtRuc.Size = new System.Drawing.Size(326, 23);
             this.TxtRuc.TabIndex = 7;
+            this.TxtRuc.Validating += new System.ComponentModel.CancelEventHandler(this.TxtRuc_Validating);
             // 
             // TxtNombresCliente
             // 
@@ -270,6 +267,7 @@ namespace PuntoVenta.Modulos
             this.TxtNombresCliente.Name = "TxtNombresCliente";
             this.TxtNombresCliente.Size = new System.Drawing.Size(326, 23);
             this.TxtNombresCliente.TabIndex = 6;
+            this.TxtNombresCliente.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNombresCliente_Validating);
             // 
             // LabelCorreo
             // 
@@ -344,6 +342,15 @@ namespace PuntoVenta.Modulos
             this.BtnGuardarEditado.Visible = false;
             this.BtnGuardarEditado.Click += new System.EventHandler(this.BtnGuardar_Editado);
             // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "";
+            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -354,6 +361,7 @@ namespace PuntoVenta.Modulos
             this.Controls.Add(this.PanelCliente);
             this.Name = "Clientes";
             this.Text = "Clientes";
+            this.Load += new System.EventHandler(this.Clientes_Load);
             this.PanelCliente.ResumeLayout(false);
             this.PanelCliente.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewClientes)).EndInit();
@@ -386,11 +394,11 @@ namespace PuntoVenta.Modulos
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.Button BtnGuardarCliente;
         private System.Windows.Forms.Panel PanelClientesImagen;
-        private System.Windows.Forms.DataGridViewImageColumn Editar;
-        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
         private System.Windows.Forms.Button BtnGuardarEditado;
         private System.Windows.Forms.Label idUsuario_Label;
         private System.Windows.Forms.Label TipoPersona_LBL;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.CheckBox checkBoxActivo;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
     }
 }

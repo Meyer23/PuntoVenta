@@ -146,6 +146,18 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         {
             RolesPermisos frm_rolesPermisos = new RolesPermisos();
             frm_rolesPermisos.ShowDialog();
+        private void MenuImpuestos_Click(object sender, EventArgs e)
+        {
+            Impuestos frm_impuestos = new Impuestos();
+
+            frm_impuestos.ShowDialog();
+        }
+
+        private void MenuValores(object sender, EventArgs e)
+        {
+            TiposValores frm_valores = new TiposValores();
+
+            frm_valores.ShowDialog();
         }
     }
 }
