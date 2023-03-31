@@ -11,6 +11,7 @@ using System.Text;
 using System.Windows.Forms;
 using PuntoVenta.Modulos.Roles;
 using PuntoVenta.Modulos.Usuarios_Ok;
+using PuntoVenta.Modulos.Permisos;
 
 namespace PuntoVenta.Modulos.VentanaPrincipal
 {
@@ -139,6 +140,12 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             Usuarios frm_usuarios = new Usuarios();
 
             frm_usuarios.ShowDialog();
+        }
+
+        private void MenuPermisos_Click(object sender, EventArgs e)
+        {
+            RolesPermisos frm_rolesPermisos = new RolesPermisos();
+            frm_rolesPermisos.ShowDialog();
         }
     }
 }

@@ -34,6 +34,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             administraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             MenuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             MenuRoles = new System.Windows.Forms.ToolStripMenuItem();
+            permisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             MenuUnidadesMedidas = new System.Windows.Forms.ToolStripMenuItem();
             MenuProductos = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,7 +69,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // 
             // administraciónToolStripMenuItem
             // 
-            administraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { MenuUsuarios, MenuRoles });
+            administraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { MenuUsuarios, MenuRoles, permisosToolStripMenuItem });
             administraciónToolStripMenuItem.Name = "administraciónToolStripMenuItem";
             administraciónToolStripMenuItem.Size = new System.Drawing.Size(147, 29);
             administraciónToolStripMenuItem.Text = "Administración";
@@ -86,6 +87,13 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             MenuRoles.Size = new System.Drawing.Size(270, 34);
             MenuRoles.Text = "Roles";
             MenuRoles.Click += MenuRoles_Click;
+            // 
+            // permisosToolStripMenuItem
+            // 
+            permisosToolStripMenuItem.Name = "permisosToolStripMenuItem";
+            permisosToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            permisosToolStripMenuItem.Text = "Permisos";
+            permisosToolStripMenuItem.Click += MenuPermisos_Click;
             // 
             // configuraciónToolStripMenuItem
             // 
@@ -261,5 +269,6 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         private System.Windows.Forms.Label LabelRol;
         private System.Windows.Forms.ToolStripMenuItem MenuEmpleados;
         private System.Windows.Forms.ToolStripMenuItem MenuRoles;
+        private System.Windows.Forms.ToolStripMenuItem permisosToolStripMenuItem;
     }
 }

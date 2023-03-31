@@ -62,6 +62,7 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
                 da.Fill(dt);
                 DataGridViewUsuarios.DataSource = dt;
                 con.Close();
+
             }
             catch (Exception ex)
             {
@@ -130,7 +131,7 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
                 con.Close();
                 if (dt.Rows.Count == 0)
                 {
-                    MessageBox.Show("El empleado buscado no se encuentra activo, verifique.");
+                    MessageBox.Show("Empleado no existe o ya se encuentra como Usuario del sistema.");
                 }
             }
             catch (Exception ex)
@@ -213,6 +214,7 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
 
                                 cmd.ExecuteNonQuery();
                                 con.Close();
+                                MessageBox.Show("Usuario agregado.");
                                 PanelBuscarEmpleado.Hide();
                                 PanelBusquedaUsuario.Show();
                                 MostrarUsuarios();

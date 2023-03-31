@@ -46,7 +46,7 @@ namespace PuntoVenta.Modulos
 								    on c.idRol = r.id
 									where c.Login = @Login
                                     and r.id = c.idRol
-									and c.Estado = 'ACTIVO'";
+									and c.Activo = 1";
                 SqlCommand command = new SqlCommand(obtenerRol, con);
                 command.Parameters.AddWithValue("@Login", txtUsuario.Text.Trim());
                 string result = (string)command.ExecuteScalar();
