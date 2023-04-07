@@ -99,7 +99,7 @@ namespace PuntoVenta.Modulos.Roles
                 BtnGuardarCambios.Show();
                 BtnGuardar.Hide();
                 TxtRolEditando.Show();
-                
+
             }
         }
 
@@ -145,6 +145,8 @@ namespace PuntoVenta.Modulos.Roles
             menuStrip1.Show();
             BtnNuevo.Show();
             datalistadoRoles.Show();
+            LblNombre.Show();
+            TxtNombre.Show();
         }
 
         private void GuardarRol(object sender, EventArgs e)
@@ -168,6 +170,39 @@ namespace PuntoVenta.Modulos.Roles
                         }
                         else
                             cmd.Parameters.AddWithValue("@Estado", 0);
+
+                        if (ChkAgregar.Checked)
+                        {
+                            cmd.Parameters.AddWithValue("@Agregar", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Agregar", 0);
+                        }
+                        if (ChkEditar.Checked)
+                        {
+                            cmd.Parameters.AddWithValue("@Editar", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Editar", 0);
+                        }
+                        if (ChkInactivar.Checked)
+                        {
+                            cmd.Parameters.AddWithValue("@Inactivar", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Inactivar", 0);
+                        }
+                        if(ChkVer.Checked)
+                        {
+                            cmd.Parameters.AddWithValue("@Ver", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Ver", 0);
+                        }
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarRoles();
@@ -207,6 +242,38 @@ namespace PuntoVenta.Modulos.Roles
                 }
                 else
                     cmd.Parameters.AddWithValue("@Estado", 0);
+                if (ChkAgregar.Checked)
+                {
+                    cmd.Parameters.AddWithValue("@Agregar", 1);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Agregar", 0);
+                }
+                if (ChkEditar.Checked)
+                {
+                    cmd.Parameters.AddWithValue("@Editar", 1);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Editar", 0);
+                }
+                if (ChkInactivar.Checked)
+                {
+                    cmd.Parameters.AddWithValue("@Inactivar", 1);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Inactivar", 0);
+                }
+                if (ChkVer.Checked)
+                {
+                    cmd.Parameters.AddWithValue("@Ver", 1);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Ver", 0);
+                }
                 cmd.ExecuteNonQuery();
                 con.Close();
                 mostrarRoles();

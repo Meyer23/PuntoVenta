@@ -30,7 +30,7 @@ namespace PuntoVenta.Modulos.Roles
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Rol));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             PanelEncabezado = new System.Windows.Forms.Panel();
             BtnNuevo = new System.Windows.Forms.Button();
             TxtBusqueda = new System.Windows.Forms.TextBox();
@@ -39,6 +39,11 @@ namespace PuntoVenta.Modulos.Roles
             datalistadoRoles = new System.Windows.Forms.DataGridView();
             Editar = new System.Windows.Forms.DataGridViewImageColumn();
             PanelRegistro = new System.Windows.Forms.Panel();
+            LbLOperaciones = new System.Windows.Forms.Label();
+            ChkVer = new System.Windows.Forms.CheckBox();
+            ChkInactivar = new System.Windows.Forms.CheckBox();
+            ChkEditar = new System.Windows.Forms.CheckBox();
+            ChkAgregar = new System.Windows.Forms.CheckBox();
             TxtRolEditando = new System.Windows.Forms.TextBox();
             EditandoNombreRol = new System.Windows.Forms.Label();
             BtnGuardar = new System.Windows.Forms.Button();
@@ -127,9 +132,9 @@ namespace PuntoVenta.Modulos.Roles
             datalistadoRoles.Name = "datalistadoRoles";
             datalistadoRoles.ReadOnly = true;
             datalistadoRoles.RowHeadersWidth = 62;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            datalistadoRoles.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            datalistadoRoles.RowsDefaultCellStyle = dataGridViewCellStyle2;
             datalistadoRoles.RowTemplate.Height = 25;
             datalistadoRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             datalistadoRoles.Size = new System.Drawing.Size(958, 312);
@@ -148,6 +153,11 @@ namespace PuntoVenta.Modulos.Roles
             // 
             // PanelRegistro
             // 
+            PanelRegistro.Controls.Add(LbLOperaciones);
+            PanelRegistro.Controls.Add(ChkVer);
+            PanelRegistro.Controls.Add(ChkInactivar);
+            PanelRegistro.Controls.Add(ChkEditar);
+            PanelRegistro.Controls.Add(ChkAgregar);
             PanelRegistro.Controls.Add(TxtRolEditando);
             PanelRegistro.Controls.Add(EditandoNombreRol);
             PanelRegistro.Controls.Add(BtnGuardar);
@@ -160,9 +170,58 @@ namespace PuntoVenta.Modulos.Roles
             PanelRegistro.Location = new System.Drawing.Point(0, 0);
             PanelRegistro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             PanelRegistro.Name = "PanelRegistro";
-            PanelRegistro.Size = new System.Drawing.Size(962, 394);
+            PanelRegistro.Size = new System.Drawing.Size(824, 489);
             PanelRegistro.TabIndex = 8;
             PanelRegistro.Visible = false;
+            // 
+            // LbLOperaciones
+            // 
+            LbLOperaciones.AutoSize = true;
+            LbLOperaciones.Location = new System.Drawing.Point(29, 258);
+            LbLOperaciones.Name = "LbLOperaciones";
+            LbLOperaciones.Size = new System.Drawing.Size(111, 25);
+            LbLOperaciones.TabIndex = 620;
+            LbLOperaciones.Text = "Operaciones";
+            // 
+            // ChkVer
+            // 
+            ChkVer.AutoSize = true;
+            ChkVer.Location = new System.Drawing.Point(189, 385);
+            ChkVer.Name = "ChkVer";
+            ChkVer.Size = new System.Drawing.Size(63, 29);
+            ChkVer.TabIndex = 619;
+            ChkVer.Text = "Ver";
+            ChkVer.UseVisualStyleBackColor = true;
+            // 
+            // ChkInactivar
+            // 
+            ChkInactivar.AutoSize = true;
+            ChkInactivar.Location = new System.Drawing.Point(29, 385);
+            ChkInactivar.Name = "ChkInactivar";
+            ChkInactivar.Size = new System.Drawing.Size(104, 29);
+            ChkInactivar.TabIndex = 618;
+            ChkInactivar.Text = "Inactivar";
+            ChkInactivar.UseVisualStyleBackColor = true;
+            // 
+            // ChkEditar
+            // 
+            ChkEditar.AutoSize = true;
+            ChkEditar.Location = new System.Drawing.Point(189, 310);
+            ChkEditar.Name = "ChkEditar";
+            ChkEditar.Size = new System.Drawing.Size(83, 29);
+            ChkEditar.TabIndex = 617;
+            ChkEditar.Text = "Editar";
+            ChkEditar.UseVisualStyleBackColor = true;
+            // 
+            // ChkAgregar
+            // 
+            ChkAgregar.AutoSize = true;
+            ChkAgregar.Location = new System.Drawing.Point(29, 310);
+            ChkAgregar.Name = "ChkAgregar";
+            ChkAgregar.Size = new System.Drawing.Size(102, 29);
+            ChkAgregar.TabIndex = 616;
+            ChkAgregar.Text = "Agregar";
+            ChkAgregar.UseVisualStyleBackColor = true;
             // 
             // TxtRolEditando
             // 
@@ -211,7 +270,7 @@ namespace PuntoVenta.Modulos.Roles
             // 
             // TxtNombre
             // 
-            TxtNombre.Location = new System.Drawing.Point(189, 10);
+            TxtNombre.Location = new System.Drawing.Point(190, 35);
             TxtNombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             TxtNombre.Name = "TxtNombre";
             TxtNombre.Size = new System.Drawing.Size(577, 31);
@@ -222,7 +281,7 @@ namespace PuntoVenta.Modulos.Roles
             LblNombre.BackColor = System.Drawing.SystemColors.Control;
             LblNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
             LblNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            LblNombre.Location = new System.Drawing.Point(27, 14);
+            LblNombre.Location = new System.Drawing.Point(29, 35);
             LblNombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             LblNombre.Name = "LblNombre";
             LblNombre.Size = new System.Drawing.Size(143, 27);
@@ -265,7 +324,7 @@ namespace PuntoVenta.Modulos.Roles
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(962, 394);
+            ClientSize = new System.Drawing.Size(824, 489);
             Controls.Add(PanelRegistro);
             Controls.Add(PanelEncabezado);
             Controls.Add(datalistadoRoles);
@@ -299,5 +358,10 @@ namespace PuntoVenta.Modulos.Roles
         private System.Windows.Forms.CheckBox CheckRol;
         private System.Windows.Forms.Label EditandoNombreRol;
         private System.Windows.Forms.TextBox TxtRolEditando;
+        private System.Windows.Forms.CheckBox ChkVer;
+        private System.Windows.Forms.CheckBox ChkInactivar;
+        private System.Windows.Forms.CheckBox ChkEditar;
+        private System.Windows.Forms.CheckBox ChkAgregar;
+        private System.Windows.Forms.Label LbLOperaciones;
     }
 }

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PuntoVenta.Modulos.Empleados;
 using PuntoVenta.Modulos.Usuarios_Ok;
-using PuntoVenta.Modulos.Permisos;
 
 namespace PuntoVenta
 {
