@@ -156,7 +156,6 @@ namespace PuntoVenta.Modulos.Compras
                         menuStrip1.Visible = true;
                         BtnNuevo.Visible = true;
                         limpiar();
-
                     }
                     catch (Exception ex)
                     {
@@ -181,9 +180,7 @@ namespace PuntoVenta.Modulos.Compras
             TxtBusqueda.Visible = true;
             menuStrip1.Visible = true;
             BtnNuevo.Visible = true;
-        }
-
-        
+        }        
         
         private void BuscarProveedor(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -243,7 +240,16 @@ namespace PuntoVenta.Modulos.Compras
                 TxtTelefono1.Text = datalistado.SelectedCells[6].Value.ToString();
                 TxtTelefono2.Text = datalistado.SelectedCells[7].Value.ToString();
                 TxtCorreo.Text = datalistado.SelectedCells[8].Value.ToString();
-               
+                estadoProveedor = (bool)datalistado.SelectedCells[9].Value;
+                if (estadoProveedor == true)
+                {
+                    checkBoxActivo.Checked = true;
+                }
+                else
+                {
+                    checkBoxActivo.Checked = false;
+                }
+
                 TxtBusqueda.Visible = false;
                 menuStrip1.Visible = false;
                 BtnNuevo.Visible = false;
