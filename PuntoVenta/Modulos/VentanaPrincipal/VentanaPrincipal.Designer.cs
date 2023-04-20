@@ -41,6 +41,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             MenuEmpleados = new System.Windows.Forms.ToolStripMenuItem();
             tiposDeImpuestoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             tiposDeValoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            MenuTimbrado = new System.Windows.Forms.ToolStripMenuItem();
             stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             MenuClientes = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +54,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             LabelRol = new System.Windows.Forms.Label();
             ImagenPanel = new System.Windows.Forms.Panel();
             TxtUsuario = new System.Windows.Forms.Label();
+            grupoDeDocumentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             LoginPanel.SuspendLayout();
             SuspendLayout();
@@ -78,20 +80,20 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // MenuUsuarios
             // 
             MenuUsuarios.Name = "MenuUsuarios";
-            MenuUsuarios.Size = new System.Drawing.Size(270, 34);
+            MenuUsuarios.Size = new System.Drawing.Size(182, 34);
             MenuUsuarios.Text = "Usuarios";
             MenuUsuarios.Click += MenuUsuarios_Click;
             // 
             // MenuRoles
             // 
             MenuRoles.Name = "MenuRoles";
-            MenuRoles.Size = new System.Drawing.Size(270, 34);
+            MenuRoles.Size = new System.Drawing.Size(182, 34);
             MenuRoles.Text = "Roles";
             MenuRoles.Click += MenuRoles_Click;
             // 
             // configuraciónToolStripMenuItem
             // 
-            configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { MenuUnidadesMedidas, MenuProductos, MenuCategorias, MenuEmpleados, tiposDeImpuestoToolStripMenuItem, tiposDeValoresToolStripMenuItem });
+            configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { MenuUnidadesMedidas, MenuProductos, MenuCategorias, MenuEmpleados, tiposDeImpuestoToolStripMenuItem, tiposDeValoresToolStripMenuItem, MenuTimbrado, grupoDeDocumentosToolStripMenuItem });
             configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             configuraciónToolStripMenuItem.Size = new System.Drawing.Size(139, 29);
             configuraciónToolStripMenuItem.Text = "Configuración";
@@ -99,44 +101,51 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // MenuUnidadesMedidas
             // 
             MenuUnidadesMedidas.Name = "MenuUnidadesMedidas";
-            MenuUnidadesMedidas.Size = new System.Drawing.Size(278, 34);
+            MenuUnidadesMedidas.Size = new System.Drawing.Size(296, 34);
             MenuUnidadesMedidas.Text = "Unidades de medida";
             MenuUnidadesMedidas.Click += MenuUnidadesMedidas_Click;
             // 
             // MenuProductos
             // 
             MenuProductos.Name = "MenuProductos";
-            MenuProductos.Size = new System.Drawing.Size(278, 34);
+            MenuProductos.Size = new System.Drawing.Size(296, 34);
             MenuProductos.Text = "Productos";
             MenuProductos.Click += MenuProductos_Click;
             // 
             // MenuCategorias
             // 
             MenuCategorias.Name = "MenuCategorias";
-            MenuCategorias.Size = new System.Drawing.Size(278, 34);
+            MenuCategorias.Size = new System.Drawing.Size(296, 34);
             MenuCategorias.Text = "Categorías";
             MenuCategorias.Click += MenuCategorias_Click;
             // 
             // MenuEmpleados
             // 
             MenuEmpleados.Name = "MenuEmpleados";
-            MenuEmpleados.Size = new System.Drawing.Size(278, 34);
+            MenuEmpleados.Size = new System.Drawing.Size(296, 34);
             MenuEmpleados.Text = "Empleados";
             MenuEmpleados.Click += MenuEmpleados_Click;
             // 
             // tiposDeImpuestoToolStripMenuItem
             // 
             tiposDeImpuestoToolStripMenuItem.Name = "tiposDeImpuestoToolStripMenuItem";
-            tiposDeImpuestoToolStripMenuItem.Size = new System.Drawing.Size(278, 34);
+            tiposDeImpuestoToolStripMenuItem.Size = new System.Drawing.Size(296, 34);
             tiposDeImpuestoToolStripMenuItem.Text = "Tipos de Impuesto";
             tiposDeImpuestoToolStripMenuItem.Click += MenuImpuestos_Click;
             // 
             // tiposDeValoresToolStripMenuItem
             // 
             tiposDeValoresToolStripMenuItem.Name = "tiposDeValoresToolStripMenuItem";
-            tiposDeValoresToolStripMenuItem.Size = new System.Drawing.Size(278, 34);
+            tiposDeValoresToolStripMenuItem.Size = new System.Drawing.Size(296, 34);
             tiposDeValoresToolStripMenuItem.Text = "Tipos de Valores";
             tiposDeValoresToolStripMenuItem.Click += MenuValores;
+            // 
+            // MenuTimbrado
+            // 
+            MenuTimbrado.Name = "MenuTimbrado";
+            MenuTimbrado.Size = new System.Drawing.Size(296, 34);
+            MenuTimbrado.Text = "Timbrado";
+            MenuTimbrado.Click += MenuTimbrado_Click;
             // 
             // stockToolStripMenuItem
             // 
@@ -234,6 +243,13 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             TxtUsuario.TabIndex = 0;
             TxtUsuario.Text = "Usuario";
             // 
+            // grupoDeDocumentosToolStripMenuItem
+            // 
+            grupoDeDocumentosToolStripMenuItem.Name = "grupoDeDocumentosToolStripMenuItem";
+            grupoDeDocumentosToolStripMenuItem.Size = new System.Drawing.Size(296, 34);
+            grupoDeDocumentosToolStripMenuItem.Text = "Grupo de Documentos";
+            grupoDeDocumentosToolStripMenuItem.Click += grupoDeDocumentosToolStripMenuItem_Click;
+            // 
             // VentanaPrincipal
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -278,5 +294,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         private System.Windows.Forms.ToolStripMenuItem MenuRoles;
         private System.Windows.Forms.ToolStripMenuItem tiposDeImpuestoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tiposDeValoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuTimbrado;
+        private System.Windows.Forms.ToolStripMenuItem grupoDeDocumentosToolStripMenuItem;
     }
 }

@@ -91,15 +91,24 @@ namespace PuntoVenta.Modulos.Productos
 
         private void cambiar_color_eliminados()
         {
-            foreach (DataGridViewRow row in datalistadoCategorias.Rows)
+            try
             {
-                estadoCategoria = (bool)row.Cells["Activo"].Value;
-                if (estadoCategoria == false)
+                foreach (DataGridViewRow row in datalistadoCategorias.Rows)
                 {
-                    row.DefaultCellStyle.Font = new Font("Segoe UI", 9);
-                    row.DefaultCellStyle.ForeColor = Color.Red;
+                    estadoCategoria = (bool)row.Cells["Activo"].Value;
+                    if (estadoCategoria == false)
+                    {
+                        row.DefaultCellStyle.Font = new Font("Segoe UI", 9);
+                        row.DefaultCellStyle.ForeColor = Color.Red;
+                    }
                 }
             }
+            catch (Exception ex) 
+            { 
+                MessageBox.Show(ex.Message);
+            }
+            
+           
         }
 
         private void EditarCategoria(object sender, DataGridViewCellEventArgs e)

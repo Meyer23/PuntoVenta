@@ -11,6 +11,8 @@ using System.Text;
 using System.Windows.Forms;
 using PuntoVenta.Modulos.Roles;
 using PuntoVenta.Modulos.Usuarios_Ok;
+using PuntoVenta.Modulos.Timbrado_Ok;
+using PuntoVenta.Modulos.GrupoDocumento_Ok;
 
 namespace PuntoVenta.Modulos.VentanaPrincipal
 {
@@ -153,6 +155,20 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             TiposValores frm_valores = new TiposValores();
 
             frm_valores.ShowDialog();
+        }
+
+        private void MenuTimbrado_Click(object sender, EventArgs e)
+        {
+            Timbrado frm_timbrado = new Timbrado();
+
+            frm_timbrado.ShowDialog();
+        }
+
+        private void grupoDeDocumentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GrupoDocumento frm_grupoDocumento = new GrupoDocumento();
+
+            frm_grupoDocumento.ShowDialog();
         }
     }
 }
