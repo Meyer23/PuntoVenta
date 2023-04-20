@@ -13,6 +13,7 @@ using PuntoVenta.Modulos.Roles;
 using PuntoVenta.Modulos.Usuarios_Ok;
 using PuntoVenta.Modulos.Timbrado_Ok;
 using PuntoVenta.Modulos.GrupoDocumento_Ok;
+using PuntoVenta.Modulos.Caja;
 
 namespace PuntoVenta.Modulos.VentanaPrincipal
 {
@@ -101,7 +102,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             }
             else
             {
-                Caja frm_caja = new Caja();
+                AperturaCaja frm_caja = new AperturaCaja();
                 frm_caja.ShowDialog();
             }
         }
@@ -169,6 +170,20 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             GrupoDocumento frm_grupoDocumento = new GrupoDocumento();
 
             frm_grupoDocumento.ShowDialog();
+        }
+
+        private void sucursalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Sucursal frm_sucursal = new Sucursal();
+
+            frm_sucursal.ShowDialog();
+        }
+
+        private void cajasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cajas frm_caja = new Cajas();
+
+            frm_caja.ShowDialog();
         }
     }
 }

@@ -7,37 +7,28 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PuntoVenta.Modulos
+namespace PuntoVenta.Modulos.Caja
 {
-    public partial class Sucursal : Form
+    public partial class Cajas : Form
     {
-        bool estadoSucursal;
-        int idSucursal;
-        public Sucursal()
+        int idCaja;
+        bool estadoCaja;
+        public Cajas()
         {
             InitializeComponent();
         }
 
-        public DataTable cargarComboSucursal()
-        {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = Conexion.ConexionMaestra.conexion;
-            con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("sp_sucursal_cargar", con);
-            da.SelectCommand.CommandType = CommandType.StoredProcedure;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            con.Close();
+        Sucursal suc = new Sucursal();
 
-            return dt;
+        private void Cajas_Load(object sender, EventArgs e)
+        {
+            TxtSucursal.DataSource = suc.cargarComboSucursal();
+            TxtSucursal.DisplayMember = "Descripcion";
+            TxtSucursal.ValueMember = "idSucursal";
+            mostrarCajas();
         }
 
-        private void Sucursal_Load(object sender, EventArgs e)
-        {
-            mostrarSucursales();
-        }
-
-        private void mostrarSucursales()
+        private void mostrarCajas()
         {
             try
             {
@@ -46,7 +37,7 @@ namespace PuntoVenta.Modulos
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = Conexion.ConexionMaestra.conexion;
                 con.Open();
-                da = new SqlDataAdapter("sp_sucursal_mostrar", con);
+                da = new SqlDataAdapter("sp_caja_mostrar", con);
                 da.Fill(dt);
                 datalistado.DataSource = dt;
                 con.Close();
@@ -63,8 +54,8 @@ namespace PuntoVenta.Modulos
         {
             foreach (DataGridViewRow row in datalistado.Rows)
             {
-                estadoSucursal = (bool)row.Cells["Activo"].Value;
-                if (estadoSucursal == false)
+                estadoCaja = (bool)row.Cells["Activo"].Value;
+                if (estadoCaja == false)
                 {
                     row.DefaultCellStyle.Font = new Font("Segoe UI", 9);
                     row.DefaultCellStyle.ForeColor = Color.Red;
@@ -84,47 +75,35 @@ namespace PuntoVenta.Modulos
             BtnNuevo.Visible = false;
             PanelRegistro.Visible = true;
             BtnGuardarCambios.Visible = false;
-            TxtCodigo.Focus();
-            TxtCodigo.ReadOnly = false;
+            TxtSucursal.Focus();
+            TxtSucursal.Enabled = true;
+            TxtNroCaja.ReadOnly = false;
             checkBoxActivo.Checked = true;
             limpiar();
         }
 
         private void limpiar()
         {
-            TxtCodigo.Clear();
+            TxtNroCaja.Clear();
             TxtDescripcion.Clear();
-            TxtDireccion.Clear();
-            TxtDireccion.Clear();
-            TxtTelefono.Clear();
             BtnGuardar.Visible = true;
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            if (TxtCodigo.Text != "" && TxtDescripcion.Text != "")
+            if (TxtSucursal.Text != "" && TxtNroCaja.Text != "" && TxtDescripcion.Text != "")
             {
-
-                if (TxtDireccion.Text == "")
-                {
-                    TxtDireccion.Text = "Paraguay";
-                }
-                if (TxtTelefono.Text == "")
-                {
-                    TxtTelefono.Text = "0";
-                }
                 try
                 {
                     SqlConnection con = new SqlConnection();
                     con.ConnectionString = Conexion.ConexionMaestra.conexion;
                     con.Open();
                     SqlCommand cmd = new SqlCommand();
-                    cmd = new SqlCommand("sp_sucursal_insertar", con);
+                    cmd = new SqlCommand("sp_caja_insertar", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Codigo", TxtCodigo.Text);
+                    cmd.Parameters.AddWithValue("@Sucursal", Convert.ToInt32(TxtSucursal.SelectedValue.ToString()));
+                    cmd.Parameters.AddWithValue("@NroCaja", Convert.ToInt32(TxtNroCaja.Text));
                     cmd.Parameters.AddWithValue("@Descripcion", TxtDescripcion.Text);
-                    cmd.Parameters.AddWithValue("@Direccion", TxtDireccion.Text);
-                    cmd.Parameters.AddWithValue("@Telefono", TxtTelefono.Text);
                     if (checkBoxActivo.Checked == true)
                     {
                         cmd.Parameters.AddWithValue("@Activo", 1);
@@ -136,7 +115,7 @@ namespace PuntoVenta.Modulos
 
                     cmd.ExecuteNonQuery();
                     con.Close();
-                    mostrarSucursales();
+                    mostrarCajas();
                     PanelRegistro.Visible = false;
                     TxtBusqueda.Visible = true;
                     menuStrip1.Visible = true;
@@ -163,7 +142,7 @@ namespace PuntoVenta.Modulos
             BtnNuevo.Visible = true;
         }
 
-        private void BuscarSucursal(object sender, EventArgs e)
+        private void BuscarCaja(object sender, ToolStripItemClickedEventArgs e)
         {
             try
             {
@@ -173,7 +152,7 @@ namespace PuntoVenta.Modulos
                 con.ConnectionString = Conexion.ConexionMaestra.conexion;
                 con.Open();
 
-                da = new SqlDataAdapter("sp_sucursal_buscar", con);
+                da = new SqlDataAdapter("sp_caja_buscar", con);
                 da.SelectCommand.CommandType = CommandType.StoredProcedure;
                 da.SelectCommand.Parameters.AddWithValue("@texto", TxtBusqueda.Text);
                 da.Fill(dt);
@@ -188,36 +167,37 @@ namespace PuntoVenta.Modulos
             cambiar_color_eliminados();
         }
 
-        private void EditarSucursal(object sender, DataGridViewCellEventArgs e)
+        private void EditarCaja(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == this.datalistado.Columns["Editar"].Index)
             {
                 BtnGuardar.Visible = false;
                 BtnGuardarCambios.Visible = true;
-                TxtCodigo.ReadOnly = true;
-                ObtenerDatosSucursal();
+                TxtSucursal.Enabled = false;
+                TxtNroCaja.ReadOnly = true;
+                ObtenerDatosCaja();
             }
         }
 
-        private void EditarSucursal2(object sender, DataGridViewCellEventArgs e)
+        private void EditarCaja2(object sender, DataGridViewCellEventArgs e)
         {
             BtnGuardar.Visible = false;
             BtnGuardarCambios.Visible = true;
-            TxtCodigo.ReadOnly = true;
-            ObtenerDatosSucursal();
+            TxtSucursal.Enabled = false;
+            TxtNroCaja.ReadOnly = true;
+            ObtenerDatosCaja();
         }
 
-        private void ObtenerDatosSucursal()
+        private void ObtenerDatosCaja()
         {
             try
             {
-                idSucursal = Convert.ToInt32(datalistado.SelectedCells[1].Value.ToString());
-                TxtCodigo.Text = datalistado.SelectedCells[2].Value.ToString();
-                TxtDescripcion.Text = datalistado.SelectedCells[3].Value.ToString();
-                TxtDireccion.Text = datalistado.SelectedCells[4].Value.ToString();
-                TxtTelefono.Text = datalistado.SelectedCells[5].Value.ToString();
-                estadoSucursal = (bool)datalistado.SelectedCells[6].Value;
-                if (estadoSucursal == true)
+                idCaja = Convert.ToInt32(datalistado.SelectedCells[1].Value.ToString());
+                TxtSucursal.Text = datalistado.SelectedCells[2].Selected.ToString();
+                TxtNroCaja.Text = datalistado.SelectedCells[3].Value.ToString();
+                TxtDescripcion.Text = datalistado.SelectedCells[4].Value.ToString();
+                estadoCaja = (bool)datalistado.SelectedCells[5].Value;
+                if (estadoCaja == true)
                 {
                     checkBoxActivo.Checked = true;
                 }
@@ -239,30 +219,20 @@ namespace PuntoVenta.Modulos
 
         private void BtnGuardarCambios_Click(object sender, EventArgs e)
         {
-            if (TxtCodigo.Text != "" && TxtDescripcion.Text != "")
+            if (TxtSucursal.Text != "" && TxtNroCaja.Text != "" && TxtDescripcion.Text != "")
             {
-
-                if (TxtDireccion.Text == "")
-                {
-                    TxtDireccion.Text = "Paraguay";
-                }
-                if (TxtTelefono.Text == "")
-                {
-                    TxtTelefono.Text = "0";
-                }
                 try
                 {
                     SqlConnection con = new SqlConnection();
                     con.ConnectionString = Conexion.ConexionMaestra.conexion;
                     con.Open();
                     SqlCommand cmd = new SqlCommand();
-                    cmd = new SqlCommand("sp_sucursal_editar", con);
+                    cmd = new SqlCommand("sp_caja_editar", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@idSucursal", idSucursal);
-                    cmd.Parameters.AddWithValue("@Codigo", TxtCodigo.Text);
+                    cmd.Parameters.AddWithValue("@idCaja", idCaja);
+                    cmd.Parameters.AddWithValue("@Sucursal", Convert.ToInt32(TxtSucursal.SelectedValue.ToString()));
+                    cmd.Parameters.AddWithValue("@NroCaja", Convert.ToInt32(TxtNroCaja.Text));
                     cmd.Parameters.AddWithValue("@Descripcion", TxtDescripcion.Text);
-                    cmd.Parameters.AddWithValue("@Direccion", TxtDireccion.Text);
-                    cmd.Parameters.AddWithValue("@Telefono", TxtTelefono.Text);
                     if (checkBoxActivo.Checked == true)
                     {
                         cmd.Parameters.AddWithValue("@Activo", 1);
@@ -274,7 +244,7 @@ namespace PuntoVenta.Modulos
 
                     cmd.ExecuteNonQuery();
                     con.Close();
-                    mostrarSucursales();
+                    mostrarCajas();
                     PanelRegistro.Visible = false;
                     TxtBusqueda.Visible = true;
                     menuStrip1.Visible = true;
@@ -293,19 +263,35 @@ namespace PuntoVenta.Modulos
             }
         }
 
-        private void TxtCodigo_Validating(object sender, CancelEventArgs e)
+        private void TxtSucursal_Validating(object sender, CancelEventArgs e)
         {
             ErrorProvider errorProvider1 = new ErrorProvider();
-            if (string.IsNullOrEmpty(TxtCodigo.Text))
+            if (string.IsNullOrEmpty(TxtSucursal.Text))
             {
                 e.Cancel = true;
-                TxtCodigo.Focus();
-                errorProvider1.SetError(TxtCodigo, "Este campo es obligatorio");
+                TxtSucursal.Focus();
+                errorProvider1.SetError(TxtSucursal, "Este campo es obligatorio");
             }
             else
             {
                 e.Cancel = false;
-                errorProvider1.SetError(TxtCodigo, "");
+                errorProvider1.SetError(TxtSucursal, "");
+            }
+        }
+
+        private void TxtNroCaja_Validating(object sender, CancelEventArgs e)
+        {
+            ErrorProvider errorProvider1 = new ErrorProvider();
+            if (string.IsNullOrEmpty(TxtNroCaja.Text))
+            {
+                e.Cancel = true;
+                TxtNroCaja.Focus();
+                errorProvider1.SetError(TxtNroCaja, "Este campo es obligatorio");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(TxtNroCaja, "");
             }
         }
 
@@ -322,38 +308,6 @@ namespace PuntoVenta.Modulos
             {
                 e.Cancel = false;
                 errorProvider1.SetError(TxtDescripcion, "");
-            }
-        }
-
-        private void TxtDireccion_Validating(object sender, CancelEventArgs e)
-        {
-            ErrorProvider errorProvider1 = new ErrorProvider();
-            if (string.IsNullOrEmpty(TxtDireccion.Text))
-            {
-                e.Cancel = true;
-                TxtDireccion.Focus();
-                errorProvider1.SetError(TxtDireccion, "Este campo es obligatorio");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider1.SetError(TxtDireccion, "");
-            }
-        }
-
-        private void TxtTelefono_Validating(object sender, CancelEventArgs e)
-        {
-            ErrorProvider errorProvider1 = new ErrorProvider();
-            if (string.IsNullOrEmpty(TxtTelefono.Text))
-            {
-                e.Cancel = true;
-                TxtTelefono.Focus();
-                errorProvider1.SetError(TxtTelefono, "Este campo es obligatorio");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider1.SetError(TxtTelefono, "");
             }
         }
     }

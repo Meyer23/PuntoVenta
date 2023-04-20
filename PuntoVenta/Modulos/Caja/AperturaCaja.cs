@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace PuntoVenta.Modulos
 {
-    public partial class Caja : Form
+    public partial class AperturaCaja : Form
     {
-        public Caja()
+        public AperturaCaja()
         {
             InitializeComponent();
         }

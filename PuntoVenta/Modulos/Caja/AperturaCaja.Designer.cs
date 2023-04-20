@@ -1,7 +1,7 @@
 ﻿
 namespace PuntoVenta.Modulos
 {
-    partial class Caja
+    partial class AperturaCaja
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace PuntoVenta.Modulos
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Caja));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AperturaCaja));
             this.PanelCaja = new System.Windows.Forms.Panel();
             this.BtnIniciarCaja = new System.Windows.Forms.Button();
             this.TxtFechaHora = new System.Windows.Forms.DateTimePicker();
