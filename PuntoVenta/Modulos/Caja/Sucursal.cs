@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PuntoVenta.Modulos.Caja
+namespace PuntoVenta.Modulos
 {
     public partial class Sucursal : Form
     {

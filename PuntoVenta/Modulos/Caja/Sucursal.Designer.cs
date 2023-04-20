@@ -1,5 +1,5 @@
 ﻿
-namespace PuntoVenta.Modulos.Caja
+namespace PuntoVenta.Modulos
 {
     partial class Sucursal
     {
