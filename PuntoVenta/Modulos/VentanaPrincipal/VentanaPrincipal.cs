@@ -14,6 +14,9 @@ using PuntoVenta.Modulos.Usuarios_Ok;
 using PuntoVenta.Modulos.Timbrado_Ok;
 using PuntoVenta.Modulos.GrupoDocumento_Ok;
 using PuntoVenta.Modulos.Caja;
+using PuntoVenta.Modulos.NumeracionDeDcoumentos;
+using System.Web;
+using System.Security.Cryptography.X509Certificates;
 
 namespace PuntoVenta.Modulos.VentanaPrincipal
 {
@@ -22,6 +25,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         public VentanaPrincipal()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         public void MostrarUsuarioPanel(string usuarioNombre)
@@ -30,6 +34,18 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             TxtUsuario.Text = usuarioNombre;
         }
 
+        public void ValidarRolUsuario(string rolUsuario)
+        {
+            switch (rolUsuario)
+            {
+                case "Cajero":
+                    administraciónToolStripMenuItem.Visible = false;
+                    configuraciónToolStripMenuItem.Visible = false;
+                    stockToolStripMenuItem.Visible = false;
+                    break;
+
+            }
+        }
         public void MostrarRol(string rolUsuario)
         {
             LabelRol.Text = rolUsuario;
@@ -184,6 +200,12 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             Cajas frm_caja = new Cajas();
 
             frm_caja.ShowDialog();
+        }
+
+        private void numeracionDeDocumentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NumeracionDocumento frm_numeracionDocumento = new NumeracionDocumento();
+            frm_numeracionDocumento.ShowDialog();
         }
     }
 }

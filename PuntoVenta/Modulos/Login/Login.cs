@@ -54,6 +54,9 @@ namespace PuntoVenta.Modulos
 
                 frm_ventana_principal.MostrarUsuarioPanel(txtUsuario.Text);
                 frm_ventana_principal.MostrarRol(result.ToString().Trim());
+                frm_ventana_principal.ValidarRolUsuario(result.ToString().Trim());
+                
+
 
                 this.Hide();
                 frm_ventana_principal.ShowDialog();
