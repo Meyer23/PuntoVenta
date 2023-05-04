@@ -13,6 +13,7 @@ namespace PuntoVenta.Modulos
         public Facturas()
         {
             InitializeComponent();
+            LeerTextTipoFactura();
 
             try
             {
@@ -32,6 +33,27 @@ namespace PuntoVenta.Modulos
             }
         }
 
+        private void LeerTextTipoFactura()
+        {
+
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = Conexion.ConexionMaestra.conexion;
+            SqlCommand cmd = new SqlCommand("SELECT descripcion FROM DBO.TipoDocumentoVenta t " +
+                "where t.Activo = 1", con);
+            con.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                string sTipo = dr.GetString("descripcion");
+                TxtTipo.Items.Add(sTipo);
+            }
+            con.Close();
+
+            TxtTipo.SelectedIndex = 0;
+
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -49,7 +71,7 @@ namespace PuntoVenta.Modulos
             SqlDataReader reg = cmd.ExecuteReader();
             if (reg.Read())
             {
-                resultado =  reg["Nombre"].ToString();
+                resultado = reg["Nombre"].ToString();
             }
             con.Close();
             return Tuple.Create(resultado);
@@ -78,7 +100,7 @@ namespace PuntoVenta.Modulos
         private void ComboBoxChange(object sender, EventArgs e)
         {
             TxtRazonSocial.Clear();
-            if(TxtCliente.Text.Contains("CLIENTES CASUALES"))
+            if (TxtCliente.Text.Contains("CLIENTES CASUALES"))
             {
                 LabelRuc.Hide();
                 TxtRUC.Hide();
@@ -106,7 +128,8 @@ namespace PuntoVenta.Modulos
 
                 total += Int32.Parse(TxtCantidad.Text) * decimal.Parse(result.Item2);
                 ValorTotal.Text = total.ToString() + " Gs.";
-            }catch(Exception)
+            }
+            catch (Exception)
             {
                 MessageBox.Show("Debe agregar al menos 1 producto.");
             }
@@ -167,15 +190,13 @@ namespace PuntoVenta.Modulos
             }
             else
             {
-                return Tuple.Create("","", "");
+                return Tuple.Create("", "", "");
             }
         }
         public void MostrarEstadoCaja()
         {
             var EstadoCaja = ConsultarCaja().Item1;
             var idCaja = ConsultarCaja().Item2;
-            TxtCajaEstado.Text = EstadoCaja;
-            TxtIdCaja.Text = idCaja; 
         }
     }
 }

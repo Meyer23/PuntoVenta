@@ -149,7 +149,7 @@ namespace PuntoVenta.Modulos.Empleados
                         {
                             cmd.Parameters.AddWithValue("@Activo", 0);
                         }
-                        
+
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mostrarEmpleados();
@@ -210,7 +210,7 @@ namespace PuntoVenta.Modulos.Empleados
             }
             cambiar_color_eliminados();
         }
-   
+
 
         private void EditarEmpleado(object sender, DataGridViewCellEventArgs e)
         {
@@ -251,7 +251,7 @@ namespace PuntoVenta.Modulos.Empleados
                 TxtTelefono2.Text = datalistado.SelectedCells[8].Value.ToString();
                 TxtCorreo.Text = datalistado.SelectedCells[9].Value.ToString();
                 estadoEmpleado = (bool)datalistado.SelectedCells[10].Value;
-                if(estadoEmpleado == true)
+                if (estadoEmpleado == true)
                 {
                     checkBoxActivo.Checked = true;
                 }
