@@ -19,6 +19,20 @@ namespace PuntoVenta.Modulos.Compras
             InitializeComponent();
         }
 
+        //public DataTable cargarComboProveedores()
+        //{
+        //    SqlConnection con = new SqlConnection();
+        //    con.ConnectionString = Conexion.ConexionMaestra.conexion;
+        //    con.Open();
+        //    SqlDataAdapter da = new SqlDataAdapter("sp_proveedor_cargar", con);
+        //    da.SelectCommand.CommandType = CommandType.StoredProcedure;
+        //    DataTable dt = new DataTable();
+        //    da.Fill(dt);
+        //    con.Close();
+
+        //    return dt;
+        //}
+
         private void Proveedores_Load(object sender, EventArgs e)
         {
             mostrarProveedores();
