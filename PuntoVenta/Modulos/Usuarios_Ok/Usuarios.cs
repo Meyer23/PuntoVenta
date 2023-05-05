@@ -16,6 +16,8 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
             InitializeComponent();
             MostrarUsuarios();
             LeerTextRol();
+            LeerComboSucursal();
+            LeerCaja();
         }
 
         private void MostrarUsuarios()
@@ -89,6 +91,47 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
 
         }
 
+        private void LeerComboSucursal()
+        {
+            string descripcionSucursal;
+
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = Conexion.ConexionMaestra.conexion;
+            SqlCommand cmd = new SqlCommand("SELECT Descripcion from dbo.Sucursal s " +
+                "where s.Activo = 1", con);
+            con.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                string sucursal = dr.GetString("Descripcion");
+                ComboSucursal.Items.Add(sucursal);
+            }
+            con.Close();
+
+            ComboSucursal.SelectedIndex = 0;
+        }
+
+        private void LeerCaja()
+        {
+
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = Conexion.ConexionMaestra.conexion;
+            SqlCommand cmd = new SqlCommand("select c.idCaja from Cajas c inner join Sucursal s on s.idSucursal = c.Sucursal", con);
+            con.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                int caja = dr.GetInt32("idCaja");
+                ComboCaja.Items.Add(caja);
+            }
+            con.Close();
+
+            ComboCaja.SelectedIndex = 0;
+
+        }
+
         private void BtnAgregarUsuario_Click(object sender, EventArgs e)
         {
             PanelBusquedaUsuario.Hide();
@@ -149,6 +192,7 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
                 string apellidos = string.Empty;
                 string cedula = string.Empty;
                 string login = string.Empty;
+                int nroCaja; 
 
                 if (DataGridViewEmpleados.Rows.Count == 0)
                 {
@@ -205,6 +249,8 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
                                 cmd.Parameters.AddWithValue("@login", login);
                                 cmd.Parameters.AddWithValue("@password", password);
                                 cmd.Parameters.AddWithValue("@Rol", ComboBoxRol.Text.ToString());
+                                cmd.Parameters.AddWithValue("@Sucursal", ComboSucursal.Text.ToString());
+                                cmd.Parameters.AddWithValue("@SucursalCaja", int.TryParse(ComboCaja.Text, out nroCaja));
                                 System.IO.MemoryStream ms = new System.IO.MemoryStream();
 
                                 if (CheckActivo.Checked)
@@ -265,6 +311,7 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
             int idUsuario = Convert.ToInt32(DataGridViewUsuarios.SelectedCells[1].Value);
             string password = TxtPassword.Text;
             string repassword = TxtRePassword.Text;
+            int nroCaja; 
             if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(repassword))
             {
                 MessageBox.Show("Por favor, ingresa la contraseña.");
@@ -303,6 +350,8 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
                     }
                     else
                         da.SelectCommand.Parameters.AddWithValue("@activo", 0);
+                    da.SelectCommand.Parameters.AddWithValue("@Sucursal", ComboSucursal.Text.ToString());
+                    da.SelectCommand.Parameters.AddWithValue("@SucursalCaja", int.TryParse(ComboCaja.Text, out nroCaja));
                     da.Fill(dt);
                     AgregarNuevo.Visible = true;
                     DataGridViewEmpleados.DataSource = dt;

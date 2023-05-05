@@ -37,6 +37,10 @@
             DataGridViewUsuarios = new System.Windows.Forms.DataGridView();
             EditarU = new System.Windows.Forms.DataGridViewImageColumn();
             PanelBuscarEmpleado = new System.Windows.Forms.Panel();
+            ComboCaja = new System.Windows.Forms.ComboBox();
+            LblCaja = new System.Windows.Forms.Label();
+            ComboSucursal = new System.Windows.Forms.ComboBox();
+            LblSucursal = new System.Windows.Forms.Label();
             TxtUsuarioEditando = new System.Windows.Forms.TextBox();
             LabelEditarUsuario = new System.Windows.Forms.Label();
             BtnGuardarEditado = new System.Windows.Forms.Button();
@@ -136,6 +140,10 @@
             // 
             // PanelBuscarEmpleado
             // 
+            PanelBuscarEmpleado.Controls.Add(ComboCaja);
+            PanelBuscarEmpleado.Controls.Add(LblCaja);
+            PanelBuscarEmpleado.Controls.Add(ComboSucursal);
+            PanelBuscarEmpleado.Controls.Add(LblSucursal);
             PanelBuscarEmpleado.Controls.Add(TxtUsuarioEditando);
             PanelBuscarEmpleado.Controls.Add(LabelEditarUsuario);
             PanelBuscarEmpleado.Controls.Add(BtnGuardarEditado);
@@ -156,6 +164,40 @@
             PanelBuscarEmpleado.Name = "PanelBuscarEmpleado";
             PanelBuscarEmpleado.Size = new System.Drawing.Size(955, 562);
             PanelBuscarEmpleado.TabIndex = 2;
+            // 
+            // ComboCaja
+            // 
+            ComboCaja.FormattingEnabled = true;
+            ComboCaja.Location = new System.Drawing.Point(595, 376);
+            ComboCaja.Name = "ComboCaja";
+            ComboCaja.Size = new System.Drawing.Size(258, 33);
+            ComboCaja.TabIndex = 22;
+            // 
+            // LblCaja
+            // 
+            LblCaja.AutoSize = true;
+            LblCaja.Location = new System.Drawing.Point(508, 379);
+            LblCaja.Name = "LblCaja";
+            LblCaja.Size = new System.Drawing.Size(49, 25);
+            LblCaja.TabIndex = 21;
+            LblCaja.Text = "Caja:";
+            // 
+            // ComboSucursal
+            // 
+            ComboSucursal.FormattingEnabled = true;
+            ComboSucursal.Location = new System.Drawing.Point(595, 321);
+            ComboSucursal.Name = "ComboSucursal";
+            ComboSucursal.Size = new System.Drawing.Size(258, 33);
+            ComboSucursal.TabIndex = 20;
+            // 
+            // LblSucursal
+            // 
+            LblSucursal.AutoSize = true;
+            LblSucursal.Location = new System.Drawing.Point(508, 329);
+            LblSucursal.Name = "LblSucursal";
+            LblSucursal.Size = new System.Drawing.Size(81, 25);
+            LblSucursal.TabIndex = 19;
+            LblSucursal.Text = "Sucursal:";
             // 
             // TxtUsuarioEditando
             // 
@@ -358,5 +400,9 @@
         private System.Windows.Forms.Label LabelEditarUsuario;
         private System.Windows.Forms.DataGridViewImageColumn EditarU;
         private System.Windows.Forms.TextBox TxtUsuarioEditando;
+        private System.Windows.Forms.ComboBox ComboSucursal;
+        private System.Windows.Forms.Label LblSucursal;
+        private System.Windows.Forms.ComboBox ComboCaja;
+        private System.Windows.Forms.Label LblCaja;
     }
 }
