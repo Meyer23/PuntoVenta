@@ -214,5 +214,11 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             NumeracionDocumento frm_numeracionDocumento = new NumeracionDocumento();
             frm_numeracionDocumento.ShowDialog();
         }
+
+        private void facturasComprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FacturaCompra frm_compra = new FacturaCompra();
+            frm_compra.ShowDialog();
+        }
     }
 }
