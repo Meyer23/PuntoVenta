@@ -42,20 +42,28 @@ namespace PuntoVenta.Modulos
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = Conexion.ConexionMaestra.conexion;
                 con.Open();
-                var obtenerRol = @"SELECT r.Nombre from dbo.Usuarios c inner join dbo.Rol r 
+                var obtenerRol = @"SELECT r.Nombre, c.SucursalCaja from dbo.Usuarios c inner join dbo.Rol r 
 								    on c.idRol = r.id
 									where c.Login = @Login
                                     and r.id = c.idRol
 									and c.Activo = 1";
                 SqlCommand command = new SqlCommand(obtenerRol, con);
                 command.Parameters.AddWithValue("@Login", txtUsuario.Text.Trim());
-                string result = (string)command.ExecuteScalar();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int NumeroCaja = reader.GetInt32(1);
+                    string NombreRol = reader.GetString(0);
+
+                    frm_ventana_principal.MostrarUsuarioPanel(txtUsuario.Text);
+                    frm_ventana_principal.MostrarRol(NombreRol);
+                    frm_ventana_principal.ValidarRolUsuario(NombreRol);
+                    frm_ventana_principal.MostrarSucursalCaja(NumeroCaja);
+                }
+                //string result = (string)command.ExecuteScalar();
                 con.Close();
 
-                frm_ventana_principal.MostrarUsuarioPanel(txtUsuario.Text);
-                frm_ventana_principal.MostrarRol(result.ToString().Trim());
-                frm_ventana_principal.ValidarRolUsuario(result.ToString().Trim());
-                
 
 
                 this.Hide();

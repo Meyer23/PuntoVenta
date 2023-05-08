@@ -350,7 +350,7 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
                     }
                     else
                         da.SelectCommand.Parameters.AddWithValue("@activo", 0);
-                    da.SelectCommand.Parameters.AddWithValue("@Sucursal", ComboSucursal.Text.ToString());
+                    //da.SelectCommand.Parameters.AddWithValue("@SucursalDescripcion", ComboSucursal.Text.ToString());
                     da.SelectCommand.Parameters.AddWithValue("@SucursalCaja", int.TryParse(ComboCaja.Text, out nroCaja));
                     da.Fill(dt);
                     AgregarNuevo.Visible = true;

@@ -17,6 +17,7 @@ using PuntoVenta.Modulos.Caja;
 using PuntoVenta.Modulos.NumeracionDeDcoumentos;
 using System.Web;
 using System.Security.Cryptography.X509Certificates;
+using System.Data.SqlClient;
 
 namespace PuntoVenta.Modulos.VentanaPrincipal
 {
@@ -49,6 +50,11 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         public void MostrarRol(string rolUsuario)
         {
             LabelRol.Text = rolUsuario;
+        }
+
+        public void MostrarSucursalCaja(int CajaNumero)
+        {
+            LablNroCaja.Text = CajaNumero.ToString();
         }
 
         private void MenuProveedores_Click(object sender, EventArgs e)
@@ -95,6 +101,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         {
             Facturas frm_facturas = new Facturas();
 
+            frm_facturas.MostrarNroCaja(LablNroCaja.Text);
             var estadoCaja = frm_facturas.ConsultarCaja().Item1;
             if (estadoCaja == "ACTIVO")
             {

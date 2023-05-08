@@ -55,6 +55,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             MenuProveedores = new System.Windows.Forms.ToolStripMenuItem();
             LoginPanel = new System.Windows.Forms.Panel();
+            LablNroCaja = new System.Windows.Forms.Label();
             LabelRol = new System.Windows.Forms.Label();
             ImagenPanel = new System.Windows.Forms.Panel();
             TxtUsuario = new System.Windows.Forms.Label();
@@ -69,7 +70,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            menuStrip1.Size = new System.Drawing.Size(1143, 35);
+            menuStrip1.Size = new System.Drawing.Size(1354, 35);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -83,14 +84,14 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // MenuUsuarios
             // 
             MenuUsuarios.Name = "MenuUsuarios";
-            MenuUsuarios.Size = new System.Drawing.Size(270, 34);
+            MenuUsuarios.Size = new System.Drawing.Size(182, 34);
             MenuUsuarios.Text = "Usuarios";
             MenuUsuarios.Click += MenuUsuarios_Click;
             // 
             // MenuRoles
             // 
             MenuRoles.Name = "MenuRoles";
-            MenuRoles.Size = new System.Drawing.Size(270, 34);
+            MenuRoles.Size = new System.Drawing.Size(182, 34);
             MenuRoles.Text = "Roles";
             MenuRoles.Click += MenuRoles_Click;
             // 
@@ -194,14 +195,14 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // MenuClientes
             // 
             MenuClientes.Name = "MenuClientes";
-            MenuClientes.Size = new System.Drawing.Size(270, 34);
+            MenuClientes.Size = new System.Drawing.Size(178, 34);
             MenuClientes.Text = "Clientes";
             MenuClientes.Click += MenuClientes_Click;
             // 
             // MenuFacturas
             // 
             MenuFacturas.Name = "MenuFacturas";
-            MenuFacturas.Size = new System.Drawing.Size(270, 34);
+            MenuFacturas.Size = new System.Drawing.Size(178, 34);
             MenuFacturas.Text = "Facturas";
             MenuFacturas.Click += MenuFacuras_Click;
             // 
@@ -209,14 +210,14 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // 
             MeuCaja.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { AdministrarCaja });
             MeuCaja.Name = "MeuCaja";
-            MeuCaja.Size = new System.Drawing.Size(270, 34);
+            MeuCaja.Size = new System.Drawing.Size(178, 34);
             MeuCaja.Text = "Caja";
             MeuCaja.Click += MeuCaja_Click;
             // 
             // AdministrarCaja
             // 
             AdministrarCaja.Name = "AdministrarCaja";
-            AdministrarCaja.Size = new System.Drawing.Size(270, 34);
+            AdministrarCaja.Size = new System.Drawing.Size(206, 34);
             AdministrarCaja.Text = "Administrar";
             AdministrarCaja.Click += AdministrarCaja_Click;
             // 
@@ -230,20 +231,31 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // MenuProveedores
             // 
             MenuProveedores.Name = "MenuProveedores";
-            MenuProveedores.Size = new System.Drawing.Size(270, 34);
+            MenuProveedores.Size = new System.Drawing.Size(213, 34);
             MenuProveedores.Text = "Proveedores";
             MenuProveedores.Click += MenuProveedores_Click;
             // 
             // LoginPanel
             // 
+            LoginPanel.Controls.Add(LablNroCaja);
             LoginPanel.Controls.Add(LabelRol);
             LoginPanel.Controls.Add(ImagenPanel);
             LoginPanel.Controls.Add(TxtUsuario);
             LoginPanel.Location = new System.Drawing.Point(834, 622);
             LoginPanel.Name = "LoginPanel";
-            LoginPanel.Size = new System.Drawing.Size(309, 117);
+            LoginPanel.Size = new System.Drawing.Size(309, 150);
             LoginPanel.TabIndex = 1;
             LoginPanel.Visible = false;
+            // 
+            // LablNroCaja
+            // 
+            LablNroCaja.AutoSize = true;
+            LablNroCaja.Font = new System.Drawing.Font("Consolas", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            LablNroCaja.Location = new System.Drawing.Point(3, 104);
+            LablNroCaja.Name = "LablNroCaja";
+            LablNroCaja.Size = new System.Drawing.Size(96, 26);
+            LablNroCaja.TabIndex = 3;
+            LablNroCaja.Text = "CajaNro";
             // 
             // LabelRol
             // 
@@ -278,7 +290,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1143, 748);
+            ClientSize = new System.Drawing.Size(1354, 815);
             Controls.Add(menuStrip1);
             Controls.Add(LoginPanel);
             MainMenuStrip = menuStrip1;
@@ -323,5 +335,6 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         private System.Windows.Forms.ToolStripMenuItem sucursalesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cajasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem numeracionDeDocumentosToolStripMenuItem;
+        private System.Windows.Forms.Label LablNroCaja;
     }
 }

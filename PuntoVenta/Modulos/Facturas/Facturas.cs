@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace PuntoVenta.Modulos
@@ -14,6 +15,7 @@ namespace PuntoVenta.Modulos
         {
             InitializeComponent();
             LeerTextTipoFactura();
+            LABELCAJANUMERO.Visible = false;
 
             try
             {
@@ -57,6 +59,15 @@ namespace PuntoVenta.Modulos
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        public void MostrarNroCaja(string CajaNumero)
+        {
+            int caja = Int32.Parse(CajaNumero);
+
+            LABELCAJANUMERO.Text = caja.ToString();
+
+            ComboNroCaja.Text = caja.ToString();
         }
 
         public Tuple<string> ObtenerCliente(string ruc)
