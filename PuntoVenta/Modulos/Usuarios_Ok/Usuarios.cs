@@ -192,7 +192,7 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
                 string apellidos = string.Empty;
                 string cedula = string.Empty;
                 string login = string.Empty;
-                int nroCaja; 
+                int nroCaja;
 
                 if (DataGridViewEmpleados.Rows.Count == 0)
                 {
@@ -311,7 +311,7 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
             int idUsuario = Convert.ToInt32(DataGridViewUsuarios.SelectedCells[1].Value);
             string password = TxtPassword.Text;
             string repassword = TxtRePassword.Text;
-            int nroCaja; 
+            int nroCaja;
             if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(repassword))
             {
                 MessageBox.Show("Por favor, ingresa la contraseña.");
@@ -356,6 +356,7 @@ namespace PuntoVenta.Modulos.Usuarios_Ok
                     AgregarNuevo.Visible = true;
                     DataGridViewEmpleados.DataSource = dt;
                     con.Close();
+                    MessageBox.Show("Usuario editado correctamente.");
                     PanelBusquedaUsuario.Show();
                     MostrarUsuarios();
                 }

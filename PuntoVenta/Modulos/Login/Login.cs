@@ -31,11 +31,11 @@ namespace PuntoVenta.Modulos
         {
             cargar_usuario();
             contar();
-            
-            
+
+
             if (contador > 0)
             {
-               VentanaPrincipal.VentanaPrincipal frm_ventana_principal = new VentanaPrincipal.VentanaPrincipal();
+                VentanaPrincipal.VentanaPrincipal frm_ventana_principal = new VentanaPrincipal.VentanaPrincipal();
 
 
 
@@ -111,6 +111,14 @@ namespace PuntoVenta.Modulos
         private void Login_Load(object sender, EventArgs e)
         {
             datalistado.Visible = false;
+        }
+
+        private void Login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                iniciar_sesion();
+            }
         }
     }
 }

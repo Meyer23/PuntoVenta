@@ -118,7 +118,7 @@
             DataGridViewUsuarios.AllowUserToDeleteRows = false;
             DataGridViewUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DataGridViewUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { EditarU });
-            DataGridViewUsuarios.Location = new System.Drawing.Point(33, 61);
+            DataGridViewUsuarios.Location = new System.Drawing.Point(30, 76);
             DataGridViewUsuarios.Name = "DataGridViewUsuarios";
             DataGridViewUsuarios.ReadOnly = true;
             DataGridViewUsuarios.RowHeadersWidth = 62;
