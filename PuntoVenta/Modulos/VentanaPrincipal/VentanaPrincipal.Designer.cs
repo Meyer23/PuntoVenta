@@ -71,7 +71,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            menuStrip1.Size = new System.Drawing.Size(1143, 35);
+            menuStrip1.Size = new System.Drawing.Size(1210, 35);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -85,14 +85,14 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // MenuUsuarios
             // 
             MenuUsuarios.Name = "MenuUsuarios";
-            MenuUsuarios.Size = new System.Drawing.Size(270, 34);
+            MenuUsuarios.Size = new System.Drawing.Size(182, 34);
             MenuUsuarios.Text = "Usuarios";
             MenuUsuarios.Click += MenuUsuarios_Click;
             // 
             // MenuRoles
             // 
             MenuRoles.Name = "MenuRoles";
-            MenuRoles.Size = new System.Drawing.Size(270, 34);
+            MenuRoles.Size = new System.Drawing.Size(182, 34);
             MenuRoles.Text = "Roles";
             MenuRoles.Click += MenuRoles_Click;
             // 
@@ -249,9 +249,9 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             LoginPanel.Controls.Add(LabelRol);
             LoginPanel.Controls.Add(ImagenPanel);
             LoginPanel.Controls.Add(TxtUsuario);
-            LoginPanel.Location = new System.Drawing.Point(1191, 1037);
+            LoginPanel.Location = new System.Drawing.Point(786, 274);
             LoginPanel.Name = "LoginPanel";
-            LoginPanel.Size = new System.Drawing.Size(441, 250);
+            LoginPanel.Size = new System.Drawing.Size(411, 143);
             LoginPanel.TabIndex = 1;
             LoginPanel.Visible = false;
             // 
@@ -259,7 +259,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // 
             LablNroCaja.AutoSize = true;
             LablNroCaja.Font = new System.Drawing.Font("Consolas", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            LablNroCaja.Location = new System.Drawing.Point(4, 173);
+            LablNroCaja.Location = new System.Drawing.Point(4, 105);
             LablNroCaja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             LablNroCaja.Name = "LablNroCaja";
             LablNroCaja.Size = new System.Drawing.Size(96, 26);
@@ -280,7 +280,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // 
             ImagenPanel.BackgroundImage = (System.Drawing.Image)resources.GetObject("ImagenPanel.BackgroundImage");
             ImagenPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            ImagenPanel.Location = new System.Drawing.Point(201, 12);
+            ImagenPanel.Location = new System.Drawing.Point(305, 12);
             ImagenPanel.Name = "ImagenPanel";
             ImagenPanel.Size = new System.Drawing.Size(94, 98);
             ImagenPanel.TabIndex = 2;
@@ -299,7 +299,7 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1143, 748);
+            ClientSize = new System.Drawing.Size(1210, 429);
             Controls.Add(menuStrip1);
             Controls.Add(LoginPanel);
             MainMenuStrip = menuStrip1;

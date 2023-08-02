@@ -73,7 +73,7 @@
             PanelBusquedaUsuario.Controls.Add(DataGridViewUsuarios);
             PanelBusquedaUsuario.Location = new System.Drawing.Point(3, 12);
             PanelBusquedaUsuario.Name = "PanelBusquedaUsuario";
-            PanelBusquedaUsuario.Size = new System.Drawing.Size(955, 562);
+            PanelBusquedaUsuario.Size = new System.Drawing.Size(1188, 562);
             PanelBusquedaUsuario.TabIndex = 0;
             // 
             // BtnAgregarUsuario
@@ -124,7 +124,7 @@
             DataGridViewUsuarios.RowHeadersWidth = 62;
             DataGridViewUsuarios.RowTemplate.Height = 33;
             DataGridViewUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            DataGridViewUsuarios.Size = new System.Drawing.Size(915, 239);
+            DataGridViewUsuarios.Size = new System.Drawing.Size(1141, 239);
             DataGridViewUsuarios.TabIndex = 1;
             DataGridViewUsuarios.CellContentDoubleClick += EditarUsuario;
             // 
@@ -359,7 +359,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(963, 647);
+            ClientSize = new System.Drawing.Size(1216, 647);
             Controls.Add(PanelBusquedaUsuario);
             Controls.Add(PanelBuscarEmpleado);
             Name = "Usuarios";

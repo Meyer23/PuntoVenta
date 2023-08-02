@@ -27,6 +27,8 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
         }
 
         public void MostrarUsuarioPanel(string usuarioNombre)
@@ -37,15 +39,6 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
 
         public void ValidarRolUsuario(string rolUsuario)
         {
-            switch (rolUsuario)
-            {
-                case "Cajero":
-                    administraciónToolStripMenuItem.Visible = false;
-                    configuraciónToolStripMenuItem.Visible = false;
-                    stockToolStripMenuItem.Visible = false;
-                    break;
-
-            }
         }
         public void MostrarRol(string rolUsuario)
         {
@@ -164,7 +157,14 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         {
             Usuarios frm_usuarios = new Usuarios();
 
-            frm_usuarios.ShowDialog();
+            if(TienePermisos(LabelRol.Text) == "NO OK")
+            {
+                MessageBox.Show("Usted no tiene permisos a este nivel.");
+            }
+            else
+            {
+                frm_usuarios.ShowDialog();
+            }
         }
 
         private void MenuImpuestos_Click(object sender, EventArgs e)
@@ -219,6 +219,27 @@ namespace PuntoVenta.Modulos.VentanaPrincipal
         {
             FacturaCompra frm_compra = new FacturaCompra();
             frm_compra.ShowDialog();
+        }
+
+        public string TienePermisos(string rolUsuario)
+        {
+            string resultado; 
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = Conexion.ConexionMaestra.conexion;
+            con.Open();
+            SqlCommand cmd = new SqlCommand("dbo.sp_validar_permisos_usuario", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Nombre", rolUsuario);
+            SqlParameter outputParameter = new SqlParameter("@RESULTADO", SqlDbType.NVarChar, 50);
+            outputParameter.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParameter);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            resultado = Convert.ToString(outputParameter.Value);
+
+            return resultado;
         }
     }
 }

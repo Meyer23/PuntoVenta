@@ -52,14 +52,15 @@
             PanelVerDocumentos.Controls.Add(BtnAgregar);
             PanelVerDocumentos.Controls.Add(BtnSalir);
             PanelVerDocumentos.Controls.Add(DataGridViewDocumentos);
-            PanelVerDocumentos.Location = new System.Drawing.Point(12, 12);
+            PanelVerDocumentos.Dock = System.Windows.Forms.DockStyle.Fill;
+            PanelVerDocumentos.Location = new System.Drawing.Point(0, 0);
             PanelVerDocumentos.Name = "PanelVerDocumentos";
-            PanelVerDocumentos.Size = new System.Drawing.Size(812, 335);
+            PanelVerDocumentos.Size = new System.Drawing.Size(749, 360);
             PanelVerDocumentos.TabIndex = 0;
             // 
             // BtnAgregar
             // 
-            BtnAgregar.Location = new System.Drawing.Point(555, 233);
+            BtnAgregar.Location = new System.Drawing.Point(332, 233);
             BtnAgregar.Name = "BtnAgregar";
             BtnAgregar.Size = new System.Drawing.Size(104, 32);
             BtnAgregar.TabIndex = 1;
@@ -69,7 +70,7 @@
             // 
             // BtnSalir
             // 
-            BtnSalir.Location = new System.Drawing.Point(675, 233);
+            BtnSalir.Location = new System.Drawing.Point(492, 233);
             BtnSalir.Name = "BtnSalir";
             BtnSalir.Size = new System.Drawing.Size(104, 32);
             BtnSalir.TabIndex = 2;
@@ -88,7 +89,7 @@
             DataGridViewDocumentos.RowHeadersWidth = 62;
             DataGridViewDocumentos.RowTemplate.Height = 33;
             DataGridViewDocumentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            DataGridViewDocumentos.Size = new System.Drawing.Size(777, 164);
+            DataGridViewDocumentos.Size = new System.Drawing.Size(585, 164);
             DataGridViewDocumentos.TabIndex = 0;
             DataGridViewDocumentos.CellContentClick += EditarGrupoDocumento;
             // 
@@ -177,7 +178,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(821, 351);
+            ClientSize = new System.Drawing.Size(749, 360);
             Controls.Add(PanelVerDocumentos);
             Controls.Add(PanelAgregarDocumento);
             Name = "GrupoDocumento";
